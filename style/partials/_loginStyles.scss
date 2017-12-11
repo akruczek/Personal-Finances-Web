@@ -1,12 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i,900,900i&subset=latin-ext');
 
+/*
+#580358 - dark
+#915289 - light
+#6F8F3C - dark
+#5D8604 - light
+#FFD804 - else
+*/
 
 html {
   font-family: "Nunito", sans-serif;
 }
 
 body {
-  background-color: #4896B2;
+  background-color: #915289;
   .login {
     @media (max-width: 599px) {
       width: 100%;
@@ -18,10 +25,10 @@ body {
       margin: 150px auto;
     }
     box-sizing: border-box;
-    background-color: #FF8500;
+    background-color: #6F8F3C;
     border: 1px solid grey;
     border-radius: 30px;
-    box-shadow: 0 0 20px 5px #B25D00;
+    box-shadow: 0 0 20px 5px #5D8604;
     text-align: center;
 
     h1 {
@@ -53,11 +60,12 @@ body {
       height: 40px;
       font-size: 24px;
       border-radius: 15px;
-      background-color: #4896B2;
-      border: 1px solid grey;
+      background-color: #FFD804;
+      border: 1px solid darkgrey;
       cursor: pointer;
       &:focus { outline: none; }
     }
+    #buttonCreate { width: 160px; }
 
     a {
       font-size: 24px;

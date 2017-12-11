@@ -1,5 +1,5 @@
 module.exports = {
-    entry: ["./script/app.jsx"],
+    entry: ["./script/main.jsx"],
     output: { filename: "./script/out.js" },
     watch: true,
     module: {
