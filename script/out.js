@@ -76,12 +76,46 @@ module.exports = __webpack_require__(1);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_loginStyles_scss__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_loginStyles_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__style_loginStyles_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_main_scss__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__style_main_scss__);
 
+const url = "http://localhost:3000/users";
 
-document.addEventListener("DOMContentLoaded", function() {
+const buttonLogin = $("#buttonLogin");
+const inputLogin = $("#login");
+const inputPassword = $("#password");
+const errorMessage = $("#errorMessage");
+
+$(() => {
   console.log("test");
+
+  buttonLogin.on("click", () => {
+    $.ajax({
+      url: url,
+      method: "GET",
+      dataType: "json"
+    })
+    .done((response) => {
+      // console.log(response);   //infoline
+      for (let i=0; i<response.length;) {
+        if ((response[i].login === inputLogin.val() || response[i].email === inputLogin.val()) && response[i].password === inputPassword.val()) {
+          console.log("poprawny login oraz hasło.");  //infoline
+          errorMessage.text("");
+          break;
+        }
+        else {
+          i++;
+          if (i === response.length) {
+            console.log("[!] Niepoprawny login lub hasło.");  //infoline
+            errorMessage.text("[!] Niepoprawny login i/lub hasło.");
+          }
+        }
+      }
+    })
+    .fail((error) => {
+      console.log(error);
+    });
+  });
 });
 
 
@@ -106,8 +140,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./loginStyles.scss", function() {
-			var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./loginStyles.scss");
+		module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./main.scss", function() {
+			var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./main.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -125,7 +159,7 @@ exports = module.exports = __webpack_require__(4)(undefined);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i,900,900i&subset=latin-ext);", ""]);
 
 // module
-exports.push([module.i, "body {\n  font-family: \"Nunito\", sans-serif;\n  font-size: 24px;\n  background-color: orange; }\n", ""]);
+exports.push([module.i, "html, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody {\n  background-color: #4896B2; }\n  body .login {\n    box-sizing: border-box;\n    background-color: #FF8500;\n    border: 1px solid grey;\n    border-radius: 30px;\n    box-shadow: 0 0 20px 5px #B25D00;\n    text-align: center; }\n    @media (max-width: 599px) {\n      body .login {\n        width: 100%;\n        height: 400px; } }\n    @media (min-width: 600px) {\n      body .login {\n        width: 600px;\n        height: 400px;\n        margin: 150px auto; } }\n    body .login h1 {\n      font-size: 32px;\n      font-weight: 700;\n      margin: 20px 0; }\n      body .login h1:last-of-type {\n        margin-top: 50px;\n        margin-bottom: 30px; }\n    body .login .formLogin input {\n      width: 300px;\n      height: 30px;\n      border-radius: 10px;\n      margin-bottom: 20px;\n      font-size: 24px;\n      padding-left: 5px;\n      border: 1px solid grey; }\n      body .login .formLogin input::placeholder {\n        font-size: 24px;\n        color: rgba(0, 0, 0, 0.3); }\n      body .login .formLogin input:focus {\n        outline: none; }\n    body .login button {\n      width: 120px;\n      height: 40px;\n      font-size: 24px;\n      border-radius: 15px;\n      background-color: #4896B2;\n      border: 1px solid grey;\n      cursor: pointer; }\n      body .login button:focus {\n        outline: none; }\n    body .login a {\n      font-size: 24px;\n      color: black; }\n    body .login #errorMessage {\n      color: red;\n      display: block;\n      font-size: 24px;\n      font-weight: bold;\n      height: 1px;\n      margin: 15px 0; }\n", ""]);
 
 // exports
 

@@ -6,14 +6,20 @@
 </head>
 <body>
 
-  <div>
-    <ul>
-      <li>li1</li>
-      <li>li2</li>
-      <li>li3</li>
-    </ul>
-  </div>
+  <main class="login">
+    <h1>Logowanie</h1>
+    <form class="formLogin">
+      <input id="login" type="text" name="login" placeholder="Login lub Adres e-mail" />
+      <input id ="password" type="password" name="password" placeholder="Hasło" />
+    </form>
+    <button id="buttonLogin">Zaloguj</button>
+    <span id="errorMessage"></span>
 
+    <h1>Nie masz jeszcze konta?</h1>
+    <span><a href="/">Załóż za darmo!</a></span>
+  </main>
+
+  <script src="script/jquery-3.2.1.min.js"></script>
   <script src="script/out.js"></script>
 </body>
 </html>
