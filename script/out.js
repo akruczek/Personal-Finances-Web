@@ -79,7 +79,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_main_scss__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__style_main_scss__);
 
-const url = "http://localhost:3000/users";
+const url = "http://localhost:3000/users/";
 
 const buttonLogin = $("#buttonLogin");
 const buttonCreate = $("#buttonCreate");
@@ -158,6 +158,12 @@ $(() => {
                   if (i === response.length) {
                     errorMessage.text("");
                     console.log("Pomyślnie utworzono konto");
+                    createAccount({
+                      login: inputLogin.val(),
+                      password: inputPassword.val(),
+                      email: inputEmail.val(),
+                      id: inputLogin.val()
+                    });
                     //PRZEKIEROWANIE NA STRONĘ APLIKACJI
                   }
                 }
@@ -171,6 +177,36 @@ $(() => {
       }
     }
   });
+
+  function createAccount(newUser) {
+    console.log(newUser);
+    $.ajax({
+      url: url,
+      method: "POST",
+      data: newUser
+    })
+    .done(response => {
+      console.log(response);
+    })
+    .fail(error => {
+      console.log(error);
+    });
+  }
+
+  //FUNKCJA USUWAJĄCA UŻYTKOWNIKA (PO id)
+  function removeAccount(id) {
+    $.ajax({
+      url: url + id,
+      method: "DELETE"
+    })
+    .done((response) => {
+      console.log("deleted user: " + id);
+    })
+    .fail((error) => {
+      console.log(error);
+    });
+  }
+
 });
 
 

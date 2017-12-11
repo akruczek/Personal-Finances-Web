@@ -3,10 +3,12 @@
     {
       "login": "demo",
       "password": "demo",
-      "email": "demo@example.com" },
+      "email": "demo@example.com"
+    },
     {
       "login": "example",
       "password": "example",
-      "email": "example@demo.com" }
+      "email": "example@demo.com"
+    }
   ]
 }
