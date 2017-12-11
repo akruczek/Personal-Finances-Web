@@ -1,1 +1,3 @@
-# Personal-Finances
+## Personal-Finances - Aplikacja Internetowa
+
+### Instalacja: npm install
