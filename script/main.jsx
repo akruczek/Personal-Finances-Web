@@ -1,5 +1,5 @@
 import "../style/main.scss";
-const url = "http://localhost:3000/users/";
+const url = "https://my-json-server.typicode.com/akruczek/json-server/users"
 
 const buttonLogin = $("#buttonLogin");
 const buttonCreate = $("#buttonCreate");

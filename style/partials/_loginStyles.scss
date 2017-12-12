@@ -25,7 +25,7 @@ body {
       margin: 150px auto;
     }
     box-sizing: border-box;
-    background-color: #6F8F3C;
+    background-color: grey;
     border: 1px solid grey;
     border-radius: 30px;
     box-shadow: 0 0 20px 5px #5D8604;
@@ -39,33 +39,20 @@ body {
     }
 
     .formLogin {
+      display: flex;
+      justify-content: center;
+      align-items:flex-end;
       input {
         width: 300px;
         height: 30px;
-        border-radius: 10px;
         margin-bottom: 20px;
         font-size: 24px;
         padding-left: 5px;
-        border: 1px solid grey;
-        &::placeholder {
-          font-size: 24px;
-          color: rgba(0, 0, 0, .3);
-        }
-        &:focus { outline: none; }
+      }
+      label {
+        font-size: 16px;
       }
     }
-
-    button {
-      width: 120px;
-      height: 40px;
-      font-size: 24px;
-      border-radius: 15px;
-      background-color: #FFD804;
-      border: 1px solid darkgrey;
-      cursor: pointer;
-      &:focus { outline: none; }
-    }
-    #buttonCreate { width: 160px; }
 
     a {
       font-size: 24px;
