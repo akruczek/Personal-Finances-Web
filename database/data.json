@@ -9,6 +9,12 @@
       "login": "example",
       "password": "example",
       "email": "example@demo.com"
+    },
+    {
+      "id": "LittleRavenrm",
+      "login": "LittleRaven",
+      "password": "ravenos9",
+      "email": "littleRaven@gmail.com"
     }
   ]
 }

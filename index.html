@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Personal Finances - Login</title>
 </head>
 <body>
 
   <main class="login">
-    <h1>Logowanie</h1>
+    <h1 id="loginHeader">Logowanie</h1>
     <form class="formLogin">
       <div class="row">
-        <div class="input-field col s6">
-          <input value="" id="first_name2" type="text" class="validate">
+        <div class="input-field">
+          <input value="" id="inputLogin" type="text" class="validate">
           <label class="active" for="first_name2">Login</label>
-          <!-- <input value="Alvin" id="first_name2" type="text" class="validate">
-          <label class="active" for="first_name2">Hasło</label> -->
+        </div>
+        <br />
+        <div class="input-field">
+          <input value="" id="inputPassword" type="password" class="validate">
+          <label class="active" for="first_name2">Hasło</label>
         </div>
       </div>
-      <!-- <input id="login" type="text" name="login" placeholder="Login lub Adres e-mail" />
-      <input id ="password" type="password" name="password" placeholder="Hasło" /> -->
     </form>
     <a id="buttonLogin" class="waves-effect waves-light btn-large">Zaloguj</a>
-    <!-- <button id="buttonLogin">Zaloguj</button> -->
     <span id="errorMessage"></span>
 
-    <h1>Nie masz jeszcze konta?</h1>
-    <span><a href="./index-account.html">Załóż za darmo!</a></span>
+    <!-- <br /><br /><br /> -->
+    <div id="createAccountLink"><a href="./index-account.html">Załóż konto za darmo!</a></div>
   </main>
 
   <script src="script/jquery-3.2.1.min.js"></script>

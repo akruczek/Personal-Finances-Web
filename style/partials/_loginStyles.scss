@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i,900,900i&subset=latin-ext');
 
 /*
-#580358 - dark
-#915289 - light
-#6F8F3C - dark
-#5D8604 - light
-#FFD804 - else
+009DCC - lightblue
+3D8499 - blue
+00FFAE - green/blue
+FF4C40 - lightred
+CC144A - red
 */
 
 html {
@@ -13,59 +13,64 @@ html {
 }
 
 body {
-  background-color: #915289;
+  background-color: #3D8499;
   .login {
-    @media (max-width: 599px) {
-      width: 100%;
-      height: 400px;
-    }
-    @media (min-width: 600px) {
-      width: 600px;
-      height: 400px;
-      margin: 150px auto;
-    }
+    @media (max-width: 599px) { width: 100%; }
+    @media (min-width: 600px) { width: 600px; }
+    height: 440px;
+    margin: 150px auto;
     box-sizing: border-box;
-    background-color: grey;
-    border: 1px solid grey;
+    background-color: lightgrey;
     border-radius: 30px;
-    box-shadow: 0 0 20px 5px #5D8604;
+    box-shadow: 0 0 20px 5px #00C3AB;
     text-align: center;
 
-    h1 {
-      font-size: 32px;
-      font-weight: 700;
-      margin: 20px 0;
-      &:last-of-type { margin-top: 50px; margin-bottom: 30px; }
+    #loginHeader {
+      font-size: 36px;
+      margin: 20px;
+      padding-top: 10px;
     }
+    #createAccountHeader {
+      font-size: 36px;
+      margin: 10px;
+      padding-top: 10px;
+    }
+    #errorMessage {
+      display: block;
+      height: 1px;
+      font-size: 18px;
+      margin-top: 15px;
+      font-weight: 600;
+      color: darken(red, 10%);
+    }
+    #buttonCreate {
+      margin-top: -10px;
+      font-size: 22px;
+    }
+    #buttonLogin {
+      font-size: 22px;
+    }
+    #createAccountLink {
+      margin-top: 50px;
+    }
+    #logInLink {
+      margin-top: 20px;
+    }
+
 
     .formLogin {
       display: flex;
       justify-content: center;
-      align-items:flex-end;
-      input {
+      .input-field {
         width: 300px;
-        height: 30px;
-        margin-bottom: 20px;
-        font-size: 24px;
-        padding-left: 5px;
+        margin-top: 5px;
+      }
+      input {
+        font-size: 28px;
       }
       label {
-        font-size: 16px;
+        font-size: 28px;
       }
-    }
-
-    a {
-      font-size: 24px;
-      color: black;
-    }
-
-    #errorMessage {
-      color: red;
-      display: block;
-      font-size: 24px;
-      font-weight: bold;
-      height: 1px;
-      margin: 15px 0;
     }
   }
 }

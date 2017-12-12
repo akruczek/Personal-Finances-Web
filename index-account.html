@@ -2,22 +2,40 @@
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <title>Personal Finances - Create Account</title>
 </head>
 <body>
 
   <main class="login">
-    <h1>Stwórz konto</h1>
+    <h1 id="createAccountHeader">Stwórz Konto</h1>
     <form class="formLogin">
-      <input id="login" type="text" name="login" placeholder="Login" />
-      <input id ="password" type="password" name="password" placeholder="Hasło" />
-      <input id ="email" type="email" name="email" placeholder="E-mail" />
+      <div class="row">
+        <div class="input-field">
+          <input value="" id="inputLogin" type="text" class="validate">
+          <label class="active" for="first_name2">Login</label>
+        </div>
+        <br />
+        <div class="input-field">
+          <input value="" id="inputPassword" type="password" class="validate">
+          <label class="active" for="first_name2">Hasło</label>
+        </div>
+        <br />
+        <div class="input-field">
+          <input value="" id="inputEmail" type="email" class="validate">
+          <label class="active" for="first_name2">E-mail</label>
+        </div>
+      </div>
     </form>
-    <button id="buttonCreate">Stwórz Konto</button>
+    <a id="buttonCreate" class="waves-effect waves-light btn-large">Utwórz Konto</a>
     <span id="errorMessage"></span>
+    <div id="logInLink"><a href="./index.html">Zaloguj się</a></div>
   </main>
 
   <script src="script/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script src="script/out.js"></script>
 </body>
 </html>
