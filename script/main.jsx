@@ -17,6 +17,30 @@ $(() => {
   console.log("test");
 
   //LOGOWANIE \/
+
+  //WALIDACJA LOGINU I HASŁA Z BAZĄ
+  function LOGIN_VALID(response) {
+    for (let i=0; i<response.length; i++) {
+      if ((response[i].login === inputLogin.val() || response[i].email === inputLogin.val()) && response[i].password === inputPassword.val()) {
+        console.log("poprawny login oraz hasło.");  //infoline
+        inputLogin.addClass("valid"); inputLogin.removeClass("invalid");
+        inputPassword.addClass("valid"); inputPassword.removeClass("invalid");
+        errorMessage.text("");
+        //PRZEKIEROWANIE DO APLIKACJI
+        break;
+      }
+      else {
+        if (i === response.length-1) {
+          console.log("[!] Niepoprawny login lub hasło.");  //infoline
+          inputLogin.addClass("invalid");
+          inputPassword.addClass("invalid");
+          errorMessage.text("[!] Niepoprawny login i/lub hasło.");
+        }
+      }
+    }
+  }
+
+  //LOGOWANIE
   buttonLogin.on("click", () => {
     $.ajax({
       url: url,
@@ -25,28 +49,12 @@ $(() => {
     })
     .done((response) => {
       console.log(response);   //infoline
-      for (let i=0; i<response.length; i++) {
-        if ((response[i].login === inputLogin.val() || response[i].email === inputLogin.val()) && response[i].password === inputPassword.val()) {
-          console.log("poprawny login oraz hasło.");  //infoline
-          inputLogin.addClass("valid"); inputLogin.removeClass("invalid");
-          inputPassword.addClass("valid"); inputPassword.removeClass("invalid");
-          errorMessage.text("");
-          //PRZEKIEROWANIE DO APLIKACJI
-          break;
-        }
-        else {
-          if (i === response.length-1) {
-            console.log("[!] Niepoprawny login lub hasło.");  //infoline
-            inputLogin.addClass("invalid");
-            inputPassword.addClass("invalid");
-            errorMessage.text("[!] Niepoprawny login i/lub hasło.");
-          }
-        }
-      }
+      LOGIN_VALID(response);
     })
     .fail(error => { console.log(error); });
   });
 
+//FORMULARZ TWORZENIA KONTA \/
   //ZMIANA KLASY (PODŚWIETLENIE INPUTA)
   function toggleValid(el, valid) {
     if (valid) {
