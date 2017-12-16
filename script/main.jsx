@@ -3,19 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import	{	Router, IndexLink, IndexRoute, hashHistory }	from 'react-router';
 import { HashRouter, Route, Link } from 'react-router-dom';
+import Application from "./app.jsx";
 
 const url = "http://localhost:3000/users/";
 
 window.location.replace("/#/login");
 
-  const buttonLogin = document.getElementById("buttonLogin");
-  const buttonCreate = document.getElementById("buttonCreate");
-  const inputLogin = document.getElementById("inputLogin");
-  const inputPassword = document.getElementById("inputPassword");
-  const inputEmail = document.getElementById("inputEmail");
-  const errorMessage = document.getElementById("errorMessage");
-  const createAccountLink = document.getElementById("createAccountLink");
-  let isValid;
+let isValid;
 
 //OKNO LOGOWANIA \/
 class Login extends React.Component {
@@ -153,7 +147,6 @@ class CreateAccount extends React.Component {
     fetch(url)
     .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
     .then(data => {
-      console.log(data);
       for (let i=0; i<data.length; i++) {
         if (data[i].email === this.state.email)
           this.changeValid("inputEmailClass", "invalid", "[!] Użytkownik o takim adresie e-mail już istnieje")
@@ -182,7 +175,7 @@ class CreateAccount extends React.Component {
       headers: {"Content-Type" : "application/json"},
       dataType: "json"})
     .then(response => response.json())
-    .then(data => {console.log(data); console.log("Added new user: ", newUser);})
+    .then(data => {console.log("Added new user: ", newUser);})
     .catch(error => console.log(error));
   }
 
@@ -210,7 +203,7 @@ class CreateAccount extends React.Component {
         </form>
         <a id="buttonCreate" onClick={this.LoginValid} className="waves-effect waves-light btn-large">Utwórz Konto</a>
         <span id="errorMessage">{this.state.errorMessage}</span>
-        <div id="logInLink"><a href="/">Zaloguj się</a></div>
+        <div id="logInLink"><a href="/#/login">Zaloguj się</a></div>
       </main>
     );
   }
@@ -224,6 +217,7 @@ class App extends React.Component {
         <div>
           <Route path="/login" component={Login} />
           <Route path="/createAccount" component={CreateAccount} />
+          <Route path="/app" component={Application} />
         </div>
       </HashRouter>
     );
@@ -239,9 +233,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   //FUNKCJA USUWAJĄCA UŻYTKOWNIKA (PO id)
-  function removeAccount(id) {
+  const RemoveAccount =(id)=> {
     fetch(url + id, {method: "DELETE"})
     .then(() => {console.log("deleted user: " + id);})
     .catch(error => console.log(error));
   }
+  // RemoveAccount("1");
 });
