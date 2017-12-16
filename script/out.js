@@ -9646,16 +9646,12 @@ $(() => {
 
   //LOGOWANIE
   buttonLogin.on("click", () => {
-    $.ajax({
-      url: url,
-      method: "GET",
-      dataType: "json"
-    })
-    .done((response) => {
-      console.log(response);   //infoline
-      LOGIN_VALID(response);
-    })
-    .fail(error => { console.log(error); });
+    fetch(url)
+    .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
+    .then(data => {
+      console.log(data);
+      LOGIN_VALID(data); })
+    .catch(error => console.log(error));
   });
 
 //FORMULARZ TWORZENIA KONTA \/
@@ -9696,50 +9692,39 @@ $(() => {
   //WALIDACJA Z BAZĄ \/
   function DATABASE_VALID(login, email) {
     isValid = false;
-    $.ajax({
-      url: url,
-      method: "GET",
-      dataType: "json"
-    })
-    .done((response) => {
-      for (let i = 0; i<response.length; i++) {
-        // console.log(response[i].email);
-        if (response[i].email === email) {
+
+    fetch(url)
+    .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
+    .then(data => {
+      console.log(data);
+      for (let i=0; i<data.length; i++) {
+        if (data[i].email === email) {
           errorMessage.text("[!] Użytkownik o takim adresie e-mail już istnieje");
           toggleValid(inputEmail, false); }
-        else if (response[i].login === login) {
+        else if (data[i].login === login) {
           errorMessage.text("[!] Użytkownik o takim loginie już istnieje");
           toggleValid(inputLogin, false); }
-        else {
-          if (i === response.length-1) {
-            errorMessage.text("[!] Pomyślnie utworzono konto");
-            toggleValid(inputLogin, true); toggleValid(inputEmail, true);
-            createAccount({
-              id: inputLogin.val() + inputPassword.val()[0] + inputEmail.val()[inputEmail.val().length-1],
-              login: inputLogin.val(),
-              password: inputPassword.val(),
-              email: inputEmail.val()
-            }); } }
-      }
-    })
-    .fail(error => {console.log(error);});
+        else if (i === data.length-1) {
+          errorMessage.text("[!] Pomyślnie utworzono konto");
+          toggleValid(inputLogin, true); toggleValid(inputEmail, true);
+          createAccount({
+            login: inputLogin.val(),
+            password: inputPassword.val(),
+            email: inputEmail.val()
+          }); } } })
+    .catch(error => console.log(error));
   }
 
   //TWORZENIE NOWEGO UŻYTKOWNIKA
   function createAccount(newUser) {
-    console.log(newUser);
-    $.ajax({
-      url: url,
+    fetch(url, {
       method: "POST",
-      data: newUser
-    })
-    .done(response => {
-      console.log("Added new user", newUser);
-      console.log(response);
-    })
-    .fail(error => {
-      console.log(error);
-    });
+      body: JSON.stringify(newUser),
+      headers: {"Content-Type" : "application/json"},
+      dataType: "json"})
+    .then(response => response.json())
+    .then(data => {console.log(data); console.log("Added new user: ", newUser);})
+    .catch(error => console.log(error));
   }
 
   //TWORZENIE NOWEGO KONTA
@@ -9758,18 +9743,10 @@ $(() => {
 
   //FUNKCJA USUWAJĄCA UŻYTKOWNIKA (PO id)
   function removeAccount(id) {
-    $.ajax({
-      url: url + id,
-      method: "DELETE"
-    })
-    .done((response) => {
-      console.log("deleted user: " + id);
-    })
-    .fail((error) => {
-      console.log(error);
-    });
+    fetch(url + id, {method: "DELETE"})
+    .then(() => {console.log("deleted user: " + id);})
+    .catch(error => console.log(error));
   }
-
 });
 
 
