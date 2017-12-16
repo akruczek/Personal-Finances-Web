@@ -9,6 +9,12 @@
       "login": "example",
       "password": "example",
       "email": "example@demo.com"
+    },
+    {
+      "id": "1",
+      "login": "asdfg",
+      "password": "asdfg",
+      "email": "asdfg@."
     }
   ]
 }

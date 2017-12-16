@@ -1,118 +1,181 @@
 import "../style/main.scss";
 import React from 'react';
 import ReactDOM from 'react-dom';
+import	{	Router, IndexLink, IndexRoute, hashHistory }	from 'react-router';
+import { HashRouter, Route, Link } from 'react-router-dom';
 
 const url = "http://localhost:3000/users/";
 
-const buttonLogin = $("#buttonLogin");
-const buttonCreate = $("#buttonCreate");
-const inputLogin = $("#inputLogin");
-const inputPassword = $("#inputPassword");
-const inputEmail = $("#inputEmail");
-const errorMessage = $("#errorMessage");
-const createAccountLink = $("#createAccountLink");
-let isValid;
+window.location.replace("/#/login");
 
-$(() => {
-  console.log("test");
+  const buttonLogin = document.getElementById("buttonLogin");
+  const buttonCreate = document.getElementById("buttonCreate");
+  const inputLogin = document.getElementById("inputLogin");
+  const inputPassword = document.getElementById("inputPassword");
+  const inputEmail = document.getElementById("inputEmail");
+  const errorMessage = document.getElementById("errorMessage");
+  const createAccountLink = document.getElementById("createAccountLink");
+  let isValid;
 
-  //LOGOWANIE \/
-
-  //WALIDACJA LOGINU I HASŁA Z BAZĄ
-  function LOGIN_VALID(response) {
-    for (let i=0; i<response.length; i++) {
-      if ((response[i].login === inputLogin.val() || response[i].email === inputLogin.val()) && response[i].password === inputPassword.val()) {
-        console.log("poprawny login oraz hasło.");  //infoline
-        inputLogin.addClass("valid"); inputLogin.removeClass("invalid");
-        inputPassword.addClass("valid"); inputPassword.removeClass("invalid");
-        errorMessage.text("");
-        //PRZEKIEROWANIE DO APLIKACJI
-        break;
-      }
-      else {
-        if (i === response.length-1) {
-          console.log("[!] Niepoprawny login lub hasło.");  //infoline
-          inputLogin.addClass("invalid");
-          inputPassword.addClass("invalid");
-          errorMessage.text("[!] Niepoprawny login i/lub hasło.");
-        }
-      }
+//OKNO LOGOWANIA \/
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputLogin: "",
+      inputPassword: "",
+      inputLoginClass: "",
+      inputPasswordClass: "",
+      errorMessage: ""
     }
   }
 
+  //ZMIANY W INPUTACH
+  changeHandler =(event)=> { this.setState({ [event.target.name]: event.target.value }); }
+
+  //ZMIANA KOLORU INPUTA
+  changeValid =(classType, message)=> {
+    this.setState({
+      inputLoginClass: classType,
+      inputPasswordClass: classType,
+      errorMessage: message
+    });
+  }
+
   //LOGOWANIE
-  buttonLogin.on("click", () => {
+  buttonLoginClick =()=> {
     fetch(url)
     .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
     .then(data => {
-      console.log(data);
-      LOGIN_VALID(data); })
+      console.log(data);  //infoline
+      this.LOGIN_VALID(data); })
     .catch(error => console.log(error));
-  });
+  }
 
-//FORMULARZ TWORZENIA KONTA \/
-  //ZMIANA KLASY (PODŚWIETLENIE INPUTA)
-  function toggleValid(el, valid) {
-    if (valid) {
-      el.addClass("valid");
-      el.removeClass("invalid"); }
-    else {
-      el.addClass("invalid");
-      el.removeClass("valid"); }
+  //WALIDACJA LOGINU I HASŁA Z BAZĄ
+  LOGIN_VALID =(response)=> {
+    for (let i=0; i<response.length; i++) {
+      if ((response[i].login === this.state.inputLogin || response[i].email === this.state.inputLogin) && response[i].password === this.state.inputPassword) {
+        this.changeValid("valid", "");
+        console.log("Przekierowywanie..."); //infoline
+        // PRZEKIEROWANIE DO APLIKACJI
+        // export response[i].id;
+        // window.location.replace("/#/app");
+        break;
+      }
+      else if (i === response.length-1)
+        this.changeValid("invalid", "[!] Niepoprawny login lub hasło.");
+    }
+  }
+
+  render() {
+    return (
+      <main className="login">
+        <h1 id="loginHeader">Logowanie</h1>
+        <form className="formLogin">
+          <div className="row">
+            <div className="input-field">
+              <input onChange={this.changeHandler} name="inputLogin" value={this.state.inputLogin} id="inputLogin" type="text" className="validate" className={this.state.inputLoginClass}/>
+              <label className="active" htmlFor="first_name2">Login</label>
+            </div>
+            <br />
+            <div className="input-field">
+              <input onChange={this.changeHandler} name="inputPassword" value={this.state.inputPassword} id="inputPassword" type="password" className="validate" className={this.state.inputPasswordClass}/>
+              <label className="active" htmlFor="first_name2">Hasło</label>
+            </div>
+          </div>
+        </form>
+        <a id="buttonLogin" onClick={this.buttonLoginClick} className="waves-effect waves-light btn-large">Zaloguj</a>
+        <span id="errorMessage">{this.state.errorMessage}</span>
+        <div id="createAccountLink"><a href="/#/createAccount">Załóż konto za darmo!</a></div>
+      </main>
+    );
+  }
+}
+
+//OKNO TWORZENIA NOWEGO KONTA \/
+class CreateAccount extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputLogin: "",
+      inputPassword: "",
+      inputEmail: "",
+      inputLoginClass: "",
+      inputPasswordClass: "",
+      inputEmailClass: "",
+      errorMessage: "",
+      isValid: false
+    }
+  }
+
+  //ZMIANY W INPUTACH
+  changeHandler =(event)=> { this.setState({ [event.target.name]: event.target.value }); }
+
+  //ZMIANA KOLORU INPUTA
+  changeValid =(element, classType, message)=> {
+    this.setState({
+      [element]: classType,
+      errorMessage: message
+    });
   }
 
   //WALIDACJA LOGINU ORAZ HASŁA
-  function LOGIN_PASS_VALID(element, error) {
-    if (element.val().length < 5 || element.val().length > 18 || !/^[a-zA-Z0-9- ]*$/.test(element.val())) {
-      errorMessage.text(error);
-      toggleValid(element, false);
-      return false; }
+  LoginValid =()=> {
+    console.log("valid login"); //infoline
+    if (this.state.inputLogin.length < 5 || this.state.inputLogin.length > 18 || !/^[a-zA-Z0-9- ]*$/.test(this.state.inputLogin))
+      this.changeValid("inputLoginClass", "invalid", "[!] Login musi zawierać od 5 do 18 znaków oraz tylko litery i cyfry.");
     else {
-      errorMessage.text("");
-      toggleValid(element, true);
-      return true; }
+      this.changeValid("inputLoginClass", "valid", "");
+      this.PasswordValid(); }
   }
 
-  //WALIDACJA ADRESU E-MAIL
-  function EMAIL_VALID(element) {
-    if (element.val().length < 6 || element.val().indexOf("@") === -1 || element.val().indexOf(".") === -1) {
-      errorMessage.text("[!] Niepoprawny adres e-mail");
-      toggleValid(element, false);
-      return false; }
+  PasswordValid =()=> {
+    console.log("valid pass");  //infoline
+    if (this.state.inputPassword.length < 5 || this.state.inputPassword.length > 18 || !/^[a-zA-Z0-9- ]*$/.test(this.state.inputPassword))
+      this.changeValid("inputPasswordClass", "invalid", "[!] Hasło musi zawierać od 5 do 18 znaków oraz tylko litery i cyfry.");
     else {
-      errorMessage.text("");
-      toggleValid(element, true);
-      return true; }
+      this.changeValid("inputPasswordClass", "valid", "");
+      this.EmailValid(); }
   }
 
-  //WALIDACJA Z BAZĄ \/
-  function DATABASE_VALID(login, email) {
-    isValid = false;
+  EmailValid =()=> {
+    console.log("valid email"); //infoline
+    if (this.state.inputEmail.length < 5 || this.state.inputEmail.indexOf("@") === -1 || this.state.inputEmail.indexOf(".") == -1)
+      this.changeValid("inputEmailClass", "invalid", "[!] Niepoprawny Email.");
+    else {
+      this.changeValid("inputEmailClass", "valid", "");
+      this.DatabaseValid(); }
+  }
 
+  DatabaseValid =()=> {
+    console.log("valid db");  //infoline
     fetch(url)
     .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
     .then(data => {
       console.log(data);
       for (let i=0; i<data.length; i++) {
-        if (data[i].email === email) {
-          errorMessage.text("[!] Użytkownik o takim adresie e-mail już istnieje");
-          toggleValid(inputEmail, false); }
-        else if (data[i].login === login) {
-          errorMessage.text("[!] Użytkownik o takim loginie już istnieje");
-          toggleValid(inputLogin, false); }
+        if (data[i].email === this.state.email)
+          this.changeValid("inputEmailClass", "invalid", "[!] Użytkownik o takim adresie e-mail już istnieje")
+        else if (data[i].login === this.state.login)
+          this.changeValid("inputLoginClass", "invalid", "[!] Użytkownik o takim loginie już istnieje")
         else if (i === data.length-1) {
-          errorMessage.text("[!] Pomyślnie utworzono konto");
-          toggleValid(inputLogin, true); toggleValid(inputEmail, true);
-          createAccount({
-            login: inputLogin.val(),
-            password: inputPassword.val(),
-            email: inputEmail.val()
+          this.setState({
+            inputLoginClass: "valid",
+            inputPasswordClass: "valid",
+            inputEmailClass: "valid",
+            errorMessage: "[!] Pomyślnie utworzono konto"
+          })
+          this.CreateAccount({
+            id: this.state.inputLogin,
+            login: this.state.inputLogin,
+            password: this.state.inputPassword,
+            email: this.state.inputEmail
           }); } } })
     .catch(error => console.log(error));
   }
 
-  //TWORZENIE NOWEGO UŻYTKOWNIKA
-  function createAccount(newUser) {
+  CreateAccount =(newUser)=> {
     fetch(url, {
       method: "POST",
       body: JSON.stringify(newUser),
@@ -123,19 +186,57 @@ $(() => {
     .catch(error => console.log(error));
   }
 
-  //TWORZENIE NOWEGO KONTA
-  buttonCreate.on("click", () => {
-    if (LOGIN_PASS_VALID(inputLogin, "[!] Login musi zawierać od 5 do 18 znaków oraz tylko litery i cyfry.")) {
-      console.log("...login validation correct");
-      if (LOGIN_PASS_VALID(inputPassword, "[!] Hasło musi zawierać od 5 do 18 znaków oraz tylko litery i cyfry.")) {
-        console.log("...password validation correct");
-        if (EMAIL_VALID(inputEmail)) {
-          console.log("...email validation correct");
-          DATABASE_VALID(inputLogin.val(), inputEmail.val());
-        }
-      }
-    }
-  });
+  render() {
+    return (
+      <main className="login">
+        <h1 id="createAccountHeader">Stwórz Konto</h1>
+        <form className="formLogin">
+          <div className="row">
+            <div className="input-field">
+              <input onChange={this.changeHandler} value={this.state.inputLogin} name="inputLogin" id="inputLogin" type="text" className="validate" className={this.state.inputLoginClass}/>
+              <label className="active" htmlFor="first_name2">Login</label>
+            </div>
+            <br />
+            <div className="input-field">
+              <input onChange={this.changeHandler} value={this.state.inputPassword} name="inputPassword" id="inputPassword" type="password" className="validate" className={this.state.inputPasswordClass}/>
+              <label className="active" htmlFor="first_name2">Hasło</label>
+            </div>
+            <br />
+            <div className="input-field">
+              <input onChange={this.changeHandler} value={this.state.inputEmail} name="inputEmail" id="inputEmail" type="email" className="validate" className={this.state.inputEmailClass}/>
+              <label className="active" htmlFor="first_name2">E-mail</label>
+            </div>
+          </div>
+        </form>
+        <a id="buttonCreate" onClick={this.LoginValid} className="waves-effect waves-light btn-large">Utwórz Konto</a>
+        <span id="errorMessage">{this.state.errorMessage}</span>
+        <div id="logInLink"><a href="/">Zaloguj się</a></div>
+      </main>
+    );
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return (
+      // <Login />
+      <HashRouter history={hashHistory}>
+        <div>
+          <Route path="/login" component={Login} />
+          <Route path="/createAccount" component={CreateAccount} />
+        </div>
+      </HashRouter>
+    );
+  }
+}
+
+//-----SCRIPT-----\\
+document.addEventListener('DOMContentLoaded', function() {
+  ReactDOM.render(
+    <App />,
+    document.getElementById('app')
+  );
+
 
   //FUNKCJA USUWAJĄCA UŻYTKOWNIKA (PO id)
   function removeAccount(id) {
