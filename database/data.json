@@ -1,20 +1,22 @@
 {
   "users": [
     {
-      "login": "demo",
-      "password": "demo",
-      "email": "demo@example.com"
-    },
-    {
-      "login": "example",
-      "password": "example",
-      "email": "example@demo.com"
-    },
-    {
       "id": "akruczek",
       "login": "akruczek",
       "password": "password",
       "email": "adam.krucz1@gmail.com"
+    },
+    {
+      "id": "exampleApp",
+      "login": "exampleApp",
+      "password": "12345",
+      "email": "app@example.com"
+    },
+    {
+      "id": "example",
+      "login": "example",
+      "password": "elpmaxe",
+      "email": "example@example.com"
     }
   ]
 }

@@ -6,6 +6,7 @@ module.exports = {
       contentBase: "./",
       port: 3001
     },
+    devtool: 'source-map',
     watch: true,
     module: {
          loaders: [

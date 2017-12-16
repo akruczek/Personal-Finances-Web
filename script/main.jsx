@@ -10,6 +10,7 @@ const url = "http://localhost:3000/users/";
 window.location.replace("/#/login");
 
 let isValid;
+export let userObject;
 
 //OKNO LOGOWANIA \/
 class Login extends React.Component {
@@ -49,12 +50,13 @@ class Login extends React.Component {
   //WALIDACJA LOGINU I HASŁA Z BAZĄ
   LOGIN_VALID =(response)=> {
     for (let i=0; i<response.length; i++) {
-      if ((response[i].login === this.state.inputLogin || response[i].email === this.state.inputLogin) && response[i].password === this.state.inputPassword) {
+      if ((response[i].login === this.state.inputLogin || response[i].email === this.state.inputLogin) && response[i].password.split("").reverse().join("") === this.state.inputPassword) {
         this.changeValid("valid", "");
         console.log("Przekierowywanie..."); //infoline
+        userObject = response[i];
+        console.log(userObject);
         // PRZEKIEROWANIE DO APLIKACJI
-        // export response[i].id;
-        // window.location.replace("/#/app");
+        window.location.replace(`/#/app/${response[i].id}`);
         break;
       }
       else if (i === response.length-1)
@@ -162,7 +164,7 @@ class CreateAccount extends React.Component {
           this.CreateAccount({
             id: this.state.inputLogin,
             login: this.state.inputLogin,
-            password: this.state.inputPassword,
+            password: this.state.inputPassword.split("").reverse().join(""),
             email: this.state.inputEmail
           }); } } })
     .catch(error => console.log(error));
@@ -176,6 +178,12 @@ class CreateAccount extends React.Component {
       dataType: "json"})
     .then(response => response.json())
     .then(data => {console.log("Added new user: ", newUser);})
+    .then (data => {
+      userObject = newUser;
+      console.log(userObject);
+      // PRZEKIEROWANIE DO APLIKACJI
+      window.location.replace(`/#/app/${userObject.id}`);
+    })
     .catch(error => console.log(error));
   }
 
@@ -217,7 +225,7 @@ class App extends React.Component {
         <div>
           <Route path="/login" component={Login} />
           <Route path="/createAccount" component={CreateAccount} />
-          <Route path="/app" component={Application} />
+          <Route path="/app" user={userObject} component={Application} />
         </div>
       </HashRouter>
     );
@@ -238,5 +246,5 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(() => {console.log("deleted user: " + id);})
     .catch(error => console.log(error));
   }
-  // RemoveAccount("1");
+  // RemoveAccount("login");
 });

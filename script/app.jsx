@@ -3,30 +3,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import	{	Router, IndexLink, IndexRoute, hashHistory }	from 'react-router';
 import { HashRouter, Route, Link } from 'react-router-dom';
+import {userObject} from "./main.jsx";
 
 export default class Application extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      something: "value"
+    }
+  }
+
   render() {
-    console.log("Welcome in app.jsx!");
+    console.log("Welcome in app " + userObject.login);
     return (
-      <h1>Ubi qui amet fugiat irure et anim
-        eiusmod qui probant. Quid quo possumus.
-        Hic expetendis firmissimum, sed quorum
-        amet ab commodo. Ubi admodum e nostrud
-        se eiusmod duis constias singulis,
-        vidisse esse vidisse sed te vidisse
-        familiaritatem.</h1>
+      <h1>{userObject.login}</h1>
     );
   }
 }
-
-//
-// document.addEventListener("DOMContentLoaded", () => {
-//   ReactDOM.render(
-//     <HashRouter history={hashHistory}>
-//       <div>
-//         <Route path="/app" component={App} />
-//       </div>
-//     </HashRouter>,
-//     document.getElementById('app')
-//   );
-// });
