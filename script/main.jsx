@@ -2,7 +2,7 @@ import "../style/main.scss";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import	{	Router, IndexLink, IndexRoute, hashHistory }	from 'react-router';
-import { HashRouter, Route, Link } from 'react-router-dom';
+import { HashRouter, BrowserRouter, Route, Link } from 'react-router-dom';
 import {Application, AppHeader} from "./app.jsx";
 
 const url = "http://localhost:3000/users/";
@@ -13,15 +13,15 @@ let isValid;
 export let userObject;
 
 
-// //-----DEV-ONLY\/
-// userObject = {
-//     "id": "exampleApp",
-//     "login": "exampleApp",
-//     "password": "okwzvo",
-//     "email": "app@example.com"
-//   };
-// window.location.replace("/#/app/exampleApp");
-// ///\
+//-----DEV-ONLY\/
+userObject = {
+    "id": "exampleApp",
+    "login": "exampleApp",
+    "password": "okwzvo",
+    "email": "app@example.com"
+  };
+window.location.replace("/#/app/exampleApp");
+///\
 
 
 //OKNO LOGOWANIA \/
