@@ -3,20 +3,14 @@
     {
       "id": "akruczek",
       "login": "akruczek",
-      "password": "password",
+      "password": "KnkwU|mC:",
       "email": "adam.krucz1@gmail.com"
     },
     {
       "id": "exampleApp",
       "login": "exampleApp",
-      "password": "12345",
+      "password": "okwzvo",
       "email": "app@example.com"
-    },
-    {
-      "id": "example",
-      "login": "example",
-      "password": "elpmaxe",
-      "email": "example@example.com"
     }
   ]
 }

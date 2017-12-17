@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import	{	Router, IndexLink, IndexRoute, hashHistory }	from 'react-router';
 import { HashRouter, Route, Link } from 'react-router-dom';
-import Application from "./app.jsx";
+import {Application, AppHeader} from "./app.jsx";
 
 const url = "http://localhost:3000/users/";
 
@@ -11,6 +11,18 @@ window.location.replace("/#/login");
 
 let isValid;
 export let userObject;
+
+
+// //-----DEV-ONLY\/
+// userObject = {
+//     "id": "exampleApp",
+//     "login": "exampleApp",
+//     "password": "okwzvo",
+//     "email": "app@example.com"
+//   };
+// window.location.replace("/#/app/exampleApp");
+// ///\
+
 
 //OKNO LOGOWANIA \/
 class Login extends React.Component {
@@ -37,24 +49,32 @@ class Login extends React.Component {
     });
   }
 
+  Code =(string)=> {
+    let result = "";
+    for (let i=0; i<string.length; i++)
+      result += String.fromCharCode(string.charCodeAt(i) - 10);
+    return result;
+  }
+
   //LOGOWANIE
-  buttonLoginClick =()=> {
+  buttonLoginClick =(event)=> {
     fetch(url)
     .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
     .then(data => {
-      console.log(data);  //infoline
       this.LOGIN_VALID(data); })
     .catch(error => console.log(error));
+    event.preventDefault();
   }
 
   //WALIDACJA LOGINU I HASŁA Z BAZĄ
   LOGIN_VALID =(response)=> {
     for (let i=0; i<response.length; i++) {
-      if ((response[i].login === this.state.inputLogin || response[i].email === this.state.inputLogin) && response[i].password.split("").reverse().join("") === this.state.inputPassword) {
+      if ((response[i].login === this.state.inputLogin || response[i].email === this.state.inputLogin) && this.Code(response[i].password) === this.state.inputPassword) {
         this.changeValid("valid", "");
-        console.log("Przekierowywanie..."); //infoline
         userObject = response[i];
-        console.log(userObject);
+        console.log(userObject.login + " is logging in...");  //infoline
+        console.log("Redirecting to app..."); //infoline
+        // console.log(userObject);
         // PRZEKIEROWANIE DO APLIKACJI
         window.location.replace(`/#/app/${response[i].id}`);
         break;
@@ -68,7 +88,7 @@ class Login extends React.Component {
     return (
       <main className="login">
         <h1 id="loginHeader">Logowanie</h1>
-        <form className="formLogin">
+        <form onSubmit={this.buttonLoginClick} className="formLogin">
           <div className="row">
             <div className="input-field">
               <input onChange={this.changeHandler} name="inputLogin" value={this.state.inputLogin} id="inputLogin" type="text" className="validate" className={this.state.inputLoginClass}/>
@@ -80,6 +100,7 @@ class Login extends React.Component {
               <label className="active" htmlFor="first_name2">Hasło</label>
             </div>
           </div>
+          <input type="submit" style={{display: "none"}}/>
         </form>
         <a id="buttonLogin" onClick={this.buttonLoginClick} className="waves-effect waves-light btn-large">Zaloguj</a>
         <span id="errorMessage">{this.state.errorMessage}</span>
@@ -116,18 +137,24 @@ class CreateAccount extends React.Component {
     });
   }
 
+  Code =(string)=> {
+    let result = "";
+    for (let i=0; i<string.length; i++)
+      result += String.fromCharCode(string.charCodeAt(i) + 10);
+    return result;
+  }
+
   //WALIDACJA LOGINU ORAZ HASŁA
-  LoginValid =()=> {
-    console.log("valid login"); //infoline
+  LoginValid =(event)=> {
     if (this.state.inputLogin.length < 5 || this.state.inputLogin.length > 18 || !/^[a-zA-Z0-9- ]*$/.test(this.state.inputLogin))
       this.changeValid("inputLoginClass", "invalid", "[!] Login musi zawierać od 5 do 18 znaków oraz tylko litery i cyfry.");
     else {
       this.changeValid("inputLoginClass", "valid", "");
       this.PasswordValid(); }
+    event.preventDefault();
   }
 
   PasswordValid =()=> {
-    console.log("valid pass");  //infoline
     if (this.state.inputPassword.length < 5 || this.state.inputPassword.length > 18 || !/^[a-zA-Z0-9- ]*$/.test(this.state.inputPassword))
       this.changeValid("inputPasswordClass", "invalid", "[!] Hasło musi zawierać od 5 do 18 znaków oraz tylko litery i cyfry.");
     else {
@@ -136,7 +163,6 @@ class CreateAccount extends React.Component {
   }
 
   EmailValid =()=> {
-    console.log("valid email"); //infoline
     if (this.state.inputEmail.length < 5 || this.state.inputEmail.indexOf("@") === -1 || this.state.inputEmail.indexOf(".") == -1)
       this.changeValid("inputEmailClass", "invalid", "[!] Niepoprawny Email.");
     else {
@@ -145,15 +171,14 @@ class CreateAccount extends React.Component {
   }
 
   DatabaseValid =()=> {
-    console.log("valid db");  //infoline
     fetch(url)
     .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
     .then(data => {
       for (let i=0; i<data.length; i++) {
-        if (data[i].email === this.state.email)
-          this.changeValid("inputEmailClass", "invalid", "[!] Użytkownik o takim adresie e-mail już istnieje")
-        else if (data[i].login === this.state.login)
-          this.changeValid("inputLoginClass", "invalid", "[!] Użytkownik o takim loginie już istnieje")
+        if (data[i].email === this.state.inputEmail) {
+          this.changeValid("inputEmailClass", "invalid", "[!] Użytkownik o takim adresie e-mail już istnieje"); break; }
+        else if (data[i].login === this.state.inputLogin) {
+          this.changeValid("inputLoginClass", "invalid", "[!] Użytkownik o takim loginie już istnieje"); break; }
         else if (i === data.length-1) {
           this.setState({
             inputLoginClass: "valid",
@@ -164,7 +189,7 @@ class CreateAccount extends React.Component {
           this.CreateAccount({
             id: this.state.inputLogin,
             login: this.state.inputLogin,
-            password: this.state.inputPassword.split("").reverse().join(""),
+            password: this.Code(this.state.inputPassword),
             email: this.state.inputEmail
           }); } } })
     .catch(error => console.log(error));
@@ -191,7 +216,7 @@ class CreateAccount extends React.Component {
     return (
       <main className="login">
         <h1 id="createAccountHeader">Stwórz Konto</h1>
-        <form className="formLogin">
+        <form onSubmit={this.LoginValid} className="formLogin">
           <div className="row">
             <div className="input-field">
               <input onChange={this.changeHandler} value={this.state.inputLogin} name="inputLogin" id="inputLogin" type="text" className="validate" className={this.state.inputLoginClass}/>
@@ -208,6 +233,7 @@ class CreateAccount extends React.Component {
               <label className="active" htmlFor="first_name2">E-mail</label>
             </div>
           </div>
+          <input type="submit" style={{display: "none"}}/>
         </form>
         <a id="buttonCreate" onClick={this.LoginValid} className="waves-effect waves-light btn-large">Utwórz Konto</a>
         <span id="errorMessage">{this.state.errorMessage}</span>
