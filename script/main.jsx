@@ -1,27 +1,27 @@
 import "../style/main.scss";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import	{	Router, IndexLink, IndexRoute, hashHistory }	from 'react-router';
-import { HashRouter, BrowserRouter, Route, Link } from 'react-router-dom';
+import	{	Router, IndexLink, IndexRoute }	from 'react-router';
+import { HashRouter, BrowserRouter, Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
 import {Application, AppHeader} from "./app.jsx";
 
 const url = "http://localhost:3000/users/";
 
-window.location.replace("/#/login");
+// window.location.replace("#/login");
 
 let isValid;
 export let userObject;
 
 
-//-----DEV-ONLY\/
+// -----DEV-ONLY\/
 userObject = {
     "id": "exampleApp",
     "login": "exampleApp",
     "password": "okwzvo",
     "email": "app@example.com"
   };
-window.location.replace("/#/app/exampleApp");
-///\
+// window.location.replace("/app/exampleApp");
+// /\
 
 
 //OKNO LOGOWANIA \/
@@ -35,6 +35,9 @@ class Login extends React.Component {
       inputPasswordClass: "",
       errorMessage: ""
     }
+    //-----DEV ONLY \/
+    this.props.history.push(`/app/${userObject.id}`);
+    //-----DEV ONLY /\
   }
 
   //ZMIANY W INPUTACH
@@ -76,7 +79,7 @@ class Login extends React.Component {
         console.log("Redirecting to app..."); //infoline
         // console.log(userObject);
         // PRZEKIEROWANIE DO APLIKACJI
-        window.location.replace(`/#/app/${response[i].id}`);
+        this.props.history.push(`/app/${response[i].id}`);
         break;
       }
       else if (i === response.length-1)
@@ -104,7 +107,7 @@ class Login extends React.Component {
         </form>
         <a id="buttonLogin" onClick={this.buttonLoginClick} className="waves-effect waves-light btn-large">Zaloguj</a>
         <span id="errorMessage">{this.state.errorMessage}</span>
-        <div id="createAccountLink"><a href="/#/createAccount">Załóż konto za darmo!</a></div>
+        <div id="createAccountLink"><NavLink to="/create-account">Załóż konto za darmo!</NavLink></div>
       </main>
     );
   }
@@ -207,7 +210,7 @@ class CreateAccount extends React.Component {
       userObject = newUser;
       console.log(userObject);
       // PRZEKIEROWANIE DO APLIKACJI
-      window.location.replace(`/#/app/${userObject.id}`);
+      this.props.history.push(`/app/${userObject.id}`);
     })
     .catch(error => console.log(error));
   }
@@ -237,7 +240,7 @@ class CreateAccount extends React.Component {
         </form>
         <a id="buttonCreate" onClick={this.LoginValid} className="waves-effect waves-light btn-large">Utwórz Konto</a>
         <span id="errorMessage">{this.state.errorMessage}</span>
-        <div id="logInLink"><a href="/#/login">Zaloguj się</a></div>
+        <div id="logInLink"><NavLink to="/">Zaloguje się</NavLink></div>
       </main>
     );
   }
@@ -246,14 +249,13 @@ class CreateAccount extends React.Component {
 class App extends React.Component {
   render() {
     return (
-      // <Login />
-      <HashRouter history={hashHistory}>
-        <div>
-          <Route path="/login" component={Login} />
-          <Route path="/createAccount" component={CreateAccount} />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Login}/>
+          <Route path="/create-account" component={CreateAccount} />
           <Route path="/app" user={userObject} component={Application} />
-        </div>
-      </HashRouter>
+        </Switch>
+      </BrowserRouter>
     );
   }
 }

@@ -8,6 +8,8 @@ FF4C40 - lightred
 CC144A - red
 */
 
+$var: 10;
+
 html {
   font-family: "Nunito", sans-serif;
 }
@@ -20,12 +22,65 @@ body {
     height: 100vh;
     background-color: #00FFAE;
 
+    .addOperationSection {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      div {
+        font-size: 24px;
+        position:absolute;
+        z-index: 999;
+        width: 600px;
+        height: 500px;
+        div {
+          margin: 200px auto;
+          border-radius: 50px 0 50px 50px;
+          div {
+            border: #009DCC 5px solid;
+            background-color: lightgrey;
+            .exit {
+              float: right;
+              margin: -25px -25px 15px 15px;
+              cursor: pointer;
+              i {
+                color: black;
+              }
+            }
+            form {
+              p {
+                padding: 0;
+                margin: 0;
+                label {
+                  font-size: 24px;
+                  color: #009DCC;
+                }
+              }
+            }
+            .dateSpan {
+              margin-top: 10px;
+              font-size: 16px;
+            }
+            .dateInput {
+              width: 200px;
+            }
+          }
+        }
+      }
+    }
+
     .operationsHistory {
       width: 50%;
       margin: 50px 50px;
       .row {
         align-items: center;
         font-size: 28px;
+        position: relative;
+        .addOperationButton {
+          position: absolute;
+          right: 0;
+          top: 0;
+          // background-color: #CC144A;
+        }
         .collection {
           display: flex;
           flex-direction: column;
@@ -137,4 +192,10 @@ body {
       }
     }
   }
+}
+
+//ANIMATIONS
+@keyframes showHide {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }

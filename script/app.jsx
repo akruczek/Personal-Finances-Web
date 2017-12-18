@@ -1,12 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import	{	Router, IndexLink, IndexRoute, hashHistory }	from 'react-router';
-import { HashRouter, BrowserRouter, Route, Link } from 'react-router-dom';
+import ReactDOM from 'react-dom'; //NIE POTRZEBNE [?]
+import	{	Router, IndexLink, IndexRoute }	from 'react-router';
+import { HashRouter, BrowserRouter, Route, Link, NavLink, Switch } from 'react-router-dom';
+import {PropsRoute} from 'react-router-with-props';
 import {userObject} from "./main.jsx";
+import {AddOperation} from "./components/AddOperation.jsx";
 
 export class AppSectionMain extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      smth: ""
+    }
   }
 
   render() {
@@ -15,6 +20,7 @@ export class AppSectionMain extends React.Component {
          <section className="row">
           <div>
             <div className="card-panel teal">
+              <a onClick={this.props.callback} className="addOperationButton btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
               <div className="collection">
 
                 <a className="collection-item"><span className="badge">
@@ -69,7 +75,7 @@ export class Application extends React.Component {
     this.state = {
       mainPath: "",
       path: "",
-      something: "value"
+      addOperation: "none"
     }
   }
 
@@ -81,9 +87,16 @@ export class Application extends React.Component {
     });
   }
 
+  openAddOpPanel =()=> {
+    console.log("open");
+    this.setState({addOperation: this.state.addOperation!=="none" ? "none" : "flex"})
+  }
+
   render() {
+    console.log(this.state.addOperation);
     return userObject!==undefined ? (
       <div className="mainApp">
+        <AddOperation isOpen={this.state.addOperation}/>
         <header className="mainHeader">
           <nav>
             <div className="nav-wrapper">
@@ -93,7 +106,7 @@ export class Application extends React.Component {
                 <li className="tooltip" data-title="tooltip"><a><i className="material-icons">search</i></a></li>
                 <li className="tooltip" data-title="tooltip"><a><i className="material-icons">view_module</i></a></li>
                 <li className="tooltip" data-title="tooltip"><a><i className="material-icons">refresh</i></a></li>
-                <li className="tooltip" data-title="Wyloguj"><a data-title="tooltip" href="/"><i className="material-icons">exit_to_app</i></a></li>
+                <li className="tooltip" data-title="Wyloguj"><NavLink to="/"><i className="material-icons">exit_to_app</i></NavLink></li>
               </ul>
             </div>
           </nav>
@@ -113,11 +126,11 @@ export class Application extends React.Component {
           <li><a className="waves-effect" href="#!">Link3</a></li>
         </ul>
 
-        <HashRouter>
-          <div>
-            <Route path={this.state.path} component={AppSectionMain}/>
-          </div>
-        </HashRouter>
+        <BrowserRouter>
+          <Switch>
+            <PropsRoute path={this.state.path} callback={this.openAddOpPanel} component={AppSectionMain}/>
+          </Switch>
+        </BrowserRouter>
       </div>
     ) : (
       <h1 style={{fontSize: "60px", color: "darkred", textAlign: "center"}}>You have to log in!</h1>
