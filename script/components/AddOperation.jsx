@@ -1,6 +1,6 @@
 import React from 'react';
 // import ReactDOM from 'react-dom'; //NIE POTRZEBNE [?]
-import	{	Router, IndexLink, IndexRoute }	from 'react-router';
+import	{	Router }	from 'react-router';
 import { HashRouter, BrowserRouter, Route, Link, NavLink, Switch } from 'react-router-dom';
 import {userObject} from "./../main.jsx";
 

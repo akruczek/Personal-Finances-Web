@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom'; //NIE POTRZEBNE [?]
-import	{	Router, IndexLink, IndexRoute }	from 'react-router';
+import	{	Router }	from 'react-router';
 import { HashRouter, BrowserRouter, Route, Link, NavLink, Switch } from 'react-router-dom';
 import {PropsRoute} from 'react-router-with-props';
 import {userObject} from "./main.jsx";
 import {AddOperation} from "./components/AddOperation.jsx";
+
+const nbpUrl = "http://api.nbp.pl/api/exchangerates/rates/a/";
 
 export class AppSectionMain extends React.Component {
   constructor(props) {
@@ -75,7 +77,9 @@ export class Application extends React.Component {
     this.state = {
       mainPath: "",
       path: "",
-      addOperation: "none"
+      addOperation: "none",
+      currencyEur: {},
+      EurRates: {}
     }
   }
 
@@ -83,7 +87,7 @@ export class Application extends React.Component {
     $(".button-collapse").sideNav();
     this.setState({
       mainPath: `/#/app/${userObject.login}`,
-      path: `/app/${userObject.login}`,
+      path: `/app/${userObject.login}`
     });
   }
 
@@ -92,8 +96,32 @@ export class Application extends React.Component {
     this.setState({addOperation: this.state.addOperation!=="none" ? "none" : "flex"})
   }
 
+  getCurrency =()=> {
+    fetch(nbpUrl + "eur/")
+    .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia (NBP api)";})
+    .then(data => {
+      this.setState({
+        currencyEur: data
+      }, console.log(this.state.currencyEur));
+    })
+    .catch(error => console.log(error));
+  }
+
+  componentWillMount() {
+    fetch(nbpUrl + "eur/")
+    .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia (NBP api)";})
+    .then(data => {
+      this.setState({
+        currencyEur: data,
+        EurRates: data.rates[0]
+      }, console.log(this.state.currencyEur));
+    })
+    .catch(error => console.log(error));
+  }
+
   render() {
-    console.log(this.state.addOperation);
+    console.log(this.state.currencyEur);
+    console.log(this.state.EurRates);
     return userObject!==undefined ? (
       <div className="mainApp">
         <AddOperation isOpen={this.state.addOperation}/>
@@ -102,6 +130,11 @@ export class Application extends React.Component {
             <div className="nav-wrapper">
               <div className="brand-logo" data-activates="slide-out" className="button-collapse" style={{cursor: "pointer", backgroundColor: "yellow", width: "0", height: "0"}}><i className="material-icons">menu</i></div>
               <a className="brand-logo brand-logo2" href={this.state.mainPath}>{userObject.login}</a>
+
+              <h1 className="currency">
+                <p>Kurs {this.state.currencyEur.currency}: <a>{this.state.EurRates.mid}</a> ({this.state.EurRates.effectiveDate})</p>
+              </h1>
+
               <ul className="right hide-on-med-and-down">
                 <li className="tooltip" data-title="tooltip"><a><i className="material-icons">search</i></a></li>
                 <li className="tooltip" data-title="tooltip"><a><i className="material-icons">view_module</i></a></li>

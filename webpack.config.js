@@ -2,9 +2,6 @@ module.exports = {
     entry: ["whatwg-fetch", "./script/main.jsx", "./script/app.jsx"],
     output: {
       filename: "./script/out.js",
-      // publicPath: '../personal-finances'
-      // path: '/personal-finances',
-      // filename: 'app-[hash].js'
     },
     devServer: {
       inline: true,

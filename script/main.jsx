@@ -1,7 +1,7 @@
 import "../style/main.scss";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import	{	Router, IndexLink, IndexRoute }	from 'react-router';
+import	{	Router }	from 'react-router';
 import { HashRouter, BrowserRouter, Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
 import {Application, AppHeader} from "./app.jsx";
 

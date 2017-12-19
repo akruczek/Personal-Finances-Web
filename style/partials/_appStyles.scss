@@ -8,8 +8,6 @@ FF4C40 - lightred
 CC144A - red
 */
 
-$var: 10;
-
 html {
   font-family: "Nunito", sans-serif;
 }
@@ -22,6 +20,7 @@ body {
     height: 100vh;
     background-color: #00FFAE;
 
+    //SEKCJA DODAWANIA NOWYCH OPERACJI
     .addOperationSection {
       display: flex;
       justify-content: center;
@@ -38,14 +37,14 @@ body {
           div {
             border: #009DCC 5px solid;
             background-color: lightgrey;
+            //X
             .exit {
               float: right;
               margin: -25px -25px 15px 15px;
               cursor: pointer;
-              i {
-                color: black;
-              }
+              i { color: black; }
             }
+            //FORMULARZE \/
             form {
               p {
                 padding: 0;
@@ -56,13 +55,13 @@ body {
                 }
               }
             }
+
+            //SPAN - WPROWADZANIE DATY
             .dateSpan {
               margin-top: 10px;
               font-size: 16px;
             }
-            .dateInput {
-              width: 200px;
-            }
+            .dateInput { width: 200px; }
           }
         }
       }
@@ -136,6 +135,21 @@ body {
     .mainHeader {
       nav {
         background-color: #3D8499;
+        //WALUTY (NBP)
+        .currency {
+          width: 100%;
+          text-align: center;
+          height: 0;
+          margin: 0;
+          position: absolute;
+          font-size: 24px;
+          p {
+            a {
+              // color: #CC144A;
+              text-decoration: underline;
+            }
+          }
+        }
         .hide-on-med-and-down {
           .tooltip {
             position: relative;
