@@ -34,18 +34,23 @@ body {
         div {
           margin: 200px auto;
           border-radius: 50px 0 50px 50px;
-          div {
+          .card-panel {
             border: #009DCC 5px solid;
             background-color: lightgrey;
+            display: flex;
             //X
             .exit {
-              float: right;
-              margin: -25px -25px 15px 15px;
-              cursor: pointer;
-              i { color: black; }
+              right: 0;
+              position: absolute;
+              margin-top: -64px;
+
+              i { cursor: pointer; color: black; }
             }
-            //FORMULARZE \/
+            //CARD PANEL \/ - formularze wprowadzania operacji
             form {
+              display: flex;
+              flex-direction: column;
+              input {font-weight: 700; font-size: 20px;}
               p {
                 padding: 0;
                 margin: 0;
@@ -54,6 +59,24 @@ body {
                   color: #009DCC;
                 }
               }
+              //SELECT CATEGORY
+              .selectCategory {
+                .caret {display: none;}
+                width: 200px;
+                margin-top: -30px;
+              }
+            }
+            .OperationDescription {
+              margin-left: auto;
+              textarea, input {font-weight: 700; font-size: 20px;}
+              .moneyValue {font-size: 30px; font-weight: 700;}
+              input {
+                width: 200px;
+                margin-top: -40px;
+              }
+              span {
+                font-size: 16px;
+              }
             }
 
             //SPAN - WPROWADZANIE DATY
@@ -61,7 +84,7 @@ body {
               margin-top: 10px;
               font-size: 16px;
             }
-            .dateInput { width: 200px; }
+            .dateInput { width: 200px; margin-top: -40px;}
           }
         }
       }
@@ -142,14 +165,25 @@ body {
           height: 0;
           margin: 0;
           position: absolute;
-          font-size: 24px;
+          font-size: 20px;
+          margin-top: -35px;
+          //EURO ICON
+          i {
+            display: inline-block;
+            vertical-align:sub;
+          }
+
           p {
             a {
-              // color: #CC144A;
               text-decoration: underline;
             }
           }
         }
+
+        .currency:last-of-type {
+          margin-top: -3px;
+        }
+
         .hide-on-med-and-down {
           .tooltip {
             position: relative;

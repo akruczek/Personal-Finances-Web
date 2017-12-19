@@ -5375,9 +5375,9 @@ var Login = function (_React$Component) {
       inputLoginClass: "",
       inputPasswordClass: "",
       errorMessage: ""
-      //-----DEV ONLY \/
+      // //-----DEV ONLY \/
     };_this.props.history.push('/app/' + userObject.id);
-    //-----DEV ONLY /\
+    // //-----DEV ONLY /\
     return _this;
   }
 
@@ -12721,8 +12721,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //NIE POTRZEBNE [?]
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // import 'react-datepicker/dist/react-datepicker.css';
+//NIE POTRZEBNE [?]
 
+// import DatePicker from 'react-datepicker';
+// import moment from 'moment';
+
+
+var nbpUrl = "http://api.nbp.pl/api/exchangerates/rates/a/";
 
 var AppSectionMain = exports.AppSectionMain = function (_React$Component) {
   _inherits(AppSectionMain, _React$Component);
@@ -12953,14 +12959,17 @@ var Application = exports.Application = function (_React$Component2) {
     var _this2 = _possibleConstructorReturn(this, (Application.__proto__ || Object.getPrototypeOf(Application)).call(this, props));
 
     _this2.openAddOpPanel = function () {
-      console.log("open");
       _this2.setState({ addOperation: _this2.state.addOperation !== "none" ? "none" : "flex" });
     };
 
     _this2.state = {
       mainPath: "",
       path: "",
-      addOperation: "none"
+      addOperation: "none",
+      currencyEur: {},
+      EurRates: {},
+      currencyUsd: {},
+      UsdRates: {}
     };
     return _this2;
   }
@@ -12975,11 +12984,40 @@ var Application = exports.Application = function (_React$Component2) {
       });
     }
   }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _this3 = this;
+
+      //WALUTA EURO \/
+      fetch(nbpUrl + "eur/").then(function (response) {
+        return response && response.ok ? response.json() : "Błąd Połączenia (NBP api)";
+      }).then(function (data) {
+        _this3.setState({
+          currencyEur: data,
+          EurRates: data.rates[0]
+        });
+        console.log(_this3.state.currencyEur);
+      }).catch(function (error) {
+        return console.log(error);
+      });
+
+      //WALUTA $ \/
+      fetch(nbpUrl + "usd/").then(function (response) {
+        return response && response.ok ? response.json() : "Błąd Połączenia (NBP api)";
+      }).then(function (data) {
+        _this3.setState({
+          currencyUsd: data,
+          UsdRates: data.rates[0]
+        });
+      }).catch(function (error) {
+        return console.log(error);
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _React$createElement;
 
-      console.log(this.state.addOperation);
       return _main.userObject !== undefined ? _react2.default.createElement(
         'div',
         { className: 'mainApp' },
@@ -13006,6 +13044,54 @@ var Application = exports.Application = function (_React$Component2) {
                 'a',
                 { className: 'brand-logo brand-logo2', href: this.state.mainPath },
                 _main.userObject.login
+              ),
+              _react2.default.createElement(
+                'h1',
+                { className: 'currency' },
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  _react2.default.createElement(
+                    'i',
+                    { className: 'material-icons' },
+                    'euro_symbol'
+                  ),
+                  ' ',
+                  this.state.currencyEur.code,
+                  ': ',
+                  _react2.default.createElement(
+                    'a',
+                    null,
+                    this.state.EurRates.mid
+                  ),
+                  ' (',
+                  this.state.EurRates.effectiveDate,
+                  ')'
+                )
+              ),
+              _react2.default.createElement(
+                'h1',
+                { className: 'currency' },
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  _react2.default.createElement(
+                    'i',
+                    { className: 'material-icons' },
+                    'attach_money'
+                  ),
+                  ' ',
+                  this.state.currencyUsd.code,
+                  ': ',
+                  _react2.default.createElement(
+                    'a',
+                    null,
+                    this.state.UsdRates.mid
+                  ),
+                  ' (',
+                  this.state.UsdRates.effectiveDate,
+                  ')'
+                )
               ),
               _react2.default.createElement(
                 'ul',
@@ -13671,7 +13757,7 @@ exports = module.exports = __webpack_require__(118)(undefined);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i,900,900i&subset=latin-ext);", ""]);
 
 // module
-exports.push([module.i, "/*\n009DCC - lightblue\n3D8499 - blue\n00FFAE - green/blue\nFF4C40 - lightred\nCC144A - red\n*/\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody {\n  background-color: #3D8499; }\n  body .login {\n    height: 440px;\n    margin: 150px auto;\n    box-sizing: border-box;\n    background-color: lightgrey;\n    border-radius: 30px;\n    box-shadow: 0 0 20px 5px #00C3AB;\n    text-align: center; }\n    @media (max-width: 599px) {\n      body .login {\n        width: 100%; } }\n    @media (min-width: 600px) {\n      body .login {\n        width: 600px; } }\n    body .login #loginHeader {\n      font-size: 36px;\n      margin: 20px;\n      padding-top: 10px; }\n    body .login #createAccountHeader {\n      font-size: 36px;\n      margin: 10px;\n      padding-top: 10px; }\n    body .login #errorMessage {\n      display: block;\n      height: 1px;\n      font-size: 18px;\n      margin-top: 15px;\n      font-weight: 600;\n      color: #cc0000; }\n    body .login #buttonCreate {\n      margin-top: -10px;\n      font-size: 22px; }\n    body .login #buttonLogin {\n      font-size: 22px; }\n    body .login #createAccountLink {\n      margin-top: 50px; }\n    body .login #logInLink {\n      margin-top: 20px; }\n    body .login .formLogin {\n      display: flex;\n      justify-content: center; }\n      body .login .formLogin .input-field {\n        width: 300px;\n        margin-top: 5px; }\n      body .login .formLogin input {\n        font-size: 28px; }\n      body .login .formLogin label {\n        font-size: 28px; }\n\n/*\n009DCC - lightblue\n3D8499 - blue\n00FFAE - green/blue\nFF4C40 - lightred\nCC144A - red\n*/\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody .mainApp {\n  margin: 0 auto;\n  font-size: 100px;\n  width: 90vw;\n  height: 100vh;\n  background-color: #00FFAE; }\n  body .mainApp .addOperationSection {\n    display: flex;\n    justify-content: center;\n    align-items: center; }\n    body .mainApp .addOperationSection div {\n      font-size: 24px;\n      position: absolute;\n      z-index: 999;\n      width: 600px;\n      height: 500px; }\n      body .mainApp .addOperationSection div div {\n        margin: 200px auto;\n        border-radius: 50px 0 50px 50px; }\n        body .mainApp .addOperationSection div div div {\n          border: #009DCC 5px solid;\n          background-color: lightgrey; }\n          body .mainApp .addOperationSection div div div .exit {\n            float: right;\n            margin: -25px -25px 15px 15px;\n            cursor: pointer; }\n            body .mainApp .addOperationSection div div div .exit i {\n              color: black; }\n          body .mainApp .addOperationSection div div div form p {\n            padding: 0;\n            margin: 0; }\n            body .mainApp .addOperationSection div div div form p label {\n              font-size: 24px;\n              color: #009DCC; }\n          body .mainApp .addOperationSection div div div .dateSpan {\n            margin-top: 10px;\n            font-size: 16px; }\n          body .mainApp .addOperationSection div div div .dateInput {\n            width: 200px; }\n  body .mainApp .operationsHistory {\n    width: 50%;\n    margin: 50px 50px; }\n    body .mainApp .operationsHistory .row {\n      align-items: center;\n      font-size: 28px;\n      position: relative; }\n      body .mainApp .operationsHistory .row .addOperationButton {\n        position: absolute;\n        right: 0;\n        top: 0; }\n      body .mainApp .operationsHistory .row .collection {\n        display: flex;\n        flex-direction: column; }\n        body .mainApp .operationsHistory .row .collection .badge {\n          display: flex;\n          flex-direction: column;\n          justify-content: flex-start;\n          align-items: center; }\n        body .mainApp .operationsHistory .row .collection a {\n          cursor: pointer; }\n        body .mainApp .operationsHistory .row .collection div {\n          display: flex; }\n          body .mainApp .operationsHistory .row .collection div .col-1 {\n            width: 500px;\n            flex-wrap: wrap;\n            display: flex;\n            flex-direction: column; }\n          body .mainApp .operationsHistory .row .collection div .collection-date {\n            font-size: 18px;\n            padding-bottom: 5px; }\n          body .mainApp .operationsHistory .row .collection div .collection-category {\n            font-size: 24px;\n            padding-bottom: 5px; }\n          body .mainApp .operationsHistory .row .collection div .collection-name {\n            font-size: 28px;\n            padding-bottom: 5px; }\n          body .mainApp .operationsHistory .row .collection div .collection-info {\n            font-size: 16px; }\n          body .mainApp .operationsHistory .row .collection div .col-2 .collection-value {\n            text-transform: none;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            font-size: 24px;\n            width: 100px;\n            height: 100px; }\n            body .mainApp .operationsHistory .row .collection div .col-2 .collection-value span {\n              text-align: center;\n              margin: 0 auto; }\n  body .mainApp .mainHeader nav {\n    background-color: #3D8499; }\n    body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip {\n      position: relative; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:before, body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:after {\n        display: block;\n        opacity: 0;\n        pointer-events: none;\n        position: absolute;\n        transform: translate3d(0, -10px, 0);\n        transition: all .15s ease-in-out; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:after {\n        border-right: 6px solid transparent;\n        border-bottom: 6px solid rgba(0, 0, 0, 0.75);\n        border-left: 6px solid transparent;\n        content: '';\n        height: 0;\n        top: 64px;\n        left: 20px;\n        width: 0; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:before {\n        background: rgba(0, 0, 0, 0.75);\n        border-radius: 2px;\n        color: #fff;\n        content: attr(data-title);\n        font-size: 14px;\n        padding: 0 5px;\n        top: 70px;\n        right: 0;\n        white-space: nowrap; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:hover:after, body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:hover:before {\n        opacity: 1;\n        transform: translate3d(0, 0, 0); }\n    body .mainApp .mainHeader nav .brand-logo2 {\n      margin-left: 50px; }\n  body .mainApp #slide-out .user-view .name {\n    font-size: 28px;\n    margin-top: -10px; }\n  body .mainApp #slide-out .user-view .email {\n    margin-top: 10px; }\n\n@keyframes showHide {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n", ""]);
+exports.push([module.i, "/*\n009DCC - lightblue\n3D8499 - blue\n00FFAE - green/blue\nFF4C40 - lightred\nCC144A - red\n*/\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody {\n  background-color: #3D8499; }\n  body .login {\n    height: 440px;\n    margin: 150px auto;\n    box-sizing: border-box;\n    background-color: lightgrey;\n    border-radius: 30px;\n    box-shadow: 0 0 20px 5px #00C3AB;\n    text-align: center; }\n    @media (max-width: 599px) {\n      body .login {\n        width: 100%; } }\n    @media (min-width: 600px) {\n      body .login {\n        width: 600px; } }\n    body .login #loginHeader {\n      font-size: 36px;\n      margin: 20px;\n      padding-top: 10px; }\n    body .login #createAccountHeader {\n      font-size: 36px;\n      margin: 10px;\n      padding-top: 10px; }\n    body .login #errorMessage {\n      display: block;\n      height: 1px;\n      font-size: 18px;\n      margin-top: 15px;\n      font-weight: 600;\n      color: #cc0000; }\n    body .login #buttonCreate {\n      margin-top: -10px;\n      font-size: 22px; }\n    body .login #buttonLogin {\n      font-size: 22px; }\n    body .login #createAccountLink {\n      margin-top: 50px; }\n    body .login #logInLink {\n      margin-top: 20px; }\n    body .login .formLogin {\n      display: flex;\n      justify-content: center; }\n      body .login .formLogin .input-field {\n        width: 300px;\n        margin-top: 5px; }\n      body .login .formLogin input {\n        font-size: 28px; }\n      body .login .formLogin label {\n        font-size: 28px; }\n\n/*\n009DCC - lightblue\n3D8499 - blue\n00FFAE - green/blue\nFF4C40 - lightred\nCC144A - red\n*/\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody .mainApp {\n  margin: 0 auto;\n  font-size: 100px;\n  width: 90vw;\n  height: 100vh;\n  background-color: #00FFAE; }\n  body .mainApp .addOperationSection {\n    display: flex;\n    justify-content: center;\n    align-items: center; }\n    body .mainApp .addOperationSection div {\n      font-size: 24px;\n      position: absolute;\n      z-index: 999;\n      width: 600px;\n      height: 500px; }\n      body .mainApp .addOperationSection div div {\n        margin: 200px auto;\n        border-radius: 50px 0 50px 50px; }\n        body .mainApp .addOperationSection div div div {\n          border: #009DCC 5px solid;\n          background-color: lightgrey;\n          display: flex; }\n          body .mainApp .addOperationSection div div div .exit {\n            right: 0;\n            position: absolute;\n            margin-top: -28px; }\n            body .mainApp .addOperationSection div div div .exit i {\n              cursor: pointer;\n              color: black; }\n          body .mainApp .addOperationSection div div div form {\n            display: flex;\n            flex-direction: column; }\n            body .mainApp .addOperationSection div div div form input {\n              font-weight: 700;\n              font-size: 20px; }\n            body .mainApp .addOperationSection div div div form p {\n              padding: 0;\n              margin: 0; }\n              body .mainApp .addOperationSection div div div form p label {\n                font-size: 24px;\n                color: #009DCC; }\n          body .mainApp .addOperationSection div div div .OperationDescription {\n            margin-left: auto; }\n            body .mainApp .addOperationSection div div div .OperationDescription textarea, body .mainApp .addOperationSection div div div .OperationDescription input {\n              font-weight: 700;\n              font-size: 20px; }\n            body .mainApp .addOperationSection div div div .OperationDescription input {\n              width: 200px;\n              margin-top: -40px; }\n            body .mainApp .addOperationSection div div div .OperationDescription span {\n              font-size: 16px; }\n          body .mainApp .addOperationSection div div div .dateSpan {\n            margin-top: 10px;\n            font-size: 16px; }\n          body .mainApp .addOperationSection div div div .dateInput {\n            width: 200px;\n            margin-top: -40px; }\n  body .mainApp .operationsHistory {\n    width: 50%;\n    margin: 50px 50px; }\n    body .mainApp .operationsHistory .row {\n      align-items: center;\n      font-size: 28px;\n      position: relative; }\n      body .mainApp .operationsHistory .row .addOperationButton {\n        position: absolute;\n        right: 0;\n        top: 0; }\n      body .mainApp .operationsHistory .row .collection {\n        display: flex;\n        flex-direction: column; }\n        body .mainApp .operationsHistory .row .collection .badge {\n          display: flex;\n          flex-direction: column;\n          justify-content: flex-start;\n          align-items: center; }\n        body .mainApp .operationsHistory .row .collection a {\n          cursor: pointer; }\n        body .mainApp .operationsHistory .row .collection div {\n          display: flex; }\n          body .mainApp .operationsHistory .row .collection div .col-1 {\n            width: 500px;\n            flex-wrap: wrap;\n            display: flex;\n            flex-direction: column; }\n          body .mainApp .operationsHistory .row .collection div .collection-date {\n            font-size: 18px;\n            padding-bottom: 5px; }\n          body .mainApp .operationsHistory .row .collection div .collection-category {\n            font-size: 24px;\n            padding-bottom: 5px; }\n          body .mainApp .operationsHistory .row .collection div .collection-name {\n            font-size: 28px;\n            padding-bottom: 5px; }\n          body .mainApp .operationsHistory .row .collection div .collection-info {\n            font-size: 16px; }\n          body .mainApp .operationsHistory .row .collection div .col-2 .collection-value {\n            text-transform: none;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            font-size: 24px;\n            width: 100px;\n            height: 100px; }\n            body .mainApp .operationsHistory .row .collection div .col-2 .collection-value span {\n              text-align: center;\n              margin: 0 auto; }\n  body .mainApp .mainHeader nav {\n    background-color: #3D8499; }\n    body .mainApp .mainHeader nav .currency {\n      width: 100%;\n      text-align: center;\n      height: 0;\n      margin: 0;\n      position: absolute;\n      font-size: 20px;\n      margin-top: -35px; }\n      body .mainApp .mainHeader nav .currency i {\n        display: inline-block;\n        vertical-align: sub; }\n      body .mainApp .mainHeader nav .currency p a {\n        text-decoration: underline; }\n    body .mainApp .mainHeader nav .currency:last-of-type {\n      margin-top: -3px; }\n    body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip {\n      position: relative; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:before, body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:after {\n        display: block;\n        opacity: 0;\n        pointer-events: none;\n        position: absolute;\n        transform: translate3d(0, -10px, 0);\n        transition: all .15s ease-in-out; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:after {\n        border-right: 6px solid transparent;\n        border-bottom: 6px solid rgba(0, 0, 0, 0.75);\n        border-left: 6px solid transparent;\n        content: '';\n        height: 0;\n        top: 64px;\n        left: 20px;\n        width: 0; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:before {\n        background: rgba(0, 0, 0, 0.75);\n        border-radius: 2px;\n        color: #fff;\n        content: attr(data-title);\n        font-size: 14px;\n        padding: 0 5px;\n        top: 70px;\n        right: 0;\n        white-space: nowrap; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:hover:after, body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:hover:before {\n        opacity: 1;\n        transform: translate3d(0, 0, 0); }\n    body .mainApp .mainHeader nav .brand-logo2 {\n      margin-left: 50px; }\n  body .mainApp #slide-out .user-view .name {\n    font-size: 28px;\n    margin-top: -10px; }\n  body .mainApp #slide-out .user-view .email {\n    margin-top: 10px; }\n\n@keyframes showHide {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n", ""]);
 
 // exports
 
@@ -28818,6 +28904,8 @@ var _main = __webpack_require__(42);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -28834,20 +28922,34 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (AddOperation.__proto__ || Object.getPrototypeOf(AddOperation)).call(this, props));
 
+    _this.changeHandler = function (event) {
+      _this.setState(_defineProperty({}, event.target.name, event.target.value));
+    };
+
     _this.closeWindow = function () {
       $(".addOperationSection").css("display", "none");
       //ZAMYKANIE OKNA DODAWANIA OPERACJI [!]
     };
 
     _this.state = {
-      isOpen: _this.props.isOpen
+      isOpen: _this.props.isOpen,
+      dateInput: "",
+      today: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate(),
+      inputOperationTitle: "",
+      inputNotes: ""
     };
     return _this;
   }
 
   _createClass(AddOperation, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      $('select').material_select();
+    }
+  }, {
     key: 'render',
     value: function render() {
+      console.log(this.state.dateInput);
       return _react2.default.createElement(
         'section',
         { style: { display: this.props.isOpen }, className: 'addOperationSection' },
@@ -28859,16 +28961,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
             null,
             _react2.default.createElement(
               'div',
-              { className: 'card-panel' },
-              _react2.default.createElement(
-                'a',
-                { className: 'exit', onClick: this.closeWindow },
-                _react2.default.createElement(
-                  'i',
-                  { className: 'material-icons' },
-                  'close'
-                )
-              ),
+              { className: 'card-pane' },
               _react2.default.createElement(
                 'form',
                 null,
@@ -28891,15 +28984,72 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
                     { htmlFor: 'test2' },
                     'Wp\u0142yw'
                   )
+                ),
+                _react2.default.createElement(
+                  'span',
+                  { className: 'dateSpan' },
+                  'Data:'
+                ),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('input', { onChange: this.changeHandler, type: 'date', className: 'datepicker dateInput', name: 'dateInput', defaultValue: this.state.today }),
+                _react2.default.createElement(
+                  'select',
+                  { className: 'icons' },
+                  _react2.default.createElement(
+                    'option',
+                    { value: '', disabled: true, selected: true },
+                    'Choose your option'
+                  ),
+                  _react2.default.createElement(
+                    'option',
+                    { value: '', 'data-icon': 'images/sample-1.jpg', className: 'circle' },
+                    'example 1'
+                  ),
+                  _react2.default.createElement(
+                    'option',
+                    { value: '', 'data-icon': 'images/office.jpg', className: 'circle' },
+                    'example 2'
+                  ),
+                  _react2.default.createElement(
+                    'option',
+                    { value: '', 'data-icon': 'images/yuna.jpg', className: 'circle' },
+                    'example 3'
+                  )
+                ),
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'Images in select'
                 )
               ),
               _react2.default.createElement(
-                'span',
-                { className: 'dateSpan' },
-                'Data:'
-              ),
-              _react2.default.createElement('br', null),
-              _react2.default.createElement('input', { type: 'text', className: 'dateInput' })
+                'section',
+                { className: 'OperationDescription' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'exit', onClick: this.closeWindow },
+                  _react2.default.createElement(
+                    'i',
+                    { className: 'material-icons' },
+                    'close'
+                  )
+                ),
+                _react2.default.createElement(
+                  'span',
+                  null,
+                  'Tytu\u0142 Operacji:'
+                ),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('input', { value: this.state.inputOperationTitle, onChange: this.changeHandler, name: 'inputOperationTitle', id: 'first_name2', type: 'text' }),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement(
+                  'span',
+                  null,
+                  'Notatki'
+                ),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('textarea', { value: this.state.inputNotes, onChange: this.changeHandler, name: 'inputNotes', id: 'textarea1', className: 'materialize-textarea', 'data-length': '70' })
+              )
             )
           )
         )

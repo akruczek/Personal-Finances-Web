@@ -35,9 +35,9 @@ class Login extends React.Component {
       inputPasswordClass: "",
       errorMessage: ""
     }
-    //-----DEV ONLY \/
+    // //-----DEV ONLY \/
     this.props.history.push(`/app/${userObject.id}`);
-    //-----DEV ONLY /\
+    // //-----DEV ONLY /\
   }
 
   //ZMIANY W INPUTACH

@@ -1,7 +1,11 @@
+// import 'react-datepicker/dist/react-datepicker.css';
 import React from 'react';
 import ReactDOM from 'react-dom'; //NIE POTRZEBNE [?]
 import	{	Router }	from 'react-router';
 import { HashRouter, BrowserRouter, Route, Link, NavLink, Switch } from 'react-router-dom';
+// import DatePicker from 'react-datepicker';
+// import moment from 'moment';
+import {Button, Icon, Input, Modal, Row} from 'react-materialize';
 import {PropsRoute} from 'react-router-with-props';
 import {userObject} from "./main.jsx";
 import {AddOperation} from "./components/AddOperation.jsx";
@@ -16,12 +20,20 @@ export class AppSectionMain extends React.Component {
     }
   }
 
+  open =()=> {
+    $("#modal1").modal("open");
+  }
+
   render() {
     return (
       <section className="operationsHistory">
          <section className="row">
           <div>
             <div className="card-panel teal">
+              {/* --------------------------------------------------------- */}
+              {/* <Modal id="modal1" header="Header" trigger={<a className="addOperationButton btn-floating btn-large waves-effect waves-light red"><Icon>add</Icon></a>}>
+                <p>Lorem ips  ut labore et dolore magna aliqua.</p>
+              </Modal> */}
               <a onClick={this.props.callback} className="addOperationButton btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
               <div className="collection">
 
@@ -79,7 +91,9 @@ export class Application extends React.Component {
       path: "",
       addOperation: "none",
       currencyEur: {},
-      EurRates: {}
+      EurRates: {},
+      currencyUsd: {},
+      UsdRates: {}
     }
   }
 
@@ -92,36 +106,37 @@ export class Application extends React.Component {
   }
 
   openAddOpPanel =()=> {
-    console.log("open");
     this.setState({addOperation: this.state.addOperation!=="none" ? "none" : "flex"})
   }
 
-  getCurrency =()=> {
-    fetch(nbpUrl + "eur/")
-    .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia (NBP api)";})
-    .then(data => {
-      this.setState({
-        currencyEur: data
-      }, console.log(this.state.currencyEur));
-    })
-    .catch(error => console.log(error));
-  }
-
   componentWillMount() {
+    //WALUTA EURO \/
     fetch(nbpUrl + "eur/")
     .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia (NBP api)";})
     .then(data => {
       this.setState({
         currencyEur: data,
         EurRates: data.rates[0]
-      }, console.log(this.state.currencyEur));
+      });
+      console.log(this.state.currencyEur);
     })
     .catch(error => console.log(error));
+
+
+    //WALUTA $ \/
+    fetch(nbpUrl + "usd/")
+    .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia (NBP api)";})
+    .then(data => {
+      this.setState({
+        currencyUsd: data,
+        UsdRates: data.rates[0]
+      });
+    })
+    .catch(error => console.log(error));
+
   }
 
   render() {
-    console.log(this.state.currencyEur);
-    console.log(this.state.EurRates);
     return userObject!==undefined ? (
       <div className="mainApp">
         <AddOperation isOpen={this.state.addOperation}/>
@@ -132,7 +147,10 @@ export class Application extends React.Component {
               <a className="brand-logo brand-logo2" href={this.state.mainPath}>{userObject.login}</a>
 
               <h1 className="currency">
-                <p>Kurs {this.state.currencyEur.currency}: <a>{this.state.EurRates.mid}</a> ({this.state.EurRates.effectiveDate})</p>
+                <p><i className="material-icons">euro_symbol</i> {this.state.currencyEur.code}: <a>{this.state.EurRates.mid}</a> ({this.state.EurRates.effectiveDate})</p>
+              </h1>
+              <h1 className="currency">
+                <p><i className="material-icons">attach_money</i> {this.state.currencyUsd.code}: <a>{this.state.UsdRates.mid}</a> ({this.state.UsdRates.effectiveDate})</p>
               </h1>
 
               <ul className="right hide-on-med-and-down">
