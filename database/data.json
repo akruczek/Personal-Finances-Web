@@ -9,8 +9,46 @@
     {
       "id": "exampleApp",
       "login": "exampleApp",
-      "password": "okwzvo",
-      "email": "app@example.com"
+      "password": "54321",
+      "email": "mail@mail.com",
+      "operations": [
+        {
+          "id": 0,
+          "date": "2017-12-20",
+          "title": "Title",
+          "note": "Taxi",
+          "category": "Transport",
+          "money": "150.55",
+          "income": false
+        },
+        {
+          "id": 1,
+          "date": "2017-12-20",
+          "title": "Obiad",
+          "note": "Dobry obiadek",
+          "category": "Jedzenie",
+          "money": "60.55",
+          "income": false
+        },
+        {
+          "id": 2,
+          "date": "2017-12-20",
+          "title": "Rachunki",
+          "note": "Notatki",
+          "category": "Dom",
+          "money": "50",
+          "income": false
+        },
+        {
+          "id": 3,
+          "date": "2017-12-20",
+          "title": "Work",
+          "note": "Work hard",
+          "category": "Praca",
+          "money": "120",
+          "income": true
+        }
+      ]
     }
   ]
 }

@@ -8,9 +8,7 @@ FF4C40 - lightred
 CC144A - red
 */
 
-html {
-  font-family: "Nunito", sans-serif;
-}
+html {font-family: "Nunito", sans-serif;}
 
 body {
   .mainApp {
@@ -28,11 +26,11 @@ body {
       div {
         font-size: 24px;
         position:absolute;
-        z-index: 999;
+        z-index: 2;
         width: 600px;
         height: 500px;
         div {
-          margin: 200px auto;
+          margin: 190px auto;
           border-radius: 50px 0 50px 50px;
           .card-panel {
             border: #009DCC 5px solid;
@@ -77,6 +75,9 @@ body {
               span {
                 font-size: 16px;
               }
+              .addOpBtn {
+                float: right;
+              }
             }
 
             //SPAN - WPROWADZANIE DATY
@@ -91,17 +92,15 @@ body {
     }
 
     .operationsHistory {
-      width: 50%;
-      margin: 50px 50px;
+      @media(min-width: 1200px) {width: 50%; margin: 50px 50px;}
+      @media(max-width: 1199px) {width: 95%; margin: 50px 20px;}
       .row {
         align-items: center;
         font-size: 28px;
         position: relative;
         .addOperationButton {
           position: absolute;
-          right: 0;
-          top: 0;
-          // background-color: #CC144A;
+          right: 0; top: 0;
         }
         .collection {
           display: flex;
@@ -112,9 +111,7 @@ body {
             justify-content: flex-start;
             align-items: center;
           }
-          a {
-            cursor: pointer;
-          }
+          a { cursor: pointer; }
           div {
             display: flex;
             .col-1 {
@@ -241,6 +238,10 @@ body {
     }
   }
 }
+
+// div.col.input-field {
+//   width: 100px;
+// }
 
 //ANIMATIONS
 @keyframes showHide {

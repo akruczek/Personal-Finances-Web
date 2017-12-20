@@ -1,11 +1,14 @@
 import React from 'react';
-// import ReactDOM from 'react-dom'; //NIE POTRZEBNE [?]
 import	{	Router }	from 'react-router';
 import { HashRouter, BrowserRouter, Route, Link, NavLink, Switch } from 'react-router-dom';
 import Cleave from 'cleave.js/react';
 import {Button, Icon, Input, Modal} from 'react-materialize';
 import {userObject} from "./../main.jsx";
+import deepForceUpdate from 'react-deep-force-update';
+import instance from "./../main.jsx";
+import {SelectCategoryExpense, SelectCategoryIncome} from "./SelectCategory.jsx";
 
+let newHistoryItem;
 export class AddOperation extends React.Component {
   constructor(props) {
     super(props);
@@ -16,26 +19,57 @@ export class AddOperation extends React.Component {
       inputOperationTitle: "",
       inputNotes: "",
       selectCategory: "",
-      inputMoney: ""
+      inputMoney: "",
+      inputRadio: false,
+      userOperationsHistory: ""
     };
   }
 
-  changeHandler =(event)=> { this.setState({ [event.target.name]: event.target.value }); console.log(event.target.name + ":" + event.target.value); }
+  changeHandler =(event)=> { this.setState({ [event.target.name]: event.target.value });}
 
   changeHandlerRaw =(event)=> { this.setState({ [event.target.name]: event.target.rawValue }); }
 
-  closeWindow =()=> {
-    $(".addOperationSection").css("display", "none");
-    //ZAMYKANIE OKNA DODAWANIA OPERACJI [!]
-  }
+  changeHandlerRadio =(event)=> { this.setState({ inputRadio: event.target.id==="test1"?false:true });}
 
   componentDidMount() {
     $("select").material_select();
     this.state.dateInput === "" && this.setState({dateInput: this.state.today});
   }
 
+  addOperation =()=> {
+    fetch(`http://localhost:3000/users/${userObject.id}`)
+    .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
+    .then(data=> {
+      newHistoryItem = data;
+      newHistoryItem.operations.push({
+        id: data.operations.length,
+        date: this.state.dateInput,
+        title: this.state.inputOperationTitle,
+        note: this.state.inputNotes,
+        category: this.state.selectCategory,
+        money: this.state.inputMoney,
+        income: this.state.inputRadio
+      });
+
+      fetch(`http://localhost:3000/users/${userObject.id}`, {
+        method: "PUT",
+        body: JSON.stringify(newHistoryItem),
+        headers: {"Content-Type" : "application/json", "Accept": "application/json"},
+        dataType: "json"
+      })
+      .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
+      .then(data => {
+        console.log("DODANO NOWĄ OPERACJĘ: ", newHistoryItem);
+        this.props.setHistory(newHistoryItem);
+        this.props.closeCallback();
+      })
+      .catch(error => console.log(error));
+    })
+    .catch(error => console.log(error));
+    event.preventDefault();
+  }
+
   render() {
-    console.log(this.state);
     return (
       <section style={{display: this.props.isOpen}} className="addOperationSection">
         <div>
@@ -43,33 +77,27 @@ export class AddOperation extends React.Component {
             <div className="card-panel">
               <form>
                 <p>
-                  <input defaultChecked={true} name="group1" type="radio" id="test1" />
+                  <input defaultChecked={true} onClick={this.changeHandlerRadio} name="group1" type="radio" id="test1" />
                   <label htmlFor="test1">Wydatek</label>
                 </p>
                 <p>
-                  <input name="group1" type="radio" id="test2" />
+                  <input name="group1" onClick={this.changeHandlerRadio} type="radio" id="test2" />
                   <label htmlFor="test2">Wpływ</label>
                 </p>
 
                 <span className="dateSpan">Data:</span><br/>
                 <input onChange={this.changeHandler} type="date" className="datepicker dateInput" name="dateInput" defaultValue={this.state.today} />
 
-                  <Input type="select" defaultValue="" onChange={this.changeHandler} name="selectCategory" className="icons selectCategory">
-                    <option value="" disabled>Wybierz Kategorię</option>
-                    <option value="food" data-icon="../images/catFood.png" className="left">Jedzenie</option>
-                    <option value="home" data-icon="../images/catHome.png" className="left">Dom</option>
-                    <option value="transport" data-icon="../images/catTransport.png" className="left">Transport</option>
-                    <option value="entertainment" data-icon="../images/catEntertainment.png" className="left">Rozrywka</option>
-                    <option value="clothing" data-icon="../images/catClothing.png" className="left">Odzież</option>
-                    <option value="study" data-icon="../images/catStudy.png" className="left">Nauka</option>
-                    <option value="health" data-icon="../images/catHealth.png" className="left">Zdrowie</option>
-                  </Input>
+                {!this.state.inputRadio ?
+                ( <SelectCategoryExpense change={this.changeHandler}/> )
+                  :
+                ( <SelectCategoryIncome change={this.changeHandler}/> )}
 
               </form>
 
                 <section className="OperationDescription">
                   <span className="moneyValue">Kwota:</span><br/>
-                  <a className="exit" onClick={this.closeWindow}><i className="material-icons">close</i></a>
+                  <a className="exit" onClick={this.props.closeCallback}><i className="material-icons">close</i></a>
                   <Cleave options={{prefix: "zł:", numeral: true, rawValueTrimPrefix: true}}
                     className="inputMoney" id="first_name2" onChange={this.changeHandlerRaw} name="inputMoney" value={this.state.inputMoney}/>
                   <br/>
@@ -77,7 +105,9 @@ export class AddOperation extends React.Component {
                   <input value={this.state.inputOperationTitle} onChange={this.changeHandler} name="inputOperationTitle" id="first_name2" type="text"/>
                   <br/>
                   <span>Notatki</span><br/>
-                  <textarea value={this.state.inputNotes} onChange={this.changeHandler} name="inputNotes" id="textarea1" className="materialize-textarea" data-length="70"></textarea>
+                  <textarea maxLength={70} value={this.state.inputNotes} onChange={this.changeHandler} name="inputNotes" id="textarea1" className="materialize-textarea" data-length="70"></textarea>
+
+                  <Button onClick={this.addOperation} style={{zIndex: 3}} floating large className='red addOpBtn' waves='light' icon='add'/>
                 </section>
             </div>
           </div>

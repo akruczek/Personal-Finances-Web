@@ -1,87 +1,17 @@
-// import 'react-datepicker/dist/react-datepicker.css';
 import React from 'react';
 import ReactDOM from 'react-dom'; //NIE POTRZEBNE [?]
 import	{	Router }	from 'react-router';
 import { HashRouter, BrowserRouter, Route, Link, NavLink, Switch } from 'react-router-dom';
-// import DatePicker from 'react-datepicker';
-// import moment from 'moment';
 import {Button, Icon, Input, Modal, Row} from 'react-materialize';
 import {PropsRoute} from 'react-router-with-props';
 import {userObject} from "./main.jsx";
 import {AddOperation} from "./components/AddOperation.jsx";
+// import deepForceUpdate from 'react-deep-force-update';
+import {ApplicationHeader} from "./components/ApplicationHeader.jsx";
+import {ApplicationSlide} from "./components/ApplicationSlide.jsx";
+import {AppSectionMain} from "./components/AppSectionMain.jsx";
 
 const nbpUrl = "http://api.nbp.pl/api/exchangerates/rates/a/";
-
-export class AppSectionMain extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      smth: ""
-    }
-  }
-
-  open =()=> {
-    $("#modal1").modal("open");
-  }
-
-  render() {
-    return (
-      <section className="operationsHistory">
-         <section className="row">
-          <div>
-            <div className="card-panel teal">
-              {/* --------------------------------------------------------- */}
-              {/* <Modal id="modal1" header="Header" trigger={<a className="addOperationButton btn-floating btn-large waves-effect waves-light red"><Icon>add</Icon></a>}>
-                <p>Lorem ips  ut labore et dolore magna aliqua.</p>
-              </Modal> */}
-              <a onClick={this.props.callback} className="addOperationButton btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
-              <div className="collection">
-
-                <a className="collection-item"><span className="badge">
-                  <p>#bu</p>
-                  <p>#nope</p>
-                </span>
-                <div>
-                  <div className="col-1">
-                    <span className="collection-date">17-12-2017</span>
-                    <span className="collection-category">Rachunki</span>
-                    <span className="collection-name">Opłaty Miesięczne</span>
-                    <span className="collection-info">Dodatkowe Info</span>
-                  </div>
-                  <div className="col-2">
-                    <div className="btn-floating btn-large waves-effect waves-light red collection-value"><span className="collection-value">-130zł</span></div>
-                  </div>
-                </div></a>
-
-                <a className="collection-item"><span className="badge">
-                  <p>#work</p>
-                  <p>#hajs</p>
-                </span>
-                <div>
-                  <div className="col-1">
-                    <span className="collection-date">19-12-2017</span>
-                    <span className="collection-category">Praca</span>
-                    <span className="collection-name">Wypłata Grudzień</span>
-                    <span className="collection-info">Dodatkowe Info</span>
-                  </div>
-                  <div className="col-2">
-                    <div className="btn-floating btn-large waves-effect waves-light green collection-value"><span className="collection-value">+3500zł</span></div>
-                  </div>
-                </div></a>
-
-                <a className="collection-item"><span className="badge">Typ</span>Operacja2</a>
-                <a className="collection-item"><span className="badge">Typ</span>Operacja3</a>
-                <a className="collection-item"><span className="badge">Typ</span>Operacja4</a>
-                <a className="collection-item"><span className="new badge blue">4</span>Operacja5</a>
-                <a className="collection-item"><span className="new badge red">4</span>Operacja6</a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
-    );
-  }
-}
 
 export class Application extends React.Component {
   constructor(props) {
@@ -93,8 +23,22 @@ export class Application extends React.Component {
       currencyEur: {},
       EurRates: {},
       currencyUsd: {},
-      UsdRates: {}
+      UsdRates: {},
+      history: []
     }
+  }
+
+  getHistory =()=> {
+    fetch(`http://localhost:3000/users/${userObject.id}`)
+    .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
+    .then(data => {
+      console.log("GetHistory: ", data.operations);
+      this.setState({
+        history: data.operations
+      });
+      render();
+    })
+    .catch(error => console.log(error));
   }
 
   componentDidMount() {
@@ -105,11 +49,15 @@ export class Application extends React.Component {
     });
   }
 
-  openAddOpPanel =()=> {
-    this.setState({addOperation: this.state.addOperation!=="none" ? "none" : "flex"})
-  }
+  //DODAWANIE NOWEJ OPERACJI DO state'a (from AddOperations)
+  setHistory =(newHistory)=> { this.setState({ history: newHistory.operations }); }
+
+  closeWindow =()=> { this.setState({ addOperation: "none" }); }
+
+  openAddOpPanel =()=> { this.setState({addOperation: this.state.addOperation!=="none" ? "none" : "flex"}) }
 
   componentWillMount() {
+    this.getHistory();
     //WALUTA EURO \/
     fetch(nbpUrl + "eur/")
     .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia (NBP api)";})
@@ -133,53 +81,21 @@ export class Application extends React.Component {
       });
     })
     .catch(error => console.log(error));
-
   }
 
   render() {
     return userObject!==undefined ? (
       <div className="mainApp">
-        <AddOperation isOpen={this.state.addOperation}/>
-        <header className="mainHeader">
-          <nav>
-            <div className="nav-wrapper">
-              <div className="brand-logo" data-activates="slide-out" className="button-collapse" style={{cursor: "pointer", backgroundColor: "yellow", width: "0", height: "0"}}><i className="material-icons">menu</i></div>
-              <a className="brand-logo brand-logo2" href={this.state.mainPath}>{userObject.login}</a>
+        <AddOperation isOpen={this.state.addOperation} setHistory={this.setHistory} closeCallback={this.closeWindow}/>
 
-              <h1 className="currency">
-                <p><i className="material-icons">euro_symbol</i> {this.state.currencyEur.code}: <a>{this.state.EurRates.mid}</a> ({this.state.EurRates.effectiveDate})</p>
-              </h1>
-              <h1 className="currency">
-                <p><i className="material-icons">attach_money</i> {this.state.currencyUsd.code}: <a>{this.state.UsdRates.mid}</a> ({this.state.UsdRates.effectiveDate})</p>
-              </h1>
+        <ApplicationHeader mainPath={this.state.mainPath} userObject={userObject} currencyEur={this.state.currencyEur}
+          EurRates={this.state.EurRates} currencyUsd={this.state.currencyUsd} UsdRates={this.state.UsdRates}/>
 
-              <ul className="right hide-on-med-and-down">
-                <li className="tooltip" data-title="tooltip"><a><i className="material-icons">search</i></a></li>
-                <li className="tooltip" data-title="tooltip"><a><i className="material-icons">view_module</i></a></li>
-                <li className="tooltip" data-title="tooltip"><a><i className="material-icons">refresh</i></a></li>
-                <li className="tooltip" data-title="Wyloguj"><NavLink to="/"><i className="material-icons">exit_to_app</i></NavLink></li>
-              </ul>
-            </div>
-          </nav>
-        </header>
-
-        <ul id="slide-out" className="side-nav">
-          <li><div className="user-view">
-            <div className="background" style={{backgroundColor: "#CC144A"}}>
-            </div>
-            <span className="white-text name">{userObject.login}</span>
-            <span className="white-text email">{userObject.email}</span>
-          </div></li>
-          <li><a href="" className="waves-effect"><i className="material-icons">attach_money</i>Strona Główna</a></li>
-          <li><a href="" className="waves-effect">Link2</a></li>
-          <li><div className="divider"></div></li>
-          <li><a className="subheader">Opcje/Kategorie</a></li>
-          <li><a className="waves-effect" href="#!">Link3</a></li>
-        </ul>
+        <ApplicationSlide userObject={userObject}/>
 
         <BrowserRouter>
           <Switch>
-            <PropsRoute path={this.state.path} callback={this.openAddOpPanel} component={AppSectionMain}/>
+            <PropsRoute path={this.state.path} callback={this.openAddOpPanel} opHistory={this.state.history} component={AppSectionMain}/>
           </Switch>
         </BrowserRouter>
       </div>
