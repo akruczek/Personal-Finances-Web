@@ -1,14 +1,9 @@
 import React from 'react';
-import	{	Router }	from 'react-router';
-import { HashRouter, BrowserRouter, Route, Link, NavLink, Switch } from 'react-router-dom';
 import Cleave from 'cleave.js/react';
-import {Button, Icon, Input, Modal} from 'react-materialize';
+import {Button} from 'react-materialize';
 import {userObject} from "./../main.jsx";
-import deepForceUpdate from 'react-deep-force-update';
-import instance from "./../main.jsx";
 import {SelectCategoryExpense, SelectCategoryIncome} from "./SelectCategory.jsx";
 
-let newHistoryItem;
 export class AddOperation extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +19,7 @@ export class AddOperation extends React.Component {
       userOperationsHistory: ""
     };
   }
-
+import
   changeHandler =(event)=> { this.setState({ [event.target.name]: event.target.value });}
 
   changeHandlerRaw =(event)=> { this.setState({ [event.target.name]: event.target.rawValue }); }
@@ -33,14 +28,15 @@ export class AddOperation extends React.Component {
 
   componentDidMount() {
     $("select").material_select();
-    this.state.dateInput === "" && this.setState({dateInput: this.state.today});
-  }
+    this.state.dateInput === "" && this.setState({dateInput: this.state.today}); }
 
+  //DODAWANIE NOWEJ OPERACJI (WCZYTANIE OBECNYCH -> DODANIE NOWEYCH -> ZWRÓCENIE NOWEJ TABLICY)
   addOperation =()=> {
     fetch(`http://localhost:3000/users/${userObject.id}`)
     .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
     .then(data=> {
-      newHistoryItem = data;
+      //ZMIENNA Z HISTORIĄ OPERACJI UŻYTKOWNIKA ORAZ DODANIE DO HISTORII NOWEGO OBIEKTU
+      let newHistoryItem = data;
       newHistoryItem.operations.push({
         id: data.operations.length,
         date: this.state.dateInput,
@@ -60,13 +56,10 @@ export class AddOperation extends React.Component {
       .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
       .then(data => {
         console.log("DODANO NOWĄ OPERACJĘ: ", newHistoryItem);
-        this.props.setHistory(newHistoryItem);
-        this.props.closeCallback();
-      })
-      .catch(error => console.log(error));
-    })
-    .catch(error => console.log(error));
-    event.preventDefault();
+        this.props.setHistory(newHistoryItem);  //app.jsx >callback
+        this.props.closeCallback();             //app.jsx >callback
+      }).catch(error => console.log(error));
+    }).catch(error => console.log(error));
   }
 
   render() {

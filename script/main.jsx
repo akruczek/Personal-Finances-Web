@@ -1,13 +1,11 @@
 import "../style/main.scss";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import	{	Router }	from 'react-router';
-import { HashRouter, BrowserRouter, Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
+import	{Router}	from 'react-router';
+import {BrowserRouter, Route, NavLink, Switch } from 'react-router-dom';
 import {Application, AppHeader} from "./app.jsx";
 
 const url = "http://localhost:3000/users/";
-
-// window.location.replace("#/login");
 
 let isValid;
 export let userObject;
@@ -20,7 +18,6 @@ userObject = {
     "password": "okwzvo",
     "email": "app@example.com"
   };
-// window.location.replace("/app/exampleApp");
 // /\
 
 
@@ -63,25 +60,19 @@ class Login extends React.Component {
   buttonLoginClick =(event)=> {
     fetch(url)
     .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
-    .then(data => {
-      this.LOGIN_VALID(data); })
+    .then(data => { this.LOGIN_VALID(data); })
     .catch(error => console.log(error));
     event.preventDefault();
   }
 
-  //WALIDACJA LOGINU I HASŁA Z BAZĄ
+  //WALIDACJA LOGINU I HASŁA Z BAZĄ -> PRZEKIEROWANIE UŻYTKOWNIKA DO APLIKACJI
   LOGIN_VALID =(response)=> {
     for (let i=0; i<response.length; i++) {
       if ((response[i].login === this.state.inputLogin || response[i].email === this.state.inputLogin) && this.Code(response[i].password) === this.state.inputPassword) {
         this.changeValid("valid", "");
         userObject = response[i];
-        console.log(userObject.login + " is logging in...");  //infoline
-        console.log("Redirecting to app..."); //infoline
-        // console.log(userObject);
-        // PRZEKIEROWANIE DO APLIKACJI
         this.props.history.push(`/app/${response[i].id}`);
-        break;
-      }
+        break; }
       else if (i === response.length-1)
         this.changeValid("invalid", "[!] Niepoprawny login lub hasło.");
     }
@@ -140,6 +131,7 @@ class CreateAccount extends React.Component {
     });
   }
 
+  //SZYFROWANIE HASŁA
   Code =(string)=> {
     let result = "";
     for (let i=0; i<string.length; i++)
@@ -147,7 +139,7 @@ class CreateAccount extends React.Component {
     return result;
   }
 
-  //WALIDACJA LOGINU ORAZ HASŁA
+  //WALIDACJA LOGINU
   LoginValid =(event)=> {
     if (this.state.inputLogin.length < 5 || this.state.inputLogin.length > 18 || !/^[a-zA-Z0-9- ]*$/.test(this.state.inputLogin))
       this.changeValid("inputLoginClass", "invalid", "[!] Login musi zawierać od 5 do 18 znaków oraz tylko litery i cyfry.");
@@ -157,6 +149,7 @@ class CreateAccount extends React.Component {
     event.preventDefault();
   }
 
+  //WALIDACJA HASŁA
   PasswordValid =()=> {
     if (this.state.inputPassword.length < 5 || this.state.inputPassword.length > 18 || !/^[a-zA-Z0-9- ]*$/.test(this.state.inputPassword))
       this.changeValid("inputPasswordClass", "invalid", "[!] Hasło musi zawierać od 5 do 18 znaków oraz tylko litery i cyfry.");
@@ -165,6 +158,7 @@ class CreateAccount extends React.Component {
       this.EmailValid(); }
   }
 
+  //WALIDACJA E-MAIL
   EmailValid =()=> {
     if (this.state.inputEmail.length < 5 || this.state.inputEmail.indexOf("@") === -1 || this.state.inputEmail.indexOf(".") == -1)
       this.changeValid("inputEmailClass", "invalid", "[!] Niepoprawny Email.");
@@ -173,6 +167,7 @@ class CreateAccount extends React.Component {
       this.DatabaseValid(); }
   }
 
+  //WALIDACJA Z BAZĄ DANYCH
   DatabaseValid =()=> {
     fetch(url)
     .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
@@ -194,10 +189,10 @@ class CreateAccount extends React.Component {
             login: this.state.inputLogin,
             password: this.Code(this.state.inputPassword),
             email: this.state.inputEmail
-          }); } } })
-    .catch(error => console.log(error));
+          }); } } }).catch(error => console.log(error));
   }
 
+  //TWORZENIE NOWEGO UŻYTKOWNIKA -> PRZEKIEROWANIE DO APLIKACJI
   CreateAccount =(newUser)=> {
     fetch(url, {
       method: "POST",
@@ -208,11 +203,8 @@ class CreateAccount extends React.Component {
     .then(data => {console.log("Added new user: ", newUser);})
     .then (data => {
       userObject = newUser;
-      console.log(userObject);
-      // PRZEKIEROWANIE DO APLIKACJI
       this.props.history.push(`/app/${userObject.id}`);
-    })
-    .catch(error => console.log(error));
+    }).catch(error => console.log(error));
   }
 
   render() {
@@ -266,13 +258,11 @@ document.addEventListener('DOMContentLoaded', function() {
     <App />,
     document.getElementById('app')
   );
-
-
-  //FUNKCJA USUWAJĄCA UŻYTKOWNIKA (PO id)
-  const RemoveAccount =(id)=> {
-    fetch(url + id, {method: "DELETE"})
-    .then(() => {console.log("deleted user: " + id);})
-    .catch(error => console.log(error));
-  }
+  //FUNKCJA USUWAJĄCA UŻYTKOWNIKA
+  // const RemoveAccount =(id)=> {
+  //   fetch(url + id, {method: "DELETE"})
+  //   .then(() => {console.log("deleted user: " + id);})
+  //   .catch(error => console.log(error));
+  // }
   // RemoveAccount("login");
 });

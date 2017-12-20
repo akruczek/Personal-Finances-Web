@@ -1,0 +1,50 @@
+.addOperationSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    position:absolute;
+    z-index: 2;
+    font-size: 24px;
+    width: 600px;
+    height: 500px;
+    div {
+      margin: 190px auto;
+      border-radius: 50px 0 50px 50px;
+      .card-panel {
+        border: #009DCC 5px solid;
+        background-color: lightgrey;
+        display: flex;
+        .exit {
+          position: absolute;
+          margin-top: -64px;
+          right: 0;
+          i { cursor: pointer; color: black; } }
+        form {
+          display: flex;
+          flex-direction: column;
+          input {font-weight: 700; font-size: 20px;}
+          p {
+            margin: 0;
+            label {
+              font-size: 24px;
+              color: #009DCC; } }
+          .selectCategory {
+            .caret {display: none;}
+            width: 200px;
+            margin-top: -30px; } }
+        .OperationDescription {
+          margin-left: auto;
+          textarea, input {font-weight: 700; font-size: 20px;}
+          .moneyValue {font-size: 30px; font-weight: 700;}
+          input {
+            width: 200px;
+            margin-top: -40px; }
+          span { font-size: 16px; }
+          .addOpBtn { float: right; } }
+        .dateSpan {
+          margin-top: 10px;
+          font-size: 16px; }
+        .dateInput {
+          width: 200px;
+          margin-top: -40px;} } } } }

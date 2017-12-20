@@ -38,15 +38,6 @@
           "category": "Dom",
           "money": "50",
           "income": false
-        },
-        {
-          "id": 3,
-          "date": "2017-12-20",
-          "title": "Work",
-          "note": "Work hard",
-          "category": "Praca",
-          "money": "120",
-          "income": true
         }
       ]
     }

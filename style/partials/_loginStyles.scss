@@ -8,12 +8,13 @@ FF4C40 - lightred
 CC144A - red
 */
 
-html {
-  font-family: "Nunito", sans-serif;
-}
+//OKNO LOGOWANIA / TWORZENIA NOWEGO KONTA
+
+html { font-family: "Nunito", sans-serif; }
 
 body {
   background-color: #3D8499;
+
   .login {
     @media (max-width: 599px) { width: 100%; }
     @media (min-width: 600px) { width: 600px; }
@@ -28,34 +29,27 @@ body {
     #loginHeader {
       font-size: 36px;
       margin: 20px;
-      padding-top: 10px;
-    }
+      padding-top: 10px; }
     #createAccountHeader {
       font-size: 36px;
       margin: 10px;
-      padding-top: 10px;
-    }
+      padding-top: 10px; }
     #errorMessage {
       display: block;
       height: 1px;
       font-size: 18px;
       margin-top: 15px;
       font-weight: 600;
-      color: darken(red, 10%);
-    }
+      color: darken(red, 10%); }
     #buttonCreate {
       margin-top: -10px;
-      font-size: 22px;
-    }
+      font-size: 22px; }
     #buttonLogin {
-      font-size: 22px;
-    }
+      font-size: 22px; }
     #createAccountLink {
-      margin-top: 50px;
-    }
+      margin-top: 50px; }
     #logInLink {
-      margin-top: 20px;
-    }
+      margin-top: 20px; }
 
 
     .formLogin {
@@ -63,14 +57,9 @@ body {
       justify-content: center;
       .input-field {
         width: 300px;
-        margin-top: 5px;
-      }
-      input {
-        font-size: 28px;
-      }
-      label {
-        font-size: 28px;
-      }
+        margin-top: 5px; }
+      input, label {
+        font-size: 28px; }
     }
   }
 }
