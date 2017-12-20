@@ -9,18 +9,17 @@
     align-items: center;
     font-size: 28px;
     position: relative;
+    .fixed-action-btn {height: 50px;}
     .addOperationButton {
       position: absolute;
-      right: 0; top: 0; }
+      background-color: #CC144A;
+      right: 0; top: 0;}
     .collection {
       display: flex;
       flex-direction: column;
-      .badge {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center; }
-      a { cursor: pointer; }
+      p:first-of-type {
+        cursor: pointer;
+        margin-top: 2px;}
       div {
         display: flex;
         .col-1 {

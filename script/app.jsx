@@ -16,7 +16,6 @@ export class Application extends React.Component {
     super(props);
     this.state = {
       path: "",
-      addOperation: "none",
       currencyEur: {},
       EurRates: {},
       currencyUsd: {},
@@ -42,10 +41,6 @@ export class Application extends React.Component {
 
   //DODAWANIE NOWEJ OPERACJI DO state'a (from AddOperations)
   setHistory =(newHistory)=> { this.setState({ history: newHistory.operations }); }
-
-  //OTWIERANIE / ZAMYKANIE OKNA DODAWANIA OPERACJI (ODPOWIEDNI state)
-  openAddOpPanel =()=> { this.setState({addOperation: this.state.addOperation!=="none" ? "none" : "flex"}) }
-
 
   componentWillMount() {
     this.getHistory();
@@ -73,7 +68,7 @@ export class Application extends React.Component {
   render() {
     return userObject!==undefined ? (
       <div className="mainApp">
-        <AddOperation isOpen={this.state.addOperation} setHistory={this.setHistory} closeCallback={this.openAddOpPanel}/>
+        <AddOperation isOpen={this.state.addOperation} setHistory={this.setHistory} closeCallback={this.openAddOpPanel} reset={true}/>
 
         <ApplicationHeader mainPath={this.state.mainPath} userObject={userObject} currencyEur={this.state.currencyEur}
           EurRates={this.state.EurRates} currencyUsd={this.state.currencyUsd} UsdRates={this.state.UsdRates}/>

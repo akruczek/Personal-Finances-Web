@@ -15,28 +15,37 @@
         {
           "id": 0,
           "date": "2017-12-20",
-          "title": "Title",
+          "title": "Taksówka",
           "note": "Taxi",
           "category": "Transport",
-          "money": "150.55",
+          "money": "36.55",
           "income": false
         },
         {
           "id": 1,
           "date": "2017-12-20",
-          "title": "Obiad",
-          "note": "Dobry obiadek",
-          "category": "Jedzenie",
-          "money": "60.55",
-          "income": false
+          "title": "Wypłata, grudzień",
+          "note": "work hard!",
+          "category": "Praca",
+          "money": "900",
+          "income": true
         },
         {
           "id": 2,
           "date": "2017-12-20",
-          "title": "Rachunki",
-          "note": "Notatki",
-          "category": "Dom",
-          "money": "50",
+          "title": "Leki",
+          "note": "Ibuprom x2",
+          "category": "Zdrowie",
+          "money": "62.50",
+          "income": false
+        },
+        {
+          "id": 3,
+          "date": "2017-12-20",
+          "title": "Domowy Obiadek",
+          "note": "Obiadek",
+          "category": "Jedzenie",
+          "money": "12",
           "income": false
         }
       ]

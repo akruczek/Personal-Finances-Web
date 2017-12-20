@@ -1,10 +1,11 @@
 import React from 'react';
+import {Button} from 'react-materialize';
 
 export const HistoryItem =(props)=> {
   return (
     <a className="collection-item"><span className="badge">
-      <p>#bu</p>
-      <p>#nope</p>
+      <p><Button floating className='green' waves='light' icon='edit' /></p>
+      <p><Button floating className='blue' waves='light' icon='delete' /></p>
     </span>
     <div>
       <div className="col-1">
@@ -22,6 +23,7 @@ export const HistoryItem =(props)=> {
           </span>
         </div>
       </div>
-    </div></a>
+    </div>
+  </a>
   );
 }

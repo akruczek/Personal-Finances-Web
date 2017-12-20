@@ -1,6 +1,6 @@
 import React from 'react';
 import Cleave from 'cleave.js/react';
-import {Button} from 'react-materialize';
+import {Button, Icon} from 'react-materialize';
 import {userObject} from "./../main.jsx";
 import {SelectCategoryExpense, SelectCategoryIncome} from "./SelectCategory.jsx";
 
@@ -16,10 +16,11 @@ export class AddOperation extends React.Component {
       selectCategory: "",
       inputMoney: "",
       inputRadio: false,
-      userOperationsHistory: ""
+      userOperationsHistory: "",
+      isReset: this.props.reset
     };
   }
-import
+
   changeHandler =(event)=> { this.setState({ [event.target.name]: event.target.value });}
 
   changeHandlerRaw =(event)=> { this.setState({ [event.target.name]: event.target.rawValue }); }
@@ -64,10 +65,12 @@ import
 
   render() {
     return (
-      <section style={{display: this.props.isOpen}} className="addOperationSection">
-        <div>
-          <div>
-            <div className="card-panel">
+      <div id="popup1" className="overlay">
+        <div className="popup">
+          <h2>Dodaj nową operację</h2>
+          <a className="close" href="#">&times;</a>
+          <div className="content">
+            <section className="addOperationSection">
               <form>
                 <p>
                   <input defaultChecked={true} onClick={this.changeHandlerRadio} name="group1" type="radio" id="test1" />
@@ -78,34 +81,32 @@ import
                   <label htmlFor="test2">Wpływ</label>
                 </p>
 
+                {!this.state.inputRadio ?
+                  ( <SelectCategoryExpense change={this.changeHandler}/> )
+                  :
+                  ( <SelectCategoryIncome change={this.changeHandler}/> )}
+
                 <span className="dateSpan">Data:</span><br/>
                 <input onChange={this.changeHandler} type="date" className="datepicker dateInput" name="dateInput" defaultValue={this.state.today} />
-
-                {!this.state.inputRadio ?
-                ( <SelectCategoryExpense change={this.changeHandler}/> )
-                  :
-                ( <SelectCategoryIncome change={this.changeHandler}/> )}
-
               </form>
 
-                <section className="OperationDescription">
-                  <span className="moneyValue">Kwota:</span><br/>
-                  <a className="exit" onClick={this.props.closeCallback}><i className="material-icons">close</i></a>
-                  <Cleave options={{prefix: "zł:", numeral: true, rawValueTrimPrefix: true}}
-                    className="inputMoney" id="first_name2" onChange={this.changeHandlerRaw} name="inputMoney" value={this.state.inputMoney}/>
-                  <br/>
-                  <span>Tytuł Operacji:</span><br/>
-                  <input value={this.state.inputOperationTitle} onChange={this.changeHandler} name="inputOperationTitle" id="first_name2" type="text"/>
-                  <br/>
-                  <span>Notatki</span><br/>
-                  <textarea maxLength={70} value={this.state.inputNotes} onChange={this.changeHandler} name="inputNotes" id="textarea1" className="materialize-textarea" data-length="70"></textarea>
+            <section className="OperationDescription">
+              <span className="moneyValue">Kwota:</span><br/>
+              <Cleave options={{prefix: "zł:", numeral: true, rawValueTrimPrefix: true}}
+                className="inputMoney" id="first_name2" onChange={this.changeHandlerRaw} name="inputMoney" value={this.state.inputMoney}/>
+                <br/>
+                <span>Tytuł Operacji:</span><br/>
+                <input value={this.state.inputOperationTitle} onChange={this.changeHandler} name="inputOperationTitle" id="first_name2" type="text"/>
+                <br/>
+                <span>Notatki</span><br/>
+                <textarea maxLength={70} value={this.state.inputNotes} onChange={this.changeHandler} name="inputNotes" id="textarea1" className="materialize-textarea" data-length="70"></textarea>
 
-                  <Button onClick={this.addOperation} style={{zIndex: 3}} floating large className='red addOpBtn' waves='light' icon='add'/>
-                </section>
-            </div>
+                <Button onClick={this.addOperation} href="#" large className="addOpBtn" waves='light'><a href="#">Dodaj</a><Icon left>playlist_add</Icon></Button>
+              </section>
+            </section>
           </div>
         </div>
-      </section>
+      </div>
     );
   }
 }

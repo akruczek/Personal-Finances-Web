@@ -1,50 +1,67 @@
+//POPUP
+.overlay {
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  &:target {
+    visibility: visible;
+    opacity: 1; }
+  .popup {
+    z-index: 20;
+    margin: 70px auto;
+    padding: 20px;
+    background: lightgrey;
+    border-radius: 5px;
+    width: 60%;
+    position: relative;
+    transition: all 5s ease-in-out;
+    h2 {font-size: 32px; margin-top: 0;}
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+      &:hover {color: #06D85F;} }
+    .content {
+      max-height: 30%;
+      overflow: auto; } } }
+
+//ZAWARTOŚĆ POPU'U
 .addOperationSection {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  div {
-    position:absolute;
-    z-index: 2;
-    font-size: 24px;
-    width: 600px;
-    height: 500px;
-    div {
-      margin: 190px auto;
-      border-radius: 50px 0 50px 50px;
-      .card-panel {
-        border: #009DCC 5px solid;
-        background-color: lightgrey;
-        display: flex;
-        .exit {
-          position: absolute;
-          margin-top: -64px;
-          right: 0;
-          i { cursor: pointer; color: black; } }
-        form {
-          display: flex;
-          flex-direction: column;
-          input {font-weight: 700; font-size: 20px;}
-          p {
-            margin: 0;
-            label {
-              font-size: 24px;
-              color: #009DCC; } }
-          .selectCategory {
-            .caret {display: none;}
-            width: 200px;
-            margin-top: -30px; } }
-        .OperationDescription {
-          margin-left: auto;
-          textarea, input {font-weight: 700; font-size: 20px;}
-          .moneyValue {font-size: 30px; font-weight: 700;}
-          input {
-            width: 200px;
-            margin-top: -40px; }
-          span { font-size: 16px; }
-          .addOpBtn { float: right; } }
-        .dateSpan {
-          margin-top: 10px;
-          font-size: 16px; }
-        .dateInput {
-          width: 200px;
-          margin-top: -40px;} } } } }
+  font-size: 24px;
+    form {
+      input {font-weight: 700; font-size: 20px;}
+      label {
+        font-size: 24px;
+        color: black; }
+      .selectCategory { width: 200px; } }
+    .OperationDescription {
+      margin-left: auto;
+      textarea { width: 300px;}
+      textarea, input {font-weight: 700; font-size: 20px;}
+      .moneyValue {font-size: 30px; font-weight: 700;}
+      input {
+        width: 200px;
+        margin-top: -40px; }
+      span { font-size: 16px; }
+      .addOpBtn {
+        position: absolute; left: 20px; bottom: 15px;
+        a {color: white; font-weight: 700;}} }
+    .dateSpan {
+      margin-top: 10px;
+      font-size: 16px; }
+    .dateInput {
+      width: 200px;
+      margin-top: -40px;} }
