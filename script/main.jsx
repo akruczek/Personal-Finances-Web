@@ -5,7 +5,8 @@ import	{Router}	from 'react-router';
 import {BrowserRouter, Route, NavLink, Switch } from 'react-router-dom';
 import {Application, AppHeader} from "./app.jsx";
 
-const url = "http://localhost:3000/users/";
+export const url = "http://localhost:3000/users/";
+// export const url = "https://www.mocky.io/v2/5a3c0b91300000893182d418";
 
 let isValid;
 export let userObject;
@@ -58,7 +59,7 @@ class Login extends React.Component {
 
   //LOGOWANIE
   buttonLoginClick =(event)=> {
-    fetch(url)
+    fetch(url, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
     .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
     .then(data => { this.LOGIN_VALID(data); })
     .catch(error => console.log(error));
@@ -169,7 +170,7 @@ class CreateAccount extends React.Component {
 
   //WALIDACJA Z BAZĄ DANYCH
   DatabaseValid =()=> {
-    fetch(url)
+    fetch(url, {method: "GET", headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
     .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
     .then(data => {
       for (let i=0; i<data.length; i++) {
@@ -197,7 +198,7 @@ class CreateAccount extends React.Component {
     fetch(url, {
       method: "POST",
       body: JSON.stringify(newUser),
-      headers: {"Content-Type" : "application/json"},
+      headers: {"Content-Type" : "application/json", "Accept": "application/json"},
       dataType: "json"})
     .then(response => response.json())
     .then(data => {console.log("Added new user: ", newUser);})

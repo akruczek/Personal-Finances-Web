@@ -15,32 +15,52 @@
         {
           "id": 0,
           "date": "2017-12-21",
-          "title": "Taksówka",
-          "note": "Taxi",
-          "category": "Transport",
-          "money": "35",
-          "income": false,
-          "src": "../images/catTransport.png"
+          "title": "Zlecenie",
+          "note": "Web Site",
+          "category": "Praca",
+          "money": "600",
+          "income": true,
+          "src": "../images/catWork.png"
         },
         {
           "id": 1,
           "date": "2017-12-21",
-          "title": "Zakupy",
-          "note": "Żabka",
-          "category": "Jedzenie",
-          "money": "2.99",
+          "title": "Rachunki",
+          "note": "Prąd",
+          "category": "Dom",
+          "money": "350",
           "income": false,
-          "src": "../images/catFood.png"
+          "src": "../images/catHome.png"
         },
         {
           "id": 2,
           "date": "2017-12-21",
-          "title": "Spodnie",
-          "note": "Galeria",
-          "category": "Odzież",
-          "money": "80.99",
+          "title": "Wygrana",
+          "note": "Kasyno",
+          "category": "Hazard",
+          "money": "65",
+          "income": true,
+          "src": "../images/catHazard.png"
+        },
+        {
+          "id": 3,
+          "date": "2017-12-21",
+          "title": "RedBull",
+          "note": "Żabka",
+          "category": "Jedzenie",
+          "money": "5.99",
           "income": false,
-          "src": "../images/catClothing.png"
+          "src": "../images/catFood.png"
+        },
+        {
+          "id": 4,
+          "date": "2017-12-21",
+          "title": "Ulotki",
+          "note": "Roznoszenie ulotek",
+          "category": "Praca",
+          "money": "122.50",
+          "income": true,
+          "src": "../images/catWork.png"
         }
       ]
     },

@@ -4,6 +4,7 @@ import {Button, Icon} from 'react-materialize';
 import {userObject} from "./../main.jsx";
 import {SelectCategoryExpense, SelectCategoryIncome} from "./SelectCategory.jsx";
 import {incomeCategories, expenseCategories} from "../variables/categories.jsx";
+import {url} from "./../main.jsx";
 
 export class AddOperation extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ export class AddOperation extends React.Component {
       inputMoney: "",
       inputRadio: false,
       userOperationsHistory: "",
-      isReset: this.props.reset,
+      // isReset: this.props.reset,
       incomeSum: 0,
       expenseSum: 0,
       iconSrc: ""
@@ -43,9 +44,20 @@ export class AddOperation extends React.Component {
     $("select").material_select();
     this.state.dateInput === "" && this.setState({dateInput: this.state.today}); }
 
+  resetOptions =()=> {
+    this.setState({
+      inputMoney: "",
+      dateInput: this.state.today,
+      inputOperationTitle: "",
+      inputNotes: "",
+      selectCategory: "",
+      inputRadio: false,
+    });
+  }
+
   //DODAWANIE NOWEJ OPERACJI (WCZYTANIE OBECNYCH -> DODANIE NOWYCH -> ZWRÓCENIE NOWEJ TABLICY)
   addOperation =()=> {
-    fetch(`http://localhost:3000/users/${userObject.id}`)
+    fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
     .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
     .then(data=> {
       //ZMIENNA Z HISTORIĄ OPERACJI UŻYTKOWNIKA ORAZ DODANIE DO HISTORII NOWEGO OBIEKTU
@@ -60,9 +72,9 @@ export class AddOperation extends React.Component {
         income: this.state.inputRadio,
         src: this.state.iconSrc
       });
-      console.log("Miesiąc: ", Number(newHistoryItem.operations[1].date.slice("-")[5] + newHistoryItem.operations[1].date.slice("-")[6]));
+      // console.log("Miesiąc: ", Number(newHistoryItem.operations[1].date.slice("-")[5] + newHistoryItem.operations[1].date.slice("-")[6]));
 
-      fetch(`http://localhost:3000/users/${userObject.id}`, {
+      fetch(`${url}${userObject.id}`, {
         method: "PUT",
         body: JSON.stringify(newHistoryItem),
         headers: {"Content-Type" : "application/json", "Accept": "application/json"},
@@ -74,6 +86,7 @@ export class AddOperation extends React.Component {
         this.props.setHistory(newHistoryItem);  //app.jsx >callback
         this.props.getHistory();  //app.jsx >callback
         window.location.replace("#");
+        this.resetOptions();
       }).catch(error => console.log(error));
     }).catch(error => console.log(error));
   }

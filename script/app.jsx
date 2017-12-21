@@ -9,6 +9,7 @@ import {ApplicationHeader} from "./components/ApplicationHeader.jsx";
 import {ApplicationSlide} from "./components/ApplicationSlide.jsx";
 import {AppSectionMain} from "./components/AppSectionMain.jsx";
 import {Balance} from "./components/Balance.jsx";
+import {url} from "./main.jsx";
 
 const nbpUrl = "http://api.nbp.pl/api/exchangerates/rates/a/";
 
@@ -49,7 +50,7 @@ export class Application extends React.Component {
 
   //POBRANIE HISTORII OPERACJI
   getHistory =()=> {
-    fetch(`http://localhost:3000/users/${userObject.id}`)
+    fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
     .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
     .then(data => {
       this.setState({ history: data.operations });
@@ -96,7 +97,7 @@ export class Application extends React.Component {
   //USUWANIE OPERACJI (WCZYTANIE OBECNYCH -> USUNIĘCIĘ ODPOWIEDNIEGO ELEMENTU TABLICY -> ZWRÓCENIE NOWEJ TABLICY)
   //+ SORTOWANIE TABLICY
   deleteOperation =(id)=> {
-    fetch(`http://localhost:3000/users/${userObject.id}`)
+    fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
     .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
     .then(data => {
       let newData = data;
@@ -107,7 +108,7 @@ export class Application extends React.Component {
         console.log(newData.operations[i].id, ":ID:", i);
       }
 
-      fetch(`http://localhost:3000/users/${userObject.id}`, {
+      fetch(`${url}${userObject.id}`, {
         method: "PUT",
         body: JSON.stringify(newData),
         headers: {"Content-Type" : "application/json", "Accept": "application/json"},
@@ -126,7 +127,7 @@ export class Application extends React.Component {
   }
 
   render() {
-    return (userObject!==undefined) ? (
+    return this.getHistory && userObject!==undefined ? (
       <div className="mainApp">
         <ApplicationHeader mainPath={this.state.mainPath} userObject={userObject} currencyEur={this.state.currencyEur}
           EurRates={this.state.EurRates} currencyUsd={this.state.currencyUsd} UsdRates={this.state.UsdRates}/>
@@ -138,7 +139,8 @@ export class Application extends React.Component {
           <AppSectionMain callback={this.openAddOpPanel} opHistory={this.state.history}
             callbackDelete={this.deleteOperation} callbackEdit={this.editOperation}/>
 
-          <Balance balance={this.state.balance} income={this.state.income} expense={this.state.expense} history={this.state.history}/>
+          <Balance balance={this.state.balance} income={this.state.income} expense={this.state.expense}
+            history={this.state.history}/>
         </div>
 
         <ApplicationSlide userObject={userObject}/>
