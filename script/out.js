@@ -2863,7 +2863,7 @@ var createFactory = ReactElement.createFactory;
 var cloneElement = ReactElement.cloneElement;
 
 if (process.env.NODE_ENV !== 'production') {
-  var lowPriorityWarning = __webpack_require__(54);
+  var lowPriorityWarning = __webpack_require__(55);
   var canDefineProperty = __webpack_require__(39);
   var ReactElementValidator = __webpack_require__(86);
   var didWarnPropTypesDeprecated = false;
@@ -3194,10 +3194,10 @@ module.exports = ReactReconciler;
 
 
 
-var DOMNamespaces = __webpack_require__(63);
+var DOMNamespaces = __webpack_require__(64);
 var setInnerHTML = __webpack_require__(43);
 
-var createMicrosoftUnsafeLocalFunction = __webpack_require__(64);
+var createMicrosoftUnsafeLocalFunction = __webpack_require__(65);
 var setTextContent = __webpack_require__(99);
 
 var ELEMENT_NODE_TYPE = 1;
@@ -3322,7 +3322,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(126);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(78);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(251);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
@@ -3375,7 +3375,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 var EventPluginHub = __webpack_require__(32);
-var EventPluginUtils = __webpack_require__(57);
+var EventPluginUtils = __webpack_require__(58);
 
 var accumulateInto = __webpack_require__(91);
 var forEachAccumulated = __webpack_require__(92);
@@ -3515,8 +3515,8 @@ module.exports = EventPropagators;
 var _prodInvariant = __webpack_require__(6);
 
 var EventPluginRegistry = __webpack_require__(40);
-var EventPluginUtils = __webpack_require__(57);
-var ReactErrorUtils = __webpack_require__(58);
+var EventPluginUtils = __webpack_require__(58);
+var ReactErrorUtils = __webpack_require__(59);
 
 var accumulateInto = __webpack_require__(91);
 var forEachAccumulated = __webpack_require__(92);
@@ -3792,7 +3792,7 @@ module.exports = EventPluginHub;
 
 var SyntheticEvent = __webpack_require__(18);
 
-var getEventTarget = __webpack_require__(59);
+var getEventTarget = __webpack_require__(60);
 
 /**
  * @interface UIEvent
@@ -4725,7 +4725,7 @@ module.exports = TransactionImpl;
 var SyntheticUIEvent = __webpack_require__(33);
 var ViewportMetrics = __webpack_require__(98);
 
-var getEventModifierState = __webpack_require__(61);
+var getEventModifierState = __webpack_require__(62);
 
 /**
  * @interface MouseEvent
@@ -4798,12 +4798,12 @@ module.exports = SyntheticMouseEvent;
 
 
 var ExecutionEnvironment = __webpack_require__(10);
-var DOMNamespaces = __webpack_require__(63);
+var DOMNamespaces = __webpack_require__(64);
 
 var WHITESPACE_TEST = /^[ \r\n\t\f]/;
 var NONVISIBLE_TEST = /<(!--|link|noscript|meta|script|style)[ \r\n\t\f\/>]/;
 
-var createMicrosoftUnsafeLocalFunction = __webpack_require__(64);
+var createMicrosoftUnsafeLocalFunction = __webpack_require__(65);
 
 // SVG temp container for IE lacking innerHTML
 var reusableSVGContainer;
@@ -5060,7 +5060,7 @@ var ReactEventEmitterMixin = __webpack_require__(184);
 var ViewportMetrics = __webpack_require__(98);
 
 var getVendorPrefixedEventName = __webpack_require__(185);
-var isEventSupported = __webpack_require__(60);
+var isEventSupported = __webpack_require__(61);
 
 /**
  * Summary of `ReactBrowserEventEmitter` event handling:
@@ -5784,7 +5784,7 @@ var _Breadcrumb = __webpack_require__(267);
 
 var _Breadcrumb2 = _interopRequireDefault(_Breadcrumb);
 
-var _Button = __webpack_require__(79);
+var _Button = __webpack_require__(80);
 
 var _Button2 = _interopRequireDefault(_Button);
 
@@ -5900,7 +5900,7 @@ var _ProgressBar = __webpack_require__(293);
 
 var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
 
-var _Row = __webpack_require__(80);
+var _Row = __webpack_require__(81);
 
 var _Row2 = _interopRequireDefault(_Row);
 
@@ -6005,7 +6005,66 @@ exports.Toast = _Toast2.default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.userObject = undefined;
+var incomeCategories = exports.incomeCategories = [{
+  id: "0",
+  name: "Jedzenie",
+  value: "food",
+  src: "../images/catFood.png"
+}, {
+  id: "1",
+  name: "Dom",
+  value: "home",
+  src: "../images/catHome.png"
+}, {
+  id: "2",
+  name: "Transport",
+  value: "transport",
+  src: "../images/catTransport.png"
+}, {
+  id: "3",
+  name: "Rozrywka",
+  value: "entertainment",
+  src: "../images/catEntertainment.png"
+}, {
+  id: "4",
+  name: "Odzież",
+  value: "clothing",
+  src: "../images/catClothing.png"
+}, {
+  id: "5",
+  name: "Nauka",
+  value: "study",
+  src: "../images/catStudy.png"
+}, {
+  id: "6",
+  name: "Zdrowie",
+  value: "health",
+  src: "../images/catHealth.png"
+}];
+
+var expenseCategories = exports.expenseCategories = [{
+  id: "0",
+  name: "Praca",
+  value: "work",
+  src: "../images/catWork.png"
+}, {
+  id: "1",
+  name: "Hazard",
+  value: "hazard",
+  src: "../images/catHazard.png"
+}];
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.userObject = exports.url = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -6035,7 +6094,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var url = "http://localhost:3000/users/";
+var url = exports.url = "http://localhost:3000/users/";
+// export const url = "https://www.mocky.io/v2/5a3c0b91300000893182d418";
 
 var isValid = void 0;
 var userObject = exports.userObject = void 0;
@@ -6080,7 +6140,7 @@ var Login = function (_React$Component) {
     };
 
     _this.buttonLoginClick = function (event) {
-      fetch(url).then(function (response) {
+      fetch(url, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
         return response && response.ok ? response.json() : "Błąd Połączenia";
       }).then(function (data) {
         _this.LOGIN_VALID(data);
@@ -6243,7 +6303,7 @@ var CreateAccount = function (_React$Component2) {
     };
 
     _this2.DatabaseValid = function () {
-      fetch(url).then(function (response) {
+      fetch(url, { method: "GET", headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
         return response && response.ok ? response.json() : "Błąd Połączenia";
       }).then(function (data) {
         for (var i = 0; i < data.length; i++) {
@@ -6275,7 +6335,7 @@ var CreateAccount = function (_React$Component2) {
       fetch(url, {
         method: "POST",
         body: JSON.stringify(newUser),
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
         dataType: "json" }).then(function (response) {
         return response.json();
       }).then(function (data) {
@@ -6447,7 +6507,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6516,7 +6576,7 @@ module.exports = lowPriorityWarning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6535,7 +6595,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6551,7 +6611,7 @@ module.exports = ReactPropTypesSecret;
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(3);
   var warning = __webpack_require__(4);
-  var ReactPropTypesSecret = __webpack_require__(55);
+  var ReactPropTypesSecret = __webpack_require__(56);
   var loggedTypeFailures = {};
 }
 
@@ -6602,7 +6662,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6618,7 +6678,7 @@ module.exports = checkPropTypes;
 
 var _prodInvariant = __webpack_require__(6);
 
-var ReactErrorUtils = __webpack_require__(58);
+var ReactErrorUtils = __webpack_require__(59);
 
 var invariant = __webpack_require__(3);
 var warning = __webpack_require__(4);
@@ -6832,7 +6892,7 @@ module.exports = EventPluginUtils;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6914,7 +6974,7 @@ module.exports = ReactErrorUtils;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6952,7 +7012,7 @@ function getEventTarget(nativeEvent) {
 module.exports = getEventTarget;
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7015,7 +7075,7 @@ function isEventSupported(eventNameSuffix, capture) {
 module.exports = isEventSupported;
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7061,7 +7121,7 @@ function getEventModifierState(nativeEvent) {
 module.exports = getEventModifierState;
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7080,7 +7140,7 @@ var Danger = __webpack_require__(171);
 var ReactDOMComponentTree = __webpack_require__(9);
 var ReactInstrumentation = __webpack_require__(14);
 
-var createMicrosoftUnsafeLocalFunction = __webpack_require__(64);
+var createMicrosoftUnsafeLocalFunction = __webpack_require__(65);
 var setInnerHTML = __webpack_require__(43);
 var setTextContent = __webpack_require__(99);
 
@@ -7291,7 +7351,7 @@ module.exports = DOMChildrenOperations;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7314,7 +7374,7 @@ var DOMNamespaces = {
 module.exports = DOMNamespaces;
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7349,7 +7409,7 @@ var createMicrosoftUnsafeLocalFunction = function (func) {
 module.exports = createMicrosoftUnsafeLocalFunction;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7491,7 +7551,7 @@ module.exports = LinkedValueUtils;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7539,7 +7599,7 @@ module.exports = ReactComponentEnvironment;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7584,7 +7644,7 @@ function shouldUpdateReactComponent(prevElement, nextElement) {
 module.exports = shouldUpdateReactComponent;
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7646,7 +7706,7 @@ var KeyEscapeUtils = {
 module.exports = KeyEscapeUtils;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7884,7 +7944,7 @@ module.exports = ReactUpdateQueue;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8259,7 +8319,7 @@ module.exports = validateDOMNesting;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8302,7 +8362,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8355,7 +8415,7 @@ function getEventCharCode(nativeEvent) {
 module.exports = getEventCharCode;
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8439,7 +8499,7 @@ var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a
 };
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8530,7 +8590,7 @@ var createTransitionManager = function createTransitionManager() {
 exports.default = createTransitionManager;
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8615,7 +8675,7 @@ var createTransitionManager = function createTransitionManager() {
 /* harmony default export */ __webpack_exports__["a"] = (createTransitionManager);
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8764,7 +8824,7 @@ Route.childContextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Route);
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8775,7 +8835,7 @@ Route.childContextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__["a" /* default */]);
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8803,7 +8863,7 @@ var renderMergedProps = function renderMergedProps(component) {
 exports.default = renderMergedProps;
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9001,7 +9061,7 @@ Button.defaultProps = {
 exports.default = Button;
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9052,65 +9112,6 @@ Row.propTypes = {
 exports.default = Row;
 
 /***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var incomeCategories = exports.incomeCategories = [{
-  id: "0",
-  name: "Jedzenie",
-  value: "food",
-  src: "../images/catFood.png"
-}, {
-  id: "1",
-  name: "Dom",
-  value: "home",
-  src: "../images/catHome.png"
-}, {
-  id: "2",
-  name: "Transport",
-  value: "transport",
-  src: "../images/catTransport.png"
-}, {
-  id: "3",
-  name: "Rozrywka",
-  value: "entertainment",
-  src: "../images/catEntertainment.png"
-}, {
-  id: "4",
-  name: "Odzież",
-  value: "clothing",
-  src: "../images/catClothing.png"
-}, {
-  id: "5",
-  name: "Nauka",
-  value: "study",
-  src: "../images/catStudy.png"
-}, {
-  id: "6",
-  name: "Zdrowie",
-  value: "health",
-  src: "../images/catHealth.png"
-}];
-
-var expenseCategories = exports.expenseCategories = [{
-  id: "0",
-  name: "Praca",
-  value: "work",
-  src: "../images/catWork.png"
-}, {
-  id: "1",
-  name: "Hazard",
-  value: "hazard",
-  src: "../images/catHazard.png"
-}];
-
-/***/ }),
 /* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9133,7 +9134,7 @@ var ReactNoopUpdateQueue = __webpack_require__(83);
 var canDefineProperty = __webpack_require__(39);
 var emptyObject = __webpack_require__(20);
 var invariant = __webpack_require__(3);
-var lowPriorityWarning = __webpack_require__(54);
+var lowPriorityWarning = __webpack_require__(55);
 
 /**
  * Base class helpers for the updating state of a component.
@@ -9454,7 +9455,7 @@ var checkReactTypeSpec = __webpack_require__(144);
 var canDefineProperty = __webpack_require__(39);
 var getIteratorFn = __webpack_require__(85);
 var warning = __webpack_require__(4);
-var lowPriorityWarning = __webpack_require__(54);
+var lowPriorityWarning = __webpack_require__(55);
 
 function getDeclarationErrorAddendum() {
   if (ReactCurrentOwner.current) {
@@ -9727,8 +9728,8 @@ var invariant = __webpack_require__(3);
 var warning = __webpack_require__(4);
 var assign = __webpack_require__(7);
 
-var ReactPropTypesSecret = __webpack_require__(55);
-var checkPropTypes = __webpack_require__(56);
+var ReactPropTypesSecret = __webpack_require__(56);
+var checkPropTypes = __webpack_require__(57);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -11351,7 +11352,7 @@ module.exports = ReactPropTypesSecret;
 
 var _assign = __webpack_require__(7);
 
-var LinkedValueUtils = __webpack_require__(65);
+var LinkedValueUtils = __webpack_require__(66);
 var ReactDOMComponentTree = __webpack_require__(9);
 var ReactUpdates = __webpack_require__(17);
 
@@ -11842,7 +11843,7 @@ var REACT_ELEMENT_TYPE = __webpack_require__(195);
 
 var getIteratorFn = __webpack_require__(196);
 var invariant = __webpack_require__(3);
-var KeyEscapeUtils = __webpack_require__(68);
+var KeyEscapeUtils = __webpack_require__(69);
 var warning = __webpack_require__(4);
 
 var SEPARATOR = '.';
@@ -12017,7 +12018,7 @@ module.exports = traverseAllChildren;
 
 var ReactDOMSelection = __webpack_require__(208);
 
-var containsNode = __webpack_require__(71);
+var containsNode = __webpack_require__(72);
 var focusNode = __webpack_require__(45);
 var getActiveElement = __webpack_require__(48);
 
@@ -12156,14 +12157,14 @@ var ReactInstanceMap = __webpack_require__(34);
 var ReactInstrumentation = __webpack_require__(14);
 var ReactMarkupChecksum = __webpack_require__(226);
 var ReactReconciler = __webpack_require__(28);
-var ReactUpdateQueue = __webpack_require__(69);
+var ReactUpdateQueue = __webpack_require__(70);
 var ReactUpdates = __webpack_require__(17);
 
 var emptyObject = __webpack_require__(20);
 var instantiateReactComponent = __webpack_require__(106);
 var invariant = __webpack_require__(3);
 var setInnerHTML = __webpack_require__(43);
-var shouldUpdateReactComponent = __webpack_require__(67);
+var shouldUpdateReactComponent = __webpack_require__(68);
 var warning = __webpack_require__(4);
 
 var ATTR_NAME = DOMProperty.ID_ATTRIBUTE_NAME;
@@ -12713,7 +12714,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_1__Prompt__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Redirect__ = __webpack_require__(119);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_2__Redirect__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(77);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_3__Route__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(49);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_4__Router__["a"]; });
@@ -13486,7 +13487,7 @@ Switch.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(77);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -13696,7 +13697,7 @@ Link.contextTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Route__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Route__ = __webpack_require__(77);
 // Written in this round about way for babel-transform-imports
 
 
@@ -13730,7 +13731,7 @@ var _reactRouterDom = __webpack_require__(30);
 
 var _reactRouterWithProps = __webpack_require__(255);
 
-var _main = __webpack_require__(53);
+var _main = __webpack_require__(54);
 
 var _AddOperation = __webpack_require__(259);
 
@@ -13777,7 +13778,7 @@ var Application = exports.Application = function (_React$Component) {
     };
 
     _this.getHistory = function () {
-      fetch('http://localhost:3000/users/' + _main.userObject.id).then(function (response) {
+      fetch('' + _main.url + _main.userObject.id, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
         return response && response.ok ? response.json() : "Błąd Połączenia";
       }).then(function (data) {
         _this.setState({ history: data.operations });
@@ -13794,7 +13795,7 @@ var Application = exports.Application = function (_React$Component) {
     };
 
     _this.deleteOperation = function (id) {
-      fetch('http://localhost:3000/users/' + _main.userObject.id).then(function (response) {
+      fetch('' + _main.url + _main.userObject.id, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
         return response && response.ok ? response.json() : "Błąd Połączenia";
       }).then(function (data) {
         var newData = data;
@@ -13807,7 +13808,7 @@ var Application = exports.Application = function (_React$Component) {
           console.log(newData.operations[i].id, ":ID:", i);
         }
 
-        fetch('http://localhost:3000/users/' + _main.userObject.id, {
+        fetch('' + _main.url + _main.userObject.id, {
           method: "PUT",
           body: JSON.stringify(newData),
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -13898,7 +13899,7 @@ var Application = exports.Application = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      return _main.userObject !== undefined ? _react2.default.createElement(
+      return this.getHistory && _main.userObject !== undefined ? _react2.default.createElement(
         'div',
         { className: 'mainApp' },
         _react2.default.createElement(_ApplicationHeader.ApplicationHeader, { mainPath: this.state.mainPath, userObject: _main.userObject, currencyEur: this.state.currencyEur,
@@ -13910,7 +13911,8 @@ var Application = exports.Application = function (_React$Component) {
           { className: 'main-section' },
           _react2.default.createElement(_AppSectionMain.AppSectionMain, { callback: this.openAddOpPanel, opHistory: this.state.history,
             callbackDelete: this.deleteOperation, callbackEdit: this.editOperation }),
-          _react2.default.createElement(_Balance.Balance, { balance: this.state.balance, income: this.state.income, expense: this.state.expense, history: this.state.history })
+          _react2.default.createElement(_Balance.Balance, { balance: this.state.balance, income: this.state.income, expense: this.state.expense,
+            history: this.state.history })
         ),
         _react2.default.createElement(_ApplicationSlide.ApplicationSlide, { userObject: _main.userObject })
       ) : _react2.default.createElement(
@@ -14295,7 +14297,7 @@ exports.default = PaginationButton;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(133);
-__webpack_require__(53);
+__webpack_require__(54);
 module.exports = __webpack_require__(127);
 
 
@@ -14806,7 +14808,7 @@ exports = module.exports = __webpack_require__(136)(undefined);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i,900,900i&subset=latin-ext);", ""]);
 
 // module
-exports.push([module.i, "/*\n009DCC - lightblue\n3D8499 - blue\n00FFAE - green/blue\nFF4C40 - lightred\nCC144A - red\n*/\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody {\n  background-color: #3D8499; }\n  body .login {\n    height: 440px;\n    margin: 150px auto;\n    box-sizing: border-box;\n    background-color: lightgrey;\n    border-radius: 30px;\n    box-shadow: 0 0 20px 5px #00C3AB;\n    text-align: center; }\n    @media (max-width: 599px) {\n      body .login {\n        width: 100%; } }\n    @media (min-width: 600px) {\n      body .login {\n        width: 600px; } }\n    body .login #loginHeader {\n      font-size: 36px;\n      margin: 20px;\n      padding-top: 10px; }\n    body .login #createAccountHeader {\n      font-size: 36px;\n      margin: 10px;\n      padding-top: 10px; }\n    body .login #errorMessage {\n      display: block;\n      height: 1px;\n      font-size: 18px;\n      margin-top: 15px;\n      font-weight: 600;\n      color: #cc0000; }\n    body .login #buttonCreate {\n      margin-top: -10px;\n      font-size: 22px; }\n    body .login #buttonLogin {\n      font-size: 22px; }\n    body .login #createAccountLink {\n      margin-top: 50px; }\n    body .login #logInLink {\n      margin-top: 20px; }\n    body .login .formLogin {\n      display: flex;\n      justify-content: center; }\n      body .login .formLogin .input-field {\n        width: 300px;\n        margin-top: 5px; }\n      body .login .formLogin input, body .login .formLogin label {\n        font-size: 28px; }\n\n/*\n009DCC - lightblue\n3D8499 - blue\n00FFAE - green/blue\nFF4C40 - lightred\nCC144A - red\n*/\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody .mainApp {\n  margin: 0 auto;\n  font-size: 100px;\n  width: 90vw;\n  height: 100vh;\n  background-color: #00FFAE; }\n  body .mainApp .overlay {\n    z-index: 20;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: rgba(0, 0, 0, 0.7);\n    transition: opacity 500ms;\n    visibility: hidden;\n    opacity: 0; }\n    body .mainApp .overlay:target {\n      visibility: visible;\n      opacity: 1; }\n    body .mainApp .overlay .popup {\n      z-index: 20;\n      margin: 70px auto;\n      padding: 20px;\n      background: lightgrey;\n      border-radius: 5px;\n      width: 60%;\n      position: relative;\n      transition: all 1s ease-in-out; }\n      body .mainApp .overlay .popup h2 {\n        font-size: 32px;\n        margin-top: 0; }\n      body .mainApp .overlay .popup .close {\n        position: absolute;\n        top: 20px;\n        right: 30px;\n        transition: all 200ms;\n        font-size: 30px;\n        font-weight: bold;\n        text-decoration: none;\n        color: #333; }\n        body .mainApp .overlay .popup .close:hover {\n          color: #06D85F; }\n      body .mainApp .overlay .popup .content {\n        max-height: 30%;\n        overflow: auto; }\n  body .mainApp .addOperationSection {\n    display: flex;\n    font-size: 24px; }\n    body .mainApp .addOperationSection form input {\n      font-weight: 700;\n      font-size: 20px; }\n    body .mainApp .addOperationSection form label {\n      font-size: 24px;\n      color: black; }\n    body .mainApp .addOperationSection form .selectCategory {\n      width: 200px; }\n    body .mainApp .addOperationSection .OperationDescription {\n      margin-left: auto; }\n      body .mainApp .addOperationSection .OperationDescription textarea {\n        width: 300px; }\n      body .mainApp .addOperationSection .OperationDescription textarea, body .mainApp .addOperationSection .OperationDescription input {\n        font-weight: 700;\n        font-size: 20px; }\n      body .mainApp .addOperationSection .OperationDescription .moneyValue {\n        font-size: 30px;\n        font-weight: 700; }\n      body .mainApp .addOperationSection .OperationDescription input {\n        width: 200px;\n        margin-top: -40px; }\n      body .mainApp .addOperationSection .OperationDescription span {\n        font-size: 16px; }\n      body .mainApp .addOperationSection .OperationDescription .addOpBtn {\n        position: absolute;\n        left: 20px;\n        bottom: 15px; }\n        body .mainApp .addOperationSection .OperationDescription .addOpBtn a {\n          color: white;\n          font-weight: 700; }\n    body .mainApp .addOperationSection .dateSpan {\n      margin-top: 10px;\n      font-size: 16px; }\n    body .mainApp .addOperationSection .dateInput {\n      width: 200px;\n      margin-top: -40px; }\n  @media (min-width: 1100px) {\n    body .mainApp .operationsHistory {\n      width: 50%;\n      margin: 50px 50px;\n      margin-right: 20px; } }\n  @media (max-width: 1099px) {\n    body .mainApp .operationsHistory {\n      width: 95%;\n      margin: 50px 20px;\n      margin-bottom: 10px; } }\n  body .mainApp .operationsHistory .row {\n    align-items: center;\n    font-size: 28px;\n    position: relative; }\n    body .mainApp .operationsHistory .row .fixed-action-btn {\n      height: 50px; }\n    body .mainApp .operationsHistory .row .addOperationButton {\n      position: absolute;\n      background-color: #CC144A;\n      right: 0;\n      top: 0; }\n    body .mainApp .operationsHistory .row .collection {\n      display: flex;\n      flex-direction: column; }\n      body .mainApp .operationsHistory .row .collection p:first-of-type {\n        cursor: pointer;\n        margin-top: 2px; }\n      body .mainApp .operationsHistory .row .collection div {\n        display: flex; }\n        body .mainApp .operationsHistory .row .collection div .historyIcon {\n          margin-right: 10px;\n          margin-top: 20px; }\n        body .mainApp .operationsHistory .row .collection div .col-1 {\n          width: 500px;\n          flex-wrap: wrap;\n          display: flex;\n          flex-direction: column; }\n        body .mainApp .operationsHistory .row .collection div .collection-date {\n          font-size: 18px;\n          padding-bottom: 5px; }\n        body .mainApp .operationsHistory .row .collection div .collection-category {\n          font-size: 24px;\n          padding-bottom: 5px; }\n        body .mainApp .operationsHistory .row .collection div .collection-name {\n          font-size: 28px;\n          padding-bottom: 5px; }\n        body .mainApp .operationsHistory .row .collection div .collection-info {\n          font-size: 16px; }\n        body .mainApp .operationsHistory .row .collection div .col-2 .collection-value {\n          text-transform: none;\n          display: flex;\n          align-items: center;\n          justify-content: center;\n          font-size: 24px;\n          width: 100px;\n          height: 100px; }\n          body .mainApp .operationsHistory .row .collection div .col-2 .collection-value span {\n            text-align: center;\n            margin: 0 auto; }\n  body .mainApp .mainHeader nav {\n    background-color: #3D8499; }\n    body .mainApp .mainHeader nav .currency {\n      width: 100%;\n      text-align: center;\n      height: 0;\n      margin: 0;\n      position: absolute;\n      font-size: 20px;\n      margin-top: -35px; }\n      body .mainApp .mainHeader nav .currency i {\n        display: inline-block;\n        vertical-align: sub; }\n      body .mainApp .mainHeader nav .currency p a {\n        text-decoration: underline; }\n    body .mainApp .mainHeader nav .currency:last-of-type {\n      margin-top: -3px; }\n    body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip {\n      position: relative; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:before, body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:after {\n        display: block;\n        opacity: 0;\n        pointer-events: none;\n        position: absolute;\n        transform: translate3d(0, -10px, 0);\n        transition: all .15s ease-in-out; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:after {\n        border-right: 6px solid transparent;\n        border-bottom: 6px solid rgba(0, 0, 0, 0.75);\n        border-left: 6px solid transparent;\n        content: '';\n        height: 0;\n        top: 64px;\n        left: 20px;\n        width: 0; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:before {\n        background: rgba(0, 0, 0, 0.75);\n        border-radius: 2px;\n        color: #fff;\n        content: attr(data-title);\n        font-size: 14px;\n        padding: 0 5px;\n        top: 70px;\n        right: 0;\n        white-space: nowrap; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:hover:after, body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:hover:before {\n        opacity: 1;\n        transform: translate3d(0, 0, 0); }\n    body .mainApp .mainHeader nav .brand-logo2 {\n      margin-left: 50px; }\n      @media (max-width: 992px) {\n        body .mainApp .mainHeader nav .brand-logo2 {\n          left: 80px; } }\n      @media (max-width: 768px) {\n        body .mainApp .mainHeader nav .brand-logo2 {\n          display: none; } }\n  body .mainApp #slide-out .user-view .name {\n    font-size: 28px;\n    margin-top: -10px; }\n  body .mainApp #slide-out .user-view .email {\n    margin-top: 10px; }\n  body .mainApp .main-section {\n    display: flex;\n    flex-direction: row;\n    align-content: center; }\n    @media (min-width: 1100px) {\n      body .mainApp .main-section {\n        flex-wrap: nowrap; } }\n    @media (max-width: 1099px) {\n      body .mainApp .main-section {\n        flex-wrap: wrap; } }\n    @media (min-width: 1100px) {\n      body .mainApp .main-section .balancePanel {\n        width: 50%;\n        margin: 50px 50px;\n        margin-left: 20px; } }\n    @media (max-width: 1099px) {\n      body .mainApp .main-section .balancePanel {\n        width: 95%;\n        margin: 50px 20px;\n        margin-top: 10px; } }\n    body .mainApp .main-section .balancePanel .cardPanel {\n      text-align: center;\n      padding: 30px 0;\n      padding-top: 5px; }\n      body .mainApp .main-section .balancePanel .cardPanel .cardInside {\n        margin: 0 auto;\n        width: 90%;\n        height: 90%;\n        background-color: lightgrey;\n        border-radius: 5px; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside h2 {\n          margin-bottom: -40px;\n          font-size: 32px;\n          padding-top: 10px; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .moneyBagImg {\n          margin-top: -70px;\n          margin-bottom: -50px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .moneyBagImg span {\n            font-size: 50px;\n            top: 35px;\n            vertical-align: middle; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .balanceImg {\n          align-content: space-between; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .balanceImg span {\n            vertical-align: middle;\n            font-size: 22px;\n            font-weight: 600;\n            color: red; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .balanceImg span:first-of-type {\n            color: green; }\n\n@keyframes showHide {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n", ""]);
+exports.push([module.i, "/*\n009DCC - lightblue\n3D8499 - blue\n00FFAE - green/blue\nFF4C40 - lightred\nCC144A - red\n*/\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody {\n  background-color: #3D8499; }\n  body .login {\n    height: 440px;\n    margin: 150px auto;\n    box-sizing: border-box;\n    background-color: lightgrey;\n    border-radius: 30px;\n    box-shadow: 0 0 20px 5px #00C3AB;\n    text-align: center; }\n    @media (max-width: 599px) {\n      body .login {\n        width: 100%; } }\n    @media (min-width: 600px) {\n      body .login {\n        width: 600px; } }\n    body .login #loginHeader {\n      font-size: 36px;\n      margin: 20px;\n      padding-top: 10px; }\n    body .login #createAccountHeader {\n      font-size: 36px;\n      margin: 10px;\n      padding-top: 10px; }\n    body .login #errorMessage {\n      display: block;\n      height: 1px;\n      font-size: 18px;\n      margin-top: 15px;\n      font-weight: 600;\n      color: #cc0000; }\n    body .login #buttonCreate {\n      margin-top: -10px;\n      font-size: 22px; }\n    body .login #buttonLogin {\n      font-size: 22px; }\n    body .login #createAccountLink {\n      margin-top: 50px; }\n    body .login #logInLink {\n      margin-top: 20px; }\n    body .login .formLogin {\n      display: flex;\n      justify-content: center; }\n      body .login .formLogin .input-field {\n        width: 300px;\n        margin-top: 5px; }\n      body .login .formLogin input, body .login .formLogin label {\n        font-size: 28px; }\n\n/*\n009DCC - lightblue\n3D8499 - blue\n00FFAE - green/blue\nFF4C40 - lightred\nCC144A - red\n*/\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody .mainApp {\n  margin: 0 auto;\n  font-size: 100px;\n  width: 95vw;\n  background-color: #00FFAE; }\n  body .mainApp .overlay {\n    z-index: 20;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: rgba(0, 0, 0, 0.7);\n    transition: opacity 500ms;\n    visibility: hidden;\n    opacity: 0; }\n    body .mainApp .overlay:target {\n      visibility: visible;\n      opacity: 1; }\n    body .mainApp .overlay .popup {\n      z-index: 20;\n      margin: 70px auto;\n      padding: 20px;\n      background: lightgrey;\n      border-radius: 5px;\n      width: 60%;\n      position: relative;\n      transition: all 1s ease-in-out; }\n      body .mainApp .overlay .popup h2 {\n        font-size: 32px;\n        margin-top: 0; }\n      body .mainApp .overlay .popup .close {\n        position: absolute;\n        top: 20px;\n        right: 30px;\n        transition: all 200ms;\n        font-size: 30px;\n        font-weight: bold;\n        text-decoration: none;\n        color: #333; }\n        body .mainApp .overlay .popup .close:hover {\n          color: #06D85F; }\n      body .mainApp .overlay .popup .content {\n        max-height: 30%;\n        overflow: auto; }\n  body .mainApp .addOperationSection {\n    display: flex;\n    font-size: 24px; }\n    body .mainApp .addOperationSection form input {\n      font-weight: 700;\n      font-size: 20px; }\n    body .mainApp .addOperationSection form label {\n      font-size: 24px;\n      color: black; }\n    body .mainApp .addOperationSection form .selectCategory {\n      width: 200px; }\n    body .mainApp .addOperationSection .OperationDescription {\n      margin-left: auto; }\n      body .mainApp .addOperationSection .OperationDescription textarea {\n        width: 300px; }\n      body .mainApp .addOperationSection .OperationDescription textarea, body .mainApp .addOperationSection .OperationDescription input {\n        font-weight: 700;\n        font-size: 20px; }\n      body .mainApp .addOperationSection .OperationDescription .moneyValue {\n        font-size: 30px;\n        font-weight: 700; }\n      body .mainApp .addOperationSection .OperationDescription input {\n        width: 200px;\n        margin-top: -40px; }\n      body .mainApp .addOperationSection .OperationDescription span {\n        font-size: 16px; }\n      body .mainApp .addOperationSection .OperationDescription .addOpBtn {\n        position: absolute;\n        left: 20px;\n        bottom: 15px; }\n        body .mainApp .addOperationSection .OperationDescription .addOpBtn a {\n          color: white;\n          font-weight: 700; }\n    body .mainApp .addOperationSection .dateSpan {\n      margin-top: 10px;\n      font-size: 16px; }\n    body .mainApp .addOperationSection .dateInput {\n      width: 200px;\n      margin-top: -40px; }\n  @media (min-width: 1100px) {\n    body .mainApp .operationsHistory {\n      width: 50%;\n      margin: 50px 50px;\n      margin-right: 20px; } }\n  @media (max-width: 1099px) {\n    body .mainApp .operationsHistory {\n      width: 95%;\n      margin: 50px 20px;\n      margin-bottom: 10px; } }\n  body .mainApp .operationsHistory .row {\n    align-items: center;\n    font-size: 28px;\n    position: relative; }\n    body .mainApp .operationsHistory .row .fixed-action-btn {\n      height: 50px; }\n    body .mainApp .operationsHistory .row .addOperationButton {\n      position: absolute;\n      background-color: #CC144A;\n      right: 0;\n      top: 0; }\n    body .mainApp .operationsHistory .row .collection {\n      display: flex;\n      flex-direction: column; }\n      body .mainApp .operationsHistory .row .collection p:first-of-type {\n        cursor: pointer;\n        margin-top: 2px; }\n      body .mainApp .operationsHistory .row .collection div {\n        display: flex; }\n        body .mainApp .operationsHistory .row .collection div .historyIcon {\n          margin-right: 10px;\n          margin-top: 20px; }\n        body .mainApp .operationsHistory .row .collection div .col-1 {\n          width: 500px;\n          flex-wrap: wrap;\n          display: flex;\n          flex-direction: column; }\n        body .mainApp .operationsHistory .row .collection div .collection-date {\n          font-size: 18px;\n          padding-bottom: 5px; }\n        body .mainApp .operationsHistory .row .collection div .collection-category {\n          font-size: 24px;\n          padding-bottom: 5px; }\n        body .mainApp .operationsHistory .row .collection div .collection-name {\n          font-size: 28px;\n          padding-bottom: 5px; }\n        body .mainApp .operationsHistory .row .collection div .collection-info {\n          font-size: 16px; }\n        body .mainApp .operationsHistory .row .collection div .col-2 .collection-value {\n          text-transform: none;\n          display: flex;\n          align-items: center;\n          justify-content: center;\n          font-size: 24px;\n          width: 100px;\n          height: 100px; }\n          body .mainApp .operationsHistory .row .collection div .col-2 .collection-value span {\n            text-align: center;\n            margin: 0 auto; }\n  body .mainApp .mainHeader nav {\n    background-color: #3D8499; }\n    body .mainApp .mainHeader nav .currency {\n      width: 100%;\n      text-align: center;\n      height: 0;\n      margin: 0;\n      position: absolute;\n      font-size: 20px;\n      margin-top: -35px; }\n      body .mainApp .mainHeader nav .currency i {\n        display: inline-block;\n        vertical-align: sub; }\n      body .mainApp .mainHeader nav .currency p a {\n        text-decoration: underline; }\n    body .mainApp .mainHeader nav .currency:last-of-type {\n      margin-top: -3px; }\n    body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip {\n      position: relative; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:before, body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:after {\n        display: block;\n        opacity: 0;\n        pointer-events: none;\n        position: absolute;\n        transform: translate3d(0, -10px, 0);\n        transition: all .15s ease-in-out; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:after {\n        border-right: 6px solid transparent;\n        border-bottom: 6px solid rgba(0, 0, 0, 0.75);\n        border-left: 6px solid transparent;\n        content: '';\n        height: 0;\n        top: 64px;\n        left: 20px;\n        width: 0; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:before {\n        background: rgba(0, 0, 0, 0.75);\n        border-radius: 2px;\n        color: #fff;\n        content: attr(data-title);\n        font-size: 14px;\n        padding: 0 5px;\n        top: 70px;\n        right: 0;\n        white-space: nowrap; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:hover:after, body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:hover:before {\n        opacity: 1;\n        transform: translate3d(0, 0, 0); }\n    body .mainApp .mainHeader nav .brand-logo2 {\n      margin-left: 50px; }\n      @media (max-width: 992px) {\n        body .mainApp .mainHeader nav .brand-logo2 {\n          left: 80px; } }\n      @media (max-width: 768px) {\n        body .mainApp .mainHeader nav .brand-logo2 {\n          display: none; } }\n  body .mainApp #slide-out .user-view .name {\n    font-size: 28px;\n    margin-top: -10px; }\n  body .mainApp #slide-out .user-view .email {\n    margin-top: 10px; }\n  body .mainApp .main-section {\n    display: flex;\n    flex-direction: row;\n    align-content: center; }\n    @media (min-width: 1100px) {\n      body .mainApp .main-section {\n        flex-wrap: nowrap; } }\n    @media (max-width: 1099px) {\n      body .mainApp .main-section {\n        flex-wrap: wrap; } }\n    @media (min-width: 1100px) {\n      body .mainApp .main-section .balancePanel {\n        width: 50%;\n        margin: 50px 50px;\n        margin-left: 20px; } }\n    @media (max-width: 1099px) {\n      body .mainApp .main-section .balancePanel {\n        width: 95%;\n        margin: 50px 20px;\n        margin-top: 10px; } }\n    body .mainApp .main-section .balancePanel .cardPanel {\n      text-align: center;\n      padding: 30px 0;\n      padding-top: 5px; }\n      body .mainApp .main-section .balancePanel .cardPanel .cardInside {\n        margin: 0 auto;\n        width: 90%;\n        height: 90%;\n        background-color: lightgrey;\n        border-radius: 5px; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside h2 {\n          margin-bottom: -40px;\n          font-size: 32px;\n          padding-top: 10px; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .moneyBagImg {\n          margin-top: -70px;\n          margin-bottom: -50px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .moneyBagImg span {\n            font-size: 50px;\n            top: 35px;\n            vertical-align: middle; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .balanceImg {\n          align-content: space-between;\n          margin-bottom: -50px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .balanceImg span {\n            vertical-align: middle;\n            font-size: 22px;\n            font-weight: 600;\n            color: red; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .balanceImg span:first-of-type {\n            color: green; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .categoryBalance .inputBalance {\n          width: 200px;\n          margin: 0 auto;\n          margin-top: -40px;\n          font-size: 40px;\n          font-weight: 600;\n          margin-bottom: 10px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .categoryBalance .inputBalance span {\n            font-size: 24px;\n            color: black; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .categoryBalance .catImgs {\n          display: flex;\n          justify-content: flex-start;\n          align-items: flex-start;\n          height: 75px;\n          margin-left: 20px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .categoryBalance .catImgs .value {\n            font-size: 32px;\n            font-weight: 600;\n            padding: 10px 0;\n            margin: 0 auto; }\n\n@keyframes showHide {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n", ""]);
 
 // exports
 
@@ -18078,8 +18080,8 @@ var ReactUpdates = __webpack_require__(17);
 var SyntheticEvent = __webpack_require__(18);
 
 var inputValueTracking = __webpack_require__(96);
-var getEventTarget = __webpack_require__(59);
-var isEventSupported = __webpack_require__(60);
+var getEventTarget = __webpack_require__(60);
+var isEventSupported = __webpack_require__(61);
 var isTextInputElement = __webpack_require__(97);
 
 var eventTypes = {
@@ -19450,7 +19452,7 @@ module.exports = HTMLDOMPropertyConfig;
 
 
 
-var DOMChildrenOperations = __webpack_require__(62);
+var DOMChildrenOperations = __webpack_require__(63);
 var ReactDOMIDOperations = __webpack_require__(175);
 
 /**
@@ -19849,7 +19851,7 @@ module.exports = getMarkupWrap;
 
 
 
-var DOMChildrenOperations = __webpack_require__(62);
+var DOMChildrenOperations = __webpack_require__(63);
 var ReactDOMComponentTree = __webpack_require__(9);
 
 /**
@@ -19893,7 +19895,7 @@ var _prodInvariant = __webpack_require__(6),
 var AutoFocusUtils = __webpack_require__(177);
 var CSSPropertyOperations = __webpack_require__(178);
 var DOMLazyTree = __webpack_require__(29);
-var DOMNamespaces = __webpack_require__(63);
+var DOMNamespaces = __webpack_require__(64);
 var DOMProperty = __webpack_require__(21);
 var DOMPropertyOperations = __webpack_require__(103);
 var EventPluginHub = __webpack_require__(32);
@@ -19912,10 +19914,10 @@ var ReactServerRenderingTransaction = __webpack_require__(198);
 var emptyFunction = __webpack_require__(11);
 var escapeTextContentForBrowser = __webpack_require__(44);
 var invariant = __webpack_require__(3);
-var isEventSupported = __webpack_require__(60);
+var isEventSupported = __webpack_require__(61);
 var shallowEqual = __webpack_require__(35);
 var inputValueTracking = __webpack_require__(96);
-var validateDOMNesting = __webpack_require__(70);
+var validateDOMNesting = __webpack_require__(71);
 var warning = __webpack_require__(4);
 
 var Flags = ReactDOMComponentFlags;
@@ -21508,7 +21510,7 @@ var _prodInvariant = __webpack_require__(6),
     _assign = __webpack_require__(7);
 
 var DOMPropertyOperations = __webpack_require__(103);
-var LinkedValueUtils = __webpack_require__(65);
+var LinkedValueUtils = __webpack_require__(66);
 var ReactDOMComponentTree = __webpack_require__(9);
 var ReactUpdates = __webpack_require__(17);
 
@@ -21924,7 +21926,7 @@ module.exports = ReactDOMOption;
 var _prodInvariant = __webpack_require__(6),
     _assign = __webpack_require__(7);
 
-var LinkedValueUtils = __webpack_require__(65);
+var LinkedValueUtils = __webpack_require__(66);
 var ReactDOMComponentTree = __webpack_require__(9);
 var ReactUpdates = __webpack_require__(17);
 
@@ -22087,7 +22089,7 @@ module.exports = ReactDOMTextarea;
 
 var _prodInvariant = __webpack_require__(6);
 
-var ReactComponentEnvironment = __webpack_require__(66);
+var ReactComponentEnvironment = __webpack_require__(67);
 var ReactInstanceMap = __webpack_require__(34);
 var ReactInstrumentation = __webpack_require__(14);
 
@@ -22538,8 +22540,8 @@ module.exports = ReactMultiChild;
 var ReactReconciler = __webpack_require__(28);
 
 var instantiateReactComponent = __webpack_require__(106);
-var KeyEscapeUtils = __webpack_require__(68);
-var shouldUpdateReactComponent = __webpack_require__(67);
+var KeyEscapeUtils = __webpack_require__(69);
+var shouldUpdateReactComponent = __webpack_require__(68);
 var traverseAllChildren = __webpack_require__(110);
 var warning = __webpack_require__(4);
 
@@ -22696,9 +22698,9 @@ var _prodInvariant = __webpack_require__(6),
     _assign = __webpack_require__(7);
 
 var React = __webpack_require__(26);
-var ReactComponentEnvironment = __webpack_require__(66);
+var ReactComponentEnvironment = __webpack_require__(67);
 var ReactCurrentOwner = __webpack_require__(16);
-var ReactErrorUtils = __webpack_require__(58);
+var ReactErrorUtils = __webpack_require__(59);
 var ReactInstanceMap = __webpack_require__(34);
 var ReactInstrumentation = __webpack_require__(14);
 var ReactNodeTypes = __webpack_require__(107);
@@ -22711,7 +22713,7 @@ if (process.env.NODE_ENV !== 'production') {
 var emptyObject = __webpack_require__(20);
 var invariant = __webpack_require__(3);
 var shallowEqual = __webpack_require__(35);
-var shouldUpdateReactComponent = __webpack_require__(67);
+var shouldUpdateReactComponent = __webpack_require__(68);
 var warning = __webpack_require__(4);
 
 var CompositeTypes = {
@@ -23808,7 +23810,7 @@ module.exports = getIteratorFn;
 
 
 
-var KeyEscapeUtils = __webpack_require__(68);
+var KeyEscapeUtils = __webpack_require__(69);
 var traverseAllChildren = __webpack_require__(110);
 var warning = __webpack_require__(4);
 
@@ -23984,7 +23986,7 @@ module.exports = ReactServerRenderingTransaction;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ReactUpdateQueue = __webpack_require__(69);
+var ReactUpdateQueue = __webpack_require__(70);
 
 var warning = __webpack_require__(4);
 
@@ -24330,13 +24332,13 @@ module.exports = {
 var _prodInvariant = __webpack_require__(6),
     _assign = __webpack_require__(7);
 
-var DOMChildrenOperations = __webpack_require__(62);
+var DOMChildrenOperations = __webpack_require__(63);
 var DOMLazyTree = __webpack_require__(29);
 var ReactDOMComponentTree = __webpack_require__(9);
 
 var escapeTextContentForBrowser = __webpack_require__(44);
 var invariant = __webpack_require__(3);
-var validateDOMNesting = __webpack_require__(70);
+var validateDOMNesting = __webpack_require__(71);
 
 /**
  * Text nodes violate a couple assumptions that React makes about components:
@@ -24572,7 +24574,7 @@ var PooledClass = __webpack_require__(24);
 var ReactDOMComponentTree = __webpack_require__(9);
 var ReactUpdates = __webpack_require__(17);
 
-var getEventTarget = __webpack_require__(59);
+var getEventTarget = __webpack_require__(60);
 var getUnboundedScrollPosition = __webpack_require__(205);
 
 /**
@@ -24766,8 +24768,8 @@ module.exports = getUnboundedScrollPosition;
 
 var DOMProperty = __webpack_require__(21);
 var EventPluginHub = __webpack_require__(32);
-var EventPluginUtils = __webpack_require__(57);
-var ReactComponentEnvironment = __webpack_require__(66);
+var EventPluginUtils = __webpack_require__(58);
+var ReactComponentEnvironment = __webpack_require__(67);
 var ReactEmptyComponent = __webpack_require__(108);
 var ReactBrowserEventEmitter = __webpack_require__(46);
 var ReactHostComponent = __webpack_require__(109);
@@ -24809,7 +24811,7 @@ var ReactBrowserEventEmitter = __webpack_require__(46);
 var ReactInputSelection = __webpack_require__(111);
 var ReactInstrumentation = __webpack_require__(14);
 var Transaction = __webpack_require__(41);
-var ReactUpdateQueue = __webpack_require__(69);
+var ReactUpdateQueue = __webpack_require__(70);
 
 /**
  * Ensures that, when possible, the selection range (currently selected text
@@ -25846,7 +25848,7 @@ var SyntheticUIEvent = __webpack_require__(33);
 var SyntheticWheelEvent = __webpack_require__(223);
 
 var emptyFunction = __webpack_require__(11);
-var getEventCharCode = __webpack_require__(72);
+var getEventCharCode = __webpack_require__(73);
 var invariant = __webpack_require__(3);
 
 /**
@@ -26181,9 +26183,9 @@ module.exports = SyntheticFocusEvent;
 
 var SyntheticUIEvent = __webpack_require__(33);
 
-var getEventCharCode = __webpack_require__(72);
+var getEventCharCode = __webpack_require__(73);
 var getEventKey = __webpack_require__(219);
-var getEventModifierState = __webpack_require__(61);
+var getEventModifierState = __webpack_require__(62);
 
 /**
  * @interface KeyboardEvent
@@ -26266,7 +26268,7 @@ module.exports = SyntheticKeyboardEvent;
 
 
 
-var getEventCharCode = __webpack_require__(72);
+var getEventCharCode = __webpack_require__(73);
 
 /**
  * Normalization of deprecated HTML5 `key` values
@@ -26422,7 +26424,7 @@ module.exports = SyntheticDragEvent;
 
 var SyntheticUIEvent = __webpack_require__(33);
 
-var getEventModifierState = __webpack_require__(61);
+var getEventModifierState = __webpack_require__(62);
 
 /**
  * @interface TouchEvent
@@ -26564,7 +26566,7 @@ module.exports = SyntheticWheelEvent;
 
 
 
-var validateDOMNesting = __webpack_require__(70);
+var validateDOMNesting = __webpack_require__(71);
 
 var DOC_NODE_TYPE = 9;
 
@@ -27084,7 +27086,7 @@ module.exports = ReactDOMInvalidARIAHook;
 
 var emptyFunction = __webpack_require__(11);
 var invariant = __webpack_require__(3);
-var ReactPropTypesSecret = __webpack_require__(55);
+var ReactPropTypesSecret = __webpack_require__(56);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -27152,9 +27154,9 @@ var _warning2 = _interopRequireDefault(_warning);
 
 var _PathUtils = __webpack_require__(36);
 
-var _LocationUtils = __webpack_require__(73);
+var _LocationUtils = __webpack_require__(74);
 
-var _createTransitionManager = __webpack_require__(74);
+var _createTransitionManager = __webpack_require__(75);
 
 var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
@@ -27347,7 +27349,7 @@ exports.default = createMemoryHistory;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(120);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -27651,7 +27653,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(120);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -27970,7 +27972,7 @@ var createHashHistory = function createHashHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(76);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -28655,7 +28657,7 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory__ = __webpack_require__(244);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(78);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -28730,11 +28732,11 @@ var _invariant = __webpack_require__(15);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _LocationUtils = __webpack_require__(73);
+var _LocationUtils = __webpack_require__(74);
 
 var _PathUtils = __webpack_require__(36);
 
-var _createTransitionManager = __webpack_require__(74);
+var _createTransitionManager = __webpack_require__(75);
 
 var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
@@ -29035,7 +29037,7 @@ exports.default = createBrowserHistory;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createHashHistory__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createHashHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createHashHistory__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(78);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -29107,11 +29109,11 @@ var _invariant = __webpack_require__(15);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _LocationUtils = __webpack_require__(73);
+var _LocationUtils = __webpack_require__(74);
 
 var _PathUtils = __webpack_require__(36);
 
-var _createTransitionManager = __webpack_require__(74);
+var _createTransitionManager = __webpack_require__(75);
 
 var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
@@ -29625,7 +29627,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(30);
 
-var _renderMergedProps = __webpack_require__(78);
+var _renderMergedProps = __webpack_require__(79);
 
 var _renderMergedProps2 = _interopRequireDefault(_renderMergedProps);
 
@@ -29663,7 +29665,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(30);
 
-var _renderMergedProps = __webpack_require__(78);
+var _renderMergedProps = __webpack_require__(79);
 
 var _renderMergedProps2 = _interopRequireDefault(_renderMergedProps);
 
@@ -29707,7 +29709,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(30);
 
-var _renderMergedProps = __webpack_require__(78);
+var _renderMergedProps = __webpack_require__(79);
 
 var _renderMergedProps2 = _interopRequireDefault(_renderMergedProps);
 
@@ -29756,11 +29758,11 @@ var _react4 = _interopRequireDefault(_react3);
 
 var _reactMaterialize = __webpack_require__(52);
 
-var _main = __webpack_require__(53);
+var _main = __webpack_require__(54);
 
 var _SelectCategory = __webpack_require__(306);
 
-var _categories = __webpack_require__(81);
+var _categories = __webpack_require__(53);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29799,8 +29801,19 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
       _this.setState({ inputRadio: event.target.id === "test1" ? false : true });
     };
 
+    _this.resetOptions = function () {
+      _this.setState({
+        inputMoney: "",
+        dateInput: _this.state.today,
+        inputOperationTitle: "",
+        inputNotes: "",
+        selectCategory: "",
+        inputRadio: false
+      });
+    };
+
     _this.addOperation = function () {
-      fetch('http://localhost:3000/users/' + _main.userObject.id).then(function (response) {
+      fetch('' + _main.url + _main.userObject.id, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
         return response && response.ok ? response.json() : "Błąd Połączenia";
       }).then(function (data) {
         //ZMIENNA Z HISTORIĄ OPERACJI UŻYTKOWNIKA ORAZ DODANIE DO HISTORII NOWEGO OBIEKTU
@@ -29815,9 +29828,9 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
           income: _this.state.inputRadio,
           src: _this.state.iconSrc
         });
-        console.log("Miesiąc: ", Number(newHistoryItem.operations[1].date.slice("-")[5] + newHistoryItem.operations[1].date.slice("-")[6]));
+        // console.log("Miesiąc: ", Number(newHistoryItem.operations[1].date.slice("-")[5] + newHistoryItem.operations[1].date.slice("-")[6]));
 
-        fetch('http://localhost:3000/users/' + _main.userObject.id, {
+        fetch('' + _main.url + _main.userObject.id, {
           method: "PUT",
           body: JSON.stringify(newHistoryItem),
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -29829,6 +29842,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
           _this.props.setHistory(newHistoryItem); //app.jsx >callback
           _this.props.getHistory(); //app.jsx >callback
           window.location.replace("#");
+          _this.resetOptions();
         }).catch(function (error) {
           return console.log(error);
         });
@@ -29847,7 +29861,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
       inputMoney: "",
       inputRadio: false,
       userOperationsHistory: "",
-      isReset: _this.props.reset,
+      // isReset: this.props.reset,
       incomeSum: 0,
       expenseSum: 0,
       iconSrc: ""
@@ -32696,7 +32710,7 @@ var emptyObject = __webpack_require__(20);
 var invariant = __webpack_require__(3);
 var warning = __webpack_require__(4);
 var emptyFunction = __webpack_require__(11);
-var checkPropTypes = __webpack_require__(56);
+var checkPropTypes = __webpack_require__(57);
 
 // TODO: this is special because it gets imported during build.
 
@@ -35251,7 +35265,7 @@ var _classnames = __webpack_require__(5);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _Row = __webpack_require__(80);
+var _Row = __webpack_require__(81);
 
 var _Row2 = _interopRequireDefault(_Row);
 
@@ -35943,7 +35957,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Button = __webpack_require__(79);
+var _Button = __webpack_require__(80);
 
 var _Button2 = _interopRequireDefault(_Button);
 
@@ -36203,7 +36217,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(2),l=__webpack_require__(10),B=__webpack_require__(7),C=__webpack_require__(11),ba=__webpack_require__(47),da=__webpack_require__(48),ea=__webpack_require__(35),fa=__webpack_require__(71),ia=__webpack_require__(45),D=__webpack_require__(20);
+var aa=__webpack_require__(2),l=__webpack_require__(10),B=__webpack_require__(7),C=__webpack_require__(11),ba=__webpack_require__(47),da=__webpack_require__(48),ea=__webpack_require__(35),fa=__webpack_require__(72),ia=__webpack_require__(45),D=__webpack_require__(20);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -36453,10 +36467,10 @@ var emptyFunction = __webpack_require__(11);
 var EventListener = __webpack_require__(47);
 var getActiveElement = __webpack_require__(48);
 var shallowEqual = __webpack_require__(35);
-var containsNode = __webpack_require__(71);
+var containsNode = __webpack_require__(72);
 var focusNode = __webpack_require__(45);
 var emptyObject = __webpack_require__(20);
-var checkPropTypes = __webpack_require__(56);
+var checkPropTypes = __webpack_require__(57);
 var hyphenateStyleName = __webpack_require__(102);
 var camelizeStyleName = __webpack_require__(101);
 
@@ -53434,7 +53448,7 @@ var _classnames = __webpack_require__(5);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _Row = __webpack_require__(80);
+var _Row = __webpack_require__(81);
 
 var _Row2 = _interopRequireDefault(_Row);
 
@@ -53630,7 +53644,7 @@ var _classnames = __webpack_require__(5);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _Button = __webpack_require__(79);
+var _Button = __webpack_require__(80);
 
 var _Button2 = _interopRequireDefault(_Button);
 
@@ -53705,7 +53719,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactMaterialize = __webpack_require__(52);
 
-var _categories = __webpack_require__(81);
+var _categories = __webpack_require__(53);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54015,7 +54029,7 @@ var _HistoryItem = __webpack_require__(310);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AppSectionMain = exports.AppSectionMain = function AppSectionMain(props) {
-  return props.opHistory.length !== 0 && _react2.default.createElement(
+  return props.opHistory.length !== 0 ? _react2.default.createElement(
     "section",
     { className: "operationsHistory" },
     _react2.default.createElement(
@@ -54042,11 +54056,100 @@ var AppSectionMain = exports.AppSectionMain = function AppSectionMain(props) {
             props.opHistory.map(function (item) {
               return _react2.default.createElement(_HistoryItem.HistoryItem, { key: item.id, history: props.opHistory[props.opHistory.length - (item.id + 1)],
                 callbackDelete: props.callbackDelete, callbackEdit: props.callbackEdit });
-            })
+            }),
+            _react2.default.createElement(
+              "a",
+              { className: "collection-item" },
+              _react2.default.createElement(
+                "span",
+                { className: "badge" },
+                " "
+              ),
+              _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                  "div",
+                  { className: "col-1" },
+                  " ",
+                  _react2.default.createElement(
+                    "span",
+                    { className: "collection-name" },
+                    "Twoje Operacje"
+                  ),
+                  " "
+                ),
+                _react2.default.createElement("div", { className: "col-2" })
+              )
+            )
           )
         )
       )
     )
+  ) : _react2.default.createElement(
+    "section",
+    { className: "operationsHistory" },
+    " ",
+    _react2.default.createElement(
+      "section",
+      { className: "row" },
+      " ",
+      _react2.default.createElement(
+        "div",
+        null,
+        " ",
+        _react2.default.createElement(
+          "div",
+          { className: "card-panel teal" },
+          _react2.default.createElement(
+            "a",
+            { onClick: props.callback, href: "#popup1", className: "addOperationButton btn-floating btn-large waves-effect waves-light" },
+            _react2.default.createElement(
+              "i",
+              { className: "material-icons" },
+              "add"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "collection" },
+            _react2.default.createElement(
+              "a",
+              { className: "collection-item" },
+              _react2.default.createElement(
+                "span",
+                { className: "badge" },
+                " "
+              ),
+              " ",
+              _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                  "div",
+                  { className: "col-1" },
+                  " ",
+                  _react2.default.createElement(
+                    "span",
+                    { className: "collection-name" },
+                    "Twoje Operacje"
+                  )
+                ),
+                " ",
+                _react2.default.createElement("div", { className: "col-2" }),
+                " "
+              ),
+              " "
+            ),
+            " "
+          ),
+          " "
+        ),
+        " "
+      ),
+      " "
+    ),
+    " "
   );
 };
 
@@ -54068,7 +54171,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactMaterialize = __webpack_require__(52);
 
-var _categories = __webpack_require__(81);
+var _categories = __webpack_require__(53);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54121,7 +54224,7 @@ var HistoryItem = exports.HistoryItem = function HistoryItem(props) {
           props.history.note
         )
       ),
-      _react2.default.createElement('img', { src: props.history.src, className: 'historyIcon', style: { width: "64px", height: "64px" } }),
+      _react2.default.createElement('img', { src: props.history.src, className: 'historyIcon', style: { height: "64px" } }),
       _react2.default.createElement(
         'div',
         { className: 'col-2' },
@@ -54154,74 +54257,223 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Balance = undefined;
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
 var _reactMaterialize = __webpack_require__(52);
 
+var _dates = __webpack_require__(312);
+
+var _categories = __webpack_require__(53);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Balance = exports.Balance = function Balance(props) {
-  return _react2.default.createElement(
-    'div',
-    { className: 'balancePanel' },
-    _react2.default.createElement(
-      _reactMaterialize.CardPanel,
-      { className: 'teal cardPanel black-text' },
-      _react2.default.createElement(
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Balance = exports.Balance = function (_React$Component) {
+  _inherits(Balance, _React$Component);
+
+  function Balance(props) {
+    _classCallCheck(this, Balance);
+
+    var _this = _possibleConstructorReturn(this, (Balance.__proto__ || Object.getPrototypeOf(Balance)).call(this, props));
+
+    _this.changeHandler = function (event) {
+      _this.setState(_defineProperty({}, event.target.name, event.target.value));_this.checkBalances;
+    };
+
+    _this.checkBalances = function () {
+      console.log("hejo");
+      var newArrIncome = [];
+      var newArrExpense = [];
+      for (var i = 0; i < _categories.incomeCategories.length; i++) {
+        newArrIncome[i] = 0;
+        for (var j = 0; j < _this.props.history.length; i++) {
+          console.log(_this.props.history[j].category, _this.props.history[j].money);
+          _this.props.history[j].selectCategory == _categories.incomeCategories.id && (newArrIncome[i] = _this.props.history[j].money);
+        }
+        console.log("newArr", newArrIncome);
+      }
+      return true;
+    };
+
+    _this.check = function () {
+      return _this.props.history.length > 0 ? true : false;
+    };
+
+    _this.state = {
+      incomeCatSum: [],
+      expenseCatSum: [],
+      selectValue: "1"
+    };
+    return _this;
+  }
+
+  _createClass(Balance, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.checkBalances();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return this.check() && _react2.default.createElement(
         'div',
-        { className: 'cardInside' },
+        { className: 'balancePanel' },
         _react2.default.createElement(
-          'h2',
-          null,
-          'Saldo'
-        ),
-        _react2.default.createElement('hr', null),
-        _react2.default.createElement(
-          'div',
-          { className: 'moneyBagImg' },
-          _react2.default.createElement('img', { src: './../../images/moneyBag.png' }),
+          _reactMaterialize.CardPanel,
+          { className: 'teal cardPanel black-text' },
           _react2.default.createElement(
-            'span',
-            null,
-            props.balance.toFixed(2),
-            'z\u0142'
+            'div',
+            { className: 'cardInside' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Saldo'
+            ),
+            _react2.default.createElement('hr', null),
+            _react2.default.createElement(
+              'div',
+              { className: 'moneyBagImg' },
+              _react2.default.createElement('img', { src: './../../images/moneyBag.png' }),
+              _react2.default.createElement(
+                'span',
+                null,
+                this.props.balance.toFixed(2),
+                'z\u0142'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'balanceImg' },
+              _react2.default.createElement(
+                'span',
+                null,
+                '+',
+                this.props.income.toFixed(2),
+                'z\u0142'
+              ),
+              _react2.default.createElement('img', { src: './../../images/balanceIncome.png' }),
+              _react2.default.createElement('img', { src: './../../images/balanceExpense.png' }),
+              _react2.default.createElement(
+                'span',
+                null,
+                '-',
+                this.props.expense.toFixed(2),
+                'z\u0142'
+              )
+            ),
+            _react2.default.createElement('hr', null),
+            _react2.default.createElement(
+              'div',
+              { className: 'categoryBalance' },
+              _react2.default.createElement(
+                _reactMaterialize.Input,
+                { type: 'select', value: this.state.selectValue, className: 'inputBalance', name: 'selectValue', onChange: this.changeHandler },
+                _react2.default.createElement(
+                  'option',
+                  { value: '1' },
+                  'Wydatki'
+                ),
+                _react2.default.createElement(
+                  'option',
+                  { value: '2' },
+                  'Wp\u0142ywy'
+                )
+              ),
+              this.state.selectValue === "1" ? _categories.incomeCategories.map(function (item) {
+                return _react2.default.createElement(
+                  'div',
+                  { key: item.id, className: 'catImgs' },
+                  _react2.default.createElement('img', { src: item.src }),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'value' },
+                    _this2.props.history[0].money
+                  ),
+                  _react2.default.createElement('br', null)
+                );
+              }) : _categories.expenseCategories.map(function (item) {
+                return _react2.default.createElement(
+                  'div',
+                  { key: item.id, className: 'catImgs' },
+                  _react2.default.createElement('img', { src: item.src }),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'value' },
+                    _this2.props.history[0].moeny
+                  ),
+                  _react2.default.createElement('br', null)
+                );
+              })
+            )
           )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'balanceImg' },
-          _react2.default.createElement(
-            'span',
-            null,
-            '+',
-            props.income.toFixed(2),
-            'z\u0142'
-          ),
-          _react2.default.createElement('img', { src: './../../images/balanceIncome.png' }),
-          _react2.default.createElement('img', { src: './../../images/balanceExpense.png' }),
-          _react2.default.createElement(
-            'span',
-            null,
-            '-',
-            props.expense.toFixed(2),
-            'z\u0142'
-          )
-        ),
-        props.history.map(function (item) {
-          return _react2.default.createElement(
-            'h3',
-            null,
-            item.money,
-            ', ',
-            String(item.income)
-          );
-        })
-      )
-    )
-  );
-};
+        )
+      );
+    }
+  }]);
+
+  return Balance;
+}(_react2.default.Component);
+
+/***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var months = exports.months = [{
+  id: 0,
+  name: "Styczeń"
+}, {
+  id: 1,
+  name: "Luty"
+}, {
+  id: 2,
+  name: "Marzec"
+}, {
+  id: 3,
+  name: "Kwiecień"
+}, {
+  id: 4,
+  name: "Maj"
+}, {
+  id: 5,
+  name: "Czerwiec"
+}, {
+  id: 6,
+  name: "Lipiec"
+}, {
+  id: 7,
+  name: "Sierpień"
+}, {
+  id: 8,
+  name: "Wrzesień"
+}, {
+  id: 9,
+  name: "Październik"
+}, {
+  id: 10,
+  name: "Listopad"
+}, {
+  id: 11,
+  name: "Grudzień"
+}];
 
 /***/ })
 /******/ ]);
