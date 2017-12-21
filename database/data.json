@@ -9,7 +9,7 @@
     {
       "id": "exampleApp",
       "login": "exampleApp",
-      "password": "54321",
+      "password": "KnkwU|mC:",
       "email": "mail@mail.com",
       "operations": [
         {
@@ -23,32 +23,38 @@
         },
         {
           "id": 1,
-          "date": "2017-12-20",
-          "title": "Wypłata, grudzień",
-          "note": "work hard!",
+          "date": "2017-12-21",
+          "title": "Kradzież ",
+          "note": "Złodziejaszek",
           "category": "Praca",
-          "money": "900",
+          "money": "120",
           "income": true
         },
         {
           "id": 2,
-          "date": "2017-12-20",
-          "title": "Leki",
-          "note": "Ibuprom x2",
-          "category": "Zdrowie",
-          "money": "62.50",
+          "date": "2017-12-21",
+          "title": "",
+          "note": "",
+          "category": "",
+          "money": "69",
           "income": false
         },
         {
           "id": 3,
-          "date": "2017-12-20",
-          "title": "Domowy Obiadek",
-          "note": "Obiadek",
-          "category": "Jedzenie",
-          "money": "12",
-          "income": false
+          "date": "2017-12-21",
+          "title": "tITLEW",
+          "note": "nornerk",
+          "category": "Praca",
+          "money": "50",
+          "income": true
         }
       ]
+    },
+    {
+      "id": "login",
+      "login": "login",
+      "password": "rk}vy",
+      "email": "mail@xd.com"
     }
   ]
 }

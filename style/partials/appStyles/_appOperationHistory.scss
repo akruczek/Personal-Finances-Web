@@ -1,10 +1,12 @@
 .operationsHistory {
-  @media(min-width: 1200px) {
+  @media(min-width: 1100px) {
     width: 50%;
-    margin: 50px 50px;}
-  @media(max-width: 1199px) {
+    margin: 50px 50px;
+    margin-right: 20px;}
+  @media(max-width: 1099px) {
     width: 95%;
-    margin: 50px 20px;}
+    margin: 50px 20px;
+    margin-bottom: 10px;}
   .row {
     align-items: center;
     font-size: 28px;

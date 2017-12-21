@@ -8,6 +8,7 @@ import {AddOperation} from "./components/AddOperation.jsx";
 import {ApplicationHeader} from "./components/ApplicationHeader.jsx";
 import {ApplicationSlide} from "./components/ApplicationSlide.jsx";
 import {AppSectionMain} from "./components/AppSectionMain.jsx";
+import {Balance} from "./components/Balance.jsx";
 
 const nbpUrl = "http://api.nbp.pl/api/exchangerates/rates/a/";
 
@@ -20,7 +21,10 @@ export class Application extends React.Component {
       EurRates: {},
       currencyUsd: {},
       UsdRates: {},
-      history: []
+      history: [],
+      balance: 0,
+      income: 0,
+      expense: 0
     }
   }
 
@@ -30,7 +34,30 @@ export class Application extends React.Component {
     .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
     .then(data => {
       this.setState({ history: data.operations });
+    })
+    .then(data => {
+      this.setBalance();
+      return true;
     }).catch(error => console.log(error));
+  }
+
+  setBalance =()=> {
+    let newBalance=0;
+    let newIncome=0; let newExpense=0;
+    console.log(this.state.history[1].money * -1);
+    for (let i=0; i<this.state.history.length; i++) {
+      newBalance += this.state.history[i].income ? Number(this.state.history[i].money) : Number(this.state.history[i].money * -1)
+      if (this.state.history[i].income)
+        (newIncome += Number(this.state.history[i].money));
+      else
+        (newExpense += Number(this.state.history[i].money));
+    }
+    this.setState({
+      balance: newBalance,
+      income: newIncome,
+      expense: newExpense
+    });
+    console.log(this.state.balance);
   }
 
   //NAWIGACJA SIDE-OUT, USTAWIENIE URL ZGODNIE Z ZALOGOWANYM UŻYTKOWNIKIEM
@@ -44,6 +71,7 @@ export class Application extends React.Component {
 
   componentWillMount() {
     this.getHistory();
+    // this.setBalance();
     //POBRANIE WALUTY EURO (NBP API)
     fetch(nbpUrl + "eur/")
     .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia (NBP api)";})
@@ -65,21 +93,69 @@ export class Application extends React.Component {
     }).catch(error => console.log(error));
   }
 
-  render() {
-    return userObject!==undefined ? (
-      <div className="mainApp">
-        <AddOperation isOpen={this.state.addOperation} setHistory={this.setHistory} closeCallback={this.openAddOpPanel} reset={true}/>
+  //USUWANIE OPERACJI (WCZYTANIE OBECNYCH -> USUNIĘCIĘ ODPOWIEDNIEGO ELEMENTU TABLICY -> ZWRÓCENIE NOWEJ TABLICY)
+  //+ SORTOWANIE TABLICY
+  deleteOperation =(id)=> {
+    fetch(`http://localhost:3000/users/${userObject.id}`)
+    .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
+    .then(data => {
+      let newData = data;
+      console.log("Pobrany obiekt", newData.operations);
+      console.log("value index to delete: ", newData.operations[id].id);
+      newData.operations = newData.operations.filter(item => item.id !== id);
+      console.log("Zmodyfikowany obiekt: ", newData.operations)
+      //SOROTWANIE
+      for (let i=0; i<newData.operations.length; i++) {
+        newData.operations[i].id = i;
+        console.log(newData.operations[i].id, ":ID:", i);
+      }
+      console.log("Posortowany obiekt: ", newData.operations);
 
+      console.log("Object to PUT", newData);
+      fetch(`http://localhost:3000/users/${userObject.id}`, {
+        method: "PUT",
+        body: JSON.stringify(newData),
+        headers: {"Content-Type" : "application/json", "Accept": "application/json"},
+        dataType: "json"
+      })
+      .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
+      .then(data => {
+        console.log("USUNIĘTO OPERACJĘ O ID " + id);
+      this.setHistory(newData);
+      }).catch(error => console.log(error));
+    }).catch(error => console.log(error));
+  }
+
+  editOperation =(id)=> {
+    console.log("edit operations " + id);
+  }
+
+  render() {
+    return (userObject!==undefined) ? (
+      <div className="mainApp">
         <ApplicationHeader mainPath={this.state.mainPath} userObject={userObject} currencyEur={this.state.currencyEur}
           EurRates={this.state.EurRates} currencyUsd={this.state.currencyUsd} UsdRates={this.state.UsdRates}/>
 
+        <AddOperation isOpen={this.state.addOperation} setHistory={this.setHistory} reset={true}/>
+
+        <div className="main-section">
+          <AppSectionMain callback={this.openAddOpPanel} opHistory={this.state.history}
+            callbackDelete={this.deleteOperation} callbackEdit={this.editOperation}/>
+
+          <Balance balance={this.state.balance} income={this.state.income} expense={this.state.expense}/>
+        </div>
+
         <ApplicationSlide userObject={userObject}/>
 
-        <BrowserRouter>
+
+        {/* <BrowserRouter>
           <Switch>
-            <PropsRoute path={this.state.path} callback={this.openAddOpPanel} opHistory={this.state.history} component={AppSectionMain}/>
+            <PropsRoute path={this.state.path} callback={this.openAddOpPanel} opHistory={this.state.history}
+              callbackDelete={this.deleteOperation} callbackEdit={this.editOperation} component={AppSectionMain}/>
           </Switch>
-        </BrowserRouter>
+        </BrowserRouter> */}
+
+
       </div>
     ) : (
       <h1 style={{fontSize: "60px", color: "darkred", textAlign: "center"}}>You have to log in!</h1>

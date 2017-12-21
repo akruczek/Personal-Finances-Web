@@ -13714,6 +13714,40 @@ var Application = exports.Application = function (_React$Component) {
       _this.setState({ history: newHistory.operations });
     };
 
+    _this.deleteOperation = function (id) {
+      fetch('http://localhost:3000/users/' + _main.userObject.id).then(function (response) {
+        return response && response.ok ? response.json() : "Błąd Połączenia";
+      }).then(function (data) {
+        var newData = data;
+        console.log("Pobrany obiekt", newData.operations);
+        console.log("value index to delete: ", newData.operations[id].id);
+        newData.operations = newData.operations.filter(function (item) {
+          return item.id !== id;
+        });
+        console.log("Zmodyfikowany obiekt: ", newData.operations);
+        console.log("Object to PUT", newData);
+        fetch('http://localhost:3000/users/' + _main.userObject.id, {
+          method: "PUT",
+          body: JSON.stringify(newData),
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          dataType: "json"
+        }).then(function (response) {
+          return response && response.ok ? response.json() : "Błąd Połączenia";
+        }).then(function (data) {
+          console.log("USUNIĘTO OPERACJĘ O ID " + id);
+          _this.setHistory(newData);
+        }).catch(function (error) {
+          return console.log(error);
+        });
+      }).catch(function (error) {
+        return console.log(error);
+      });
+    };
+
+    _this.editOperation = function (id) {
+      console.log("edit operations " + id);
+    };
+
     _this.state = {
       path: "",
       currencyEur: {},
@@ -13770,6 +13804,9 @@ var Application = exports.Application = function (_React$Component) {
         return console.log(error);
       });
     }
+
+    //USUWANIE OPERACJI (WCZYTANIE OBECNYCH -> USUNIĘCIĘ ODPOWIEDNIEGO ELEMENTU TABLICY -> ZWRÓCENIE NOWEJ TABLICY)
+
   }, {
     key: 'render',
     value: function render() {
@@ -13786,7 +13823,8 @@ var Application = exports.Application = function (_React$Component) {
           _react2.default.createElement(
             _reactRouterDom.Switch,
             null,
-            _react2.default.createElement(_reactRouterWithProps.PropsRoute, { path: this.state.path, callback: this.openAddOpPanel, opHistory: this.state.history, component: _AppSectionMain.AppSectionMain })
+            _react2.default.createElement(_reactRouterWithProps.PropsRoute, { path: this.state.path, callback: this.openAddOpPanel, opHistory: this.state.history,
+              callbackDelete: this.deleteOperation, callbackEdit: this.editOperation, component: _AppSectionMain.AppSectionMain })
           )
         )
       ) : _react2.default.createElement(
@@ -29723,7 +29761,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
       this.state.dateInput === "" && this.setState({ dateInput: this.state.today });
     }
 
-    //DODAWANIE NOWEJ OPERACJI (WCZYTANIE OBECNYCH -> DODANIE NOWEYCH -> ZWRÓCENIE NOWEJ TABLICY)
+    //DODAWANIE NOWEJ OPERACJI (WCZYTANIE OBECNYCH -> DODANIE NOWYCH -> ZWRÓCENIE NOWEJ TABLICY)
 
   }, {
     key: 'render',
@@ -53930,7 +53968,8 @@ var AppSectionMain = exports.AppSectionMain = function AppSectionMain(props) {
             "div",
             { className: "collection" },
             props.opHistory.map(function (item) {
-              return _react2.default.createElement(_HistoryItem.HistoryItem, { key: item.id, history: props.opHistory[props.opHistory.length - (item.id + 1)] });
+              return _react2.default.createElement(_HistoryItem.HistoryItem, { key: item.id, history: props.opHistory[props.opHistory.length - (item.id + 1)],
+                callbackDelete: props.callbackDelete, callbackEdit: props.callbackEdit });
             })
           )
         )
@@ -53969,12 +54008,16 @@ var HistoryItem = exports.HistoryItem = function HistoryItem(props) {
       _react2.default.createElement(
         'p',
         null,
-        _react2.default.createElement(_reactMaterialize.Button, { floating: true, className: 'green', waves: 'light', icon: 'edit' })
+        _react2.default.createElement(_reactMaterialize.Button, { floating: true, className: 'green', waves: 'light', icon: 'edit', onClick: function onClick() {
+            return props.callbackEdit(props.history.id);
+          } })
       ),
       _react2.default.createElement(
         'p',
         null,
-        _react2.default.createElement(_reactMaterialize.Button, { floating: true, className: 'blue', waves: 'light', icon: 'delete' })
+        _react2.default.createElement(_reactMaterialize.Button, { floating: true, className: 'blue', waves: 'light', icon: 'delete', onClick: function onClick() {
+            return props.callbackDelete(props.history.id);
+          } })
       )
     ),
     _react2.default.createElement(

@@ -1,0 +1,49 @@
+.main-section {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  @media(min-width: 1100px) {
+    flex-wrap: nowrap;}
+  @media(max-width: 1099px) {
+    flex-wrap: wrap;}
+  .balancePanel {
+    @media(min-width: 1100px) {
+      width: 50%;
+      margin: 50px 50px;
+      margin-left: 20px;}
+    @media(max-width: 1099px) {
+      width: 95%;
+      margin: 50px 20px;
+      margin-top: 10px;}
+    .cardPanel {
+      text-align: center;
+      padding: 30px 0;
+      padding-top: 5px;
+      .cardInside {
+        margin: 0 auto;
+        width: 90%;
+        height: 90%;
+        background-color: lightgrey;
+        border-radius: 5px;
+        h2 {
+          margin-bottom: -40px; font-size: 32px;
+          padding-top: 10px; }
+        .moneyBagImg {
+          margin-top: -70px;
+          span {
+            font-size: 50px;
+            top: 35px;
+            vertical-align: middle; } }
+        .balanceImg {
+          align-content: space-between;
+          span {
+            vertical-align: middle;
+            font-size: 22px;
+            font-weight: 600;
+          }
+          //color
+        }
+      }
+    }
+  }
+}

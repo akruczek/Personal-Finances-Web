@@ -17,7 +17,9 @@ export class AddOperation extends React.Component {
       inputMoney: "",
       inputRadio: false,
       userOperationsHistory: "",
-      isReset: this.props.reset
+      isReset: this.props.reset,
+      incomeSum: 0,
+      expenseSum: 0
     };
   }
 
@@ -31,7 +33,7 @@ export class AddOperation extends React.Component {
     $("select").material_select();
     this.state.dateInput === "" && this.setState({dateInput: this.state.today}); }
 
-  //DODAWANIE NOWEJ OPERACJI (WCZYTANIE OBECNYCH -> DODANIE NOWEYCH -> ZWRÓCENIE NOWEJ TABLICY)
+  //DODAWANIE NOWEJ OPERACJI (WCZYTANIE OBECNYCH -> DODANIE NOWYCH -> ZWRÓCENIE NOWEJ TABLICY)
   addOperation =()=> {
     fetch(`http://localhost:3000/users/${userObject.id}`)
     .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
@@ -58,7 +60,7 @@ export class AddOperation extends React.Component {
       .then(data => {
         console.log("DODANO NOWĄ OPERACJĘ: ", newHistoryItem);
         this.props.setHistory(newHistoryItem);  //app.jsx >callback
-        this.props.closeCallback();             //app.jsx >callback
+        window.location.replace("#");
       }).catch(error => console.log(error));
     }).catch(error => console.log(error));
   }
