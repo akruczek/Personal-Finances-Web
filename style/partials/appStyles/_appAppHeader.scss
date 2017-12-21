@@ -46,7 +46,10 @@
         &:hover:after, &:hover:before {
           opacity: 1;
           transform: translate3d(0,0,0); } } }
-    .brand-logo2 { margin-left: 50px; } } }
+    .brand-logo2 {
+      margin-left: 50px;
+      @media (max-width: 992px) { left: 80px; }
+      @media(max-width: 768px) {display:none;}} } }
 #slide-out {
   .user-view {
     .name {

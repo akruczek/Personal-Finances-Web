@@ -24,6 +24,9 @@
         margin-top: 2px;}
       div {
         display: flex;
+        .historyIcon {
+          margin-right: 10px;
+          margin-top: 20px; }
         .col-1 {
           width: 500px;
           flex-wrap: wrap;

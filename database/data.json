@@ -14,39 +14,33 @@
       "operations": [
         {
           "id": 0,
-          "date": "2017-12-20",
+          "date": "2017-12-21",
           "title": "Taksówka",
           "note": "Taxi",
           "category": "Transport",
-          "money": "36.55",
-          "income": false
+          "money": "35",
+          "income": false,
+          "src": "../images/catTransport.png"
         },
         {
           "id": 1,
           "date": "2017-12-21",
-          "title": "Kradzież ",
-          "note": "Złodziejaszek",
-          "category": "Praca",
-          "money": "120",
-          "income": true
+          "title": "Zakupy",
+          "note": "Żabka",
+          "category": "Jedzenie",
+          "money": "2.99",
+          "income": false,
+          "src": "../images/catFood.png"
         },
         {
           "id": 2,
           "date": "2017-12-21",
-          "title": "",
-          "note": "",
-          "category": "",
-          "money": "69",
-          "income": false
-        },
-        {
-          "id": 3,
-          "date": "2017-12-21",
-          "title": "tITLEW",
-          "note": "nornerk",
-          "category": "Praca",
-          "money": "50",
-          "income": true
+          "title": "Spodnie",
+          "note": "Galeria",
+          "category": "Odzież",
+          "money": "80.99",
+          "income": false,
+          "src": "../images/catClothing.png"
         }
       ]
     },
@@ -55,6 +49,12 @@
       "login": "login",
       "password": "rk}vy",
       "email": "mail@xd.com"
+    },
+    {
+      "id": "konto",
+      "login": "konto",
+      "password": "rk}vy",
+      "email": "mail@msdkf."
     }
   ]
 }

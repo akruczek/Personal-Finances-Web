@@ -3,6 +3,7 @@ import Cleave from 'cleave.js/react';
 import {Button, Icon} from 'react-materialize';
 import {userObject} from "./../main.jsx";
 import {SelectCategoryExpense, SelectCategoryIncome} from "./SelectCategory.jsx";
+import {incomeCategories, expenseCategories} from "../variables/categories.jsx";
 
 export class AddOperation extends React.Component {
   constructor(props) {
@@ -19,11 +20,20 @@ export class AddOperation extends React.Component {
       userOperationsHistory: "",
       isReset: this.props.reset,
       incomeSum: 0,
-      expenseSum: 0
+      expenseSum: 0,
+      iconSrc: ""
     };
   }
 
   changeHandler =(event)=> { this.setState({ [event.target.name]: event.target.value });}
+
+  changeHandlerSelect =(event)=> {
+    console.log(incomeCategories[Number(event.target.value[0])]);
+    this.setState({
+      [event.target.name]: !this.state.inputRadio ? incomeCategories[Number(event.target.value[0])].name : expenseCategories[Number(event.target.value[0])].name,
+      iconSrc: !this.state.inputRadio ? incomeCategories[Number(event.target.value[0])].src : expenseCategories[Number(event.target.value[0])].src
+    });
+  }
 
   changeHandlerRaw =(event)=> { this.setState({ [event.target.name]: event.target.rawValue }); }
 
@@ -47,8 +57,10 @@ export class AddOperation extends React.Component {
         note: this.state.inputNotes,
         category: this.state.selectCategory,
         money: this.state.inputMoney,
-        income: this.state.inputRadio
+        income: this.state.inputRadio,
+        src: this.state.iconSrc
       });
+      console.log("Miesiąc: ", Number(newHistoryItem.operations[1].date.slice("-")[5] + newHistoryItem.operations[1].date.slice("-")[6]));
 
       fetch(`http://localhost:3000/users/${userObject.id}`, {
         method: "PUT",
@@ -60,6 +72,7 @@ export class AddOperation extends React.Component {
       .then(data => {
         console.log("DODANO NOWĄ OPERACJĘ: ", newHistoryItem);
         this.props.setHistory(newHistoryItem);  //app.jsx >callback
+        this.props.getHistory();  //app.jsx >callback
         window.location.replace("#");
       }).catch(error => console.log(error));
     }).catch(error => console.log(error));
@@ -84,9 +97,9 @@ export class AddOperation extends React.Component {
                 </p>
 
                 {!this.state.inputRadio ?
-                  ( <SelectCategoryExpense change={this.changeHandler}/> )
+                  ( <SelectCategoryExpense change={this.changeHandlerSelect}/> )
                   :
-                  ( <SelectCategoryIncome change={this.changeHandler}/> )}
+                  ( <SelectCategoryIncome change={this.changeHandlerSelect}/> )}
 
                 <span className="dateSpan">Data:</span><br/>
                 <input onChange={this.changeHandler} type="date" className="datepicker dateInput" name="dateInput" defaultValue={this.state.today} />

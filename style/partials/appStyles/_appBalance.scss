@@ -30,6 +30,7 @@
           padding-top: 10px; }
         .moneyBagImg {
           margin-top: -70px;
+          margin-bottom: -50px;
           span {
             font-size: 50px;
             top: 35px;
@@ -40,8 +41,8 @@
             vertical-align: middle;
             font-size: 22px;
             font-weight: 600;
-          }
-          //color
+            color: red; }
+          span:first-of-type { color: green; }
         }
       }
     }

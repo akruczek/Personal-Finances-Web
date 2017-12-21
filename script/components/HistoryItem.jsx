@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button} from 'react-materialize';
+import {incomeCategories, expenseCategories} from "../variables/categories.jsx";
 
 export const HistoryItem =(props)=> {
   return props.history ? (
@@ -14,6 +15,7 @@ export const HistoryItem =(props)=> {
           <span className="collection-name">{props.history.title}</span>
           <span className="collection-info">{props.history.note}</span>
         </div>
+        <img src={props.history.src} className="historyIcon" style={{width: "64px", height: "64px"}}/>
         <div className="col-2">
           <div className="btn-floating btn-large waves-effect waves-light collection-value"
             style={{backgroundColor: props.history.income ? "green" : "red"}}>
