@@ -10,7 +10,6 @@ export class AddOperation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: this.props.isOpen,
       dateInput: "",
       today: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate(),
       inputOperationTitle: "",
@@ -19,7 +18,6 @@ export class AddOperation extends React.Component {
       inputMoney: "",
       inputRadio: false,
       userOperationsHistory: "",
-      // isReset: this.props.reset,
       incomeSum: 0,
       expenseSum: 0,
       iconSrc: ""
@@ -42,7 +40,8 @@ export class AddOperation extends React.Component {
 
   componentDidMount() {
     $("select").material_select();
-    this.state.dateInput === "" && this.setState({dateInput: this.state.today}); }
+    this.state.dateInput === "" && this.setState({dateInput: this.state.today, isLoaded: false});
+  }
 
   resetOptions =()=> {
     this.setState({
@@ -53,10 +52,12 @@ export class AddOperation extends React.Component {
       selectCategory: "",
       inputRadio: false,
     });
+    this.props.endEdit();
   }
 
   //DODAWANIE NOWEJ OPERACJI (WCZYTANIE OBECNYCH -> DODANIE NOWYCH -> ZWRÓCENIE NOWEJ TABLICY)
   addOperation =()=> {
+    console.log("adding");
     fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
     .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
     .then(data=> {
@@ -91,12 +92,67 @@ export class AddOperation extends React.Component {
     }).catch(error => console.log(error));
   }
 
+  //EDYCJA OPERACJI -> TODO
+  editOperation =()=> {
+    console.log("editing");
+    fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
+    .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
+    .then(data=> {
+      //ZMIENNA Z HISTORIĄ OPERACJI UŻYTKOWNIKA ORAZ DODANIE DO HISTORII NOWEGO OBIEKTU
+      let newHistoryItem = data;
+      newHistoryItem.operations[this.props.editOperationId] = {
+        id: data.operations.length,
+        date: this.state.dateInput,
+        title: this.state.inputOperationTitle,
+        note: this.state.inputNotes,
+        category: this.state.selectCategory,
+        money: this.state.inputMoney,
+        income: this.state.inputRadio,
+        src: this.state.iconSrc
+      };
+
+      fetch(`${url}${userObject.id}`, {
+        method: "PUT",
+        body: JSON.stringify(newHistoryItem),
+        headers: {"Content-Type" : "application/json", "Accept": "application/json"},
+        dataType: "json"
+      })
+      .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
+      .then(data => {
+        console.log("ZEDYTOWANO OPERACJĘ: ", newHistoryItem);
+        this.props.setHistory(newHistoryItem);  //app.jsx >callback
+        this.props.getHistory();  //app.jsx >callback
+        window.location.replace("#");
+        this.resetOptions();
+      }).catch(error => console.log(error));
+    }).catch(error => console.log(error));
+
+    this.resetOptions();
+  }
+
+  //EDYCJA OPERACJI TODO
+  resetEdit() {
+    console.log("edit reset");
+    this.props.isEdit && (
+      this.setState({
+        today: this.props.history[this.props.editOperationId].date,
+        inputMoney: this.props.history[this.props.editOperationId].money,
+        inputOperationTitle: this.props.history[this.props.editOperationId].title,
+        inputNotes: this.props.history[this.props.editOperationId].note,
+        inputRadio: !this.props.history[this.props.editOperationId].income
+      })
+    );
+  }
+
   render() {
+    console.log(this.props.isEdit);
+    console.log(this.props.editOperationId);
+    console.log(this.props.history);
     return (
       <div id="popup1" className="overlay">
         <div className="popup">
           <h2>Dodaj nową operację</h2>
-          <a className="close" href="#">&times;</a>
+          <a className="close" href="#" onClick={this.props.endEdit}>&times;</a>
           <div className="content">
             <section className="addOperationSection">
               <form>
@@ -105,7 +161,7 @@ export class AddOperation extends React.Component {
                   <label htmlFor="test1">Wydatek</label>
                 </p>
                 <p>
-                  <input name="group1" onClick={this.changeHandlerRadio} type="radio" id="test2" />
+                  <input defaultChecked={false} name="group1" onClick={this.changeHandlerRadio} type="radio" id="test2" />
                   <label htmlFor="test2">Wpływ</label>
                 </p>
 
@@ -115,21 +171,27 @@ export class AddOperation extends React.Component {
                   ( <SelectCategoryIncome change={this.changeHandlerSelect}/> )}
 
                 <span className="dateSpan">Data:</span><br/>
-                <input onChange={this.changeHandler} type="date" className="datepicker dateInput" name="dateInput" defaultValue={this.state.today} />
+                <input onChange={this.changeHandler} type="date" className="datepicker dateInput" name="dateInput"
+                  defaultValue={this.state.today} />
               </form>
 
             <section className="OperationDescription">
               <span className="moneyValue">Kwota:</span><br/>
               <Cleave options={{prefix: "zł:", numeral: true, rawValueTrimPrefix: true}}
-                className="inputMoney" id="first_name2" onChange={this.changeHandlerRaw} name="inputMoney" value={this.state.inputMoney}/>
+                className="inputMoney" id="first_name2" onChange={this.changeHandlerRaw} name="inputMoney"
+                value={this.state.inputMoney}/>
+
                 <br/>
                 <span>Tytuł Operacji:</span><br/>
-                <input value={this.state.inputOperationTitle} onChange={this.changeHandler} name="inputOperationTitle" id="first_name2" type="text"/>
+                <input value={this.state.inputOperationTitle}
+                  onChange={this.changeHandler} name="inputOperationTitle" id="first_name2" type="text"/>
                 <br/>
                 <span>Notatki</span><br/>
-                <textarea maxLength={70} value={this.state.inputNotes} onChange={this.changeHandler} name="inputNotes" id="textarea1" className="materialize-textarea" data-length="70"></textarea>
+                <textarea maxLength={70} value={this.state.inputNotes}
+                  onChange={this.changeHandler} name="inputNotes" id="textarea1" className="materialize-textarea" data-length="70"></textarea>
 
-                <Button onClick={this.addOperation} href="#" large className="addOpBtn" waves='light'><a href="#">Dodaj</a><Icon left>playlist_add</Icon></Button>
+                <Button onClick={() =>{this.props.isEdit ? this.editOperation() : this.addOperation()}}
+                  href="#" large className="addOpBtn" waves='light'><a href="#">Dodaj</a><Icon left>playlist_add</Icon></Button>
               </section>
             </section>
           </div>

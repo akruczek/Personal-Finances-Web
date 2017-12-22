@@ -5,7 +5,7 @@ import {incomeCategories, expenseCategories} from "../variables/categories.jsx";
 export const HistoryItem =(props)=> {
   return props.history ? (
     <a className="collection-item"><span className="badge">
-        <p><Button floating className='green' waves='light' icon='edit' onClick={() => props.callbackEdit(props.history.id)}/></p>
+        <p><a href="#popup1"><Button floating className='green' waves='light' icon='edit' onClick={() => props.callbackEdit(props.history.id)}/></a></p>
         <p><Button floating className='blue' waves='light' icon='delete' onClick={() => props.callbackDelete(props.history.id)}/></p>
       </span>
       <div>

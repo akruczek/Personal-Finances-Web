@@ -1,66 +1,145 @@
 {
   "users": [
     {
-      "id": "akruczek",
-      "login": "akruczek",
-      "password": "KnkwU|mC:",
-      "email": "adam.krucz1@gmail.com"
-    },
-    {
       "id": "exampleApp",
       "login": "exampleApp",
-      "password": "KnkwU|mC:",
-      "email": "mail@mail.com",
+      "password": "okwzvo",
+      "email": "example@example.com",
       "operations": [
         {
           "id": 0,
-          "date": "2017-12-21",
-          "title": "Zlecenie",
-          "note": "Web Site",
+          "date": "2017-12-01",
+          "title": "Wypłata",
+          "note": "Grudzień",
           "category": "Praca",
-          "money": "600",
+          "money": "2400",
           "income": true,
           "src": "../images/catWork.png"
         },
         {
           "id": 1,
-          "date": "2017-12-21",
+          "date": "2017-12-02",
           "title": "Rachunki",
-          "note": "Prąd",
+          "note": "Prąd, woda, gaz",
           "category": "Dom",
-          "money": "350",
+          "money": "860",
           "income": false,
           "src": "../images/catHome.png"
         },
         {
           "id": 2,
-          "date": "2017-12-21",
-          "title": "Wygrana",
-          "note": "Kasyno",
-          "category": "Hazard",
-          "money": "65",
-          "income": true,
-          "src": "../images/catHazard.png"
-        },
-        {
-          "id": 3,
-          "date": "2017-12-21",
-          "title": "RedBull",
-          "note": "Żabka",
+          "date": "2017-12-04",
+          "title": "Zakupy",
+          "note": "Supermarket",
           "category": "Jedzenie",
-          "money": "5.99",
+          "money": "220.55",
           "income": false,
           "src": "../images/catFood.png"
         },
         {
+          "id": 3,
+          "date": "2017-12-06",
+          "title": "Gry",
+          "note": "Steam",
+          "category": "Rozrywka",
+          "money": "87.99",
+          "income": false,
+          "src": "../images/catEntertainment.png"
+        },
+        {
           "id": 4,
-          "date": "2017-12-21",
-          "title": "Ulotki",
-          "note": "Roznoszenie ulotek",
+          "date": "2017-12-07",
+          "title": "Benzyna",
+          "note": "Orlen",
+          "category": "Transport",
+          "money": "180.77",
+          "income": false,
+          "src": "../images/catTransport.png"
+        },
+        {
+          "id": 5,
+          "date": "2017-12-09",
+          "title": "Wygrana",
+          "note": "Kasyno",
+          "category": "Hazard",
+          "money": "150",
+          "income": true,
+          "src": "../images/catHazard.png"
+        },
+        {
+          "id": 6,
+          "date": "2017-12-10",
+          "title": "Kino",
+          "note": "Cinema City",
+          "category": "Rozrywka",
+          "money": "65",
+          "income": false,
+          "src": "../images/catEntertainment.png"
+        },
+        {
+          "id": 7,
+          "date": "2017-12-13",
+          "title": "Małe Zakupy",
+          "note": "Sklepik",
+          "category": "Jedzenie",
+          "money": "33.12",
+          "income": false,
+          "src": "../images/catFood.png"
+        },
+        {
+          "id": 8,
+          "date": "2017-12-16",
+          "title": "AGD",
+          "note": "coś tam",
+          "category": "Dom",
+          "money": "21.50",
+          "income": false,
+          "src": "../images/catHome.png"
+        },
+        {
+          "id": 9,
+          "date": "2017-12-19",
+          "title": "Zlecenie",
+          "note": "",
           "category": "Praca",
-          "money": "122.50",
+          "money": "175",
           "income": true,
           "src": "../images/catWork.png"
+        },
+        {
+          "id": 10,
+          "date": "2017-12-22",
+          "title": "Zakupy",
+          "note": "Market",
+          "category": "Jedzenie",
+          "money": "",
+          "income": false,
+          "src": "../images/catFood.png"
+        }
+      ]
+    },
+    {
+      "id": "userX",
+      "login": "userX",
+      "password": "",
+      "email": "user@x.x",
+      "operations": []
+    },
+    {
+      "id": "exampleUser",
+      "login": "exampleUser",
+      "password": "zk}}y|n",
+      "email": "example@user.com",
+      "operations": [
+        {
+          "id": 0,
+          "date": "2017-12-22",
+          "title": "",
+          "note": "",
+          "category": "",
+          "money": "",
+          "income": false,
+          "src": ""
         }
       ]
     },
@@ -68,13 +147,19 @@
       "id": "login",
       "login": "login",
       "password": "rk}vy",
-      "email": "mail@xd.com"
-    },
-    {
-      "id": "konto",
-      "login": "konto",
-      "password": "rk}vy",
-      "email": "mail@msdkf."
+      "email": "login@haslo.com",
+      "operations": [
+        {
+          "id": 0,
+          "date": "2017-12-22",
+          "title": "Operacja",
+          "note": "operation",
+          "category": "Dom",
+          "money": "500",
+          "income": false,
+          "src": "../images/catHome.png"
+        }
+      ]
     }
   ]
 }

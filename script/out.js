@@ -1508,7 +1508,7 @@ var CallbackQueue = __webpack_require__(94);
 var PooledClass = __webpack_require__(24);
 var ReactFeatureFlags = __webpack_require__(95);
 var ReactReconciler = __webpack_require__(28);
-var Transaction = __webpack_require__(41);
+var Transaction = __webpack_require__(43);
 
 var invariant = __webpack_require__(3);
 
@@ -2371,7 +2371,7 @@ var _assign = __webpack_require__(7);
 var ReactCurrentOwner = __webpack_require__(16);
 
 var warning = __webpack_require__(4);
-var canDefineProperty = __webpack_require__(39);
+var canDefineProperty = __webpack_require__(41);
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 var REACT_ELEMENT_TYPE = __webpack_require__(84);
@@ -2864,7 +2864,7 @@ var cloneElement = ReactElement.cloneElement;
 
 if (process.env.NODE_ENV !== 'production') {
   var lowPriorityWarning = __webpack_require__(55);
-  var canDefineProperty = __webpack_require__(39);
+  var canDefineProperty = __webpack_require__(41);
   var ReactElementValidator = __webpack_require__(86);
   var didWarnPropTypesDeprecated = false;
   createElement = ReactElementValidator.createElement;
@@ -3195,7 +3195,7 @@ module.exports = ReactReconciler;
 
 
 var DOMNamespaces = __webpack_require__(64);
-var setInnerHTML = __webpack_require__(43);
+var setInnerHTML = __webpack_require__(45);
 
 var createMicrosoftUnsafeLocalFunction = __webpack_require__(65);
 var setTextContent = __webpack_require__(99);
@@ -3514,7 +3514,7 @@ module.exports = EventPropagators;
 
 var _prodInvariant = __webpack_require__(6);
 
-var EventPluginRegistry = __webpack_require__(40);
+var EventPluginRegistry = __webpack_require__(42);
 var EventPluginUtils = __webpack_require__(58);
 var ReactErrorUtils = __webpack_require__(59);
 
@@ -4105,6 +4105,241 @@ var createPath = function createPath(location) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Toast = exports.Tag = exports.Tabs = exports.Table = exports.Tab = exports.Slider = exports.Slide = exports.SideNavItem = exports.SideNav = exports.Section = exports.SearchForm = exports.Row = exports.ProgressBar = exports.Preloader = exports.Parallax = exports.PaginationButton = exports.Pagination = exports.OverlayTrigger = exports.Overlay = exports.Navbar = exports.NavItem = exports.Modal = exports.MenuItem = exports.MediaBox = exports.Input = exports.Icon = exports.Footer = exports.Dropdown = exports.Divider = exports.Container = exports.CollectionItem = exports.Collection = exports.CollapsibleItem = exports.Collapsible = exports.Col = exports.Chip = exports.CardTitle = exports.CardPanel = exports.Card = exports.Carousel = exports.Button = exports.Breadcrumb = exports.Badge = exports.Autocomplete = undefined;
+
+var _Autocomplete = __webpack_require__(263);
+
+var _Autocomplete2 = _interopRequireDefault(_Autocomplete);
+
+var _Badge = __webpack_require__(266);
+
+var _Badge2 = _interopRequireDefault(_Badge);
+
+var _Breadcrumb = __webpack_require__(267);
+
+var _Breadcrumb2 = _interopRequireDefault(_Breadcrumb);
+
+var _Button = __webpack_require__(80);
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _Carousel = __webpack_require__(268);
+
+var _Carousel2 = _interopRequireDefault(_Carousel);
+
+var _Card = __webpack_require__(269);
+
+var _Card2 = _interopRequireDefault(_Card);
+
+var _CardPanel = __webpack_require__(270);
+
+var _CardPanel2 = _interopRequireDefault(_CardPanel);
+
+var _CardTitle = __webpack_require__(271);
+
+var _CardTitle2 = _interopRequireDefault(_CardTitle);
+
+var _Chip = __webpack_require__(128);
+
+var _Chip2 = _interopRequireDefault(_Chip);
+
+var _Col = __webpack_require__(39);
+
+var _Col2 = _interopRequireDefault(_Col);
+
+var _Collapsible = __webpack_require__(272);
+
+var _Collapsible2 = _interopRequireDefault(_Collapsible);
+
+var _CollapsibleItem = __webpack_require__(273);
+
+var _CollapsibleItem2 = _interopRequireDefault(_CollapsibleItem);
+
+var _Collection = __webpack_require__(274);
+
+var _Collection2 = _interopRequireDefault(_Collection);
+
+var _CollectionItem = __webpack_require__(275);
+
+var _CollectionItem2 = _interopRequireDefault(_CollectionItem);
+
+var _Container = __webpack_require__(276);
+
+var _Container2 = _interopRequireDefault(_Container);
+
+var _Divider = __webpack_require__(277);
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _Dropdown = __webpack_require__(278);
+
+var _Dropdown2 = _interopRequireDefault(_Dropdown);
+
+var _Footer = __webpack_require__(279);
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
+var _Icon = __webpack_require__(19);
+
+var _Icon2 = _interopRequireDefault(_Icon);
+
+var _Input = __webpack_require__(280);
+
+var _Input2 = _interopRequireDefault(_Input);
+
+var _MediaBox = __webpack_require__(281);
+
+var _MediaBox2 = _interopRequireDefault(_MediaBox);
+
+var _MenuItem = __webpack_require__(282);
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _Modal = __webpack_require__(283);
+
+var _Modal2 = _interopRequireDefault(_Modal);
+
+var _NavItem = __webpack_require__(287);
+
+var _NavItem2 = _interopRequireDefault(_NavItem);
+
+var _Navbar = __webpack_require__(288);
+
+var _Navbar2 = _interopRequireDefault(_Navbar);
+
+var _Overlay = __webpack_require__(130);
+
+var _Overlay2 = _interopRequireDefault(_Overlay);
+
+var _OverlayTrigger = __webpack_require__(129);
+
+var _OverlayTrigger2 = _interopRequireDefault(_OverlayTrigger);
+
+var _Pagination = __webpack_require__(289);
+
+var _Pagination2 = _interopRequireDefault(_Pagination);
+
+var _PaginationButton = __webpack_require__(131);
+
+var _PaginationButton2 = _interopRequireDefault(_PaginationButton);
+
+var _Parallax = __webpack_require__(290);
+
+var _Parallax2 = _interopRequireDefault(_Parallax);
+
+var _Preloader = __webpack_require__(291);
+
+var _Preloader2 = _interopRequireDefault(_Preloader);
+
+var _ProgressBar = __webpack_require__(293);
+
+var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
+
+var _Row = __webpack_require__(81);
+
+var _Row2 = _interopRequireDefault(_Row);
+
+var _SearchForm = __webpack_require__(294);
+
+var _SearchForm2 = _interopRequireDefault(_SearchForm);
+
+var _Section = __webpack_require__(295);
+
+var _Section2 = _interopRequireDefault(_Section);
+
+var _SideNav = __webpack_require__(296);
+
+var _SideNav2 = _interopRequireDefault(_SideNav);
+
+var _SideNavItem = __webpack_require__(297);
+
+var _SideNavItem2 = _interopRequireDefault(_SideNavItem);
+
+var _Slide = __webpack_require__(299);
+
+var _Slide2 = _interopRequireDefault(_Slide);
+
+var _Slider = __webpack_require__(300);
+
+var _Slider2 = _interopRequireDefault(_Slider);
+
+var _Tab = __webpack_require__(301);
+
+var _Tab2 = _interopRequireDefault(_Tab);
+
+var _Table = __webpack_require__(302);
+
+var _Table2 = _interopRequireDefault(_Table);
+
+var _Tabs = __webpack_require__(303);
+
+var _Tabs2 = _interopRequireDefault(_Tabs);
+
+var _Tag = __webpack_require__(304);
+
+var _Tag2 = _interopRequireDefault(_Tag);
+
+var _Toast = __webpack_require__(305);
+
+var _Toast2 = _interopRequireDefault(_Toast);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.Autocomplete = _Autocomplete2.default;
+exports.Badge = _Badge2.default;
+exports.Breadcrumb = _Breadcrumb2.default;
+exports.Button = _Button2.default;
+exports.Carousel = _Carousel2.default;
+exports.Card = _Card2.default;
+exports.CardPanel = _CardPanel2.default;
+exports.CardTitle = _CardTitle2.default;
+exports.Chip = _Chip2.default;
+exports.Col = _Col2.default;
+exports.Collapsible = _Collapsible2.default;
+exports.CollapsibleItem = _CollapsibleItem2.default;
+exports.Collection = _Collection2.default;
+exports.CollectionItem = _CollectionItem2.default;
+exports.Container = _Container2.default;
+exports.Divider = _Divider2.default;
+exports.Dropdown = _Dropdown2.default;
+exports.Footer = _Footer2.default;
+exports.Icon = _Icon2.default;
+exports.Input = _Input2.default;
+exports.MediaBox = _MediaBox2.default;
+exports.MenuItem = _MenuItem2.default;
+exports.Modal = _Modal2.default;
+exports.NavItem = _NavItem2.default;
+exports.Navbar = _Navbar2.default;
+exports.Overlay = _Overlay2.default;
+exports.OverlayTrigger = _OverlayTrigger2.default;
+exports.Pagination = _Pagination2.default;
+exports.PaginationButton = _PaginationButton2.default;
+exports.Parallax = _Parallax2.default;
+exports.Preloader = _Preloader2.default;
+exports.ProgressBar = _ProgressBar2.default;
+exports.Row = _Row2.default;
+exports.SearchForm = _SearchForm2.default;
+exports.Section = _Section2.default;
+exports.SideNav = _SideNav2.default;
+exports.SideNavItem = _SideNavItem2.default;
+exports.Slide = _Slide2.default;
+exports.Slider = _Slider2.default;
+exports.Tab = _Tab2.default;
+exports.Table = _Table2.default;
+exports.Tabs = _Tabs2.default;
+exports.Tag = _Tag2.default;
+exports.Toast = _Toast2.default;
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -4189,7 +4424,66 @@ Col.propTypes = {
 exports.default = Col;
 
 /***/ }),
-/* 39 */
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var incomeCategories = exports.incomeCategories = [{
+  id: "0",
+  name: "Jedzenie",
+  value: "food",
+  src: "../images/catFood.png"
+}, {
+  id: "1",
+  name: "Dom",
+  value: "home",
+  src: "../images/catHome.png"
+}, {
+  id: "2",
+  name: "Transport",
+  value: "transport",
+  src: "../images/catTransport.png"
+}, {
+  id: "3",
+  name: "Rozrywka",
+  value: "entertainment",
+  src: "../images/catEntertainment.png"
+}, {
+  id: "4",
+  name: "Odzież",
+  value: "clothing",
+  src: "../images/catClothing.png"
+}, {
+  id: "5",
+  name: "Nauka",
+  value: "study",
+  src: "../images/catStudy.png"
+}, {
+  id: "6",
+  name: "Zdrowie",
+  value: "health",
+  src: "../images/catHealth.png"
+}];
+
+var expenseCategories = exports.expenseCategories = [{
+  id: "0",
+  name: "Praca",
+  value: "work",
+  src: "../images/catWork.png"
+}, {
+  id: "1",
+  name: "Hazard",
+  value: "hazard",
+  src: "../images/catHazard.png"
+}];
+
+/***/ }),
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4219,7 +4513,7 @@ module.exports = canDefineProperty;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4476,7 +4770,7 @@ module.exports = EventPluginRegistry;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4708,7 +5002,7 @@ module.exports = TransactionImpl;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4783,7 +5077,7 @@ SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 module.exports = SyntheticMouseEvent;
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4884,7 +5178,7 @@ if (ExecutionEnvironment.canUseDOM) {
 module.exports = setInnerHTML;
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5009,7 +5303,7 @@ function escapeTextContentForBrowser(text) {
 module.exports = escapeTextContentForBrowser;
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5039,7 +5333,7 @@ function focusNode(node) {
 module.exports = focusNode;
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5055,7 +5349,7 @@ module.exports = focusNode;
 
 var _assign = __webpack_require__(7);
 
-var EventPluginRegistry = __webpack_require__(40);
+var EventPluginRegistry = __webpack_require__(42);
 var ReactEventEmitterMixin = __webpack_require__(184);
 var ViewportMetrics = __webpack_require__(98);
 
@@ -5366,7 +5660,7 @@ var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
 module.exports = ReactBrowserEventEmitter;
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5447,7 +5741,7 @@ module.exports = EventListener;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5489,7 +5783,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5608,7 +5902,7 @@ Router.childContextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Router);
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5684,7 +5978,7 @@ var locationsAreEqual = function locationsAreEqual(a, b) {
 };
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5761,300 +6055,6 @@ var matchPath = function matchPath(pathname) {
 /* harmony default export */ __webpack_exports__["a"] = (matchPath);
 
 /***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Toast = exports.Tag = exports.Tabs = exports.Table = exports.Tab = exports.Slider = exports.Slide = exports.SideNavItem = exports.SideNav = exports.Section = exports.SearchForm = exports.Row = exports.ProgressBar = exports.Preloader = exports.Parallax = exports.PaginationButton = exports.Pagination = exports.OverlayTrigger = exports.Overlay = exports.Navbar = exports.NavItem = exports.Modal = exports.MenuItem = exports.MediaBox = exports.Input = exports.Icon = exports.Footer = exports.Dropdown = exports.Divider = exports.Container = exports.CollectionItem = exports.Collection = exports.CollapsibleItem = exports.Collapsible = exports.Col = exports.Chip = exports.CardTitle = exports.CardPanel = exports.Card = exports.Carousel = exports.Button = exports.Breadcrumb = exports.Badge = exports.Autocomplete = undefined;
-
-var _Autocomplete = __webpack_require__(263);
-
-var _Autocomplete2 = _interopRequireDefault(_Autocomplete);
-
-var _Badge = __webpack_require__(266);
-
-var _Badge2 = _interopRequireDefault(_Badge);
-
-var _Breadcrumb = __webpack_require__(267);
-
-var _Breadcrumb2 = _interopRequireDefault(_Breadcrumb);
-
-var _Button = __webpack_require__(80);
-
-var _Button2 = _interopRequireDefault(_Button);
-
-var _Carousel = __webpack_require__(268);
-
-var _Carousel2 = _interopRequireDefault(_Carousel);
-
-var _Card = __webpack_require__(269);
-
-var _Card2 = _interopRequireDefault(_Card);
-
-var _CardPanel = __webpack_require__(270);
-
-var _CardPanel2 = _interopRequireDefault(_CardPanel);
-
-var _CardTitle = __webpack_require__(271);
-
-var _CardTitle2 = _interopRequireDefault(_CardTitle);
-
-var _Chip = __webpack_require__(128);
-
-var _Chip2 = _interopRequireDefault(_Chip);
-
-var _Col = __webpack_require__(38);
-
-var _Col2 = _interopRequireDefault(_Col);
-
-var _Collapsible = __webpack_require__(272);
-
-var _Collapsible2 = _interopRequireDefault(_Collapsible);
-
-var _CollapsibleItem = __webpack_require__(273);
-
-var _CollapsibleItem2 = _interopRequireDefault(_CollapsibleItem);
-
-var _Collection = __webpack_require__(274);
-
-var _Collection2 = _interopRequireDefault(_Collection);
-
-var _CollectionItem = __webpack_require__(275);
-
-var _CollectionItem2 = _interopRequireDefault(_CollectionItem);
-
-var _Container = __webpack_require__(276);
-
-var _Container2 = _interopRequireDefault(_Container);
-
-var _Divider = __webpack_require__(277);
-
-var _Divider2 = _interopRequireDefault(_Divider);
-
-var _Dropdown = __webpack_require__(278);
-
-var _Dropdown2 = _interopRequireDefault(_Dropdown);
-
-var _Footer = __webpack_require__(279);
-
-var _Footer2 = _interopRequireDefault(_Footer);
-
-var _Icon = __webpack_require__(19);
-
-var _Icon2 = _interopRequireDefault(_Icon);
-
-var _Input = __webpack_require__(280);
-
-var _Input2 = _interopRequireDefault(_Input);
-
-var _MediaBox = __webpack_require__(281);
-
-var _MediaBox2 = _interopRequireDefault(_MediaBox);
-
-var _MenuItem = __webpack_require__(282);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _Modal = __webpack_require__(283);
-
-var _Modal2 = _interopRequireDefault(_Modal);
-
-var _NavItem = __webpack_require__(287);
-
-var _NavItem2 = _interopRequireDefault(_NavItem);
-
-var _Navbar = __webpack_require__(288);
-
-var _Navbar2 = _interopRequireDefault(_Navbar);
-
-var _Overlay = __webpack_require__(130);
-
-var _Overlay2 = _interopRequireDefault(_Overlay);
-
-var _OverlayTrigger = __webpack_require__(129);
-
-var _OverlayTrigger2 = _interopRequireDefault(_OverlayTrigger);
-
-var _Pagination = __webpack_require__(289);
-
-var _Pagination2 = _interopRequireDefault(_Pagination);
-
-var _PaginationButton = __webpack_require__(131);
-
-var _PaginationButton2 = _interopRequireDefault(_PaginationButton);
-
-var _Parallax = __webpack_require__(290);
-
-var _Parallax2 = _interopRequireDefault(_Parallax);
-
-var _Preloader = __webpack_require__(291);
-
-var _Preloader2 = _interopRequireDefault(_Preloader);
-
-var _ProgressBar = __webpack_require__(293);
-
-var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
-
-var _Row = __webpack_require__(81);
-
-var _Row2 = _interopRequireDefault(_Row);
-
-var _SearchForm = __webpack_require__(294);
-
-var _SearchForm2 = _interopRequireDefault(_SearchForm);
-
-var _Section = __webpack_require__(295);
-
-var _Section2 = _interopRequireDefault(_Section);
-
-var _SideNav = __webpack_require__(296);
-
-var _SideNav2 = _interopRequireDefault(_SideNav);
-
-var _SideNavItem = __webpack_require__(297);
-
-var _SideNavItem2 = _interopRequireDefault(_SideNavItem);
-
-var _Slide = __webpack_require__(299);
-
-var _Slide2 = _interopRequireDefault(_Slide);
-
-var _Slider = __webpack_require__(300);
-
-var _Slider2 = _interopRequireDefault(_Slider);
-
-var _Tab = __webpack_require__(301);
-
-var _Tab2 = _interopRequireDefault(_Tab);
-
-var _Table = __webpack_require__(302);
-
-var _Table2 = _interopRequireDefault(_Table);
-
-var _Tabs = __webpack_require__(303);
-
-var _Tabs2 = _interopRequireDefault(_Tabs);
-
-var _Tag = __webpack_require__(304);
-
-var _Tag2 = _interopRequireDefault(_Tag);
-
-var _Toast = __webpack_require__(305);
-
-var _Toast2 = _interopRequireDefault(_Toast);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.Autocomplete = _Autocomplete2.default;
-exports.Badge = _Badge2.default;
-exports.Breadcrumb = _Breadcrumb2.default;
-exports.Button = _Button2.default;
-exports.Carousel = _Carousel2.default;
-exports.Card = _Card2.default;
-exports.CardPanel = _CardPanel2.default;
-exports.CardTitle = _CardTitle2.default;
-exports.Chip = _Chip2.default;
-exports.Col = _Col2.default;
-exports.Collapsible = _Collapsible2.default;
-exports.CollapsibleItem = _CollapsibleItem2.default;
-exports.Collection = _Collection2.default;
-exports.CollectionItem = _CollectionItem2.default;
-exports.Container = _Container2.default;
-exports.Divider = _Divider2.default;
-exports.Dropdown = _Dropdown2.default;
-exports.Footer = _Footer2.default;
-exports.Icon = _Icon2.default;
-exports.Input = _Input2.default;
-exports.MediaBox = _MediaBox2.default;
-exports.MenuItem = _MenuItem2.default;
-exports.Modal = _Modal2.default;
-exports.NavItem = _NavItem2.default;
-exports.Navbar = _Navbar2.default;
-exports.Overlay = _Overlay2.default;
-exports.OverlayTrigger = _OverlayTrigger2.default;
-exports.Pagination = _Pagination2.default;
-exports.PaginationButton = _PaginationButton2.default;
-exports.Parallax = _Parallax2.default;
-exports.Preloader = _Preloader2.default;
-exports.ProgressBar = _ProgressBar2.default;
-exports.Row = _Row2.default;
-exports.SearchForm = _SearchForm2.default;
-exports.Section = _Section2.default;
-exports.SideNav = _SideNav2.default;
-exports.SideNavItem = _SideNavItem2.default;
-exports.Slide = _Slide2.default;
-exports.Slider = _Slider2.default;
-exports.Tab = _Tab2.default;
-exports.Table = _Table2.default;
-exports.Tabs = _Tabs2.default;
-exports.Tag = _Tag2.default;
-exports.Toast = _Toast2.default;
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var incomeCategories = exports.incomeCategories = [{
-  id: "0",
-  name: "Jedzenie",
-  value: "food",
-  src: "../images/catFood.png"
-}, {
-  id: "1",
-  name: "Dom",
-  value: "home",
-  src: "../images/catHome.png"
-}, {
-  id: "2",
-  name: "Transport",
-  value: "transport",
-  src: "../images/catTransport.png"
-}, {
-  id: "3",
-  name: "Rozrywka",
-  value: "entertainment",
-  src: "../images/catEntertainment.png"
-}, {
-  id: "4",
-  name: "Odzież",
-  value: "clothing",
-  src: "../images/catClothing.png"
-}, {
-  id: "5",
-  name: "Nauka",
-  value: "study",
-  src: "../images/catStudy.png"
-}, {
-  id: "6",
-  name: "Zdrowie",
-  value: "health",
-  src: "../images/catHealth.png"
-}];
-
-var expenseCategories = exports.expenseCategories = [{
-  id: "0",
-  name: "Praca",
-  value: "work",
-  src: "../images/catWork.png"
-}, {
-  id: "1",
-  name: "Hazard",
-  value: "hazard",
-  src: "../images/catHazard.png"
-}];
-
-/***/ }),
 /* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6101,12 +6101,12 @@ var isValid = void 0;
 var userObject = exports.userObject = void 0;
 
 // -----DEV-ONLY\/
-exports.userObject = userObject = {
-  "id": "exampleApp",
-  "login": "exampleApp",
-  "password": "okwzvo",
-  "email": "app@example.com"
-};
+// userObject = {
+//     "id": "exampleApp",
+//     "login": "exampleApp",
+//     "password": "okwzvo",
+//     "email": "app@example.com"
+//   };
 // /\
 
 
@@ -6168,9 +6168,9 @@ var Login = function (_React$Component) {
       inputPasswordClass: "",
       errorMessage: ""
       // //-----DEV ONLY \/
-    };_this.props.history.push('/app/' + userObject.id);
-    // //-----DEV ONLY /\
-    return _this;
+      // this.props.history.push(`/app/${userObject.id}`);
+      // //-----DEV ONLY /\
+    };return _this;
   }
 
   //ZMIANY W INPUTACH
@@ -6322,7 +6322,8 @@ var CreateAccount = function (_React$Component2) {
               id: _this2.state.inputLogin,
               login: _this2.state.inputLogin,
               password: _this2.Code(_this2.state.inputPassword),
-              email: _this2.state.inputEmail
+              email: _this2.state.inputEmail,
+              operations: []
             });
           }
         }
@@ -7141,7 +7142,7 @@ var ReactDOMComponentTree = __webpack_require__(9);
 var ReactInstrumentation = __webpack_require__(14);
 
 var createMicrosoftUnsafeLocalFunction = __webpack_require__(65);
-var setInnerHTML = __webpack_require__(43);
+var setInnerHTML = __webpack_require__(45);
 var setTextContent = __webpack_require__(99);
 
 function getNodeAfter(parentNode, node) {
@@ -8687,7 +8688,7 @@ var createTransitionManager = function createTransitionManager() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(53);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -8828,7 +8829,7 @@ Route.childContextTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__ = __webpack_require__(51);
 // Written in this round about way for babel-transform-imports
 
 
@@ -9131,7 +9132,7 @@ var _prodInvariant = __webpack_require__(27),
 
 var ReactNoopUpdateQueue = __webpack_require__(83);
 
-var canDefineProperty = __webpack_require__(39);
+var canDefineProperty = __webpack_require__(41);
 var emptyObject = __webpack_require__(20);
 var invariant = __webpack_require__(3);
 var lowPriorityWarning = __webpack_require__(55);
@@ -9452,7 +9453,7 @@ var ReactElement = __webpack_require__(23);
 
 var checkReactTypeSpec = __webpack_require__(144);
 
-var canDefineProperty = __webpack_require__(39);
+var canDefineProperty = __webpack_require__(41);
 var getIteratorFn = __webpack_require__(85);
 var warning = __webpack_require__(4);
 var lowPriorityWarning = __webpack_require__(55);
@@ -10794,8 +10795,8 @@ module.exports = ViewportMetrics;
 
 
 var ExecutionEnvironment = __webpack_require__(10);
-var escapeTextContentForBrowser = __webpack_require__(44);
-var setInnerHTML = __webpack_require__(43);
+var escapeTextContentForBrowser = __webpack_require__(46);
+var setInnerHTML = __webpack_require__(45);
 
 /**
  * Set the textContent property of a node, ensuring that whitespace is preserved
@@ -12019,8 +12020,8 @@ module.exports = traverseAllChildren;
 var ReactDOMSelection = __webpack_require__(208);
 
 var containsNode = __webpack_require__(72);
-var focusNode = __webpack_require__(45);
-var getActiveElement = __webpack_require__(48);
+var focusNode = __webpack_require__(47);
+var getActiveElement = __webpack_require__(50);
 
 function isInDocument(node) {
   return containsNode(document.documentElement, node);
@@ -12147,7 +12148,7 @@ var _prodInvariant = __webpack_require__(6);
 var DOMLazyTree = __webpack_require__(29);
 var DOMProperty = __webpack_require__(21);
 var React = __webpack_require__(26);
-var ReactBrowserEventEmitter = __webpack_require__(46);
+var ReactBrowserEventEmitter = __webpack_require__(48);
 var ReactCurrentOwner = __webpack_require__(16);
 var ReactDOMComponentTree = __webpack_require__(9);
 var ReactDOMContainerInfo = __webpack_require__(224);
@@ -12163,7 +12164,7 @@ var ReactUpdates = __webpack_require__(17);
 var emptyObject = __webpack_require__(20);
 var instantiateReactComponent = __webpack_require__(106);
 var invariant = __webpack_require__(3);
-var setInnerHTML = __webpack_require__(43);
+var setInnerHTML = __webpack_require__(45);
 var shouldUpdateReactComponent = __webpack_require__(68);
 var warning = __webpack_require__(4);
 
@@ -12716,13 +12717,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_2__Redirect__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(77);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_3__Route__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(51);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_4__Router__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__StaticRouter__ = __webpack_require__(121);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_5__StaticRouter__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Switch__ = __webpack_require__(122);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_6__Switch__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__matchPath__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__matchPath__ = __webpack_require__(53);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_7__matchPath__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__withRouter__ = __webpack_require__(123);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_8__withRouter__["a"]; });
@@ -12758,7 +12759,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__ = __webpack_require__(235);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(51);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -13214,7 +13215,7 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(51);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -13395,7 +13396,7 @@ StaticRouter.childContextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(53);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -13735,6 +13736,8 @@ var _main = __webpack_require__(54);
 
 var _AddOperation = __webpack_require__(259);
 
+var _reactMaterialize = __webpack_require__(38);
+
 var _ApplicationHeader = __webpack_require__(307);
 
 var _ApplicationSlide = __webpack_require__(308);
@@ -13742,6 +13745,8 @@ var _ApplicationSlide = __webpack_require__(308);
 var _AppSectionMain = __webpack_require__(309);
 
 var _Balance = __webpack_require__(311);
+
+var _categories = __webpack_require__(40);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -13777,17 +13782,51 @@ var Application = exports.Application = function (_React$Component) {
       console.log("Balance: ", _this.state.balance);
     };
 
-    _this.getHistory = function () {
-      fetch('' + _main.url + _main.userObject.id, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
-        return response && response.ok ? response.json() : "Błąd Połączenia";
-      }).then(function (data) {
-        _this.setState({ history: data.operations });
-      }).then(function (data) {
-        _this.setBalance();
-        return true;
-      }).catch(function (error) {
-        return console.log(error);
+    _this.checkBalances = function () {
+      var newArrIncome = [];
+      var newArrExpense = [];
+      //WYDATKI KATEGORYCZNIE
+      for (var i = 0; i < _categories.incomeCategories.length; i++) {
+        newArrIncome[i] = 0;
+        for (var j = 0; j < _this.state.history.length; j++) {
+          _this.state.history[j].category === _categories.incomeCategories[i].name && (newArrIncome[i] += Number(_this.state.history[j].money));
+        }
+        newArrIncome[i] = newArrIncome[i].toFixed(2);
+      }
+      console.log("newArrIncome[i]", newArrIncome);
+
+      //WPŁYWY KATEGORYCZNIE
+      for (var _i = 0; _i < _categories.expenseCategories.length; _i++) {
+        newArrExpense[_i] = 0;
+        for (var _j = 0; _j < _this.state.history.length; _j++) {
+          _this.state.history[_j].category === _categories.expenseCategories[_i].name && (newArrExpense[_i] += Number(_this.state.history[_j].money));
+        }
+        newArrExpense[_i] = newArrExpense[_i].toFixed(2);
+        console.log("newArrExpense[i]", newArrExpense);
+      }
+
+      _this.setState({
+        incomeCatSum: newArrIncome,
+        expenseCatSum: newArrExpense,
+        isLoaded: true
       });
+    };
+
+    _this.getHistory = function () {
+      console.log("addded");
+      setTimeout(function () {
+        fetch('' + _main.url + _main.userObject.id, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
+          return response && response.ok ? response.json() : "Błąd Połączenia";
+        }).then(function (data) {
+          _this.setState({ history: data.operations });
+        }).then(function (data) {
+          _this.setBalance();
+        }).then(function (data) {
+          _this.checkBalances();
+        }).catch(function (error) {
+          return console.log(error);
+        });
+      }, 500);
     };
 
     _this.setHistory = function (newHistory) {
@@ -13805,10 +13844,7 @@ var Application = exports.Application = function (_React$Component) {
         //SOROTWANIE
         for (var i = 0; i < newData.operations.length; i++) {
           newData.operations[i].id = i;
-          console.log(newData.operations[i].id, ":ID:", i);
-        }
-
-        fetch('' + _main.url + _main.userObject.id, {
+        }fetch('' + _main.url + _main.userObject.id, {
           method: "PUT",
           body: JSON.stringify(newData),
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -13827,7 +13863,12 @@ var Application = exports.Application = function (_React$Component) {
     };
 
     _this.editOperation = function (id) {
-      console.log("edit operations " + id);
+      console.log("id", id);
+      _this.setState({ editOperationId: id, isEdit: true });
+    };
+
+    _this.endEdit = function () {
+      _this.setState({ isEdit: false });
     };
 
     _this.state = {
@@ -13839,7 +13880,12 @@ var Application = exports.Application = function (_React$Component) {
       history: [],
       balance: 0,
       income: 0,
-      expense: 0
+      expense: 0,
+      isLoaded: false,
+      isEdit: false,
+      editOperationId: 9999,
+      incomeCatSum: [],
+      expenseCatSum: []
     };
     return _this;
   }
@@ -13899,23 +13945,24 @@ var Application = exports.Application = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      return this.getHistory && _main.userObject !== undefined ? _react2.default.createElement(
+      return _main.userObject !== undefined ? this.state.isLoaded ? _react2.default.createElement(
         'div',
         { className: 'mainApp' },
         _react2.default.createElement(_ApplicationHeader.ApplicationHeader, { mainPath: this.state.mainPath, userObject: _main.userObject, currencyEur: this.state.currencyEur,
           EurRates: this.state.EurRates, currencyUsd: this.state.currencyUsd, UsdRates: this.state.UsdRates }),
-        _react2.default.createElement(_AddOperation.AddOperation, { isOpen: this.state.addOperation, setHistory: this.setHistory, reset: true,
-          getHistory: this.getHistory }),
+        _react2.default.createElement(_AddOperation.AddOperation, { setHistory: this.setHistory, reset: true, getHistory: this.getHistory, history: this.state.history,
+          isEdit: this.state.isEdit, editOperationId: this.state.editOperationId, endEdit: this.endEdit }),
         _react2.default.createElement(
           'div',
           { className: 'main-section' },
-          _react2.default.createElement(_AppSectionMain.AppSectionMain, { callback: this.openAddOpPanel, opHistory: this.state.history,
+          _react2.default.createElement(_AppSectionMain.AppSectionMain, { opHistory: this.state.history,
             callbackDelete: this.deleteOperation, callbackEdit: this.editOperation }),
           _react2.default.createElement(_Balance.Balance, { balance: this.state.balance, income: this.state.income, expense: this.state.expense,
-            history: this.state.history })
+            history: this.state.history, incomeCatSum: this.state.incomeCatSum, expenseCatSum: this.state.expenseCatSum,
+            checkBalances: this.checkBalances })
         ),
         _react2.default.createElement(_ApplicationSlide.ApplicationSlide, { userObject: _main.userObject })
-      ) : _react2.default.createElement(
+      ) : _react2.default.createElement(_reactMaterialize.Preloader, { className: 'preloader', size: 'big', color: 'red' }) : _react2.default.createElement(
         'h1',
         { style: { fontSize: "60px", color: "darkred", textAlign: "center" } },
         'You have to log in!'
@@ -14808,7 +14855,7 @@ exports = module.exports = __webpack_require__(136)(undefined);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i,900,900i&subset=latin-ext);", ""]);
 
 // module
-exports.push([module.i, "/*\n009DCC - lightblue\n3D8499 - blue\n00FFAE - green/blue\nFF4C40 - lightred\nCC144A - red\n*/\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody {\n  background-color: #3D8499; }\n  body .login {\n    height: 440px;\n    margin: 150px auto;\n    box-sizing: border-box;\n    background-color: lightgrey;\n    border-radius: 30px;\n    box-shadow: 0 0 20px 5px #00C3AB;\n    text-align: center; }\n    @media (max-width: 599px) {\n      body .login {\n        width: 100%; } }\n    @media (min-width: 600px) {\n      body .login {\n        width: 600px; } }\n    body .login #loginHeader {\n      font-size: 36px;\n      margin: 20px;\n      padding-top: 10px; }\n    body .login #createAccountHeader {\n      font-size: 36px;\n      margin: 10px;\n      padding-top: 10px; }\n    body .login #errorMessage {\n      display: block;\n      height: 1px;\n      font-size: 18px;\n      margin-top: 15px;\n      font-weight: 600;\n      color: #cc0000; }\n    body .login #buttonCreate {\n      margin-top: -10px;\n      font-size: 22px; }\n    body .login #buttonLogin {\n      font-size: 22px; }\n    body .login #createAccountLink {\n      margin-top: 50px; }\n    body .login #logInLink {\n      margin-top: 20px; }\n    body .login .formLogin {\n      display: flex;\n      justify-content: center; }\n      body .login .formLogin .input-field {\n        width: 300px;\n        margin-top: 5px; }\n      body .login .formLogin input, body .login .formLogin label {\n        font-size: 28px; }\n\n/*\n009DCC - lightblue\n3D8499 - blue\n00FFAE - green/blue\nFF4C40 - lightred\nCC144A - red\n*/\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody .mainApp {\n  margin: 0 auto;\n  font-size: 100px;\n  width: 95vw;\n  background-color: #00FFAE; }\n  body .mainApp .overlay {\n    z-index: 20;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: rgba(0, 0, 0, 0.7);\n    transition: opacity 500ms;\n    visibility: hidden;\n    opacity: 0; }\n    body .mainApp .overlay:target {\n      visibility: visible;\n      opacity: 1; }\n    body .mainApp .overlay .popup {\n      z-index: 20;\n      margin: 70px auto;\n      padding: 20px;\n      background: lightgrey;\n      border-radius: 5px;\n      width: 60%;\n      position: relative;\n      transition: all 1s ease-in-out; }\n      body .mainApp .overlay .popup h2 {\n        font-size: 32px;\n        margin-top: 0; }\n      body .mainApp .overlay .popup .close {\n        position: absolute;\n        top: 20px;\n        right: 30px;\n        transition: all 200ms;\n        font-size: 30px;\n        font-weight: bold;\n        text-decoration: none;\n        color: #333; }\n        body .mainApp .overlay .popup .close:hover {\n          color: #06D85F; }\n      body .mainApp .overlay .popup .content {\n        max-height: 30%;\n        overflow: auto; }\n  body .mainApp .addOperationSection {\n    display: flex;\n    font-size: 24px; }\n    body .mainApp .addOperationSection form input {\n      font-weight: 700;\n      font-size: 20px; }\n    body .mainApp .addOperationSection form label {\n      font-size: 24px;\n      color: black; }\n    body .mainApp .addOperationSection form .selectCategory {\n      width: 200px; }\n    body .mainApp .addOperationSection .OperationDescription {\n      margin-left: auto; }\n      body .mainApp .addOperationSection .OperationDescription textarea {\n        width: 300px; }\n      body .mainApp .addOperationSection .OperationDescription textarea, body .mainApp .addOperationSection .OperationDescription input {\n        font-weight: 700;\n        font-size: 20px; }\n      body .mainApp .addOperationSection .OperationDescription .moneyValue {\n        font-size: 30px;\n        font-weight: 700; }\n      body .mainApp .addOperationSection .OperationDescription input {\n        width: 200px;\n        margin-top: -40px; }\n      body .mainApp .addOperationSection .OperationDescription span {\n        font-size: 16px; }\n      body .mainApp .addOperationSection .OperationDescription .addOpBtn {\n        position: absolute;\n        left: 20px;\n        bottom: 15px; }\n        body .mainApp .addOperationSection .OperationDescription .addOpBtn a {\n          color: white;\n          font-weight: 700; }\n    body .mainApp .addOperationSection .dateSpan {\n      margin-top: 10px;\n      font-size: 16px; }\n    body .mainApp .addOperationSection .dateInput {\n      width: 200px;\n      margin-top: -40px; }\n  @media (min-width: 1100px) {\n    body .mainApp .operationsHistory {\n      width: 50%;\n      margin: 50px 50px;\n      margin-right: 20px; } }\n  @media (max-width: 1099px) {\n    body .mainApp .operationsHistory {\n      width: 95%;\n      margin: 50px 20px;\n      margin-bottom: 10px; } }\n  body .mainApp .operationsHistory .row {\n    align-items: center;\n    font-size: 28px;\n    position: relative; }\n    body .mainApp .operationsHistory .row .fixed-action-btn {\n      height: 50px; }\n    body .mainApp .operationsHistory .row .addOperationButton {\n      position: absolute;\n      background-color: #CC144A;\n      right: 0;\n      top: 0; }\n    body .mainApp .operationsHistory .row .collection {\n      display: flex;\n      flex-direction: column; }\n      body .mainApp .operationsHistory .row .collection p:first-of-type {\n        cursor: pointer;\n        margin-top: 2px; }\n      body .mainApp .operationsHistory .row .collection div {\n        display: flex; }\n        body .mainApp .operationsHistory .row .collection div .historyIcon {\n          margin-right: 10px;\n          margin-top: 20px; }\n        body .mainApp .operationsHistory .row .collection div .col-1 {\n          width: 500px;\n          flex-wrap: wrap;\n          display: flex;\n          flex-direction: column; }\n        body .mainApp .operationsHistory .row .collection div .collection-date {\n          font-size: 18px;\n          padding-bottom: 5px; }\n        body .mainApp .operationsHistory .row .collection div .collection-category {\n          font-size: 24px;\n          padding-bottom: 5px; }\n        body .mainApp .operationsHistory .row .collection div .collection-name {\n          font-size: 28px;\n          padding-bottom: 5px; }\n        body .mainApp .operationsHistory .row .collection div .collection-info {\n          font-size: 16px; }\n        body .mainApp .operationsHistory .row .collection div .col-2 .collection-value {\n          text-transform: none;\n          display: flex;\n          align-items: center;\n          justify-content: center;\n          font-size: 24px;\n          width: 100px;\n          height: 100px; }\n          body .mainApp .operationsHistory .row .collection div .col-2 .collection-value span {\n            text-align: center;\n            margin: 0 auto; }\n  body .mainApp .mainHeader nav {\n    background-color: #3D8499; }\n    body .mainApp .mainHeader nav .currency {\n      width: 100%;\n      text-align: center;\n      height: 0;\n      margin: 0;\n      position: absolute;\n      font-size: 20px;\n      margin-top: -35px; }\n      body .mainApp .mainHeader nav .currency i {\n        display: inline-block;\n        vertical-align: sub; }\n      body .mainApp .mainHeader nav .currency p a {\n        text-decoration: underline; }\n    body .mainApp .mainHeader nav .currency:last-of-type {\n      margin-top: -3px; }\n    body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip {\n      position: relative; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:before, body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:after {\n        display: block;\n        opacity: 0;\n        pointer-events: none;\n        position: absolute;\n        transform: translate3d(0, -10px, 0);\n        transition: all .15s ease-in-out; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:after {\n        border-right: 6px solid transparent;\n        border-bottom: 6px solid rgba(0, 0, 0, 0.75);\n        border-left: 6px solid transparent;\n        content: '';\n        height: 0;\n        top: 64px;\n        left: 20px;\n        width: 0; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:before {\n        background: rgba(0, 0, 0, 0.75);\n        border-radius: 2px;\n        color: #fff;\n        content: attr(data-title);\n        font-size: 14px;\n        padding: 0 5px;\n        top: 70px;\n        right: 0;\n        white-space: nowrap; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:hover:after, body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:hover:before {\n        opacity: 1;\n        transform: translate3d(0, 0, 0); }\n    body .mainApp .mainHeader nav .brand-logo2 {\n      margin-left: 50px; }\n      @media (max-width: 992px) {\n        body .mainApp .mainHeader nav .brand-logo2 {\n          left: 80px; } }\n      @media (max-width: 768px) {\n        body .mainApp .mainHeader nav .brand-logo2 {\n          display: none; } }\n  body .mainApp #slide-out .user-view .name {\n    font-size: 28px;\n    margin-top: -10px; }\n  body .mainApp #slide-out .user-view .email {\n    margin-top: 10px; }\n  body .mainApp .main-section {\n    display: flex;\n    flex-direction: row;\n    align-content: center; }\n    @media (min-width: 1100px) {\n      body .mainApp .main-section {\n        flex-wrap: nowrap; } }\n    @media (max-width: 1099px) {\n      body .mainApp .main-section {\n        flex-wrap: wrap; } }\n    @media (min-width: 1100px) {\n      body .mainApp .main-section .balancePanel {\n        width: 50%;\n        margin: 50px 50px;\n        margin-left: 20px; } }\n    @media (max-width: 1099px) {\n      body .mainApp .main-section .balancePanel {\n        width: 95%;\n        margin: 50px 20px;\n        margin-top: 10px; } }\n    body .mainApp .main-section .balancePanel .cardPanel {\n      text-align: center;\n      padding: 30px 0;\n      padding-top: 5px; }\n      body .mainApp .main-section .balancePanel .cardPanel .cardInside {\n        margin: 0 auto;\n        width: 90%;\n        height: 90%;\n        background-color: lightgrey;\n        border-radius: 5px; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside h2 {\n          margin-bottom: -40px;\n          font-size: 32px;\n          padding-top: 10px; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .moneyBagImg {\n          margin-top: -70px;\n          margin-bottom: -50px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .moneyBagImg span {\n            font-size: 50px;\n            top: 35px;\n            vertical-align: middle; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .balanceImg {\n          align-content: space-between;\n          margin-bottom: -50px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .balanceImg span {\n            vertical-align: middle;\n            font-size: 22px;\n            font-weight: 600;\n            color: red; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .balanceImg span:first-of-type {\n            color: green; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .categoryBalance .inputBalance {\n          width: 200px;\n          margin: 0 auto;\n          margin-top: -40px;\n          font-size: 40px;\n          font-weight: 600;\n          margin-bottom: 10px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .categoryBalance .inputBalance span {\n            font-size: 24px;\n            color: black; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .categoryBalance .catImgs {\n          display: flex;\n          justify-content: flex-start;\n          align-items: flex-start;\n          height: 75px;\n          margin-left: 20px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .categoryBalance .catImgs .value {\n            font-size: 32px;\n            font-weight: 600;\n            padding: 10px 0;\n            margin: 0 auto; }\n\n@keyframes showHide {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n", ""]);
+exports.push([module.i, "/*\n009DCC - lightblue\n3D8499 - blue\n00FFAE - green/blue\nFF4C40 - lightred\nCC144A - red\n*/\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody {\n  background-color: #3D8499; }\n  body .login {\n    height: 440px;\n    margin: 150px auto;\n    box-sizing: border-box;\n    background-color: lightgrey;\n    border-radius: 30px;\n    box-shadow: 0 0 20px 5px #00C3AB;\n    text-align: center; }\n    @media (max-width: 599px) {\n      body .login {\n        width: 100%; } }\n    @media (min-width: 600px) {\n      body .login {\n        width: 600px; } }\n    body .login #loginHeader {\n      font-size: 36px;\n      margin: 20px;\n      padding-top: 10px; }\n    body .login #createAccountHeader {\n      font-size: 36px;\n      margin: 10px;\n      padding-top: 10px; }\n    body .login #errorMessage {\n      display: block;\n      height: 1px;\n      font-size: 18px;\n      margin-top: 15px;\n      font-weight: 600;\n      color: #cc0000; }\n    body .login #buttonCreate {\n      margin-top: -10px;\n      font-size: 22px; }\n    body .login #buttonLogin {\n      font-size: 22px; }\n    body .login #createAccountLink {\n      margin-top: 50px; }\n    body .login #logInLink {\n      margin-top: 20px; }\n    body .login .formLogin {\n      display: flex;\n      justify-content: center; }\n      body .login .formLogin .input-field {\n        width: 300px;\n        margin-top: 5px; }\n      body .login .formLogin input, body .login .formLogin label {\n        font-size: 28px; }\n\n/*\n009DCC - lightblue\n3D8499 - blue\n00FFAE - green/blue\nFF4C40 - lightred\nCC144A - red\n*/\nhtml {\n  font-family: \"Nunito\", sans-serif; }\n\nbody .mainApp {\n  margin: 0 auto;\n  font-size: 100px;\n  width: 95vw;\n  background-color: #00FFAE; }\n  body .mainApp .overlay {\n    z-index: 20;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: rgba(0, 0, 0, 0.7);\n    transition: opacity 500ms;\n    visibility: hidden;\n    opacity: 0; }\n    body .mainApp .overlay:target {\n      visibility: visible;\n      opacity: 1; }\n    body .mainApp .overlay .popup {\n      z-index: 20;\n      margin: 70px auto;\n      padding: 20px;\n      background: lightgrey;\n      border-radius: 5px;\n      width: 60%;\n      position: relative;\n      transition: all 1s ease-in-out; }\n      body .mainApp .overlay .popup h2 {\n        font-size: 32px;\n        margin-top: 0; }\n      body .mainApp .overlay .popup .close {\n        position: absolute;\n        top: 20px;\n        right: 30px;\n        transition: all 200ms;\n        font-size: 30px;\n        font-weight: bold;\n        text-decoration: none;\n        color: #333; }\n        body .mainApp .overlay .popup .close:hover {\n          color: #06D85F; }\n      body .mainApp .overlay .popup .content {\n        max-height: 30%;\n        overflow: auto; }\n  body .mainApp .addOperationSection {\n    display: flex;\n    font-size: 24px; }\n    body .mainApp .addOperationSection form input {\n      font-weight: 700;\n      font-size: 20px; }\n    body .mainApp .addOperationSection form label {\n      font-size: 24px;\n      color: black; }\n    body .mainApp .addOperationSection form .selectCategory {\n      width: 200px; }\n    body .mainApp .addOperationSection .OperationDescription {\n      margin-left: auto; }\n      body .mainApp .addOperationSection .OperationDescription textarea {\n        width: 300px; }\n      body .mainApp .addOperationSection .OperationDescription textarea, body .mainApp .addOperationSection .OperationDescription input {\n        font-weight: 700;\n        font-size: 20px; }\n      body .mainApp .addOperationSection .OperationDescription .moneyValue {\n        font-size: 30px;\n        font-weight: 700; }\n      body .mainApp .addOperationSection .OperationDescription input {\n        width: 200px;\n        margin-top: -40px; }\n      body .mainApp .addOperationSection .OperationDescription span {\n        font-size: 16px; }\n      body .mainApp .addOperationSection .OperationDescription .addOpBtn {\n        position: absolute;\n        left: 20px;\n        bottom: 15px; }\n        body .mainApp .addOperationSection .OperationDescription .addOpBtn a {\n          color: white;\n          font-weight: 700; }\n    body .mainApp .addOperationSection .dateSpan {\n      margin-top: 10px;\n      font-size: 16px; }\n    body .mainApp .addOperationSection .dateInput {\n      width: 200px;\n      margin-top: -40px; }\n  @media (min-width: 1100px) {\n    body .mainApp .operationsHistory {\n      width: 50%;\n      margin: 50px 50px;\n      margin-right: 20px; } }\n  @media (max-width: 1099px) {\n    body .mainApp .operationsHistory {\n      width: 95%;\n      margin: 50px 20px;\n      margin-bottom: 10px; } }\n  body .mainApp .operationsHistory .row {\n    align-items: center;\n    font-size: 28px;\n    position: relative; }\n    body .mainApp .operationsHistory .row .fixed-action-btn {\n      height: 50px; }\n    body .mainApp .operationsHistory .row .addOperationButton {\n      position: absolute;\n      background-color: #CC144A;\n      right: 0;\n      top: 0; }\n    body .mainApp .operationsHistory .row .collection {\n      display: flex;\n      flex-direction: column; }\n      body .mainApp .operationsHistory .row .collection p:first-of-type {\n        cursor: pointer;\n        margin-top: 2px; }\n      body .mainApp .operationsHistory .row .collection div {\n        display: flex; }\n        body .mainApp .operationsHistory .row .collection div .historyIcon {\n          margin-right: 10px;\n          margin-top: 20px; }\n        body .mainApp .operationsHistory .row .collection div .col-1 {\n          width: 500px;\n          flex-wrap: wrap;\n          display: flex;\n          flex-direction: column; }\n        body .mainApp .operationsHistory .row .collection div .collection-date {\n          font-size: 18px;\n          padding-bottom: 5px; }\n        body .mainApp .operationsHistory .row .collection div .collection-category {\n          font-size: 24px;\n          padding-bottom: 5px; }\n        body .mainApp .operationsHistory .row .collection div .collection-name {\n          font-size: 28px;\n          padding-bottom: 5px; }\n        body .mainApp .operationsHistory .row .collection div .collection-info {\n          font-size: 16px; }\n        body .mainApp .operationsHistory .row .collection div .col-2 .collection-value {\n          text-transform: none;\n          display: flex;\n          align-items: center;\n          justify-content: center;\n          font-size: 24px;\n          width: 100px;\n          height: 100px; }\n          body .mainApp .operationsHistory .row .collection div .col-2 .collection-value span {\n            text-align: center;\n            margin: 0 auto; }\n  body .mainApp .mainHeader nav {\n    background-color: #3D8499; }\n    body .mainApp .mainHeader nav .currency {\n      width: 100%;\n      text-align: center;\n      height: 0;\n      margin: 0;\n      position: absolute;\n      font-size: 20px;\n      margin-top: -35px; }\n      body .mainApp .mainHeader nav .currency i {\n        display: inline-block;\n        vertical-align: sub; }\n      body .mainApp .mainHeader nav .currency p a {\n        text-decoration: underline; }\n    body .mainApp .mainHeader nav .currency:last-of-type {\n      margin-top: -3px; }\n    body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip {\n      position: relative; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:before, body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:after {\n        display: block;\n        opacity: 0;\n        pointer-events: none;\n        position: absolute;\n        transform: translate3d(0, -10px, 0);\n        transition: all .15s ease-in-out; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:after {\n        border-right: 6px solid transparent;\n        border-bottom: 6px solid rgba(0, 0, 0, 0.75);\n        border-left: 6px solid transparent;\n        content: '';\n        height: 0;\n        top: 64px;\n        left: 20px;\n        width: 0; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:before {\n        background: rgba(0, 0, 0, 0.75);\n        border-radius: 2px;\n        color: #fff;\n        content: attr(data-title);\n        font-size: 14px;\n        padding: 0 5px;\n        top: 70px;\n        right: 0;\n        white-space: nowrap; }\n      body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:hover:after, body .mainApp .mainHeader nav .hide-on-med-and-down .tooltip:hover:before {\n        opacity: 1;\n        transform: translate3d(0, 0, 0); }\n    body .mainApp .mainHeader nav .brand-logo2 {\n      margin-left: 50px; }\n      @media (max-width: 992px) {\n        body .mainApp .mainHeader nav .brand-logo2 {\n          left: 80px; } }\n      @media (max-width: 768px) {\n        body .mainApp .mainHeader nav .brand-logo2 {\n          display: none; } }\n  body .mainApp #slide-out .user-view .name {\n    font-size: 28px;\n    margin-top: -10px; }\n  body .mainApp #slide-out .user-view .email {\n    margin-top: 10px; }\n  body .mainApp .main-section {\n    display: flex;\n    flex-direction: row;\n    align-content: center; }\n    @media (min-width: 1100px) {\n      body .mainApp .main-section {\n        flex-wrap: nowrap; } }\n    @media (max-width: 1099px) {\n      body .mainApp .main-section {\n        flex-wrap: wrap; } }\n    @media (min-width: 1100px) {\n      body .mainApp .main-section .balancePanel {\n        width: 50%;\n        margin: 50px 50px;\n        margin-left: 20px; } }\n    @media (max-width: 1099px) {\n      body .mainApp .main-section .balancePanel {\n        width: 95%;\n        margin: 50px 20px;\n        margin-top: 10px; } }\n    body .mainApp .main-section .balancePanel .cardPanel {\n      text-align: center;\n      padding: 30px 0;\n      padding-top: 5px; }\n      body .mainApp .main-section .balancePanel .cardPanel .cardInside {\n        margin: 0 auto;\n        width: 90%;\n        height: 90%;\n        background-color: lightgrey;\n        border-radius: 5px; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside h2 {\n          margin-bottom: -40px;\n          font-size: 32px;\n          padding-top: 10px; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .moneyBagImg {\n          margin-top: -70px;\n          margin-bottom: -50px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .moneyBagImg span {\n            font-size: 50px;\n            top: 35px;\n            vertical-align: middle; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .balanceImg {\n          align-content: space-between;\n          margin-bottom: -50px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .balanceImg span {\n            vertical-align: middle;\n            font-size: 22px;\n            font-weight: 600;\n            color: red; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .balanceImg span:first-of-type {\n            color: green; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .categoryBalance .inputBalance {\n          width: 200px;\n          margin: 0 auto;\n          margin-top: -40px;\n          font-size: 40px;\n          font-weight: 600;\n          margin-bottom: 10px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .categoryBalance .inputBalance span {\n            font-size: 24px;\n            color: black; }\n        body .mainApp .main-section .balancePanel .cardPanel .cardInside .categoryBalance .catImgs {\n          display: flex;\n          justify-content: flex-start;\n          align-items: flex-start;\n          height: 75px;\n          margin-left: 20px; }\n          body .mainApp .main-section .balancePanel .cardPanel .cardInside .categoryBalance .catImgs .value {\n            font-size: 32px;\n            font-weight: 600;\n            padding: 10px 0;\n            margin: 0 auto; }\n\nbody .preloader {\n  margin: 30% 50%;\n  width: 200px;\n  height: 200px; }\n\n@keyframes showHide {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n", ""]);
 
 // exports
 
@@ -19113,7 +19160,7 @@ module.exports = DefaultEventPluginOrder;
 
 var EventPropagators = __webpack_require__(31);
 var ReactDOMComponentTree = __webpack_require__(9);
-var SyntheticMouseEvent = __webpack_require__(42);
+var SyntheticMouseEvent = __webpack_require__(44);
 
 var eventTypes = {
   mouseEnter: {
@@ -19899,8 +19946,8 @@ var DOMNamespaces = __webpack_require__(64);
 var DOMProperty = __webpack_require__(21);
 var DOMPropertyOperations = __webpack_require__(103);
 var EventPluginHub = __webpack_require__(32);
-var EventPluginRegistry = __webpack_require__(40);
-var ReactBrowserEventEmitter = __webpack_require__(46);
+var EventPluginRegistry = __webpack_require__(42);
+var ReactBrowserEventEmitter = __webpack_require__(48);
 var ReactDOMComponentFlags = __webpack_require__(90);
 var ReactDOMComponentTree = __webpack_require__(9);
 var ReactDOMInput = __webpack_require__(186);
@@ -19912,7 +19959,7 @@ var ReactMultiChild = __webpack_require__(189);
 var ReactServerRenderingTransaction = __webpack_require__(198);
 
 var emptyFunction = __webpack_require__(11);
-var escapeTextContentForBrowser = __webpack_require__(44);
+var escapeTextContentForBrowser = __webpack_require__(46);
 var invariant = __webpack_require__(3);
 var isEventSupported = __webpack_require__(61);
 var shallowEqual = __webpack_require__(35);
@@ -20907,7 +20954,7 @@ module.exports = ReactDOMComponent;
 
 var ReactDOMComponentTree = __webpack_require__(9);
 
-var focusNode = __webpack_require__(45);
+var focusNode = __webpack_require__(47);
 
 var AutoFocusUtils = {
   focusDOMComponent: function () {
@@ -21338,7 +21385,7 @@ module.exports = memoizeStringOnly;
 
 
 
-var escapeTextContentForBrowser = __webpack_require__(44);
+var escapeTextContentForBrowser = __webpack_require__(46);
 
 /**
  * Escapes attribute value to prevent scripting attacks.
@@ -23892,7 +23939,7 @@ module.exports = flattenChildren;
 var _assign = __webpack_require__(7);
 
 var PooledClass = __webpack_require__(24);
-var Transaction = __webpack_require__(41);
+var Transaction = __webpack_require__(43);
 var ReactInstrumentation = __webpack_require__(14);
 var ReactServerUpdateQueue = __webpack_require__(199);
 
@@ -24336,7 +24383,7 @@ var DOMChildrenOperations = __webpack_require__(63);
 var DOMLazyTree = __webpack_require__(29);
 var ReactDOMComponentTree = __webpack_require__(9);
 
-var escapeTextContentForBrowser = __webpack_require__(44);
+var escapeTextContentForBrowser = __webpack_require__(46);
 var invariant = __webpack_require__(3);
 var validateDOMNesting = __webpack_require__(71);
 
@@ -24498,7 +24545,7 @@ module.exports = ReactDOMTextComponent;
 var _assign = __webpack_require__(7);
 
 var ReactUpdates = __webpack_require__(17);
-var Transaction = __webpack_require__(41);
+var Transaction = __webpack_require__(43);
 
 var emptyFunction = __webpack_require__(11);
 
@@ -24568,7 +24615,7 @@ module.exports = ReactDefaultBatchingStrategy;
 
 var _assign = __webpack_require__(7);
 
-var EventListener = __webpack_require__(47);
+var EventListener = __webpack_require__(49);
 var ExecutionEnvironment = __webpack_require__(10);
 var PooledClass = __webpack_require__(24);
 var ReactDOMComponentTree = __webpack_require__(9);
@@ -24771,7 +24818,7 @@ var EventPluginHub = __webpack_require__(32);
 var EventPluginUtils = __webpack_require__(58);
 var ReactComponentEnvironment = __webpack_require__(67);
 var ReactEmptyComponent = __webpack_require__(108);
-var ReactBrowserEventEmitter = __webpack_require__(46);
+var ReactBrowserEventEmitter = __webpack_require__(48);
 var ReactHostComponent = __webpack_require__(109);
 var ReactUpdates = __webpack_require__(17);
 
@@ -24807,10 +24854,10 @@ var _assign = __webpack_require__(7);
 
 var CallbackQueue = __webpack_require__(94);
 var PooledClass = __webpack_require__(24);
-var ReactBrowserEventEmitter = __webpack_require__(46);
+var ReactBrowserEventEmitter = __webpack_require__(48);
 var ReactInputSelection = __webpack_require__(111);
 var ReactInstrumentation = __webpack_require__(14);
-var Transaction = __webpack_require__(41);
+var Transaction = __webpack_require__(43);
 var ReactUpdateQueue = __webpack_require__(70);
 
 /**
@@ -25644,7 +25691,7 @@ var ReactDOMComponentTree = __webpack_require__(9);
 var ReactInputSelection = __webpack_require__(111);
 var SyntheticEvent = __webpack_require__(18);
 
-var getActiveElement = __webpack_require__(48);
+var getActiveElement = __webpack_require__(50);
 var isTextInputElement = __webpack_require__(97);
 var shallowEqual = __webpack_require__(35);
 
@@ -25832,7 +25879,7 @@ module.exports = SelectEventPlugin;
 
 var _prodInvariant = __webpack_require__(6);
 
-var EventListener = __webpack_require__(47);
+var EventListener = __webpack_require__(49);
 var EventPropagators = __webpack_require__(31);
 var ReactDOMComponentTree = __webpack_require__(9);
 var SyntheticAnimationEvent = __webpack_require__(215);
@@ -25840,7 +25887,7 @@ var SyntheticClipboardEvent = __webpack_require__(216);
 var SyntheticEvent = __webpack_require__(18);
 var SyntheticFocusEvent = __webpack_require__(217);
 var SyntheticKeyboardEvent = __webpack_require__(218);
-var SyntheticMouseEvent = __webpack_require__(42);
+var SyntheticMouseEvent = __webpack_require__(44);
 var SyntheticDragEvent = __webpack_require__(220);
 var SyntheticTouchEvent = __webpack_require__(221);
 var SyntheticTransitionEvent = __webpack_require__(222);
@@ -26383,7 +26430,7 @@ module.exports = getEventKey;
 
 
 
-var SyntheticMouseEvent = __webpack_require__(42);
+var SyntheticMouseEvent = __webpack_require__(44);
 
 /**
  * @interface DragEvent
@@ -26512,7 +26559,7 @@ module.exports = SyntheticTransitionEvent;
 
 
 
-var SyntheticMouseEvent = __webpack_require__(42);
+var SyntheticMouseEvent = __webpack_require__(44);
 
 /**
  * @interface WheelEvent
@@ -26826,7 +26873,7 @@ module.exports = ReactMount.renderSubtreeIntoContainer;
 
 
 var DOMProperty = __webpack_require__(21);
-var EventPluginRegistry = __webpack_require__(40);
+var EventPluginRegistry = __webpack_require__(42);
 var ReactComponentTreeHook = __webpack_require__(13);
 
 var warning = __webpack_require__(4);
@@ -27322,7 +27369,7 @@ exports.default = createMemoryHistory;
 /* unused harmony reexport createHashHistory */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__ = __webpack_require__(239);
 /* unused harmony reexport createMemoryHistory */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(52);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(37);
@@ -27347,7 +27394,7 @@ exports.default = createMemoryHistory;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(120);
@@ -27651,7 +27698,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(120);
@@ -27971,7 +28018,7 @@ var createHashHistory = function createHashHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(76);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -29561,7 +29608,7 @@ NavLink.defaultProps = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__ = __webpack_require__(53);
 // Written in this round about way for babel-transform-imports
 
 
@@ -29756,13 +29803,13 @@ var _react3 = __webpack_require__(260);
 
 var _react4 = _interopRequireDefault(_react3);
 
-var _reactMaterialize = __webpack_require__(52);
+var _reactMaterialize = __webpack_require__(38);
 
 var _main = __webpack_require__(54);
 
 var _SelectCategory = __webpack_require__(306);
 
-var _categories = __webpack_require__(53);
+var _categories = __webpack_require__(40);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29810,9 +29857,11 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
         selectCategory: "",
         inputRadio: false
       });
+      _this.props.endEdit();
     };
 
     _this.addOperation = function () {
+      console.log("adding");
       fetch('' + _main.url + _main.userObject.id, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
         return response && response.ok ? response.json() : "Błąd Połączenia";
       }).then(function (data) {
@@ -29851,8 +29900,48 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
       });
     };
 
+    _this.editOperation = function () {
+      console.log("editing");
+      fetch('' + _main.url + _main.userObject.id, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
+        return response && response.ok ? response.json() : "Błąd Połączenia";
+      }).then(function (data) {
+        //ZMIENNA Z HISTORIĄ OPERACJI UŻYTKOWNIKA ORAZ DODANIE DO HISTORII NOWEGO OBIEKTU
+        var newHistoryItem = data;
+        newHistoryItem.operations[_this.props.editOperationId] = {
+          id: data.operations.length,
+          date: _this.state.dateInput,
+          title: _this.state.inputOperationTitle,
+          note: _this.state.inputNotes,
+          category: _this.state.selectCategory,
+          money: _this.state.inputMoney,
+          income: _this.state.inputRadio,
+          src: _this.state.iconSrc
+        };
+
+        fetch('' + _main.url + _main.userObject.id, {
+          method: "PUT",
+          body: JSON.stringify(newHistoryItem),
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          dataType: "json"
+        }).then(function (response) {
+          return response && response.ok ? response.json() : "Błąd Połączenia";
+        }).then(function (data) {
+          console.log("ZEDYTOWANO OPERACJĘ: ", newHistoryItem);
+          _this.props.setHistory(newHistoryItem); //app.jsx >callback
+          _this.props.getHistory(); //app.jsx >callback
+          window.location.replace("#");
+          _this.resetOptions();
+        }).catch(function (error) {
+          return console.log(error);
+        });
+      }).catch(function (error) {
+        return console.log(error);
+      });
+
+      _this.resetOptions();
+    };
+
     _this.state = {
-      isOpen: _this.props.isOpen,
       dateInput: "",
       today: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate(),
       inputOperationTitle: "",
@@ -29861,7 +29950,6 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
       inputMoney: "",
       inputRadio: false,
       userOperationsHistory: "",
-      // isReset: this.props.reset,
       incomeSum: 0,
       expenseSum: 0,
       iconSrc: ""
@@ -29873,14 +29961,37 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       $("select").material_select();
-      this.state.dateInput === "" && this.setState({ dateInput: this.state.today });
+      this.state.dateInput === "" && this.setState({ dateInput: this.state.today, isLoaded: false });
     }
 
     //DODAWANIE NOWEJ OPERACJI (WCZYTANIE OBECNYCH -> DODANIE NOWYCH -> ZWRÓCENIE NOWEJ TABLICY)
 
+
+    //EDYCJA OPERACJI -> TODO
+
+  }, {
+    key: 'resetEdit',
+
+
+    //EDYCJA OPERACJI TODO
+    value: function resetEdit() {
+      console.log("edit reset");
+      this.props.isEdit && this.setState({
+        today: this.props.history[this.props.editOperationId].date,
+        inputMoney: this.props.history[this.props.editOperationId].money,
+        inputOperationTitle: this.props.history[this.props.editOperationId].title,
+        inputNotes: this.props.history[this.props.editOperationId].note,
+        inputRadio: !this.props.history[this.props.editOperationId].income
+      });
+    }
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
+      console.log(this.props.isEdit);
+      console.log(this.props.editOperationId);
+      console.log(this.props.history);
       return _react2.default.createElement(
         'div',
         { id: 'popup1', className: 'overlay' },
@@ -29894,7 +30005,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
           ),
           _react2.default.createElement(
             'a',
-            { className: 'close', href: '#' },
+            { className: 'close', href: '#', onClick: this.props.endEdit },
             '\xD7'
           ),
           _react2.default.createElement(
@@ -29919,7 +30030,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
                 _react2.default.createElement(
                   'p',
                   null,
-                  _react2.default.createElement('input', { name: 'group1', onClick: this.changeHandlerRadio, type: 'radio', id: 'test2' }),
+                  _react2.default.createElement('input', { defaultChecked: false, name: 'group1', onClick: this.changeHandlerRadio, type: 'radio', id: 'test2' }),
                   _react2.default.createElement(
                     'label',
                     { htmlFor: 'test2' },
@@ -29933,7 +30044,8 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
                   'Data:'
                 ),
                 _react2.default.createElement('br', null),
-                _react2.default.createElement('input', { onChange: this.changeHandler, type: 'date', className: 'datepicker dateInput', name: 'dateInput', defaultValue: this.state.today })
+                _react2.default.createElement('input', { onChange: this.changeHandler, type: 'date', className: 'datepicker dateInput', name: 'dateInput',
+                  defaultValue: this.state.today })
               ),
               _react2.default.createElement(
                 'section',
@@ -29945,7 +30057,8 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
                 ),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(_react4.default, { options: { prefix: "zł:", numeral: true, rawValueTrimPrefix: true },
-                  className: 'inputMoney', id: 'first_name2', onChange: this.changeHandlerRaw, name: 'inputMoney', value: this.state.inputMoney }),
+                  className: 'inputMoney', id: 'first_name2', onChange: this.changeHandlerRaw, name: 'inputMoney',
+                  value: this.state.inputMoney }),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
                   'span',
@@ -29953,7 +30066,8 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
                   'Tytu\u0142 Operacji:'
                 ),
                 _react2.default.createElement('br', null),
-                _react2.default.createElement('input', { value: this.state.inputOperationTitle, onChange: this.changeHandler, name: 'inputOperationTitle', id: 'first_name2', type: 'text' }),
+                _react2.default.createElement('input', { value: this.state.inputOperationTitle,
+                  onChange: this.changeHandler, name: 'inputOperationTitle', id: 'first_name2', type: 'text' }),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
                   'span',
@@ -29961,10 +30075,14 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
                   'Notatki'
                 ),
                 _react2.default.createElement('br', null),
-                _react2.default.createElement('textarea', { maxLength: 70, value: this.state.inputNotes, onChange: this.changeHandler, name: 'inputNotes', id: 'textarea1', className: 'materialize-textarea', 'data-length': '70' }),
+                _react2.default.createElement('textarea', { maxLength: 70, value: this.state.inputNotes,
+                  onChange: this.changeHandler, name: 'inputNotes', id: 'textarea1', className: 'materialize-textarea', 'data-length': '70' }),
                 _react2.default.createElement(
                   _reactMaterialize.Button,
-                  { onClick: this.addOperation, href: '#', large: true, className: 'addOpBtn', waves: 'light' },
+                  { onClick: function onClick() {
+                      _this2.props.isEdit ? _this2.editOperation() : _this2.addOperation();
+                    },
+                    href: '#', large: true, className: 'addOpBtn', waves: 'light' },
                   _react2.default.createElement(
                     'a',
                     { href: '#' },
@@ -34125,7 +34243,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Col = __webpack_require__(38);
+var _Col = __webpack_require__(39);
 
 var _Col2 = _interopRequireDefault(_Col);
 
@@ -35269,7 +35387,7 @@ var _Row = __webpack_require__(81);
 
 var _Row2 = _interopRequireDefault(_Row);
 
-var _Col = __webpack_require__(38);
+var _Col = __webpack_require__(39);
 
 var _Col2 = _interopRequireDefault(_Col);
 
@@ -36217,7 +36335,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(2),l=__webpack_require__(10),B=__webpack_require__(7),C=__webpack_require__(11),ba=__webpack_require__(47),da=__webpack_require__(48),ea=__webpack_require__(35),fa=__webpack_require__(72),ia=__webpack_require__(45),D=__webpack_require__(20);
+var aa=__webpack_require__(2),l=__webpack_require__(10),B=__webpack_require__(7),C=__webpack_require__(11),ba=__webpack_require__(49),da=__webpack_require__(50),ea=__webpack_require__(35),fa=__webpack_require__(72),ia=__webpack_require__(47),D=__webpack_require__(20);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -36464,11 +36582,11 @@ var warning = __webpack_require__(4);
 var ExecutionEnvironment = __webpack_require__(10);
 var _assign = __webpack_require__(7);
 var emptyFunction = __webpack_require__(11);
-var EventListener = __webpack_require__(47);
-var getActiveElement = __webpack_require__(48);
+var EventListener = __webpack_require__(49);
+var getActiveElement = __webpack_require__(50);
 var shallowEqual = __webpack_require__(35);
 var containsNode = __webpack_require__(72);
-var focusNode = __webpack_require__(45);
+var focusNode = __webpack_require__(47);
 var emptyObject = __webpack_require__(20);
 var checkPropTypes = __webpack_require__(57);
 var hyphenateStyleName = __webpack_require__(102);
@@ -51918,7 +52036,7 @@ var _classnames = __webpack_require__(5);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _Col = __webpack_require__(38);
+var _Col = __webpack_require__(39);
 
 var _Col2 = _interopRequireDefault(_Col);
 
@@ -53452,7 +53570,7 @@ var _Row = __webpack_require__(81);
 
 var _Row2 = _interopRequireDefault(_Row);
 
-var _Col = __webpack_require__(38);
+var _Col = __webpack_require__(39);
 
 var _Col2 = _interopRequireDefault(_Col);
 
@@ -53717,9 +53835,9 @@ var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactMaterialize = __webpack_require__(52);
+var _reactMaterialize = __webpack_require__(38);
 
-var _categories = __webpack_require__(53);
+var _categories = __webpack_require__(40);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54043,7 +54161,7 @@ var AppSectionMain = exports.AppSectionMain = function AppSectionMain(props) {
           { className: "card-panel teal" },
           _react2.default.createElement(
             "a",
-            { onClick: props.callback, href: "#popup1", className: "addOperationButton btn-floating btn-large waves-effect waves-light" },
+            { href: "#popup1", className: "addOperationButton btn-floating btn-large waves-effect waves-light" },
             _react2.default.createElement(
               "i",
               { className: "material-icons" },
@@ -54169,9 +54287,9 @@ var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactMaterialize = __webpack_require__(52);
+var _reactMaterialize = __webpack_require__(38);
 
-var _categories = __webpack_require__(53);
+var _categories = __webpack_require__(40);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54185,9 +54303,13 @@ var HistoryItem = exports.HistoryItem = function HistoryItem(props) {
       _react2.default.createElement(
         'p',
         null,
-        _react2.default.createElement(_reactMaterialize.Button, { floating: true, className: 'green', waves: 'light', icon: 'edit', onClick: function onClick() {
-            return props.callbackEdit(props.history.id);
-          } })
+        _react2.default.createElement(
+          'a',
+          { href: '#popup1' },
+          _react2.default.createElement(_reactMaterialize.Button, { floating: true, className: 'green', waves: 'light', icon: 'edit', onClick: function onClick() {
+              return props.callbackEdit(props.history.id);
+            } })
+        )
       ),
       _react2.default.createElement(
         'p',
@@ -54263,11 +54385,11 @@ var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactMaterialize = __webpack_require__(52);
+var _reactMaterialize = __webpack_require__(38);
 
 var _dates = __webpack_require__(312);
 
-var _categories = __webpack_require__(53);
+var _categories = __webpack_require__(40);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54288,26 +54410,11 @@ var Balance = exports.Balance = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Balance.__proto__ || Object.getPrototypeOf(Balance)).call(this, props));
 
     _this.changeHandler = function (event) {
-      _this.setState(_defineProperty({}, event.target.name, event.target.value));_this.checkBalances;
-    };
-
-    _this.checkBalances = function () {
-      console.log("hejo");
-      var newArrIncome = [];
-      var newArrExpense = [];
-      for (var i = 0; i < _categories.incomeCategories.length; i++) {
-        newArrIncome[i] = 0;
-        for (var j = 0; j < _this.props.history.length; i++) {
-          console.log(_this.props.history[j].category, _this.props.history[j].money);
-          _this.props.history[j].selectCategory == _categories.incomeCategories.id && (newArrIncome[i] = _this.props.history[j].money);
-        }
-        console.log("newArr", newArrIncome);
-      }
-      return true;
+      _this.setState(_defineProperty({}, event.target.name, event.target.value));_this.props.checkBalances();
     };
 
     _this.check = function () {
-      return _this.props.history.length > 0 ? true : false;
+      _this.props.checkBalances;return _this.props.history.length > 0 ? true : false;
     };
 
     _this.state = {
@@ -54321,7 +54428,7 @@ var Balance = exports.Balance = function (_React$Component) {
   _createClass(Balance, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      this.checkBalances();
+      this.check();
     }
   }, {
     key: 'render',
@@ -54380,7 +54487,9 @@ var Balance = exports.Balance = function (_React$Component) {
               { className: 'categoryBalance' },
               _react2.default.createElement(
                 _reactMaterialize.Input,
-                { type: 'select', value: this.state.selectValue, className: 'inputBalance', name: 'selectValue', onChange: this.changeHandler },
+                { type: 'select', value: this.state.selectValue, className: 'inputBalance', name: 'selectValue', onChange: function onChange(event) {
+                    return _this2.changeHandler(event);
+                  } },
                 _react2.default.createElement(
                   'option',
                   { value: '1' },
@@ -54392,27 +54501,31 @@ var Balance = exports.Balance = function (_React$Component) {
                   'Wp\u0142ywy'
                 )
               ),
-              this.state.selectValue === "1" ? _categories.incomeCategories.map(function (item) {
+              this.state.selectValue === "1" ? _categories.incomeCategories.map(function (item, index) {
                 return _react2.default.createElement(
                   'div',
                   { key: item.id, className: 'catImgs' },
                   _react2.default.createElement('img', { src: item.src }),
                   _react2.default.createElement(
                     'span',
-                    { className: 'value' },
-                    _this2.props.history[0].money
+                    { className: 'value', style: { color: "red" } },
+                    '-',
+                    _this2.props.incomeCatSum[index],
+                    'z\u0142'
                   ),
                   _react2.default.createElement('br', null)
                 );
-              }) : _categories.expenseCategories.map(function (item) {
+              }) : _categories.expenseCategories.map(function (item, index) {
                 return _react2.default.createElement(
                   'div',
                   { key: item.id, className: 'catImgs' },
                   _react2.default.createElement('img', { src: item.src }),
                   _react2.default.createElement(
                     'span',
-                    { className: 'value' },
-                    _this2.props.history[0].moeny
+                    { className: 'value', style: { color: "green" } },
+                    '+',
+                    _this2.props.expenseCatSum[index],
+                    'z\u0142'
                   ),
                   _react2.default.createElement('br', null)
                 );

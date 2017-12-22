@@ -5,11 +5,13 @@ import {BrowserRouter, Route, Switch } from 'react-router-dom';
 import {PropsRoute} from 'react-router-with-props';
 import {userObject} from "./main.jsx";
 import {AddOperation} from "./components/AddOperation.jsx";
+import {Preloader} from 'react-materialize';
 import {ApplicationHeader} from "./components/ApplicationHeader.jsx";
 import {ApplicationSlide} from "./components/ApplicationSlide.jsx";
 import {AppSectionMain} from "./components/AppSectionMain.jsx";
 import {Balance} from "./components/Balance.jsx";
 import {url} from "./main.jsx";
+import {incomeCategories ,expenseCategories} from './variables/categories.jsx';
 
 const nbpUrl = "http://api.nbp.pl/api/exchangerates/rates/a/";
 
@@ -25,7 +27,12 @@ export class Application extends React.Component {
       history: [],
       balance: 0,
       income: 0,
-      expense: 0
+      expense: 0,
+      isLoaded: false,
+      isEdit: false,
+      editOperationId: 9999,
+      incomeCatSum: [],
+      expenseCatSum: []
     }
   }
 
@@ -36,9 +43,9 @@ export class Application extends React.Component {
     for (let i=0; i<this.state.history.length; i++) {
       newBalance += this.state.history[i].income ? Number(this.state.history[i].money) : Number(this.state.history[i].money * -1)
       if (this.state.history[i].income)
-      (newIncome += Number(this.state.history[i].money));
+        (newIncome += Number(this.state.history[i].money));
       else
-      (newExpense += Number(this.state.history[i].money));
+        (newExpense += Number(this.state.history[i].money));
     }
     this.setState({
       balance: newBalance,
@@ -48,17 +55,47 @@ export class Application extends React.Component {
     console.log("Balance: ", this.state.balance);
   }
 
+  checkBalances =()=> {
+    let newArrIncome = [];
+    let newArrExpense = [];
+    //WYDATKI KATEGORYCZNIE
+    for (let i=0; i<incomeCategories.length; i++) {
+      newArrIncome[i] = 0;
+      for (let j=0; j<this.state.history.length; j++) {
+        (this.state.history[j].category === incomeCategories[i].name) && ( newArrIncome[i] += Number(this.state.history[j].money) );
+      }
+      newArrIncome[i] = newArrIncome[i].toFixed(2);
+    }
+    console.log("newArrIncome[i]", newArrIncome);
+
+    //WPŁYWY KATEGORYCZNIE
+    for (let i=0; i<expenseCategories.length; i++) {
+      newArrExpense[i] = 0;
+      for (let j=0; j<this.state.history.length; j++) {
+        (this.state.history[j].category === expenseCategories[i].name) && ( newArrExpense[i] += Number(this.state.history[j].money) );
+      }
+      newArrExpense[i] = newArrExpense[i].toFixed(2);
+      console.log("newArrExpense[i]", newArrExpense);
+    }
+
+    this.setState({
+      incomeCatSum: newArrIncome,
+      expenseCatSum: newArrExpense,
+      isLoaded: true
+    });
+  }
+
   //POBRANIE HISTORII OPERACJI
   getHistory =()=> {
-    fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
-    .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
-    .then(data => {
-      this.setState({ history: data.operations });
-    })
-    .then(data => {
-      this.setBalance();
-      return true;
-    }).catch(error => console.log(error));
+    console.log("addded");
+    setTimeout(() => {
+      fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
+      .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
+      .then(data => { this.setState({ history: data.operations }); })
+      .then(data => { this.setBalance(); })
+      .then(data => { this.checkBalances(); })
+      .catch(error => console.log(error));
+    }, 500);
   }
 
 
@@ -103,10 +140,8 @@ export class Application extends React.Component {
       let newData = data;
       newData.operations = newData.operations.filter(item => item.id !== id);
       //SOROTWANIE
-      for (let i=0; i<newData.operations.length; i++) {
+      for (let i=0; i<newData.operations.length; i++)
         newData.operations[i].id = i;
-        console.log(newData.operations[i].id, ":ID:", i);
-      }
 
       fetch(`${url}${userObject.id}`, {
         method: "PUT",
@@ -123,29 +158,38 @@ export class Application extends React.Component {
   }
 
   editOperation =(id)=> {
-    console.log("edit operations " + id);
+    console.log("id", id);
+    this.setState({ editOperationId: id, isEdit: true });
   }
 
+  endEdit =()=> { this.setState({ isEdit: false }); }
+
   render() {
-    return this.getHistory && userObject!==undefined ? (
-      <div className="mainApp">
-        <ApplicationHeader mainPath={this.state.mainPath} userObject={userObject} currencyEur={this.state.currencyEur}
-          EurRates={this.state.EurRates} currencyUsd={this.state.currencyUsd} UsdRates={this.state.UsdRates}/>
+    return userObject!==undefined ? (
+      this.state.isLoaded ? (
+        <div className="mainApp">
+          <ApplicationHeader mainPath={this.state.mainPath} userObject={userObject} currencyEur={this.state.currencyEur}
+            EurRates={this.state.EurRates} currencyUsd={this.state.currencyUsd} UsdRates={this.state.UsdRates}/>
 
-        <AddOperation isOpen={this.state.addOperation} setHistory={this.setHistory} reset={true}
-          getHistory={this.getHistory}/>
+          <AddOperation setHistory={this.setHistory} reset={true} getHistory={this.getHistory} history={this.state.history}
+            isEdit={this.state.isEdit} editOperationId={this.state.editOperationId} endEdit={this.endEdit}/>
 
-        <div className="main-section">
-          <AppSectionMain callback={this.openAddOpPanel} opHistory={this.state.history}
-            callbackDelete={this.deleteOperation} callbackEdit={this.editOperation}/>
+          <div className="main-section">
+            <AppSectionMain opHistory={this.state.history}
+              callbackDelete={this.deleteOperation} callbackEdit={this.editOperation}/>
 
-          <Balance balance={this.state.balance} income={this.state.income} expense={this.state.expense}
-            history={this.state.history}/>
+            <Balance balance={this.state.balance} income={this.state.income} expense={this.state.expense}
+              history={this.state.history} incomeCatSum={this.state.incomeCatSum} expenseCatSum={this.state.expenseCatSum}
+              checkBalances={this.checkBalances}/>
+
+          </div>
+
+          <ApplicationSlide userObject={userObject}/>
+
         </div>
-
-        <ApplicationSlide userObject={userObject}/>
-
-      </div>
+      ) : (
+        <Preloader className="preloader" size="big" color="red"/>
+      )
     ) : (
       <h1 style={{fontSize: "60px", color: "darkred", textAlign: "center"}}>You have to log in!</h1>
     );

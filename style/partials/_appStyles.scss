@@ -25,6 +25,11 @@ body {
     //SEKCJA Z SALDEM
     @import "appStyles/appBalance";
   }
+  .preloader {
+    margin: 30% 50%;
+    width: 200px;
+    height: 200px;
+  }
 }
 
 //ANIMACJE

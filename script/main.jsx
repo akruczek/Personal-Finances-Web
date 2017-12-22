@@ -13,12 +13,12 @@ export let userObject;
 
 
 // -----DEV-ONLY\/
-userObject = {
-    "id": "exampleApp",
-    "login": "exampleApp",
-    "password": "okwzvo",
-    "email": "app@example.com"
-  };
+// userObject = {
+//     "id": "exampleApp",
+//     "login": "exampleApp",
+//     "password": "okwzvo",
+//     "email": "app@example.com"
+//   };
 // /\
 
 
@@ -34,7 +34,7 @@ class Login extends React.Component {
       errorMessage: ""
     }
     // //-----DEV ONLY \/
-    this.props.history.push(`/app/${userObject.id}`);
+    // this.props.history.push(`/app/${userObject.id}`);
     // //-----DEV ONLY /\
   }
 
@@ -189,7 +189,8 @@ class CreateAccount extends React.Component {
             id: this.state.inputLogin,
             login: this.state.inputLogin,
             password: this.Code(this.state.inputPassword),
-            email: this.state.inputEmail
+            email: this.state.inputEmail,
+            operations: []
           }); } } }).catch(error => console.log(error));
   }
 
