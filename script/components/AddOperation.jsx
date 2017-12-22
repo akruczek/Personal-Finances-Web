@@ -190,7 +190,7 @@ export class AddOperation extends React.Component {
                 <textarea maxLength={70} value={this.state.inputNotes}
                   onChange={this.changeHandler} name="inputNotes" id="textarea1" className="materialize-textarea" data-length="70"></textarea>
 
-                <Button onClick={() =>{this.props.isEdit ? this.editOperation() : this.addOperation()}}
+                <Button onClick={() =>{this.addOperation()}}
                   href="#" large className="addOpBtn" waves='light'><a href="#">Dodaj</a><Icon left>playlist_add</Icon></Button>
               </section>
             </section>

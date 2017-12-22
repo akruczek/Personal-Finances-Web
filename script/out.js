@@ -30080,7 +30080,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
                 _react2.default.createElement(
                   _reactMaterialize.Button,
                   { onClick: function onClick() {
-                      _this2.props.isEdit ? _this2.editOperation() : _this2.addOperation();
+                      _this2.addOperation();
                     },
                     href: '#', large: true, className: 'addOpBtn', waves: 'light' },
                   _react2.default.createElement(
@@ -54303,13 +54303,9 @@ var HistoryItem = exports.HistoryItem = function HistoryItem(props) {
       _react2.default.createElement(
         'p',
         null,
-        _react2.default.createElement(
-          'a',
-          { href: '#popup1' },
-          _react2.default.createElement(_reactMaterialize.Button, { floating: true, className: 'green', waves: 'light', icon: 'edit', onClick: function onClick() {
-              return props.callbackEdit(props.history.id);
-            } })
-        )
+        _react2.default.createElement(_reactMaterialize.Button, { href: '#popup1', floating: true, className: 'green', waves: 'light', icon: 'edit', onClick: function onClick() {
+            return props.callbackEdit(props.history.id);
+          } })
       ),
       _react2.default.createElement(
         'p',

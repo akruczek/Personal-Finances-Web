@@ -98,23 +98,43 @@
         },
         {
           "id": 9,
-          "date": "2017-12-19",
-          "title": "Zlecenie",
+          "date": "2017-12-22",
+          "title": "Czapka na Zimę",
           "note": "",
-          "category": "Praca",
-          "money": "175",
-          "income": true,
-          "src": "../images/catWork.png"
+          "category": "Odzież",
+          "money": "20",
+          "income": false,
+          "src": "../images/catClothing.png"
         },
         {
           "id": 10,
           "date": "2017-12-22",
-          "title": "Zakupy",
-          "note": "Market",
-          "category": "Jedzenie",
-          "money": "",
+          "title": "Zlecenie",
+          "note": "",
+          "category": "Praca",
+          "money": "250",
+          "income": true,
+          "src": "../images/catWork.png"
+        },
+        {
+          "id": 11,
+          "date": "2017-12-23",
+          "title": "Książki",
+          "note": "Jakieś książki",
+          "category": "Nauka",
+          "money": "147.50",
           "income": false,
-          "src": "../images/catFood.png"
+          "src": "../images/catStudy.png"
+        },
+        {
+          "id": 12,
+          "date": "2017-12-24",
+          "title": "Taksówka",
+          "note": "Taxi",
+          "category": "Transport",
+          "money": "61.13",
+          "income": false,
+          "src": "../images/catTransport.png"
         }
       ]
     },
