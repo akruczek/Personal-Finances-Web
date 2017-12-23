@@ -3,9 +3,9 @@ import {Button} from 'react-materialize';
 import {incomeCategories, expenseCategories} from "../variables/categories.jsx";
 
 export const HistoryItem =(props)=> {
-  return props.history ? (
-    <a className="collection-item"><span className="badge">
-        <p><Button href="#popup1" floating className='green' waves='light' icon='edit' onClick={() => props.callbackEdit(props.history.id)}></Button></p>
+  return (
+    <span className="collection-item"><span className="badge">
+        <p><a href="#popup1"><Button floating className='green' waves='light' icon='edit' onClick={() => props.callbackEdit(props.history.id)}></Button></a></p>
         <p><Button floating className='blue' waves='light' icon='delete' onClick={() => props.callbackDelete(props.history.id)}/></p>
       </span>
       <div>
@@ -26,6 +26,6 @@ export const HistoryItem =(props)=> {
           </div>
         </div>
       </div>
-    </a>
-  ) : <a></a>;
+    </span>
+  );
 }

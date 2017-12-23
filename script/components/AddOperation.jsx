@@ -10,8 +10,8 @@ export class AddOperation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dateInput: "",
       today: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate(),
+      dateInput: "",
       inputOperationTitle: "",
       inputNotes: "",
       selectCategory: "",
@@ -50,30 +50,42 @@ export class AddOperation extends React.Component {
       inputOperationTitle: "",
       inputNotes: "",
       selectCategory: "",
-      inputRadio: false,
+      inputRadio: false
     });
-    this.props.endEdit();
   }
 
   //DODAWANIE NOWEJ OPERACJI (WCZYTANIE OBECNYCH -> DODANIE NOWYCH -> ZWRÓCENIE NOWEJ TABLICY)
+  //+ EDYCJA (PODMIANA ODPOWIEDNIEGO ELEMENTU TABLICY)
   addOperation =()=> {
-    // console.log("adding");
     fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
     .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
     .then(data=> {
       //ZMIENNA Z HISTORIĄ OPERACJI UŻYTKOWNIKA ORAZ DODANIE DO HISTORII NOWEGO OBIEKTU
       let newHistoryItem = data;
-      newHistoryItem.operations.push({
-        id: data.operations.length,
-        date: this.state.dateInput,
-        title: this.state.inputOperationTitle,
-        note: this.state.inputNotes,
-        category: this.state.selectCategory,
-        money: this.state.inputMoney,
-        income: this.state.inputRadio,
-        src: this.state.iconSrc
-      });
-      // console.log("Miesiąc: ", Number(newHistoryItem.operations[1].date.slice("-")[5] + newHistoryItem.operations[1].date.slice("-")[6]));
+      if(this.props.isEdit) {
+        newHistoryItem.operations[this.props.editOperationId] = {
+          id: this.props.editOperationId,
+          date: this.state.dateInput,
+          title: this.state.inputOperationTitle,
+          note: this.state.inputNotes,
+          category: this.state.selectCategory,
+          money: this.state.inputMoney,
+          income: this.state.inputRadio,
+          src: this.state.iconSrc
+        }
+      }
+      else {
+        newHistoryItem.operations.push({
+          id: data.operations.length,
+          date: this.state.dateInput,
+          title: this.state.inputOperationTitle,
+          note: this.state.inputNotes,
+          category: this.state.selectCategory,
+          money: this.state.inputMoney,
+          income: this.state.inputRadio,
+          src: this.state.iconSrc
+        });
+      }
 
       fetch(`${url}${userObject.id}`, {
         method: "PUT",
@@ -83,7 +95,6 @@ export class AddOperation extends React.Component {
       })
       .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
       .then(data => {
-        // console.log("DODANO NOWĄ OPERACJĘ: ", newHistoryItem);
         this.props.setHistory(newHistoryItem);  //app.jsx >callback
         this.props.getHistory();  //app.jsx >callback
         window.location.replace("#");
@@ -92,87 +103,49 @@ export class AddOperation extends React.Component {
     }).catch(error => console.log(error));
   }
 
-  //EDYCJA OPERACJI -> TODO
-  editOperation =()=> {
-    console.log("editing");
-    fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
-    .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
-    .then(data=> {
-      //ZMIENNA Z HISTORIĄ OPERACJI UŻYTKOWNIKA ORAZ DODANIE DO HISTORII NOWEGO OBIEKTU
-      let newHistoryItem = data;
-      newHistoryItem.operations[this.props.editOperationId] = {
-        id: data.operations.length,
-        date: this.state.dateInput,
-        title: this.state.inputOperationTitle,
-        note: this.state.inputNotes,
-        category: this.state.selectCategory,
-        money: this.state.inputMoney,
-        income: this.state.inputRadio,
-        src: this.state.iconSrc
-      };
-
-      fetch(`${url}${userObject.id}`, {
-        method: "PUT",
-        body: JSON.stringify(newHistoryItem),
-        headers: {"Content-Type" : "application/json", "Accept": "application/json"},
-        dataType: "json"
-      })
-      .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
-      .then(data => {
-        // console.log("ZEDYTOWANO OPERACJĘ: ", newHistoryItem);
-        this.props.setHistory(newHistoryItem);  //app.jsx >callback
-        this.props.getHistory();  //app.jsx >callback
-        window.location.replace("#");
-        this.resetOptions();
-      }).catch(error => console.log(error));
-    }).catch(error => console.log(error));
-
-    this.resetOptions();
+  //USTAWIANIE DOMYŚLNYCH WARTOŚCI INPUTA PODCZAS EDYCJI
+  setEdit =()=> {
+    this.setState({
+      dateInput: this.props.history[this.props.editOperationId].date,
+      inputOperationTitle: this.props.history[this.props.editOperationId].title,
+      inputNotes: this.props.history[this.props.editOperationId].note,
+      selectCategory: this.props.history[this.props.editOperationId].category,
+      inputMoney: this.props.history[this.props.editOperationId].money,
+      inputRadio: this.props.history[this.props.editOperationId].income
+    });
+    return true;
   }
 
-  //EDYCJA OPERACJI TODO
-  resetEdit() {
-    console.log("edit reset");
-    this.props.isEdit && (
-      this.setState({
-        today: this.props.history[this.props.editOperationId].date,
-        inputMoney: this.props.history[this.props.editOperationId].money,
-        inputOperationTitle: this.props.history[this.props.editOperationId].title,
-        inputNotes: this.props.history[this.props.editOperationId].note,
-        inputRadio: !this.props.history[this.props.editOperationId].income
-      })
-    );
+  componentWillReceiveProps =()=> {
+    setTimeout(()=>{ this.props.isEdit ? this.setEdit() : this.resetOptions(); }, 120);
   }
 
   render() {
-    // console.log(this.props.isEdit);
-    // console.log(this.props.editOperationId);
-    // console.log(this.props.history);
     return (
       <div id="popup1" className="overlay">
         <div className="popup">
-          <h2>Dodaj nową operację</h2>
+          {this.props.isEdit ? <h2>Edytuj operację</h2> : <h2>Dodaj nową operację</h2>}
           <a className="close" href="#" onClick={this.props.endEdit}>&times;</a>
           <div className="content">
             <section className="addOperationSection">
               <form>
                 <p>
-                  <input defaultChecked={true} onClick={this.changeHandlerRadio} name="group1" type="radio" id="test1" />
+                  <input checked={!this.state.inputRadio} onChange={this.changeHandlerRadio} name="group1" type="radio" id="test1" />
                   <label htmlFor="test1">Wydatek</label>
                 </p>
                 <p>
-                  <input defaultChecked={false} name="group1" onClick={this.changeHandlerRadio} type="radio" id="test2" />
+                  <input checked={this.state.inputRadio} name="group1" onChange={this.changeHandlerRadio} type="radio" id="test2" />
                   <label htmlFor="test2">Wpływ</label>
                 </p>
 
                 {!this.state.inputRadio ?
-                  ( <SelectCategoryExpense change={this.changeHandlerSelect}/> )
+                  ( <SelectCategoryExpense change={this.changeHandlerSelect} inputRadio={this.state.inputRadio}/> )
                   :
-                  ( <SelectCategoryIncome change={this.changeHandlerSelect}/> )}
+                  ( <SelectCategoryIncome change={this.changeHandlerSelect} inputRadio={this.state.inputRadio}/> )}
 
                 <span className="dateSpan">Data:</span><br/>
                 <input onChange={this.changeHandler} type="date" className="datepicker dateInput" name="dateInput"
-                  defaultValue={this.state.today} />
+                  value={this.state.dateInput} />
               </form>
 
             <section className="OperationDescription">
@@ -190,8 +163,8 @@ export class AddOperation extends React.Component {
                 <textarea maxLength={70} value={this.state.inputNotes}
                   onChange={this.changeHandler} name="inputNotes" id="textarea1" className="materialize-textarea" data-length="70"></textarea>
 
-                <Button onClick={() =>{this.addOperation()}}
-                  href="#" large className="addOpBtn" waves='light'><a href="#">Dodaj</a><Icon left>playlist_add</Icon></Button>
+                <Button onClick={() => {this.addOperation();}}
+                  href="#" large className="addOpBtn" waves='light'>{this.props.isEdit ? <a href="#">Edytuj</a> : <a href="#">Dodaj</a>}<Icon left>playlist_add</Icon></Button>
               </section>
             </section>
           </div>

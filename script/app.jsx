@@ -52,7 +52,6 @@ export class Application extends React.Component {
       income: newIncome,
       expense: newExpense
     });
-    // console.log("Balance: ", this.state.balance);
   }
 
   checkBalances =()=> {
@@ -61,21 +60,17 @@ export class Application extends React.Component {
     //WYDATKI KATEGORYCZNIE
     for (let i=0; i<incomeCategories.length; i++) {
       newArrIncome[i] = 0;
-      for (let j=0; j<this.state.history.length; j++) {
+      for (let j=0; j<this.state.history.length; j++)
         (this.state.history[j].category === incomeCategories[i].name) && ( newArrIncome[i] += Number(this.state.history[j].money) );
-      }
       newArrIncome[i] = newArrIncome[i].toFixed(2);
     }
-    // console.log("newArrIncome[i]", newArrIncome);
 
     //WPŁYWY KATEGORYCZNIE
     for (let i=0; i<expenseCategories.length; i++) {
       newArrExpense[i] = 0;
-      for (let j=0; j<this.state.history.length; j++) {
+      for (let j=0; j<this.state.history.length; j++)
         (this.state.history[j].category === expenseCategories[i].name) && ( newArrExpense[i] += Number(this.state.history[j].money) );
-      }
       newArrExpense[i] = newArrExpense[i].toFixed(2);
-      // console.log("newArrExpense[i]", newArrExpense);
     }
 
     this.setState({
@@ -85,19 +80,20 @@ export class Application extends React.Component {
     });
   }
 
-  //POBRANIE HISTORII OPERACJI
+  //POBRANIE HISTORII OPERACJI + SORTOWANIE WG DATY
   getHistory =()=> {
-    console.log("addded");
-    setTimeout(() => {
-      fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
-      .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
-      .then(data => { this.setState({ history: data.operations }); })
-      .then(data => { this.setBalance(); })
-      .then(data => { this.checkBalances(); })
-      .catch(error => console.log(error));
-    }, 500);
+    fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
+    .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
+    .then(data => { this.sortHistory(data.operations); })
+    .then(data => { this.setBalance(); })
+    .then(data => { this.checkBalances(); })
+    .catch(error => console.log(error));
   }
 
+  sortHistory =(data)=> {
+    console.log(data);
+    this.setState({ history: data });
+  }
 
   //NAWIGACJA SIDE-OUT, USTAWIENIE URL ZGODNIE Z ZALOGOWANYM UŻYTKOWNIKIEM
   componentDidMount() {
@@ -157,10 +153,7 @@ export class Application extends React.Component {
     }).catch(error => console.log(error));
   }
 
-  editOperation =(id)=> {
-    // console.log("id", id);
-    this.setState({ editOperationId: id, isEdit: true });
-  }
+  editOperation =(id)=> { this.setState({ editOperationId: id, isEdit: true }); }
 
   endEdit =()=> { this.setState({ isEdit: false }); }
 

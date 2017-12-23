@@ -88,23 +88,23 @@
         },
         {
           "id": 8,
-          "date": "2017-12-16",
+          "date": "2017-12-23",
           "title": "AGD",
           "note": "coś tam",
           "category": "Dom",
           "money": "21.50",
           "income": false,
-          "src": "../images/catHome.png"
+          "src": ""
         },
         {
           "id": 9,
-          "date": "2017-12-22",
-          "title": "Czapka na Zimę",
-          "note": "",
-          "category": "Odzież",
+          "date": "2017-12-19",
+          "title": "Gra Komputerowa",
+          "note": "Steam",
+          "category": "Rozrywka",
           "money": "20",
           "income": false,
-          "src": "../images/catClothing.png"
+          "src": "../images/catEntertainment.png"
         },
         {
           "id": 10,
@@ -138,13 +138,13 @@
         },
         {
           "id": 13,
-          "date": "2017-12-24",
-          "title": "Tytuł",
-          "note": "Notatk",
-          "category": "Dom",
-          "money": "50",
+          "date": "2017-12-23",
+          "title": "Zakupy",
+          "note": "Żabka",
+          "category": "Jedzenie",
+          "money": "5.99",
           "income": false,
-          "src": "../images/catHome.png"
+          "src": "../images/catFood.png"
         }
       ]
     },

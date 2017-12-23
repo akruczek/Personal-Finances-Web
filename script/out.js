@@ -6101,12 +6101,12 @@ var isValid = void 0;
 var userObject = exports.userObject = void 0;
 
 // -----DEV-ONLY\/
-// userObject = {
-//     "id": "exampleApp",
-//     "login": "exampleApp",
-//     "password": "okwzvo",
-//     "email": "app@example.com"
-//   };
+exports.userObject = userObject = {
+  "id": "exampleApp",
+  "login": "exampleApp",
+  "password": "okwzvo",
+  "email": "app@example.com"
+};
 // /\
 
 
@@ -6168,9 +6168,9 @@ var Login = function (_React$Component) {
       inputPasswordClass: "",
       errorMessage: ""
       // //-----DEV ONLY \/
-      // this.props.history.push(`/app/${userObject.id}`);
-      // //-----DEV ONLY /\
-    };return _this;
+    };_this.props.history.push('/app/' + userObject.id);
+    // //-----DEV ONLY /\
+    return _this;
   }
 
   //ZMIANY W INPUTACH
@@ -13779,7 +13779,6 @@ var Application = exports.Application = function (_React$Component) {
         income: newIncome,
         expense: newExpense
       });
-      // console.log("Balance: ", this.state.balance);
     };
 
     _this.checkBalances = function () {
@@ -13790,19 +13789,15 @@ var Application = exports.Application = function (_React$Component) {
         newArrIncome[i] = 0;
         for (var j = 0; j < _this.state.history.length; j++) {
           _this.state.history[j].category === _categories.incomeCategories[i].name && (newArrIncome[i] += Number(_this.state.history[j].money));
-        }
-        newArrIncome[i] = newArrIncome[i].toFixed(2);
+        }newArrIncome[i] = newArrIncome[i].toFixed(2);
       }
-      // console.log("newArrIncome[i]", newArrIncome);
 
       //WPŁYWY KATEGORYCZNIE
       for (var _i = 0; _i < _categories.expenseCategories.length; _i++) {
         newArrExpense[_i] = 0;
         for (var _j = 0; _j < _this.state.history.length; _j++) {
           _this.state.history[_j].category === _categories.expenseCategories[_i].name && (newArrExpense[_i] += Number(_this.state.history[_j].money));
-        }
-        newArrExpense[_i] = newArrExpense[_i].toFixed(2);
-        // console.log("newArrExpense[i]", newArrExpense);
+        }newArrExpense[_i] = newArrExpense[_i].toFixed(2);
       }
 
       _this.setState({
@@ -13813,20 +13808,22 @@ var Application = exports.Application = function (_React$Component) {
     };
 
     _this.getHistory = function () {
-      console.log("addded");
-      setTimeout(function () {
-        fetch('' + _main.url + _main.userObject.id, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
-          return response && response.ok ? response.json() : "Błąd Połączenia";
-        }).then(function (data) {
-          _this.setState({ history: data.operations });
-        }).then(function (data) {
-          _this.setBalance();
-        }).then(function (data) {
-          _this.checkBalances();
-        }).catch(function (error) {
-          return console.log(error);
-        });
-      }, 500);
+      fetch('' + _main.url + _main.userObject.id, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
+        return response && response.ok ? response.json() : "Błąd Połączenia";
+      }).then(function (data) {
+        _this.sortHistory(data.operations);
+      }).then(function (data) {
+        _this.setBalance();
+      }).then(function (data) {
+        _this.checkBalances();
+      }).catch(function (error) {
+        return console.log(error);
+      });
+    };
+
+    _this.sortHistory = function (data) {
+      console.log(data);
+      _this.setState({ history: data });
     };
 
     _this.setHistory = function (newHistory) {
@@ -13863,7 +13860,6 @@ var Application = exports.Application = function (_React$Component) {
     };
 
     _this.editOperation = function (id) {
-      // console.log("id", id);
       _this.setState({ editOperationId: id, isEdit: true });
     };
 
@@ -13893,7 +13889,7 @@ var Application = exports.Application = function (_React$Component) {
   //USTAWIENIE SALDA
 
 
-  //POBRANIE HISTORII OPERACJI
+  //POBRANIE HISTORII OPERACJI + SORTOWANIE WG DATY
 
 
   _createClass(Application, [{
@@ -29857,27 +29853,37 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
         selectCategory: "",
         inputRadio: false
       });
-      _this.props.endEdit();
     };
 
     _this.addOperation = function () {
-      // console.log("adding");
       fetch('' + _main.url + _main.userObject.id, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
         return response && response.ok ? response.json() : "Błąd Połączenia";
       }).then(function (data) {
         //ZMIENNA Z HISTORIĄ OPERACJI UŻYTKOWNIKA ORAZ DODANIE DO HISTORII NOWEGO OBIEKTU
         var newHistoryItem = data;
-        newHistoryItem.operations.push({
-          id: data.operations.length,
-          date: _this.state.dateInput,
-          title: _this.state.inputOperationTitle,
-          note: _this.state.inputNotes,
-          category: _this.state.selectCategory,
-          money: _this.state.inputMoney,
-          income: _this.state.inputRadio,
-          src: _this.state.iconSrc
-        });
-        // console.log("Miesiąc: ", Number(newHistoryItem.operations[1].date.slice("-")[5] + newHistoryItem.operations[1].date.slice("-")[6]));
+        if (_this.props.isEdit) {
+          newHistoryItem.operations[_this.props.editOperationId] = {
+            id: _this.props.editOperationId,
+            date: _this.state.dateInput,
+            title: _this.state.inputOperationTitle,
+            note: _this.state.inputNotes,
+            category: _this.state.selectCategory,
+            money: _this.state.inputMoney,
+            income: _this.state.inputRadio,
+            src: _this.state.iconSrc
+          };
+        } else {
+          newHistoryItem.operations.push({
+            id: data.operations.length,
+            date: _this.state.dateInput,
+            title: _this.state.inputOperationTitle,
+            note: _this.state.inputNotes,
+            category: _this.state.selectCategory,
+            money: _this.state.inputMoney,
+            income: _this.state.inputRadio,
+            src: _this.state.iconSrc
+          });
+        }
 
         fetch('' + _main.url + _main.userObject.id, {
           method: "PUT",
@@ -29887,7 +29893,6 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
         }).then(function (response) {
           return response && response.ok ? response.json() : "Błąd Połączenia";
         }).then(function (data) {
-          // console.log("DODANO NOWĄ OPERACJĘ: ", newHistoryItem);
           _this.props.setHistory(newHistoryItem); //app.jsx >callback
           _this.props.getHistory(); //app.jsx >callback
           window.location.replace("#");
@@ -29900,50 +29905,27 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
       });
     };
 
-    _this.editOperation = function () {
-      console.log("editing");
-      fetch('' + _main.url + _main.userObject.id, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
-        return response && response.ok ? response.json() : "Błąd Połączenia";
-      }).then(function (data) {
-        //ZMIENNA Z HISTORIĄ OPERACJI UŻYTKOWNIKA ORAZ DODANIE DO HISTORII NOWEGO OBIEKTU
-        var newHistoryItem = data;
-        newHistoryItem.operations[_this.props.editOperationId] = {
-          id: data.operations.length,
-          date: _this.state.dateInput,
-          title: _this.state.inputOperationTitle,
-          note: _this.state.inputNotes,
-          category: _this.state.selectCategory,
-          money: _this.state.inputMoney,
-          income: _this.state.inputRadio,
-          src: _this.state.iconSrc
-        };
-
-        fetch('' + _main.url + _main.userObject.id, {
-          method: "PUT",
-          body: JSON.stringify(newHistoryItem),
-          headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          dataType: "json"
-        }).then(function (response) {
-          return response && response.ok ? response.json() : "Błąd Połączenia";
-        }).then(function (data) {
-          // console.log("ZEDYTOWANO OPERACJĘ: ", newHistoryItem);
-          _this.props.setHistory(newHistoryItem); //app.jsx >callback
-          _this.props.getHistory(); //app.jsx >callback
-          window.location.replace("#");
-          _this.resetOptions();
-        }).catch(function (error) {
-          return console.log(error);
-        });
-      }).catch(function (error) {
-        return console.log(error);
+    _this.setEdit = function () {
+      _this.setState({
+        dateInput: _this.props.history[_this.props.editOperationId].date,
+        inputOperationTitle: _this.props.history[_this.props.editOperationId].title,
+        inputNotes: _this.props.history[_this.props.editOperationId].note,
+        selectCategory: _this.props.history[_this.props.editOperationId].category,
+        inputMoney: _this.props.history[_this.props.editOperationId].money,
+        inputRadio: _this.props.history[_this.props.editOperationId].income
       });
+      return true;
+    };
 
-      _this.resetOptions();
+    _this.componentWillReceiveProps = function () {
+      setTimeout(function () {
+        _this.props.isEdit ? _this.setEdit() : _this.resetOptions();
+      }, 120);
     };
 
     _this.state = {
-      dateInput: "",
       today: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate(),
+      dateInput: "",
       inputOperationTitle: "",
       inputNotes: "",
       selectCategory: "",
@@ -29965,40 +29947,27 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
     }
 
     //DODAWANIE NOWEJ OPERACJI (WCZYTANIE OBECNYCH -> DODANIE NOWYCH -> ZWRÓCENIE NOWEJ TABLICY)
+    //+ EDYCJA (PODMIANA ODPOWIEDNIEGO ELEMENTU TABLICY)
 
 
-    //EDYCJA OPERACJI -> TODO
+    //USTAWIANIE DOMYŚLNYCH WARTOŚCI INPUTA PODCZAS EDYCJI
 
-  }, {
-    key: 'resetEdit',
-
-
-    //EDYCJA OPERACJI TODO
-    value: function resetEdit() {
-      console.log("edit reset");
-      this.props.isEdit && this.setState({
-        today: this.props.history[this.props.editOperationId].date,
-        inputMoney: this.props.history[this.props.editOperationId].money,
-        inputOperationTitle: this.props.history[this.props.editOperationId].title,
-        inputNotes: this.props.history[this.props.editOperationId].note,
-        inputRadio: !this.props.history[this.props.editOperationId].income
-      });
-    }
   }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
 
-      // console.log(this.props.isEdit);
-      // console.log(this.props.editOperationId);
-      // console.log(this.props.history);
       return _react2.default.createElement(
         'div',
         { id: 'popup1', className: 'overlay' },
         _react2.default.createElement(
           'div',
           { className: 'popup' },
-          _react2.default.createElement(
+          this.props.isEdit ? _react2.default.createElement(
+            'h2',
+            null,
+            'Edytuj operacj\u0119'
+          ) : _react2.default.createElement(
             'h2',
             null,
             'Dodaj now\u0105 operacj\u0119'
@@ -30020,7 +29989,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
                 _react2.default.createElement(
                   'p',
                   null,
-                  _react2.default.createElement('input', { defaultChecked: true, onClick: this.changeHandlerRadio, name: 'group1', type: 'radio', id: 'test1' }),
+                  _react2.default.createElement('input', { checked: !this.state.inputRadio, onChange: this.changeHandlerRadio, name: 'group1', type: 'radio', id: 'test1' }),
                   _react2.default.createElement(
                     'label',
                     { htmlFor: 'test1' },
@@ -30030,14 +29999,14 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
                 _react2.default.createElement(
                   'p',
                   null,
-                  _react2.default.createElement('input', { defaultChecked: false, name: 'group1', onClick: this.changeHandlerRadio, type: 'radio', id: 'test2' }),
+                  _react2.default.createElement('input', { checked: this.state.inputRadio, name: 'group1', onChange: this.changeHandlerRadio, type: 'radio', id: 'test2' }),
                   _react2.default.createElement(
                     'label',
                     { htmlFor: 'test2' },
                     'Wp\u0142yw'
                   )
                 ),
-                !this.state.inputRadio ? _react2.default.createElement(_SelectCategory.SelectCategoryExpense, { change: this.changeHandlerSelect }) : _react2.default.createElement(_SelectCategory.SelectCategoryIncome, { change: this.changeHandlerSelect }),
+                !this.state.inputRadio ? _react2.default.createElement(_SelectCategory.SelectCategoryExpense, { change: this.changeHandlerSelect, inputRadio: this.state.inputRadio }) : _react2.default.createElement(_SelectCategory.SelectCategoryIncome, { change: this.changeHandlerSelect, inputRadio: this.state.inputRadio }),
                 _react2.default.createElement(
                   'span',
                   { className: 'dateSpan' },
@@ -30045,7 +30014,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
                 ),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement('input', { onChange: this.changeHandler, type: 'date', className: 'datepicker dateInput', name: 'dateInput',
-                  defaultValue: this.state.today })
+                  value: this.state.dateInput })
               ),
               _react2.default.createElement(
                 'section',
@@ -30083,7 +30052,11 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
                       _this2.addOperation();
                     },
                     href: '#', large: true, className: 'addOpBtn', waves: 'light' },
-                  _react2.default.createElement(
+                  this.props.isEdit ? _react2.default.createElement(
+                    'a',
+                    { href: '#' },
+                    'Edytuj'
+                  ) : _react2.default.createElement(
                     'a',
                     { href: '#' },
                     'Dodaj'
@@ -54294,8 +54267,8 @@ var _categories = __webpack_require__(40);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var HistoryItem = exports.HistoryItem = function HistoryItem(props) {
-  return props.history ? _react2.default.createElement(
-    'a',
+  return _react2.default.createElement(
+    'span',
     { className: 'collection-item' },
     _react2.default.createElement(
       'span',
@@ -54303,9 +54276,13 @@ var HistoryItem = exports.HistoryItem = function HistoryItem(props) {
       _react2.default.createElement(
         'p',
         null,
-        _react2.default.createElement(_reactMaterialize.Button, { href: '#popup1', floating: true, className: 'green', waves: 'light', icon: 'edit', onClick: function onClick() {
-            return props.callbackEdit(props.history.id);
-          } })
+        _react2.default.createElement(
+          'a',
+          { href: '#popup1' },
+          _react2.default.createElement(_reactMaterialize.Button, { floating: true, className: 'green', waves: 'light', icon: 'edit', onClick: function onClick() {
+              return props.callbackEdit(props.history.id);
+            } })
+        )
       ),
       _react2.default.createElement(
         'p',
@@ -54360,7 +54337,7 @@ var HistoryItem = exports.HistoryItem = function HistoryItem(props) {
         )
       )
     )
-  ) : _react2.default.createElement('a', null);
+  );
 };
 
 /***/ }),
