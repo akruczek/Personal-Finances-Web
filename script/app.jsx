@@ -52,7 +52,9 @@ export class Application extends React.Component {
       income: newIncome,
       expense: newExpense
     });
+    shouldComponentUpdate: () => { return false; }
   }
+
 
   checkBalances =()=> {
     let newArrIncome = [];
@@ -84,15 +86,29 @@ export class Application extends React.Component {
   getHistory =()=> {
     fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
     .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
-    .then(data => { this.sortHistory(data.operations); })
+    .then(data => {
+      this.sortHistory(data.operations);
+    })
     .then(data => { this.setBalance(); })
     .then(data => { this.checkBalances(); })
     .catch(error => console.log(error));
   }
 
   sortHistory =(data)=> {
-    console.log(data);
-    this.setState({ history: data });
+    let sortedData = data;
+    let changed = true;
+    while (changed) {
+      changed = false;
+      for (let i=0; i<sortedData.length-1; i++) {
+        if (Number(sortedData[i].date[8] + sortedData[i].date[9]) < Number(sortedData[i+1].date[8] + sortedData[i+1].date[9])) {
+          let tempVar = sortedData[i];
+          sortedData[i] = sortedData[i+1];
+          sortedData[i+1] = tempVar;
+          changed = true;
+        }
+      }
+    }
+    this.setState({ history: sortedData }, ()=>{console.log(this.state.history)});
   }
 
   //NAWIGACJA SIDE-OUT, USTAWIENIE URL ZGODNIE Z ZALOGOWANYM UŻYTKOWNIKIEM

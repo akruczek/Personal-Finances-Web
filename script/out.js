@@ -13779,6 +13779,9 @@ var Application = exports.Application = function (_React$Component) {
         income: newIncome,
         expense: newExpense
       });
+      shouldComponentUpdate: (function () {
+        return false;
+      });
     };
 
     _this.checkBalances = function () {
@@ -13822,8 +13825,22 @@ var Application = exports.Application = function (_React$Component) {
     };
 
     _this.sortHistory = function (data) {
-      console.log(data);
-      _this.setState({ history: data });
+      var sortedData = data;
+      var changed = true;
+      while (changed) {
+        changed = false;
+        for (var i = 0; i < sortedData.length - 1; i++) {
+          if (Number(sortedData[i].date[8] + sortedData[i].date[9]) < Number(sortedData[i + 1].date[8] + sortedData[i + 1].date[9])) {
+            var tempVar = sortedData[i];
+            sortedData[i] = sortedData[i + 1];
+            sortedData[i + 1] = tempVar;
+            changed = true;
+          }
+        }
+      }
+      _this.setState({ history: sortedData }, function () {
+        console.log(_this.state.history);
+      });
     };
 
     _this.setHistory = function (newHistory) {
@@ -54145,7 +54162,7 @@ var AppSectionMain = exports.AppSectionMain = function AppSectionMain(props) {
             "div",
             { className: "collection" },
             props.opHistory.map(function (item) {
-              return _react2.default.createElement(_HistoryItem.HistoryItem, { key: item.id, history: props.opHistory[props.opHistory.length - (item.id + 1)],
+              return _react2.default.createElement(_HistoryItem.HistoryItem, { key: item.id, history: item,
                 callbackDelete: props.callbackDelete, callbackEdit: props.callbackEdit });
             }),
             _react2.default.createElement(

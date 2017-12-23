@@ -8,141 +8,41 @@
       "operations": [
         {
           "id": 0,
-          "date": "2017-12-01",
-          "title": "Wypłata",
-          "note": "Grudzień",
+          "date": "2017-12-23",
+          "title": "Zlecenie",
+          "note": "Web Site",
           "category": "Praca",
-          "money": "2400",
+          "money": "600",
           "income": true,
           "src": "../images/catWork.png"
         },
         {
           "id": 1,
-          "date": "2017-12-02",
-          "title": "Rachunki",
-          "note": "Prąd, woda, gaz",
-          "category": "Dom",
-          "money": "860",
-          "income": false,
-          "src": "../images/catHome.png"
-        },
-        {
-          "id": 2,
-          "date": "2017-12-04",
-          "title": "Zakupy",
-          "note": "Supermarket",
+          "date": "2017-12-12",
+          "title": "Jedzonko",
+          "note": "amu amu",
           "category": "Jedzenie",
-          "money": "220.55",
+          "money": "15",
           "income": false,
           "src": "../images/catFood.png"
         },
         {
-          "id": 3,
-          "date": "2017-12-06",
-          "title": "Gry",
-          "note": "Steam",
-          "category": "Rozrywka",
-          "money": "87.99",
-          "income": false,
-          "src": "../images/catEntertainment.png"
-        },
-        {
-          "id": 4,
-          "date": "2017-12-07",
+          "id": 2,
+          "date": "2017-12-13",
           "title": "Benzyna",
-          "note": "Orlen",
+          "note": "95",
           "category": "Transport",
-          "money": "180.77",
+          "money": "180.87",
           "income": false,
           "src": "../images/catTransport.png"
         },
         {
-          "id": 5,
-          "date": "2017-12-09",
-          "title": "Wygrana",
-          "note": "Kasyno",
-          "category": "Hazard",
-          "money": "150",
-          "income": true,
-          "src": "../images/catHazard.png"
-        },
-        {
-          "id": 6,
-          "date": "2017-12-10",
-          "title": "Kino",
-          "note": "Cinema City",
-          "category": "Rozrywka",
-          "money": "65",
-          "income": false,
-          "src": "../images/catEntertainment.png"
-        },
-        {
-          "id": 7,
-          "date": "2017-12-13",
-          "title": "Małe Zakupy",
-          "note": "Sklepik",
+          "id": 3,
+          "date": "2017-12-17",
+          "title": "Obiadek",
+          "note": "Domowe Obiadki",
           "category": "Jedzenie",
-          "money": "33.12",
-          "income": false,
-          "src": "../images/catFood.png"
-        },
-        {
-          "id": 8,
-          "date": "2017-12-23",
-          "title": "AGD",
-          "note": "coś tam",
-          "category": "Dom",
-          "money": "21.50",
-          "income": false,
-          "src": ""
-        },
-        {
-          "id": 9,
-          "date": "2017-12-19",
-          "title": "Gra Komputerowa",
-          "note": "Steam",
-          "category": "Rozrywka",
-          "money": "20",
-          "income": false,
-          "src": "../images/catEntertainment.png"
-        },
-        {
-          "id": 10,
-          "date": "2017-12-22",
-          "title": "Zlecenie",
-          "note": "",
-          "category": "Praca",
-          "money": "250",
-          "income": true,
-          "src": "../images/catWork.png"
-        },
-        {
-          "id": 11,
-          "date": "2017-12-23",
-          "title": "Książki",
-          "note": "Jakieś książki",
-          "category": "Nauka",
-          "money": "147.50",
-          "income": false,
-          "src": "../images/catStudy.png"
-        },
-        {
-          "id": 12,
-          "date": "2017-12-22",
-          "title": "Tytuł",
-          "note": "Notatki",
-          "category": "Praca",
-          "money": "50",
-          "income": true,
-          "src": "../images/catWork.png"
-        },
-        {
-          "id": 13,
-          "date": "2017-12-23",
-          "title": "Zakupy",
-          "note": "Żabka",
-          "category": "Jedzenie",
-          "money": "5.99",
+          "money": "16",
           "income": false,
           "src": "../images/catFood.png"
         }
