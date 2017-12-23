@@ -128,13 +128,23 @@
         },
         {
           "id": 12,
+          "date": "2017-12-22",
+          "title": "Tytuł",
+          "note": "Notatki",
+          "category": "Praca",
+          "money": "50",
+          "income": true,
+          "src": "../images/catWork.png"
+        },
+        {
+          "id": 13,
           "date": "2017-12-24",
-          "title": "Taksówka",
-          "note": "Taxi",
-          "category": "Transport",
-          "money": "61.13",
+          "title": "Tytuł",
+          "note": "Notatk",
+          "category": "Dom",
+          "money": "50",
           "income": false,
-          "src": "../images/catTransport.png"
+          "src": "../images/catHome.png"
         }
       ]
     },
@@ -180,6 +190,13 @@
           "src": "../images/catHome.png"
         }
       ]
+    },
+    {
+      "id": "example",
+      "login": "example",
+      "password": "rk}vy?",
+      "email": "mail@mai.com",
+      "operations": []
     }
   ]
 }

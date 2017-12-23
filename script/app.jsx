@@ -52,7 +52,7 @@ export class Application extends React.Component {
       income: newIncome,
       expense: newExpense
     });
-    console.log("Balance: ", this.state.balance);
+    // console.log("Balance: ", this.state.balance);
   }
 
   checkBalances =()=> {
@@ -66,7 +66,7 @@ export class Application extends React.Component {
       }
       newArrIncome[i] = newArrIncome[i].toFixed(2);
     }
-    console.log("newArrIncome[i]", newArrIncome);
+    // console.log("newArrIncome[i]", newArrIncome);
 
     //WPŁYWY KATEGORYCZNIE
     for (let i=0; i<expenseCategories.length; i++) {
@@ -75,7 +75,7 @@ export class Application extends React.Component {
         (this.state.history[j].category === expenseCategories[i].name) && ( newArrExpense[i] += Number(this.state.history[j].money) );
       }
       newArrExpense[i] = newArrExpense[i].toFixed(2);
-      console.log("newArrExpense[i]", newArrExpense);
+      // console.log("newArrExpense[i]", newArrExpense);
     }
 
     this.setState({
@@ -158,7 +158,7 @@ export class Application extends React.Component {
   }
 
   editOperation =(id)=> {
-    console.log("id", id);
+    // console.log("id", id);
     this.setState({ editOperationId: id, isEdit: true });
   }
 

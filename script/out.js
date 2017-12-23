@@ -13779,7 +13779,7 @@ var Application = exports.Application = function (_React$Component) {
         income: newIncome,
         expense: newExpense
       });
-      console.log("Balance: ", _this.state.balance);
+      // console.log("Balance: ", this.state.balance);
     };
 
     _this.checkBalances = function () {
@@ -13793,7 +13793,7 @@ var Application = exports.Application = function (_React$Component) {
         }
         newArrIncome[i] = newArrIncome[i].toFixed(2);
       }
-      console.log("newArrIncome[i]", newArrIncome);
+      // console.log("newArrIncome[i]", newArrIncome);
 
       //WPŁYWY KATEGORYCZNIE
       for (var _i = 0; _i < _categories.expenseCategories.length; _i++) {
@@ -13802,7 +13802,7 @@ var Application = exports.Application = function (_React$Component) {
           _this.state.history[_j].category === _categories.expenseCategories[_i].name && (newArrExpense[_i] += Number(_this.state.history[_j].money));
         }
         newArrExpense[_i] = newArrExpense[_i].toFixed(2);
-        console.log("newArrExpense[i]", newArrExpense);
+        // console.log("newArrExpense[i]", newArrExpense);
       }
 
       _this.setState({
@@ -13863,7 +13863,7 @@ var Application = exports.Application = function (_React$Component) {
     };
 
     _this.editOperation = function (id) {
-      console.log("id", id);
+      // console.log("id", id);
       _this.setState({ editOperationId: id, isEdit: true });
     };
 
@@ -29861,7 +29861,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
     };
 
     _this.addOperation = function () {
-      console.log("adding");
+      // console.log("adding");
       fetch('' + _main.url + _main.userObject.id, { headers: { "Content-Type": "application/json", "Accept": "application/json" } }).then(function (response) {
         return response && response.ok ? response.json() : "Błąd Połączenia";
       }).then(function (data) {
@@ -29887,7 +29887,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
         }).then(function (response) {
           return response && response.ok ? response.json() : "Błąd Połączenia";
         }).then(function (data) {
-          console.log("DODANO NOWĄ OPERACJĘ: ", newHistoryItem);
+          // console.log("DODANO NOWĄ OPERACJĘ: ", newHistoryItem);
           _this.props.setHistory(newHistoryItem); //app.jsx >callback
           _this.props.getHistory(); //app.jsx >callback
           window.location.replace("#");
@@ -29926,7 +29926,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
         }).then(function (response) {
           return response && response.ok ? response.json() : "Błąd Połączenia";
         }).then(function (data) {
-          console.log("ZEDYTOWANO OPERACJĘ: ", newHistoryItem);
+          // console.log("ZEDYTOWANO OPERACJĘ: ", newHistoryItem);
           _this.props.setHistory(newHistoryItem); //app.jsx >callback
           _this.props.getHistory(); //app.jsx >callback
           window.location.replace("#");
@@ -29989,9 +29989,9 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log(this.props.isEdit);
-      console.log(this.props.editOperationId);
-      console.log(this.props.history);
+      // console.log(this.props.isEdit);
+      // console.log(this.props.editOperationId);
+      // console.log(this.props.history);
       return _react2.default.createElement(
         'div',
         { id: 'popup1', className: 'overlay' },

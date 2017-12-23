@@ -57,7 +57,7 @@ export class AddOperation extends React.Component {
 
   //DODAWANIE NOWEJ OPERACJI (WCZYTANIE OBECNYCH -> DODANIE NOWYCH -> ZWRÓCENIE NOWEJ TABLICY)
   addOperation =()=> {
-    console.log("adding");
+    // console.log("adding");
     fetch(`${url}${userObject.id}`, {headers: {"Content-Type" : "application/json", "Accept": "application/json"}})
     .then(response => {return (response && response.ok) ? response.json() : "Błąd Połączenia";})
     .then(data=> {
@@ -83,7 +83,7 @@ export class AddOperation extends React.Component {
       })
       .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
       .then(data => {
-        console.log("DODANO NOWĄ OPERACJĘ: ", newHistoryItem);
+        // console.log("DODANO NOWĄ OPERACJĘ: ", newHistoryItem);
         this.props.setHistory(newHistoryItem);  //app.jsx >callback
         this.props.getHistory();  //app.jsx >callback
         window.location.replace("#");
@@ -119,7 +119,7 @@ export class AddOperation extends React.Component {
       })
       .then(response => { return (response && response.ok) ? response.json() : "Błąd Połączenia"; })
       .then(data => {
-        console.log("ZEDYTOWANO OPERACJĘ: ", newHistoryItem);
+        // console.log("ZEDYTOWANO OPERACJĘ: ", newHistoryItem);
         this.props.setHistory(newHistoryItem);  //app.jsx >callback
         this.props.getHistory();  //app.jsx >callback
         window.location.replace("#");
@@ -145,9 +145,9 @@ export class AddOperation extends React.Component {
   }
 
   render() {
-    console.log(this.props.isEdit);
-    console.log(this.props.editOperationId);
-    console.log(this.props.history);
+    // console.log(this.props.isEdit);
+    // console.log(this.props.editOperationId);
+    // console.log(this.props.history);
     return (
       <div id="popup1" className="overlay">
         <div className="popup">
