@@ -18,16 +18,6 @@
         },
         {
           "id": 1,
-          "date": "2017-12-12",
-          "title": "Jedzonko",
-          "note": "amu amu",
-          "category": "Jedzenie",
-          "money": "15",
-          "income": false,
-          "src": "../images/catFood.png"
-        },
-        {
-          "id": 2,
           "date": "2017-12-13",
           "title": "Rachunki",
           "note": "Prąd",
@@ -37,7 +27,7 @@
           "src": "../images/catHome.png"
         },
         {
-          "id": 3,
+          "id": 2,
           "date": "2017-12-17",
           "title": "Obiadek",
           "note": "Domowe Obiadki",
@@ -47,7 +37,7 @@
           "src": "../images/catTransport.png"
         },
         {
-          "id": 4,
+          "id": 3,
           "date": "2017-12-20",
           "title": "Czesne",
           "note": "UAM",
@@ -57,7 +47,7 @@
           "src": "../images/catStudy.png"
         },
         {
-          "id": 5,
+          "id": 4,
           "date": "2017-12-03",
           "title": "Wypłata",
           "note": "grudzień",
@@ -65,6 +55,16 @@
           "money": "1399",
           "income": true,
           "src": "../images/catWork.png"
+        },
+        {
+          "id": 5,
+          "date": "2017-12-19",
+          "title": "II rata Coders Lab",
+          "note": "$$$",
+          "category": "5study",
+          "money": "4500",
+          "income": false,
+          "src": "../images/catStudy.png"
         }
       ]
     },
