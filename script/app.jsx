@@ -32,7 +32,9 @@ export class Application extends React.Component {
       isEdit: false,
       editOperationId: 9999,
       incomeCatSum: [],
-      expenseCatSum: []
+      expenseCatSum: [],
+      selectYear: new Date().getFullYear(),
+      selectMonth: new Date().getMonth()
     }
   }
 
@@ -57,13 +59,15 @@ export class Application extends React.Component {
 
 
   checkBalances =()=> {
+    console.log("checkBalances", this.state.history);
+    console.log(this.state.history[1].category);
     let newArrIncome = [];
     let newArrExpense = [];
     //WYDATKI KATEGORYCZNIE
     for (let i=0; i<incomeCategories.length; i++) {
       newArrIncome[i] = 0;
       for (let j=0; j<this.state.history.length; j++)
-        (this.state.history[j].category === incomeCategories[i].name) && ( newArrIncome[i] += Number(this.state.history[j].money) );
+        (this.state.history[j].category.slice(1) === incomeCategories[i].value) && ( newArrIncome[i] += Number(this.state.history[j].money) );
       newArrIncome[i] = newArrIncome[i].toFixed(2);
     }
 
@@ -71,7 +75,7 @@ export class Application extends React.Component {
     for (let i=0; i<expenseCategories.length; i++) {
       newArrExpense[i] = 0;
       for (let j=0; j<this.state.history.length; j++)
-        (this.state.history[j].category === expenseCategories[i].name) && ( newArrExpense[i] += Number(this.state.history[j].money) );
+        (this.state.history[j].category.slice(1) === expenseCategories[i].value) && ( newArrExpense[i] += Number(this.state.history[j].money) );
       newArrExpense[i] = newArrExpense[i].toFixed(2);
     }
 
@@ -185,6 +189,7 @@ export class Application extends React.Component {
 
           <div className="main-section">
             <AppSectionMain opHistory={this.state.history}
+              year={this.state.selectYear} month={this.state.selectMonth}
               callbackDelete={this.deleteOperation} callbackEdit={this.editOperation}/>
 
             <Balance balance={this.state.balance} income={this.state.income} expense={this.state.expense}

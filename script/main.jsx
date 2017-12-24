@@ -260,11 +260,4 @@ document.addEventListener('DOMContentLoaded', function() {
     <App />,
     document.getElementById('app')
   );
-  //FUNKCJA USUWAJĄCA UŻYTKOWNIKA
-  // const RemoveAccount =(id)=> {
-  //   fetch(url + id, {method: "DELETE"})
-  //   .then(() => {console.log("deleted user: " + id);})
-  //   .catch(error => console.log(error));
-  // }
-  // RemoveAccount("login");
 });

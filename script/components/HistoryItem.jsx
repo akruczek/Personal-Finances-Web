@@ -14,12 +14,12 @@ export const HistoryItem =(props)=> {
           {!props.history.income ? (
             incomeCategories.map(item => {
               if (item.id == props.history.category[0])
-              return <span className="collection-name">{item.name}</span>
+              return <span key={item.name} className="collection-name">{item.name}</span>
             })
           ) : (
             expenseCategories.map(item => {
               if (item.id == props.history.category[0])
-              return <span className="collection-name">{item.name}</span>
+              return <span key={item.name} className="collection-name">{item.name}</span>
             })
           )
           }

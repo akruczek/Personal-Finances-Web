@@ -11,11 +11,22 @@
     align-items: center;
     font-size: 28px;
     position: relative;
-    .monthName {
+    .s12 i:first-of-type { left: 25px; bottom: 7px;}
+    .selectYearRange {
+      width: 150px;
+      margin-top: -13px;
       position: absolute;
-      font-size: 22px;
-      font-weight: 600;
-      top: 2px; }
+      left: 60px;
+      margin-bottom: -20px;
+      .caret {display: none;}
+      .select-dropdown { font-size: 30px; } }
+    .selectDateRange {
+      width: 160px;
+      margin-top: -30px;
+      margin-bottom: -21px;
+      left: 90px;
+      .caret {display: none;}
+      .select-dropdown { font-size: 30px; } }
     .fixed-action-btn {height: 50px;}
     .addOperationButton {
       position: absolute;

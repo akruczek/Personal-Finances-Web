@@ -8,63 +8,43 @@
       "operations": [
         {
           "id": 0,
-          "date": "2017-12-23",
-          "title": "Zlecenie",
-          "note": "Web Site",
-          "category": "Praca",
-          "money": "600",
+          "date": "2017-12-01",
+          "title": "Wypłata",
+          "note": "Gurdzień",
+          "category": "0work",
+          "money": "2700",
           "income": true,
           "src": "../images/catWork.png"
         },
         {
           "id": 1,
-          "date": "2017-12-13",
+          "date": "2017-12-02",
           "title": "Rachunki",
           "note": "Prąd",
           "category": "1home",
-          "money": "180.87",
+          "money": "600",
           "income": false,
           "src": "../images/catHome.png"
         },
         {
           "id": 2,
-          "date": "2017-12-17",
-          "title": "Obiadek",
-          "note": "Domowe Obiadki",
+          "date": "2017-12-03",
+          "title": "Benzyna",
+          "note": "Orlen, 95",
           "category": "2transport",
-          "money": "16",
+          "money": "211.65",
           "income": false,
           "src": "../images/catTransport.png"
         },
         {
           "id": 3,
-          "date": "2017-12-20",
-          "title": "Czesne",
-          "note": "UAM",
-          "category": "5study",
-          "money": "625",
+          "date": "2017-12-04",
+          "title": "Zakupy",
+          "note": "Lidl",
+          "category": "0food",
+          "money": "168.95",
           "income": false,
-          "src": "../images/catStudy.png"
-        },
-        {
-          "id": 4,
-          "date": "2017-12-03",
-          "title": "Wypłata",
-          "note": "grudzień",
-          "category": "Praca",
-          "money": "1399",
-          "income": true,
-          "src": "../images/catWork.png"
-        },
-        {
-          "id": 5,
-          "date": "2017-12-19",
-          "title": "II rata Coders Lab",
-          "note": "$$$",
-          "category": "5study",
-          "money": "4500",
-          "income": false,
-          "src": "../images/catStudy.png"
+          "src": "../images/catFood.png"
         }
       ]
     },
