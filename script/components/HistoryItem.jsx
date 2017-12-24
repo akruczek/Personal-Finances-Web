@@ -11,7 +11,18 @@ export const HistoryItem =(props)=> {
       <div>
         <div className="col-1">
           <span className="collection-date">{props.history.date}</span>
-          <span className="collection-category">{props.history.category}</span>
+          {!props.history.income ? (
+            incomeCategories.map(item => {
+              if (item.id == props.history.category[0])
+              return <span className="collection-name">{item.name}</span>
+            })
+          ) : (
+            expenseCategories.map(item => {
+              if (item.id == props.history.category[0])
+              return <span className="collection-name">{item.name}</span>
+            })
+          )
+          }
           <span className="collection-name">{props.history.title}</span>
           <span className="collection-info">{props.history.note}</span>
         </div>

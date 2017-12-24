@@ -28,8 +28,9 @@ export class AddOperation extends React.Component {
 
   changeHandlerSelect =(event)=> {
     console.log(incomeCategories[Number(event.target.value[0])]);
+    console.log(event.target.value);
     this.setState({
-      [event.target.name]: !this.state.inputRadio ? incomeCategories[Number(event.target.value[0])].name : expenseCategories[Number(event.target.value[0])].name,
+      [event.target.name]: !this.state.inputRadio ? incomeCategories[Number(event.target.value[0])].id + incomeCategories[Number(event.target.value[0])].value : incomeCategories[Number(event.target.value[0])].id + expenseCategories[Number(event.target.value[0])].value,
       iconSrc: !this.state.inputRadio ? incomeCategories[Number(event.target.value[0])].src : expenseCategories[Number(event.target.value[0])].src
     });
   }
@@ -105,14 +106,42 @@ export class AddOperation extends React.Component {
 
   //USTAWIANIE DOMYŚLNYCH WARTOŚCI INPUTA PODCZAS EDYCJI
   setEdit =()=> {
+    let tempId = 0;
+    for (let i=0; i<this.props.history.length; i++) {
+      if (this.props.history[i].id === this.props.editOperationId) {
+        tempId = i;
+        break;
+      }
+    }
+
+    let tempSelectCategory = "";
+    if (!this.props.history[tempId].income) {
+      for (let i=0; i<incomeCategories.length; i++) {
+        console.log("for", incomeCategories[i].name, this.props.history[tempId].category);
+        if (incomeCategories[i].name === this.props.history[tempId].category) {
+          tempSelectCategory = i + incomeCategories[i].value; break;
+        }
+      }
+    }
+    else {
+      for (let i=0; i<expenseCategories.length; i++) {
+        if (expenseCategories[i].name === this.props.history[tempId].category) {
+          tempSelectCategory = i + expenseCategories[i].value; break;
+        }
+      }
+    }
+
+    console.log(tempSelectCategory);
+
     this.setState({
-      dateInput: this.props.history[this.props.editOperationId].date,
-      inputOperationTitle: this.props.history[this.props.editOperationId].title,
-      inputNotes: this.props.history[this.props.editOperationId].note,
-      selectCategory: this.props.history[this.props.editOperationId].category,
-      inputMoney: this.props.history[this.props.editOperationId].money,
-      inputRadio: this.props.history[this.props.editOperationId].income
+      dateInput: this.props.history[tempId].date,
+      inputOperationTitle: this.props.history[tempId].title,
+      inputNotes: this.props.history[tempId].note,
+      selectCategory: tempSelectCategory,
+      inputMoney: this.props.history[tempId].money,
+      inputRadio: this.props.history[tempId].income
     });
+    console.log(this.state.selectCategory);
     return true;
   }
 
@@ -139,9 +168,11 @@ export class AddOperation extends React.Component {
                 </p>
 
                 {!this.state.inputRadio ?
-                  ( <SelectCategoryExpense change={this.changeHandlerSelect} inputRadio={this.state.inputRadio}/> )
+                  ( <SelectCategoryExpense change={this.changeHandlerSelect} inputRadio={this.state.inputRadio}
+                    selectCategory={this.state.selectCategory}/> )
                   :
-                  ( <SelectCategoryIncome change={this.changeHandlerSelect} inputRadio={this.state.inputRadio}/> )}
+                  ( <SelectCategoryIncome change={this.changeHandlerSelect} inputRadio={this.state.inputRadio}
+                    selectCategory={this.state.selectCategory}/> )}
 
                 <span className="dateSpan">Data:</span><br/>
                 <input onChange={this.changeHandler} type="date" className="datepicker dateInput" name="dateInput"

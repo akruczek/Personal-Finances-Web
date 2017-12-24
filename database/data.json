@@ -29,22 +29,42 @@
         {
           "id": 2,
           "date": "2017-12-13",
-          "title": "Benzyna",
-          "note": "95",
-          "category": "Transport",
+          "title": "Rachunki",
+          "note": "Prąd",
+          "category": "1home",
           "money": "180.87",
           "income": false,
-          "src": "../images/catTransport.png"
+          "src": "../images/catHome.png"
         },
         {
           "id": 3,
           "date": "2017-12-17",
           "title": "Obiadek",
           "note": "Domowe Obiadki",
-          "category": "Jedzenie",
+          "category": "2transport",
           "money": "16",
           "income": false,
-          "src": "../images/catFood.png"
+          "src": "../images/catTransport.png"
+        },
+        {
+          "id": 4,
+          "date": "2017-12-20",
+          "title": "Czesne",
+          "note": "UAM",
+          "category": "5study",
+          "money": "625",
+          "income": false,
+          "src": "../images/catStudy.png"
+        },
+        {
+          "id": 5,
+          "date": "2017-12-03",
+          "title": "Wypłata",
+          "note": "grudzień",
+          "category": "Praca",
+          "money": "1399",
+          "income": true,
+          "src": "../images/catWork.png"
         }
       ]
     },

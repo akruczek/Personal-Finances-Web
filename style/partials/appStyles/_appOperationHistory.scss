@@ -11,6 +11,11 @@
     align-items: center;
     font-size: 28px;
     position: relative;
+    .monthName {
+      position: absolute;
+      font-size: 22px;
+      font-weight: 600;
+      top: 2px; }
     .fixed-action-btn {height: 50px;}
     .addOperationButton {
       position: absolute;
