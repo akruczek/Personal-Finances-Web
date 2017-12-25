@@ -27,8 +27,6 @@ export class AddOperation extends React.Component {
   changeHandler =(event)=> { this.setState({ [event.target.name]: event.target.value });}
 
   changeHandlerSelect =(event)=> {
-    console.log(incomeCategories[Number(event.target.value[0])]);
-    console.log(event.target.value);
     this.setState({
       [event.target.name]: !this.state.inputRadio ? incomeCategories[Number(event.target.value[0])].id + incomeCategories[Number(event.target.value[0])].value : incomeCategories[Number(event.target.value[0])].id + expenseCategories[Number(event.target.value[0])].value,
       iconSrc: !this.state.inputRadio ? incomeCategories[Number(event.target.value[0])].src : expenseCategories[Number(event.target.value[0])].src
@@ -117,7 +115,6 @@ export class AddOperation extends React.Component {
     let tempSelectCategory = "";
     if (!this.props.history[tempId].income) {
       for (let i=0; i<incomeCategories.length; i++) {
-        console.log("for", incomeCategories[i].name, this.props.history[tempId].category);
         if (incomeCategories[i].name === this.props.history[tempId].category) {
           tempSelectCategory = i + incomeCategories[i].value; break;
         }
@@ -131,8 +128,6 @@ export class AddOperation extends React.Component {
       }
     }
 
-    console.log(tempSelectCategory);
-
     this.setState({
       dateInput: this.props.history[tempId].date,
       inputOperationTitle: this.props.history[tempId].title,
@@ -141,7 +136,6 @@ export class AddOperation extends React.Component {
       inputMoney: this.props.history[tempId].money,
       inputRadio: this.props.history[tempId].income
     });
-    console.log(this.state.selectCategory);
     return true;
   }
 

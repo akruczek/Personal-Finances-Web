@@ -3,7 +3,6 @@ import {Input} from "react-materialize";
 import {incomeCategories, expenseCategories} from "../variables/categories.jsx";
 
 export const SelectCategoryExpense =(props)=> {
-  console.log("receive", props.selectCategory);
   return (
     <Input type="select" value={props.selectCategory} onChange={props.change} name="selectCategory" className="icons selectCategory">
       <option value="" disabled>Wybierz Kategorię</option>

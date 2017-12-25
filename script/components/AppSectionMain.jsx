@@ -8,18 +8,22 @@ export const AppSectionMain =(props)=> {
     <section className="operationsHistory">
        <section className="row">
         <div>
-          <Input s={12} type='select' defaultValue={props.year} className="selectYearRange">
+          <Input s={12} type='select' defaultValue={props.year} name="selectYear" onChange={props.change} className="selectYearRange">
             {years.map(item => <option key={item} value={item}>{item}</option>)}
           </Input>
-          <Input s={12} type='select' icon='date_range' defaultValue={props.month} className="selectDateRange" onChange={props.checkSelectDate}>
+          <Input s={12} type='select' icon='date_range' defaultValue={props.month} name="selectMonth" className="selectDateRange" onChange={props.change}>
             {months.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
           </Input>
           <div className="card-panel teal">
             <a href="#popup1" className="addOperationButton btn-floating btn-large waves-effect waves-light"><i className="material-icons">add</i></a>
             <div className="collection">
-              {props.opHistory.map((item) =>
-                <HistoryItem key={item.id} history={item}
-                  callbackDelete={props.callbackDelete} callbackEdit={props.callbackEdit}/>
+              {props.opHistory.map((item) => {
+                // console.log(Number(item.date.slice(0,4)) === props.year);
+                // console.log(Number(item.date.slice(0,4)) == props.year && (Number(item.date.slice(5,7))-1) == props.month);
+                if (Number(item.date.slice(0,4)) == props.year && (Number(item.date.slice(5,7))-1) == props.month){
+                  return <HistoryItem key={item.id} history={item}
+                    callbackDelete={props.callbackDelete} callbackEdit={props.callbackEdit}/>
+                }}
               )}
               <a className="collection-item"><span className="badge"> </span>
                 <div>

@@ -38,6 +38,8 @@ export class Application extends React.Component {
     }
   }
 
+  changeHandler =(event)=> { this.setState({ [event.target.name]: Number(event.target.value) }); }
+
   //USTAWIENIE SALDA
   setBalance =()=> {
     let newBalance=0;
@@ -59,8 +61,6 @@ export class Application extends React.Component {
 
 
   checkBalances =()=> {
-    console.log("checkBalances", this.state.history);
-    console.log(this.state.history[1].category);
     let newArrIncome = [];
     let newArrExpense = [];
     //WYDATKI KATEGORYCZNIE
@@ -112,7 +112,7 @@ export class Application extends React.Component {
         }
       }
     }
-    this.setState({ history: sortedData }, ()=>{console.log(this.state.history)});
+    this.setState({ history: sortedData });
   }
 
   //NAWIGACJA SIDE-OUT, USTAWIENIE URL ZGODNIE Z ZALOGOWANYM UŻYTKOWNIKIEM
@@ -188,7 +188,7 @@ export class Application extends React.Component {
             isEdit={this.state.isEdit} editOperationId={this.state.editOperationId} endEdit={this.endEdit}/>
 
           <div className="main-section">
-            <AppSectionMain opHistory={this.state.history}
+            <AppSectionMain opHistory={this.state.history} change={this.changeHandler}
               year={this.state.selectYear} month={this.state.selectMonth}
               callbackDelete={this.deleteOperation} callbackEdit={this.editOperation}/>
 

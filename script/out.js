@@ -13743,6 +13743,8 @@ var _categories = __webpack_require__(40);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -13759,6 +13761,10 @@ var Application = exports.Application = function (_React$Component) {
     _classCallCheck(this, Application);
 
     var _this = _possibleConstructorReturn(this, (Application.__proto__ || Object.getPrototypeOf(Application)).call(this, props));
+
+    _this.changeHandler = function (event) {
+      _this.setState(_defineProperty({}, event.target.name, Number(event.target.value)));
+    };
 
     _this.setBalance = function () {
       var newBalance = 0;
@@ -13778,8 +13784,6 @@ var Application = exports.Application = function (_React$Component) {
     };
 
     _this.checkBalances = function () {
-      console.log("checkBalances", _this.state.history);
-      console.log(_this.state.history[1].category);
       var newArrIncome = [];
       var newArrExpense = [];
       //WYDATKI KATEGORYCZNIE
@@ -13833,9 +13837,7 @@ var Application = exports.Application = function (_React$Component) {
           }
         }
       }
-      _this.setState({ history: sortedData }, function () {
-        console.log(_this.state.history);
-      });
+      _this.setState({ history: sortedData });
     };
 
     _this.setHistory = function (newHistory) {
@@ -13965,7 +13967,7 @@ var Application = exports.Application = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'main-section' },
-          _react2.default.createElement(_AppSectionMain.AppSectionMain, { opHistory: this.state.history,
+          _react2.default.createElement(_AppSectionMain.AppSectionMain, { opHistory: this.state.history, change: this.changeHandler,
             year: this.state.selectYear, month: this.state.selectMonth,
             callbackDelete: this.deleteOperation, callbackEdit: this.editOperation }),
           _react2.default.createElement(_Balance.Balance, { balance: this.state.balance, income: this.state.income, expense: this.state.expense,
@@ -29897,8 +29899,6 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
     _this.changeHandlerSelect = function (event) {
       var _this$setState2;
 
-      console.log(_categories.incomeCategories[Number(event.target.value[0])]);
-      console.log(event.target.value);
       _this.setState((_this$setState2 = {}, _defineProperty(_this$setState2, event.target.name, !_this.state.inputRadio ? _categories.incomeCategories[Number(event.target.value[0])].id + _categories.incomeCategories[Number(event.target.value[0])].value : _categories.incomeCategories[Number(event.target.value[0])].id + _categories.expenseCategories[Number(event.target.value[0])].value), _defineProperty(_this$setState2, 'iconSrc', !_this.state.inputRadio ? _categories.incomeCategories[Number(event.target.value[0])].src : _categories.expenseCategories[Number(event.target.value[0])].src), _this$setState2));
     };
 
@@ -29983,7 +29983,6 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
       var tempSelectCategory = "";
       if (!_this.props.history[tempId].income) {
         for (var _i = 0; _i < _categories.incomeCategories.length; _i++) {
-          console.log("for", _categories.incomeCategories[_i].name, _this.props.history[tempId].category);
           if (_categories.incomeCategories[_i].name === _this.props.history[tempId].category) {
             tempSelectCategory = _i + _categories.incomeCategories[_i].value;break;
           }
@@ -29996,8 +29995,6 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
         }
       }
 
-      console.log(tempSelectCategory);
-
       _this.setState({
         dateInput: _this.props.history[tempId].date,
         inputOperationTitle: _this.props.history[tempId].title,
@@ -30006,7 +30003,6 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
         inputMoney: _this.props.history[tempId].money,
         inputRadio: _this.props.history[tempId].income
       });
-      console.log(_this.state.selectCategory);
       return true;
     };
 
@@ -53910,7 +53906,6 @@ var _categories = __webpack_require__(40);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SelectCategoryExpense = exports.SelectCategoryExpense = function SelectCategoryExpense(props) {
-  console.log("receive", props.selectCategory);
   return _react2.default.createElement(
     _reactMaterialize.Input,
     { type: "select", value: props.selectCategory, onChange: props.change, name: "selectCategory", className: "icons selectCategory" },
@@ -54231,7 +54226,7 @@ var AppSectionMain = exports.AppSectionMain = function AppSectionMain(props) {
         null,
         _react2.default.createElement(
           _reactMaterialize.Input,
-          { s: 12, type: "select", defaultValue: props.year, className: "selectYearRange" },
+          { s: 12, type: "select", defaultValue: props.year, name: "selectYear", onChange: props.change, className: "selectYearRange" },
           _dates.years.map(function (item) {
             return _react2.default.createElement(
               "option",
@@ -54242,7 +54237,7 @@ var AppSectionMain = exports.AppSectionMain = function AppSectionMain(props) {
         ),
         _react2.default.createElement(
           _reactMaterialize.Input,
-          { s: 12, type: "select", icon: "date_range", defaultValue: props.month, className: "selectDateRange", onChange: props.checkSelectDate },
+          { s: 12, type: "select", icon: "date_range", defaultValue: props.month, name: "selectMonth", className: "selectDateRange", onChange: props.change },
           _dates.months.map(function (item) {
             return _react2.default.createElement(
               "option",
@@ -54267,8 +54262,12 @@ var AppSectionMain = exports.AppSectionMain = function AppSectionMain(props) {
             "div",
             { className: "collection" },
             props.opHistory.map(function (item) {
-              return _react2.default.createElement(_HistoryItem.HistoryItem, { key: item.id, history: item,
-                callbackDelete: props.callbackDelete, callbackEdit: props.callbackEdit });
+              // console.log(Number(item.date.slice(0,4)) === props.year);
+              // console.log(Number(item.date.slice(0,4)) == props.year && (Number(item.date.slice(5,7))-1) == props.month);
+              if (Number(item.date.slice(0, 4)) == props.year && Number(item.date.slice(5, 7)) - 1 == props.month) {
+                return _react2.default.createElement(_HistoryItem.HistoryItem, { key: item.id, history: item,
+                  callbackDelete: props.callbackDelete, callbackEdit: props.callbackEdit });
+              }
             }),
             _react2.default.createElement(
               "a",
