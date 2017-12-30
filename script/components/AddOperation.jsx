@@ -176,7 +176,7 @@ export class AddOperation extends React.Component {
             <section className="OperationDescription">
               <span className="moneyValue">Kwota:</span><br/>
               <Cleave options={{prefix: "zł:", numeral: true, rawValueTrimPrefix: true}}
-                className="inputMoney" id="first_name2" onChange={this.changeHandlerRaw} name="inputMoney"
+                className="inputMoney" id="first_name1" onChange={this.changeHandlerRaw} name="inputMoney"
                 value={this.state.inputMoney}/>
 
                 <br/>

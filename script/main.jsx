@@ -6,7 +6,6 @@ import {BrowserRouter, Route, NavLink, Switch } from 'react-router-dom';
 import {Application, AppHeader} from "./app.jsx";
 
 export const url = "http://localhost:3000/users/";
-// export const url = "https://www.mocky.io/v2/5a3c0b91300000893182d418";
 
 let isValid;
 export let userObject;
