@@ -127,6 +127,24 @@
       "password": "rk}vy?",
       "email": "mail@mai.com",
       "operations": []
+    },
+    {
+      "id": "qazwsx",
+      "login": "qazwsx",
+      "password": "{k}",
+      "email": "xyz@gmail.com",
+      "operations": [
+        {
+          "id": 0,
+          "date": "2017-12-29",
+          "title": "Pizza",
+          "note": "",
+          "category": "0food",
+          "money": "68.95",
+          "income": false,
+          "src": "../images/catFood.png"
+        }
+      ]
     }
   ]
 }

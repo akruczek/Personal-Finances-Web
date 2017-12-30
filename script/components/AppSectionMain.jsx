@@ -18,8 +18,6 @@ export const AppSectionMain =(props)=> {
             <a href="#popup1" className="addOperationButton btn-floating btn-large waves-effect waves-light"><i className="material-icons">add</i></a>
             <div className="collection">
               {props.opHistory.map((item) => {
-                // console.log(Number(item.date.slice(0,4)) === props.year);
-                // console.log(Number(item.date.slice(0,4)) == props.year && (Number(item.date.slice(5,7))-1) == props.month);
                 if (Number(item.date.slice(0,4)) == props.year && (Number(item.date.slice(5,7))-1) == props.month){
                   return <HistoryItem key={item.id} history={item}
                     callbackDelete={props.callbackDelete} callbackEdit={props.callbackEdit}/>

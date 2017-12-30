@@ -117,7 +117,6 @@ export class Application extends React.Component {
 
   //NAWIGACJA SIDE-OUT, USTAWIENIE URL ZGODNIE Z ZALOGOWANYM UŻYTKOWNIKIEM
   componentDidMount() {
-    $(".button-collapse").sideNav();
     this.setState({ path: `/app/${userObject.login}` });
   }
 
