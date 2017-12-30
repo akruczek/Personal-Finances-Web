@@ -1,6 +1,7 @@
 ## Personal-Finances - Aplikacja Internetowa
 
 ###### [ ! ] Wszystkie komendy w folderze głównym projektu [ ! ]
+###### PRzykładowe konto: login: exampleApp, hasło: example
 
 ### 1. Instalacja: npm install, (install -g json-server)
 

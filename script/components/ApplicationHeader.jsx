@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export class ApplicationHeader extends React.Component {
   componentDidMount() {
-    setTimeout(() => { $(".button-collapse").sideNav(); }, 50);
+    setTimeout(() => { $(".button-collapse").sideNav({closeOnClick: true}); }, 50);
   }
 
   render() {
