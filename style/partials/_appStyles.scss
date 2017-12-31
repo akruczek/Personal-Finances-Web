@@ -27,7 +27,9 @@ body {
     //SLIDE-OUT NAV MENU
     @import "appStyles/appSlide";
     //POPUP Z USTAWIENIAMI
-    @import "appStyles/appSettings"
+    @import "appStyles/appSettings";
+    //POPUP Z WYMIANĄ WALUT
+    @import "appStyles/appExchange";
   }
   .preloader {
     margin: 30% 50%;

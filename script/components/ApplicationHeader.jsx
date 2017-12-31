@@ -25,9 +25,6 @@ export class ApplicationHeader extends React.Component {
             </h1>
 
             <ul className="right hide-on-med-and-down">
-              <li className="tooltip" data-title="tooltip"><a><i className="material-icons">search</i></a></li>
-              <li className="tooltip" data-title="tooltip"><a><i className="material-icons">view_module</i></a></li>
-              <li className="tooltip" data-title="tooltip"><a><i className="material-icons">refresh</i></a></li>
               <li className="tooltip" data-title="Wyloguj"><NavLink to="/"><i className="material-icons">exit_to_app</i></NavLink></li>
             </ul>
           </div>

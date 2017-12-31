@@ -37,12 +37,11 @@ export class ChangePassword extends React.Component {
   }
 
   render() {
-    console.log(this.state.confirmPassword);
     return (
       <div id="changePassword" className="overlay">
         <div className="popup">
           <h2>Zmień Hasło</h2>
-          <a className="close" href="#" onClick={this.props.endEdit}>&times;</a>
+          <a className="close" href="#">&times;</a>
           <div className="content">
             <span>Nowe Hasło:</span>
             <Input type="password" className="newPassword" name="newPassword" onChange={this.changeHandler} value={this.state.newPassword}/>

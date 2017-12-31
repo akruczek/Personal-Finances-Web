@@ -1,0 +1,27 @@
+#exchange {
+  .popup {
+    .content {
+      span {
+        display: block;
+        font-size: 24px;
+        a {
+          font-weight: 700;
+          color: darkblue;
+        }
+      }
+      .CleavesContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        input {
+          width: 200px;
+          font-size: 24px;
+          font-weight: 700;
+        }
+        i {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

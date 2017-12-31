@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {ChangePassword} from './Settings.jsx';
+import {Exchange} from './Exchange.jsx';
 
 export const ApplicationSlide =(props)=> {
   return (
@@ -20,10 +21,12 @@ export const ApplicationSlide =(props)=> {
         <li><NavLink to=""><i className="material-icons">library_add</i>Dodaj nową kategorię</NavLink></li>
         <li><div className="divider"></div></li>
         <li><a className="subheader">Waluty</a></li>
-        <li><NavLink to=""><i className="material-icons">swap_horiz</i>Wymiana Walut</NavLink></li>
+        <li><a href="#exchange"><i className="material-icons">swap_horiz</i>Wymiana Walut</a></li>
       </ul>
 
       <ChangePassword Code={props.Code}/>
+
+      <Exchange EurRates={props.EurRates} UsdRates={props.UsdRates}/>
 
     </div>
   );

@@ -197,7 +197,7 @@ export class Application extends React.Component {
 
           </div>
 
-          <ApplicationSlide userObject={userObject}/>
+          <ApplicationSlide userObject={userObject} EurRates={this.state.EurRates} UsdRates={this.state.UsdRates}/>
 
         </div>
       ) : (
