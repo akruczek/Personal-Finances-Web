@@ -75,6 +75,56 @@
           "money": "500",
           "income": false,
           "src": "../images/catHome.png"
+        },
+        {
+          "id": 7,
+          "date": "2018-01-01",
+          "title": "Czynsz + Opłaty",
+          "note": "Styczeń 2018",
+          "category": "1home",
+          "money": "1382",
+          "income": false,
+          "src": "../images/catHome.png"
+        },
+        {
+          "id": 8,
+          "date": "2018-01-02",
+          "title": "Zakupy",
+          "note": "Supermarket",
+          "category": "0food",
+          "money": "320.99",
+          "income": false,
+          "src": "../images/catFood.png"
+        },
+        {
+          "id": 9,
+          "date": "2018-01-03",
+          "title": "Wypłata, styczeń",
+          "note": "",
+          "category": "0work",
+          "money": "3950",
+          "income": true,
+          "src": "../images/catWork.png"
+        },
+        {
+          "id": 10,
+          "date": "2018-01-04",
+          "title": "Benzyna",
+          "note": "95",
+          "category": "2transport",
+          "money": "289.47",
+          "income": false,
+          "src": "../images/catTransport.png"
+        },
+        {
+          "id": 11,
+          "date": "2018-01-05",
+          "title": "Kurtka Zimowa",
+          "note": "Galeria",
+          "category": "4clothing",
+          "money": "200",
+          "income": false,
+          "src": "../images/catClothing.png"
         }
       ]
     },

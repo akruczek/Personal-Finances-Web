@@ -19,6 +19,16 @@
       text-align: center;
       padding: 30px 0;
       padding-top: 5px;
+      .switch {
+        position: absolute;
+        top: 33px;
+        padding-left: 30px;
+        label {
+          color: black;
+          font-weight: 700;
+          font-size: 16px;
+        }
+      }
       .cardInside {
         margin: 0 auto;
         width: 90%;

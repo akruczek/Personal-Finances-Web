@@ -34,11 +34,14 @@ export class Application extends React.Component {
       incomeCatSum: [],
       expenseCatSum: [],
       selectYear: new Date().getFullYear(),
-      selectMonth: new Date().getMonth()
+      selectMonth: new Date().getMonth(),
+      switch: false
     }
   }
 
-  changeHandler =(event)=> { this.setState({ [event.target.name]: Number(event.target.value) }); }
+  changeHandler =(event)=> { this.setState({ [event.target.name]: Number(event.target.value) }, () => this.checkBalances()); }
+
+  changeHandlerSwitch =(event)=> { this.setState({ [event.target.name]: event.target.checked }, () => this.checkBalances()); }
 
   //USTAWIENIE SALDA
   setBalance =()=> {
@@ -66,8 +69,13 @@ export class Application extends React.Component {
     //WYDATKI KATEGORYCZNIE
     for (let i=0; i<incomeCategories.length; i++) {
       newArrIncome[i] = 0;
-      for (let j=0; j<this.state.history.length; j++)
-        (this.state.history[j].category.slice(1) === incomeCategories[i].value) && ( newArrIncome[i] += Number(this.state.history[j].money) );
+      for (let j=0; j<this.state.history.length; j++) {
+        if (this.state.switch) {
+          (Number(this.state.history[j].date.slice(0,4)) === Number(this.state.selectYear) && Number(this.state.history[j].date.slice(5,7)) === Number(this.state.selectMonth) + 1) &&
+            (this.state.history[j].category.slice(1) === incomeCategories[i].value) && ( newArrIncome[i] += Number(this.state.history[j].money) ); }
+        else
+          (this.state.history[j].category.slice(1) === incomeCategories[i].value) && ( newArrIncome[i] += Number(this.state.history[j].money) );
+      }
       newArrIncome[i] = newArrIncome[i].toFixed(2);
     }
 
@@ -75,7 +83,11 @@ export class Application extends React.Component {
     for (let i=0; i<expenseCategories.length; i++) {
       newArrExpense[i] = 0;
       for (let j=0; j<this.state.history.length; j++)
-        (this.state.history[j].category.slice(1) === expenseCategories[i].value) && ( newArrExpense[i] += Number(this.state.history[j].money) );
+        if (this.state.switch) {
+          (Number(this.state.history[j].date.slice(0,4)) === Number(this.state.selectYear) && Number(this.state.history[j].date.slice(5,7)) === Number(this.state.selectMonth) + 1) &&
+            (this.state.history[j].category.slice(1) === expenseCategories[i].value) && ( newArrExpense[i] += Number(this.state.history[j].money) ); }
+        else
+          (this.state.history[j].category.slice(1) === expenseCategories[i].value) && ( newArrExpense[i] += Number(this.state.history[j].money) );
       newArrExpense[i] = newArrExpense[i].toFixed(2);
     }
 
@@ -195,7 +207,7 @@ export class Application extends React.Component {
 
             <Balance balance={this.state.balance} income={this.state.income} expense={this.state.expense}
               history={this.state.history} incomeCatSum={this.state.incomeCatSum} expenseCatSum={this.state.expenseCatSum}
-              checkBalances={this.checkBalances}/>
+              checkBalances={this.checkBalances} changeHandlerSwitch={this.changeHandlerSwitch} switchValue={this.state.switch}/>
 
           </div>
 

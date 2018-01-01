@@ -7,8 +7,6 @@ export class Balance extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      incomeCatSum: [],
-      expenseCatSum: [],
       selectValue: "1"
     }
   }
@@ -19,10 +17,12 @@ export class Balance extends React.Component {
 
   componentWillMount() { this.check(); }
 
+
   render() {
     return this.check() && (
       <div className="balancePanel">
         <CardPanel className="teal cardPanel black-text">
+          <Input name='switch' type='switch' className="switch" checked={this.props.switchValue} onLabel="Wybrany miesiąc" offLabel="Cała historia" onChange={this.props.changeHandlerSwitch} />
           <div className="cardInside">
             <h2>Saldo</h2>
             <hr/>
