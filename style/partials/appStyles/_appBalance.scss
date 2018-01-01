@@ -21,14 +21,12 @@
       padding-top: 5px;
       .switch {
         position: absolute;
-        top: 33px;
+        margin-top: -93px;
         padding-left: 30px;
         label {
           color: black;
           font-weight: 700;
-          font-size: 16px;
-        }
-      }
+          font-size: 16px; } }
       .cardInside {
         margin: 0 auto;
         width: 90%;
@@ -59,8 +57,7 @@
             width: 200px;
             margin: 0 auto;
             margin-top: -40px; font-size: 40px; font-weight: 600; margin-bottom: 10px;
-            span {font-size: 24px; color: black;}
-          }
+            span {font-size: 24px; color: black;} }
           .catImgs {
             display: flex;
             justify-content: flex-start;
@@ -71,11 +68,4 @@
               font-size: 32px;
               font-weight: 600;
               padding: 10px 0;
-              margin: 0 auto;
-            }
-          }
-        }
-      }
-    }
-  }
-}
+              margin: 0 auto; } } } } } } }
