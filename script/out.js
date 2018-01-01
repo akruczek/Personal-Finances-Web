@@ -4528,12 +4528,12 @@ var isValid = void 0;
 var userObject = exports.userObject = void 0;
 
 // -----DEV-ONLY\/
-exports.userObject = userObject = {
-  "id": "exampleApp",
-  "login": "exampleApp",
-  "password": "okwzvo",
-  "email": "app@example.com"
-};
+// userObject = {
+//     "id": "exampleApp",
+//     "login": "exampleApp",
+//     "password": "okwzvo",
+//     "email": "app@example.com"
+//   };
 // /\
 
 
@@ -4595,9 +4595,9 @@ var Login = function (_React$Component) {
       inputPasswordClass: "",
       errorMessage: ""
       // //-----DEV ONLY \/
-    };_this.props.history.push('/app/' + userObject.id);
-    // //-----DEV ONLY /\
-    return _this;
+      // this.props.history.push(`/app/${userObject.id}`);
+      // //-----DEV ONLY /\
+    };return _this;
   }
 
   //ZMIANY W INPUTACH
@@ -13961,7 +13961,9 @@ var Application = exports.Application = function (_React$Component) {
         _react2.default.createElement(_ApplicationHeader.ApplicationHeader, { mainPath: this.state.mainPath, userObject: _main.userObject, currencyEur: this.state.currencyEur,
           EurRates: this.state.EurRates, currencyUsd: this.state.currencyUsd, UsdRates: this.state.UsdRates }),
         _react2.default.createElement(_AddOperation.AddOperation, { setHistory: this.setHistory, reset: true, getHistory: this.getHistory, history: this.state.history,
-          isEdit: this.state.isEdit, editOperationId: this.state.editOperationId, endEdit: this.endEdit }),
+          isEdit: this.state.isEdit, editOperationId: this.state.editOperationId, endEdit: this.endEdit,
+          todayMonth: Number(new Date().getMonth()) + 1 < 10 ? "0" + (new Date().getMonth() + 1) : new Date().getMonth() + 1,
+          todayDay: Number(new Date().getDate()) < 10 ? "0" + new Date().getDate() : new Date().getDate() }),
         _react2.default.createElement(
           'div',
           { className: 'main-section' },
@@ -30018,7 +30020,7 @@ var AddOperation = exports.AddOperation = function (_React$Component) {
     };
 
     _this.state = {
-      today: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate(),
+      today: new Date().getFullYear() + "-" + _this.props.todayMonth + "-" + _this.props.todayDay,
       dateInput: "",
       inputOperationTitle: "",
       inputNotes: "",

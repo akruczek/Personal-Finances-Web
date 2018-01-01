@@ -184,7 +184,9 @@ export class Application extends React.Component {
             EurRates={this.state.EurRates} currencyUsd={this.state.currencyUsd} UsdRates={this.state.UsdRates}/>
 
           <AddOperation setHistory={this.setHistory} reset={true} getHistory={this.getHistory} history={this.state.history}
-            isEdit={this.state.isEdit} editOperationId={this.state.editOperationId} endEdit={this.endEdit}/>
+            isEdit={this.state.isEdit} editOperationId={this.state.editOperationId} endEdit={this.endEdit}
+            todayMonth={(Number(new Date().getMonth()) + 1) < 10 ? "0" + (new Date().getMonth() + 1) : (new Date().getMonth() + 1)}
+            todayDay={(Number(new Date().getDate())) < 10 ? "0" + (new Date().getDate()) : (new Date().getDate())}/>
 
           <div className="main-section">
             <AppSectionMain opHistory={this.state.history} change={this.changeHandler}

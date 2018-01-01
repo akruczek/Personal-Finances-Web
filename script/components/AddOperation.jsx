@@ -10,7 +10,7 @@ export class AddOperation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      today: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate(),
+      today: (new Date().getFullYear() + "-" + this.props.todayMonth + "-" + this.props.todayDay),
       dateInput: "",
       inputOperationTitle: "",
       inputNotes: "",
