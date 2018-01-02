@@ -54,25 +54,6 @@ export class Exchange extends React.Component {
               <Cleave options={{prefix: "$:", numeral: true, rawValueTrimPrefix: true}} className="secondInputCurrencyUsd"
                 onChange={this.changeHandler} name="secondInputUsd" value={this.state.secondInputUsd}/>
             </div>
-
-            {/* <Cleave options={{prefix: "zł:", numeral: true, rawValueTrimPrefix: true}}
-              className="inputMoney" id="first_name1" onChange={this.changeHandlerRaw} name="inputMoney"
-              value={this.state.inputMoney}/> */}
-
-            {/* <Input type="select" value={props.selectCategory} onChange={props.change} name="selectCategory" className="icons selectCategory">
-              <option value="" disabled>Wybierz Kategorię</option>
-              {incomeCategories.map(item =>
-                <option value={item.id + item.value} data-icon={item.src} className="left" key={item.value}>{item.name}</option>
-              )}
-            </Input> */}
-
-            {/* <span>Nowe Hasło:</span>
-            <Input type="password" className="newPassword" name="newPassword" onChange={this.changeHandler} value={this.state.newPassword}/>
-            <span>Potwierdź Hasło:</span>
-            <Input type="password" className="confirmPassword" name="confirmPassword" onChange={this.changeHandler} value={this.state.confirmPassword}/>
-            <Button onClick={() => {this.changePassword();}} large className="changePasswordButton" waves='light'>
-              {(this.state.newPassword === this.state.confirmPassword && this.state.newPassword.length > 5 && /^[a-zA-Z0-9- ]*$/.test(this.state.newPassword)) ? <a href="#">Zatwierdź</a> : <a href="#changePassword">Zatwierdź</a>}
-            </Button> */}
           </div>
         </div>
       </div>

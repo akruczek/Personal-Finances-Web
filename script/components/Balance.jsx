@@ -55,8 +55,7 @@ export class Balance extends React.Component {
                   <span className="value" style={{color: "green"}}>+{(this.props.expenseCatSum[index])}zł</span>
                   <br/>
                 </div>)
-            )
-            }
+            ) }
           </div>
         </div>
       </CardPanel>
