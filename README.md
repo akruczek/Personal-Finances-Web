@@ -1,7 +1,8 @@
 ## Personal-Finances - Aplikacja Internetowa
-
+###### Projekt końcowy - Coders Lab
+###### ------------------------------------------
 ###### [ ! ] Wszystkie komendy w folderze głównym projektu [ ! ]
-###### PRzykładowe konto: login: exampleApp, hasło: example
+###### Konto demonstracyjne: login: exampleApp, hasło: example
 
 ### 1. Instalacja: npm install, (install -g json-server)
 
@@ -10,3 +11,6 @@
 ### 3. Lokalny serwer z bazą danych: json-server	--watch	database/data.json
 
 ### 4. localhost:3001/
+
+### Wersja demonstracyjna (tylko do odczytu):
+### http://personal-finances.akruczek.pl/

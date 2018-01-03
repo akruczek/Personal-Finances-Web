@@ -7,8 +7,6 @@ module.exports = {
       inline: true,
       contentBase: "./",
       port: 3001
-      // disableHostCheck: false,
-      // host: "0.0.0.0"
     },
     devtool: 'source-map',
     watch: true,
