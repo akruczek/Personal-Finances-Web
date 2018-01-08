@@ -6,8 +6,9 @@
 ##### [ ! ] All commands in main folder (with index.html) [ ! ]
 
 #### 1. Instalation -> npm install, (! must have json-server -> install -g json-server !)
-#### 2. Local server: npm run server
-#### 3. Local server with database: json-server	--watch	database/data.json
+#### 2. Local server with database: json-server	--watch	database/data.json
+#### -> Now you can open index.html to run app, or...
+#### 3. Local server: npm run server
 #### 4. visit 'localhost:3001/' to run Application
 #### 5. visit 'localhost:3000/' to see database
 
