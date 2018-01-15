@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Cleave from 'cleave.js/react';
 import {Button, Icon} from 'react-materialize';
 import {userObject} from "./../main.jsx";
