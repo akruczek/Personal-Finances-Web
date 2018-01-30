@@ -36,22 +36,22 @@ export class Exchange extends React.Component {
             <span>Średni kurs <a>Dolara Amerykańskiego</a> na dzień {this.props.UsdRates.effectiveDate}: <a>{Number(this.props.UsdRates.mid).toFixed(2)}</a></span>
             <hr/>
             <div className="CleavesContainer">
-              <Cleave options={{prefix: "zł:", numeral: true, rawValueTrimPrefix: true}} className="firstInputCurrencyEur"
+              <Cleave options={{prefix: "€:", numeral: true, rawValueTrimPrefix: true}} className="firstInputCurrencyEur"
                 onChange={this.changeHandler} name="firstInputEur" value={this.state.firstInputEur}/>
 
               <Icon large>swap_horiz</Icon>
 
-              <Cleave options={{prefix: "€:", numeral: true, rawValueTrimPrefix: true}} className="secondInputCurrencyEur"
+              <Cleave options={{prefix: "zł:", numeral: true, rawValueTrimPrefix: true}} className="secondInputCurrencyEur"
                 onChange={this.changeHandler} name="secondInputEur" value={this.state.secondInputEur}/>
             </div>
             <hr/>
             <div className="CleavesContainer">
-              <Cleave options={{prefix: "zł:", numeral: true, rawValueTrimPrefix: true}} className="firstInputCurrencyUsd"
+              <Cleave options={{prefix: "$:", numeral: true, rawValueTrimPrefix: true}} className="firstInputCurrencyUsd"
                 onChange={this.changeHandler} name="firstInputUsd" value={this.state.firstInputUsd}/>
 
               <Icon large>swap_horiz</Icon>
 
-              <Cleave options={{prefix: "$:", numeral: true, rawValueTrimPrefix: true}} className="secondInputCurrencyUsd"
+              <Cleave options={{prefix: "zł:", numeral: true, rawValueTrimPrefix: true}} className="secondInputCurrencyUsd"
                 onChange={this.changeHandler} name="secondInputUsd" value={this.state.secondInputUsd}/>
             </div>
           </div>

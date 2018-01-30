@@ -6,9 +6,9 @@ import {BrowserRouter, Route, NavLink, Switch } from 'react-router-dom';
 import {Application, AppHeader} from "./app.jsx";
 
 //LOCALHOST \/
-// export const url = "http://localhost:3000/users/";
+export const url = "http://localhost:3000/users/";
 //TYPICODE MY-JSON-SERVER (READ ONLY) \/
-export const url = "https://my-json-server.typicode.com/akruczek/json-server/users/";
+// export const url = "https://my-json-server.typicode.com/akruczek/json-server/users/";
 
 let isValid;
 export let userObject;

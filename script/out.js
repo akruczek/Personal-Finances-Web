@@ -4523,9 +4523,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 //LOCALHOST \/
-// export const url = "http://localhost:3000/users/";
+var url = exports.url = "http://localhost:3000/users/";
 //TYPICODE MY-JSON-SERVER (READ ONLY) \/
-var url = exports.url = "https://my-json-server.typicode.com/akruczek/json-server/users/";
+// export const url = "https://my-json-server.typicode.com/akruczek/json-server/users/";
 
 var isValid = void 0;
 var userObject = exports.userObject = void 0;
@@ -54550,28 +54550,28 @@ var Exchange = exports.Exchange = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'CleavesContainer' },
-              _react2.default.createElement(_react4.default, { options: { prefix: "zł:", numeral: true, rawValueTrimPrefix: true }, className: 'firstInputCurrencyEur',
+              _react2.default.createElement(_react4.default, { options: { prefix: "€:", numeral: true, rawValueTrimPrefix: true }, className: 'firstInputCurrencyEur',
                 onChange: this.changeHandler, name: 'firstInputEur', value: this.state.firstInputEur }),
               _react2.default.createElement(
                 _reactMaterialize.Icon,
                 { large: true },
                 'swap_horiz'
               ),
-              _react2.default.createElement(_react4.default, { options: { prefix: "€:", numeral: true, rawValueTrimPrefix: true }, className: 'secondInputCurrencyEur',
+              _react2.default.createElement(_react4.default, { options: { prefix: "zł:", numeral: true, rawValueTrimPrefix: true }, className: 'secondInputCurrencyEur',
                 onChange: this.changeHandler, name: 'secondInputEur', value: this.state.secondInputEur })
             ),
             _react2.default.createElement('hr', null),
             _react2.default.createElement(
               'div',
               { className: 'CleavesContainer' },
-              _react2.default.createElement(_react4.default, { options: { prefix: "zł:", numeral: true, rawValueTrimPrefix: true }, className: 'firstInputCurrencyUsd',
+              _react2.default.createElement(_react4.default, { options: { prefix: "$:", numeral: true, rawValueTrimPrefix: true }, className: 'firstInputCurrencyUsd',
                 onChange: this.changeHandler, name: 'firstInputUsd', value: this.state.firstInputUsd }),
               _react2.default.createElement(
                 _reactMaterialize.Icon,
                 { large: true },
                 'swap_horiz'
               ),
-              _react2.default.createElement(_react4.default, { options: { prefix: "$:", numeral: true, rawValueTrimPrefix: true }, className: 'secondInputCurrencyUsd',
+              _react2.default.createElement(_react4.default, { options: { prefix: "zł:", numeral: true, rawValueTrimPrefix: true }, className: 'secondInputCurrencyUsd',
                 onChange: this.changeHandler, name: 'secondInputUsd', value: this.state.secondInputUsd })
             )
           )
